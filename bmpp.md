@@ -3,9 +3,9 @@ title: BMPP Agents
 layout: default
 ---
 
-# BMMP (bmpp-agents-rs)
+# BMPP (bmpp-agents-rs)
 
-BMMP agents for scalable graph-based reasoning in Rust.
+BMPP agents for scalable graph-based reasoning in Rust.
 
 - [GitHub Repository](https://github.com/Mec-iS/bmpp-agents-rs)
 - [Paper](https://github.com/Mec-iS/bmpp-paper)

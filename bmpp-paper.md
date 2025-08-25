@@ -14,7 +14,7 @@ A summary of the paper goes here...
 ## Citation
 
 @article{lastname2025bmpp,
-title={BMMP: ...},
+title={BMPP: ...},
 author={Your Name},
 journal={arXiv},
 year={2025},
