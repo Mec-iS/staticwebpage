@@ -59,6 +59,8 @@ fn calculate_age(birth_year: Int) -&gt; Meaning&lt;Int>("age calculation") {
 
 <div id="outputWrapper" style="display:none; margin-top:1em;">
   <pre id="output" style="background:#111;color:#f8f8f2;border-radius:5px;padding:1em;overflow-x:auto;">// Rust output will appear here</pre>
+  This code is now ready to be embedded in AI Agents workflows. It is formally safe for distributed computing use and guarantees all
+the safeguards of Rust code in terms of performance and security. 
 </div>
 
 <script>
@@ -404,9 +406,6 @@ fn main() -> anyhow::Result<()> {
     }
 });
 </script>
-
-This code is now ready to be embedded in AI Agents workflows. It is formally safe for distributed computing use and guarantees all
-the sameguards of Rust code in terms of performance and security. 
 
 ## GitHub
 

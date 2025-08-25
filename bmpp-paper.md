@@ -3,28 +3,21 @@ title: BMPP Paper
 layout: default
 ---
 
-## Research
 
-[Download the slideshow (PDF)](/assets/2025-agentic-slides.pdf)
+# The BMPP Protocol: AI Agents and Distributed Computing
 
-<embed src="/assets/2025-agentic-slides.pdf" type="application/pdf"
-       style="width:100%; min-height:60vh; background:#111; border-radius:6px; box-sizing:border-box;" />
+# Paper
 
-
-
-# The BMPP Protocol: Decentralized Reasoning in Large Knowledge Graphs
-
-Read the paper ([PDF Download](/BMMP_Paper.pdf)).
+Read the [paper PDF](https://github.com/Mec-iS/bmpp-paper).
 
 _Abstract_:  
-A summary of the paper goes here...
+This paper introduces BMPP (Blindly Meaningful Prompting Protocol), a protocol for safe and performant data exchange between distributed systems and Large Language Models (LLMs). BMPP inherits from Blindly Simple Protocol Language (BSPL) all the validation and verification features while adapting them for better performance when working with LLMs and agentic AI systems. BMPP provides a formal grammar and a comprehensive toolchain that can generate production-ready code, with Rust as the reference implementation language. The protocol enables interoperable communication between heterogeneous agent systems while maintaining formal verification guarantees and optimizing for the structured generation capabilities of modern LLMs.
 
 ## Citation
 
-@article{lastname2025bmpp,
-title={BMPP: ...},
-author={Your Name},
-journal={arXiv},
-year={2025},
-...
-}
+Cite as: Lorenzo Moriondo. BMPP: Blindly Meaningful Prompting Protocol for Safe and Performant Data Exchange Between Distributed Systems and LLMs. TechRxiv. August 24, 2025.
+DOI: 10.36227/techrxiv.175606898.81408945
+
+## Demo
+
+Check the quick presentation of autogenerating code from a BMPP definition to performant code in the [Vibelang demo page](/bmpp).

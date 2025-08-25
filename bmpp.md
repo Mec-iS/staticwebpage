@@ -5,12 +5,24 @@ layout: default
 
 # BMPP (bmpp-agents-rs)
 
-BMPP agents for scalable graph-based reasoning in Rust.
+## Research
 
+[Brief summary of the research (PDF)](/assets/2025-agentic-slides.pdf)
+
+<embed src="/assets/2025-agentic-slides.pdf" type="application/pdf"
+       style="width:100%; min-height:60vh; background:#111; border-radius:6px; box-sizing:border-box;" />
+
+
+## Demo
+
+Check the quick presentation about autogenerating code from a BMPP definition to performant code in the [Vibelang demo page](/bmpp).
+
+## Implementation
+
+BMPP agents for scalable distributed computed in Rust.
 - [GitHub Repository](https://github.com/Mec-iS/bmpp-agents-rs)
-- [Paper](https://github.com/Mec-iS/bmpp-paper)
-- [TechArxiv](https://www.techrxiv.org/users/685780/articles/1323323-bmpp-blindly-meaningful-prompting-protocol-for-safe-and-performant-data-exchange-between-distributed-systems-and-llms)
 
 Key features:
-- Fast Rust implementation
-- Designed for research and production use
+- generate your agents from formally verified distributed computing processes
+- fast and security tested Rust implementation
+- designed for research and deployment use
