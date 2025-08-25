@@ -1,18 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>{{ page.title }} - {{ site.title }}</title>
-  <style>
-    body { font-family: sans-serif; margin: 2em; }
-    nav a { margin-right: 1em; }
-    textarea, pre { width: 100%; }
-    textarea { height: 6em; }
-  </style>
-</head>
-<body>
-  {% include nav.html %}
-  <hr>
-  {{ content }}
+    <head>
+    <meta charset="UTF-8" />
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@3.0.0/build/pure-min.css">
+
+    <style>
+        body { font-family: 'IBM Plex Sans', Arial, sans-serif; margin: 2em; }
+        nav a { margin-right: 1em; }
+        textarea, pre, code {
+            width: 100%;
+            font-family: 'Ubuntu Mono', monospace;
+            color: #fff;
+            background: #111;
+        }
+        textarea { height: 6em; }
+        textarea, pre { width: 100%; }
+        footer {
+        margin-top: 2em;
+        padding: 1.25em 1em 0.75em 1em;
+        background: #fafbfc;
+        border-radius: 10px;
+        text-align: center;
+        color: #222;
+        font-size: 1em;
+        box-shadow: 0 3px 12px 0 #e2e2e2;
+        }
+        footer a {
+        color: #005aff;
+        font-weight: bold;
+        text-decoration: underline;
+        }
+        footer ul {
+        padding-left: 0;
+        list-style: none;
+        margin-bottom: 1em;
+        }
+        .cta-emoji {
+        font-size: 1.3em;
+        vertical-align: middle;
+        }
+    
+        .pure-button-primary {
+        background: #005aff;
+        color: #fff;
+        border-radius: 4px;
+        font-weight: bold;
+        letter-spacing: 0.03em;
+        }
+        nav.pure-menu {
+        background: #fafbfc;
+        border-radius: 8px;
+        padding: 0.7em 1.2em;
+        box-shadow: 0 2px 8px #eee;
+        }
+        .pure-menu-link {
+        color: #005aff;
+        font-weight: 500;
+        }
+        .pure-menu-link:hover {
+        background: #eaf3ff;
+        text-decoration: underline;
+        }
+
+    </style>
+    </head>
+    <body style="display: flex; min-height: 100vh; flex-direction: column;">
+    {% include nav.html %}
+    <hr>
+    {{ content }}
+
+    <footer style="flex-shrink: 0;">
+    <div style="margin: .7em 0;">
+        <a href="https://github.com/sponsors/Mec-iS" target="_blank">
+        Sponsor me on GitHub! 👈
+        </a>
+    </div>
+    <ul style="padding-left: 1.4em; text-align: left; margin: 0 auto; display: inline-block;">
+        <li>💡 Improve how your organisation thinks about and uses LLMs</li>
+        <li>📜 Original patent-ready IP tailored for your startup (workflows, connectors, ad-hoc KV caching)</li>
+        <li>🔒 Fail-safe systems for Agentic workflows</li>
+        <li>🦾 Automated, safe, and formally proved code generation</li>
+        <li>🤖 Make me vibecode full-time this game-changer technologies</li>
+    </ul>
+    <div>
+        <a href="https://github.com/sponsors/Mec-iS" target="_blank">
+        Become a sponsor today! 🚀
+        </a>
+    </div>
+    </footer>
 </body>
 </html>

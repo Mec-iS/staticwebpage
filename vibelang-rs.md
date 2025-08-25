@@ -55,7 +55,7 @@ fn calculate_age(birth_year: Int) -&gt; Meaning&lt;Int>("age calculation") {
 }
 </textarea>
 <br>
-<button id="compileBtn">Compile</button>
+<button id="compileBtn" class="pure-button pure-button-primary">Compile</button>
 
 <div id="outputWrapper" style="display:none; margin-top:1em;">
   <pre id="output" style="background:#111;color:#f8f8f2;border-radius:5px;padding:1em;overflow-x:auto;">// Rust output will appear here</pre>
@@ -407,6 +407,11 @@ fn main() -> anyhow::Result<()> {
 });
 </script>
 
-## GitHub
+## Github
 
-[View the code on GitHub](https://github.com/Mec-iS/vibelang-rs)
+**Try agentic programming with Vibelang in Rust—define LLM agents, workflows, and interactions using Meaning Typed Prompting (MTP).**
+The project enables precise, annotated payloads for reliable and explainable agent creation. Powered by Rust’s speed, safety, and clarity.
+
+**[Visit Vibelang-rs on GitHub](https://github.com/Mec-iS/vibelang-rs)**
+If you find the project useful or inspiring, please **star the repository** to help grow the research and its open-source community!
+

@@ -20,4 +20,9 @@ DOI: 10.36227/techrxiv.175606898.81408945
 
 ## Demo
 
-Check the quick presentation of autogenerating code from a BMPP definition to performant code in the [Vibelang demo page](/bmpp).
+Check the quick presentation about autogenerating code from a BMPP definition to performant code in the [Vibelang demo page](/bmpp).
+
+## Implementation
+
+[**Explore BMPP Agents for scalable, distributed computation in Rust.**](https://github.com/Mec-iS/bmpp-agents-rs)
+Unlock robust protocol logic, interoperability, and formal safety for multi-agent systems—directly from a cutting-edge Rust implementation.

@@ -19,10 +19,11 @@ Check the quick presentation about autogenerating code from a BMPP definition to
 
 ## Implementation
 
-BMPP agents for scalable distributed computed in Rust.
-- [GitHub Repository](https://github.com/Mec-iS/bmpp-agents-rs)
+[**Explore BMPP Agents for scalable, distributed computation in Rust.**](https://github.com/Mec-iS/bmpp-agents-rs)
+Unlock robust protocol logic, interoperability, and formal safety for multi-agent systems—directly from a cutting-edge Rust implementation.
 
 Key features:
 - generate your agents from formally verified distributed computing processes
 - fast and security tested Rust implementation
 - designed for research and deployment use
+
