@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    nav a { margin-right: 1em; }
+    textarea, pre { width: 100%; }
+    textarea { height: 6em; }
+  </style>
+</head>
+<body>
+  {% include nav.html %}
+  <hr>
+  {{ content }}
+</body>
+</html>

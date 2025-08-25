@@ -1,0 +1,5 @@
+```
+gem install jekyll bundler
+jekyll build
+jekyll serve
+```
