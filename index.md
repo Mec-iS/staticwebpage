@@ -18,6 +18,8 @@ layout: default
   </ul>
 </div>
 
+---
+
 <div style="margin: 1.6em auto 0 auto; max-width: 600px; text-align: center;">
 
   <strong>Dig my previous research at <a href="https://pramantha.net">pramantha.net</a></strong>
