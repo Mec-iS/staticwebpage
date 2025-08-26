@@ -18,6 +18,11 @@
         }
         textarea { height: 6em; }
         textarea, pre { width: 100%; }
+
+        .main-content {
+        padding-left: 2.5em;
+        padding-right: 2.5em;
+        }
         footer {
         margin-top: 2em;
         padding: 1.25em 1em 0.75em 1em;
@@ -67,11 +72,14 @@
 
     </style>
     </head>
-    <body style="display: flex; min-height: 100vh; flex-direction: column;">
+    <body style="display: flex; min-height: 100vh; flex-direction: column;padding-left: 3em; padding-right: 3em;">
     {% include nav.html %}
     <hr>
-    {{ content }}
 
+    <div class="main-content">
+        {{ content }}
+    </div>
+    
     <footer style="flex-shrink: 0;">
     <div style="margin: .7em 0;">
         <a href="https://github.com/sponsors/Mec-iS" target="_blank">
