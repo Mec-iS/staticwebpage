@@ -4,15 +4,15 @@ layout: default
 ---
 
 # 👋 Welcome!
-I am Lorenzo — I produce novel research and code leveraging Large Language Models. I focus on workflows automation with AI Agents.
+I am Lorenzo — I produce novel research and code leveraging Large Language Models. I focus on workflows automation with AI Agents and code generation.
 
 <div style="margin: 1.6em auto 0 auto; max-width: 600px; text-align: center;">
 
-  <strong>Explore my research, protocols, and open-source implementations:</strong>
+  <strong>Explore my research, protocols and Open Source implementations:</strong>
 
   <ul style="list-style: none; padding-left: 0; font-size: 1.1em; text-align: left; display: inline-block;">
     <li><a href="{{ "/smartcorelib" }}"><b>Smartcore</b></a> — Rust ML library (statistical & machine learning)</li>
-    <li><a href="{{ "/vibelang-rs" }}"><b>Vibelang-rs Demo</b></a> — Generated code using Meaning Typed Prompting for AI agents</li>
+    <li><a href="{{ "/vibelang-rs" }}"><b>vibelang-rs</b></a> — Generate code for AI agents using Meaning Typed Prompting</li>
     <li><a href="{{ "/bmpp" }}"><b>BMPP Agents</b></a> — Protocol & scalable multi-agent installations</li>
     <li><a href="{{ "/bmpp-paper" }}"><b>BMPP Paper</b></a> — Academic writeup and details</li>
     <li><a href="{{ "/contact" }}"><b>Contact</b></a></li>

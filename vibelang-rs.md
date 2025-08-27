@@ -9,51 +9,62 @@ A Rust implementation of the Vibelang protocol. Use Meaning Typed Prompting to c
 
 ## Try Vibelang (mockup):
 
-<textarea id="input" readonly style="resize:none;width:100%;font-family:monospace;overflow:hidden;color:#fff;background-color:#111;">
-// A comprehensive example showcasing various Meaning-Oriented Programming (MTP) features using Vibelang.
-// Comments are just for explanation purposes, they are not part of the protocol and can be omitted.
+<div class="code-block">
+<pre><code>
+// <span class="comment">A comprehensive example showcasing various Meaning-Oriented Programming (MTP) features using Vibelang.</span>
+// <span class="comment">Comments are just for explanation purposes, they are not part of the protocol and can be omitted.</span>
 
-// These types tell the compiler and runtime what the data represents.
+
+
+// <span class="comment">These types tell the compiler and runtime what the data represents.</span>
 type Population = Meaning&lt;Int&gt;("population count in millions");
 type HistoricalFact = Meaning&lt;String&gt;("historical information");
 type YearFounded = Meaning&lt;Int&gt;("year when established");
 type GeographicInfo = Meaning&lt;String&gt;("geographic description");
 
+
+
 // --- VibeLang Functions ---
 
-// Functions for knowledge retrieval about a country
-fn get_population(country: String) -&gt; Population {
+
+
+// <span class="comment">Functions for knowledge retrieval about a country</span>
+<span class="function">fn get_population(country: String) -&gt; Population {</span>
     prompt "What is the current population of {country} in millions? Reply with just the number.";
 }
 
-// Note: This function uses a raw String return type without a specific Meaning.
-fn get_capital(country: String) -&gt; String {
+<span class="comment">// Note: This function uses a raw String return type without a specific Meaning.</span>
+<span class="function">fn get_capital(country: String) -&gt; String {</span>
     prompt "What is the capital city of {country}? Reply with just the city name.";
 }
 
-fn get_founding_year(country: String) -&gt; YearFounded {
+<span class="function">fn get_founding_year(country: String) -&gt; YearFounded {</span>
     prompt "In what year was {country} founded or established as a nation? Reply with just the year.";
 }
 
-// Function to get information about a person or landmark
-fn get_historical_fact(person: String) -&gt; HistoricalFact {
+
+// <span class="comment">Function to get information about a person or landmark</span>
+<span class="function">fn get_historical_fact(person: String) -&gt; HistoricalFact {</span>
     prompt "Tell me one interesting historical fact about {person}. Keep it to one sentence.";
 }
 
-fn get_geographic_info(landmark: String) -&gt; GeographicInfo {
+<span class="function">fn get_geographic_info(landmark: String) -&gt; GeographicInfo {</span>
     prompt "Describe the geographic location and features of {landmark} in one sentence.";
 }
 
-// Function for text analysis
-fn analyze_sentiment(text: String) -&gt; Meaning&lt;String&gt;("emotional sentiment") {
+
+// <span class="comment">Function for text analysis</span>
+<span class="function">fn analyze_sentiment(text: String) -&gt; Meaning&lt;String&gt;("emotional sentiment") {</span>
     prompt "Analyze the emotional sentiment of this text: '{text}'. Reply with either 'positive', 'negative', or 'neutral'.";
 }
 
-// Function for simple calculation
-fn calculate_age(birth_year: Int) -&gt; Meaning&lt;Int>("age calculation") {
+
+// <span class="comment">Function for simple calculation</span>
+<span class="function">fn calculate_age(birth_year: Int) -&gt; Meaning&lt;Int&gt;("age calculation") {</span>
     prompt "If someone was born in {birth_year}, how old would they be in 2025? Reply with just the number.";
 }
-</textarea>
+</code></pre>
+</div>
 <br>
 <button id="compileBtn" class="pure-button pure-button-primary">Compile</button>
 
@@ -414,4 +425,3 @@ The project enables precise, annotated payloads for reliable and explainable age
 
 **[Visit Vibelang-rs on GitHub](https://github.com/Mec-iS/vibelang-rs)**
 If you find the project useful or inspiring, please **star the repository** to help grow the research and its open-source community!
-
