@@ -4,6 +4,7 @@ layout: default
 ---
 
 # 👋 Welcome!
+I am Lorenzo — I produce novel research and code leveraging Large Language Models. I focus on workflows automation with AI Agents.
 
 <div style="margin: 1.6em auto 0 auto; max-width: 600px; text-align: center;">
 
