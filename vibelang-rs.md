@@ -5,7 +5,7 @@ layout: default
 
 # Vibelang-rs
 
-A Rust implementation of the Vibelang protocol. Use Meaning Typed Prompting to create your AI Agents from a verified and validated source definition.
+A Rust implementation of the Vibelang protocol. Use Meaning Typed Prompting to create your AI Agents from a verified and validated source definition. From formal definition to safe code for agents deployment:
 
 ## Try Vibelang (mockup):
 

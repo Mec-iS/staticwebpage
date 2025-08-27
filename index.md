@@ -12,8 +12,8 @@ I am Lorenzo — I produce novel research and code leveraging Large Language Mod
 
   <ul style="list-style: none; padding-left: 0; font-size: 1.1em; text-align: left; display: inline-block;">
     <li><a href="{{ "/smartcorelib" }}"><b>Smartcore</b></a> — Rust ML library (statistical & machine learning)</li>
-    <li><a href="{{ "/vibelang-rs" }}"><b>Vibelang-rs Demo</b></a> — Meaning Typed Prompting for AI agents</li>
-    <li><a href="{{ "/bmpp" }}"><b>BMPP Agents</b></a> — Protocol & scalable multi-agent reasoning</li>
+    <li><a href="{{ "/vibelang-rs" }}"><b>Vibelang-rs Demo</b></a> — Generated code using Meaning Typed Prompting for AI agents</li>
+    <li><a href="{{ "/bmpp" }}"><b>BMPP Agents</b></a> — Protocol & scalable multi-agent installations</li>
     <li><a href="{{ "/bmpp-paper" }}"><b>BMPP Paper</b></a> — Academic writeup and details</li>
     <li><a href="{{ "/contact" }}"><b>Contact</b></a></li>
   </ul>
