@@ -5,6 +5,10 @@ layout: default
 
 # smartcore (smartcorelib)
 
+A comprehensive library for machine learning and numerical computing. Apply Machine Learning with Rust leveraging first principles.
+
+## Research
+
 [What is smartcore](assets/2023-smartcore.pdf)
 
 <embed src="assets/2023-smartcore.pdf" type="application/pdf"

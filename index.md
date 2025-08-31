@@ -11,11 +11,11 @@ I am Lorenzo — I produce novel research and code leveraging Large Language Mod
   <strong>Explore my research, protocols and Open Source implementations:</strong>
 
   <ul style="list-style: none; padding-left: 0; font-size: 1.1em; text-align: left; display: inline-block;">
-    <li><a href="{{ "/smartcorelib" }}"><b>Smartcore</b></a> — Rust ML library (statistical & machine learning)</li>
+    <li><a href="{{ "/arrowspace-paper" }}"><b>ArrowSpace</b></a> — Vector Similarities and Graph Analysis</li>
+    <li><a href="{{ "/smartcorelib" }}"><b>smartcore</b></a> — Rust ML library (statistical & machine learning)</li>
     <li><a href="{{ "/vibelang-rs" }}"><b>vibelang-rs</b></a> — Generate code for AI agents using Meaning Typed Prompting</li>
-    <li><a href="{{ "/bmpp" }}"><b>BMPP Agents</b></a> — Protocol & scalable multi-agent installations</li>
-    <li><a href="{{ "/bmpp-paper" }}"><b>BMPP Paper</b></a> — Academic writeup and details</li>
-    <li><a href="{{ "/contact" }}"><b>Contact</b></a></li>
+    <li><a href="{{ "/bmpp" }}"><b>BMPP Agents</b></a> — Protocol & scalable AI multi-agent installations</li>
+    <li><a href="{{ "/bmpp-paper" }}"><b>BMPP Paper</b></a> — Formally define AI Agents</li>
   </ul>
 </div>
 

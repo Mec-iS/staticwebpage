@@ -14,19 +14,13 @@ A Rust implementation of the Vibelang protocol. Use Meaning Typed Prompting to c
 // <span class="comment">A comprehensive example showcasing various Meaning-Oriented Programming (MTP) features using Vibelang.</span>
 // <span class="comment">Comments are just for explanation purposes, they are not part of the protocol and can be omitted.</span>
 
-
-
 // <span class="comment">These types tell the compiler and runtime what the data represents.</span>
 type Population = Meaning&lt;Int&gt;("population count in millions");
 type HistoricalFact = Meaning&lt;String&gt;("historical information");
 type YearFounded = Meaning&lt;Int&gt;("year when established");
 type GeographicInfo = Meaning&lt;String&gt;("geographic description");
 
-
-
 // --- VibeLang Functions ---
-
-
 
 // <span class="comment">Functions for knowledge retrieval about a country</span>
 <span class="function">fn get_population(country: String) -&gt; Population {</span>

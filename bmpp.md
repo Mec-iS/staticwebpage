@@ -5,6 +5,8 @@ layout: default
 
 # BMPP (bmpp-agents-rs)
 
+A formal protocol to define AI Agents-workflows (developed as part of the Interoperability effort for W3C Web Agents Working Group).
+
 ## Research
 
 [Brief summary of the research (PDF)](assets/2025-agentic-slides.pdf)
@@ -15,7 +17,7 @@ layout: default
 
 ## Demo
 
-Check the quick presentation about autogenerating code from a BMPP definition to performant code in the [Vibelang demo page](/bmpp).
+Check the quick presentation about autogenerating code from a BMPP definition to performant code in the [Vibelang demo page](/vibelang-rs).
 
 ## Implementation
 
