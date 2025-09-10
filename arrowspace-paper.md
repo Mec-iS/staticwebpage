@@ -43,7 +43,7 @@ Read the [paper PDF](assets/2025-arrowspace.pdf).
 
 <div class="citation-box">
 <strong>Cite as:</strong> Lorenzo Moriondo. ArrowSpace: Spectral Indexing of Embeddings using taumode (λτ). August 28, 2025.<br>
-<strong>DOI:</strong> [To be assigned]
+<strong>DOI:</strong>10.36227/techrxiv.175751921.18542359/v1
 </div>
 
 ## Implementation
