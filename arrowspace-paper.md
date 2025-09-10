@@ -1,5 +1,5 @@
 ---
-title: ArrowSpace Paper
+title: ArrowSpace
 layout: default
 css: paper-abstract
 ---
