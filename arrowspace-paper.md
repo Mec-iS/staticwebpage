@@ -10,6 +10,8 @@ Field of application: **Search-Rank of Vectors for Scientific Applications**
 
 # Paper
 
+Read the [paper PDF](https://www.techrxiv.org/users/685780/articles/1329993-arrowspace-spectral-indexing-of-embeddings-using-taumode-%CE%BB%CF%84).
+
 <div class="abstract-section">
        <h2>Abstract</h2>
        <div class="abstract-content">
