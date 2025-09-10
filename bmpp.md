@@ -5,6 +5,8 @@ layout: default
 
 # BMPP (bmpp-agents-rs)
 
+Field of application: **Safe and structured Generative AI**
+
 A formal protocol to define AI Agents-workflows (developed as part of the Interoperability effort for W3C Web Agents Working Group).
 
 ## Research

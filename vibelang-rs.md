@@ -5,6 +5,8 @@ layout: default
 
 # Vibelang-rs
 
+Field of application: **Safe and structured Generative AI**
+
 A Rust implementation of the Vibelang protocol. Use Meaning Typed Prompting to create your AI Agents from a verified and validated source definition. From formal definition to safe code for agents deployment:
 
 ## Try Vibelang (mockup):

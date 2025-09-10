@@ -109,7 +109,7 @@ I am Lorenzo — I produce novel research and code leveraging Large Language Mod
     <div class="research-card card-smartcore">
       <a href="{{ "/smartcorelib" }}">
         <h3>smartcore</h3>
-        <p>Rust ML library (statistical & machine learning)</p>
+        <p>Rust ML library (statistics & machine learning)</p>
       </a>
     </div>
 

@@ -5,6 +5,8 @@ css: paper-abstract
 ---
 # The BMPP Protocol: AI Agents and Distributed Computing
 
+Field of application: **Safe and structured Generative AI**
+
 # Paper
 
 Read the [paper PDF](https://github.com/Mec-iS/bmpp-paper).

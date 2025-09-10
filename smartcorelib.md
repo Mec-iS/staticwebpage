@@ -5,6 +5,8 @@ layout: default
 
 # smartcore (smartcorelib)
 
+Fields of application: **Low-footprint Machine Learning, Edge Computing, Workflows Optimisation**
+
 A comprehensive library for machine learning and numerical computing. Apply Machine Learning with Rust leveraging first principles.
 
 ## Research

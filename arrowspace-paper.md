@@ -6,6 +6,8 @@ css: paper-abstract
 
 # ArrowSpace: Spectral Search For Embeddings and Graph Analysis
 
+Field of application: **Search-Rank of Vectors for Scientific Applications**
+
 # Paper
 
 <div class="abstract-section">
