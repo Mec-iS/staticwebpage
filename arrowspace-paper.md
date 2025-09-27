@@ -10,7 +10,11 @@ Field of application: **Search-Rank of Vectors for Scientific Applications**
 
 # Paper
 
-Read the [paper PDF](https://www.techrxiv.org/users/685780/articles/1329993-arrowspace-spectral-indexing-of-embeddings-using-taumode-%CE%BB%CF%84).
+<a style="border-width:0" href="https://doi.org/10.21105/joss.09002">
+  <img src="https://joss.theoj.org/papers/10.21105/joss.09002/status.svg" alt="DOI badge" >
+</a>
+
+Read the [presentation paper PDF](https://doi.org/10.21105/joss.09002).
 
 <div class="abstract-section">
        <h2>Abstract</h2>
@@ -36,7 +40,7 @@ Read the [paper PDF](https://www.techrxiv.org/users/685780/articles/1329993-arro
        </div>
 </div>
 
-Read the [paper PDF](assets/2025-arrowspace.pdf).
+Read the [full paper PDF](assets/2025-arrowspace.pdf).
 
 <div class="paper-embed">
 <embed src="assets/2025-arrowspace.pdf" type="application/pdf"
