@@ -1,6 +1,8 @@
 ---
 title: 001_energy_informed_db
 layout: default
+date: 2025-10-01
+author: Tuned Research
 ---
 
 ## The Next Evolution in AI Memory: Energy-Informed Vector Search
@@ -52,3 +54,14 @@ For AI systems that need to find not just what's similar, but what truly belongs
 Currently I am looking for partnering with startups or consulting companies to create IP (shared patents, collaboration papers, pilot projects and software. I can provide AI research engineering and I am willing to talk to people that are interested in building products around it.
 
 ⏩️⏩️⏩️ Start from [Contacts](/contact) ⏩️⏩️⏩️
+
+## Learn More
+
+**[Read the ArrowSpace paper](https://joss.theoj.org/papers/10.21105/joss.09002)** published in the Journal of Open Source Software.
+
+**[Check out ArrowSpace on GitHub](https://github.com/arrowspace/arrowspace)** and ⭐️ **give the repository a star** to support open-source energy-informed search.
+
+**[Explore the technical details](https://www.tuned.org.uk/arrowspace-paper)** for deeper insights on spectral indexing and taumode.
+
+
+
