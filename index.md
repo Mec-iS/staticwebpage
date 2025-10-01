@@ -133,6 +133,12 @@ I am Lorenzo — I produce novel research and code leveraging Large Language Mod
         <p>Formally define AI Agents</p>
       </a>
     </div>
+    <div class="research-card card-arrowspace">
+      <a href="{{ "/blog" }}">
+        <h3>Blog</h3>
+        <p>A collection of development logs</p>
+      </a>
+    </div>
   </div>
 </div>
 

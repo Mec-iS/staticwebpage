@@ -19,9 +19,8 @@ Read the [presentation paper PDF](https://doi.org/10.21105/joss.09002).
 <div class="abstract-section">
        <h2>Abstract</h2>
        <div class="abstract-content">
-       <p><strong>ArrowSpace</strong> is a library that implements a novel spectral indexing approach for vector
-       similarity search, combining traditional semantic similarity with graph-based spectral properties. The library introduces taumode (λτ , lambda-tau) indexing, which blends Rayleigh
-       quotient smoothness energy from graph Laplacians with edge-wise dispersion statistics to create bounded, comparable spectral scores. This enables similarity search that considers both semantic content and spectral characteristics of high-dimensional vector datasets.</p>
+       <p><strong>arrowspace</strong> is a library that implements a novel spectral indexing approach for vector
+       similarity search, combining traditional semantic similarity with graph-based spectral properties (`ArrowSpace` is its core data structure). The library introduces taumode (λτ , lambda-tau) indexing, which blends Rayleigh quotient smoothness energy from graph Laplacians with edge-wise dispersion statistics to create bounded, comparable spectral scores. This enables similarity search that considers both semantic content and spectral characteristics of high-dimensional vector datasets.</p>
        </div>
 </div>
 
