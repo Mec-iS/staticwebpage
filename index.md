@@ -91,7 +91,7 @@ layout: default
 </style>
 
 # 👋 Welcome!
-I am Lorenzo — I produce novel research and code leveraging Large Language Models. I focus on workflows automation with AI Agents and code generation.
+I am Lorenzo — I produce novel research and code leveraging Large Language Models. I focus on workflows automation with AI Agents and code generation.<br/> Also check out my research on <a href="{{ "/posts/001_energy_informed_db" }}">a new generation of vector databases</a>.
 
 <div class="research-container">
   <h2 class="research-header">
