@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/purecss@3.0.0/build/pure-min.css">
 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         body { font-family: 'IBM Plex Sans', Arial, sans-serif; margin: 3em; }
         nav a { margin-right: 1em; }
@@ -26,7 +29,10 @@
         footer {
         margin-top: 2em;
         padding: 1.25em 1em 0.75em 1em;
-        background: #fafbfc;
+        background-color: #fafbfc; /* Fallback color */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         border-radius: 10px;
         text-align: center;
         color: #222;
@@ -46,6 +52,16 @@
         .cta-emoji {
         font-size: 1.3em;
         vertical-align: middle;
+        }
+
+        .pure-menu-item {
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .pure-menu-item a:hover {
+            font-weight: 700;
+            text-shadow: 0 1px 3px rgba(0, 90, 255, 0.3);
         }
     
         .pure-button-primary {
@@ -141,6 +157,18 @@
         .citation-box strong {
         color: #495057;
         }
+        .intermission {
+        background-image: url('assets/footer_14_web.jpg');
+        min-height: 5em;
+        margin-top: 2em;
+        padding: 1.25em 1em 0.75em 1em;
+        background-color: #fafbfc; /* Fallback color */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        box-shadow: 0 3px 12px 0 #e2e2e2;
+        }
     </style>
     </head>
     <body style="display: flex; min-height: 100vh; flex-direction: column;padding-left: 3em; padding-right: 3em;">
@@ -150,6 +178,8 @@
     <div class="main-content">
         {{ content }}
     </div>
+
+    <div class="intermission"></div>
     
     <footer style="flex-shrink: 0;">
     <div style="margin: .7em 0;">
