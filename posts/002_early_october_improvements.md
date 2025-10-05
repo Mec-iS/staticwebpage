@@ -81,11 +81,11 @@ Please check the diagrams for more detailed results on a dataset of size 3000x38
 
 <img src="../assets/blog/002/alpha_beta_trends.png" alt="Alpha Beta Trends" width="88%"/>
 
-<img src="../assets/blog/002/alpha_time_focused.png" alt="Alpha Beta Trends" width="88%"/>
+<img src="../assets/blog/002/alpha_time_focused.png" alt="Alpha Time metrics" width="88%"/>
 
-<img src="../assets/blog/002/performance_trends.png" alt="Alpha Beta Trends" width="88%"/>
+<img src="../assets/blog/002/performance_trends.png" alt="Performance trends" width="88%"/>
 
-<img src="../assets/blog/002/query_behavior.png" alt="Alpha Beta Trends" width="88%"/>
+<img src="../assets/blog/002/query_behavior.png" alt="Query behaviour" width="88%"/>
 
 
 The code to this implementation is proprietary. The codebase has been built on top of [`arrowspace-rs`](https://github.com/Mec-iS/arrowspace-rs).
@@ -101,4 +101,6 @@ Next steps include but they are not limited to:
 
 **Interested in learning more?** Whether you're evaluating `ArrowSpace` for your data infrastructure, considering sponsorship, or want to discuss integration strategies, please check the Contacts page.
 
-**[Book a call on our Calendly](https://calendly.com/tunedconsulting/talk-with-lorenzo)** to discuss how `ArrowSpace` can accelerate discovery in your analysis and storage workflows.
+Please [consider sponsorship my research](https://github.com/sponsors/Mec-iS) and improve your company's understanding of LLMs and vector databases.
+
+**[Book a call on our Calendly](https://calendly.com/tunedconsulting/talk-with-lorenzo)** to discuss how `ArrowSpace` can accelerate discovery in your analysis and storage workflows, or discussing these improvements.
