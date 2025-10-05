@@ -2,7 +2,7 @@
 title: 001_energy_informed_db
 layout: default
 date: 2025-10-01
-author: Tuned Research
+author: tuned.org.uk
 ---
 
 ## The Next Evolution in AI Memory: Energy-Informed Vector Search
