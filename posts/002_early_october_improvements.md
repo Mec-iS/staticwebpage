@@ -53,31 +53,29 @@ Before Laplacian construction, `ArrowSpace` performs incremental clustering with
 
 ### Performance Gains
 
-For datasets with thousands of items, this approach reduces graph size from N×F to X×F, where X is typically orders of magnitude smaller (usually arund 25 to 100 clusters). Crucially, the reduction preserves the original item count metadata, enabling correct downstream computations.
+For datasets with thousands of items, this approach reduces graph size from N×F to X×F, where X is typically orders of magnitude smaller (usually around 25 to 100 clusters). Crucially, the reduction preserves the original items graph information, enabling correct downstream computations.
 
-**Benchmark Insight**: A dataset with 10,000 items clustered to 250 centroids reduces Laplacian construction from a 10,000×F matrix to a X×F or FxF matrix depending on the number of features — a **1,600× reduction in matrix elements**. Memory usage drops proportionally, and eigenvalue computation time decreases dramatically, approaching time-complexity O(X log X * d) instead of O(N²).
-
-There is also the other side of the problem: how to augment this dataset with proper sampling to add points from the raw data to the clusters' centroids to add meaningful extra datapoints.
+**Benchmark Insight**: A dataset with 10,000 items clustered to 250 centroids reduces Laplacian construction from a 10,000×F matrix to a 250×F or FxF matrix depending on the number of features — a **1,600× reduction in matrix elements**. Memory usage drops proportionally, and eigenvalue computation time decreases dramatically, approaching time-complexity `O(X log X * d)` instead of baseline `O(N²)`.
 
 
 ### Intelligent Defaults
 
-The clustering radius defaults to 1.0 (squared L2 distance), with automatic K-selection that caps at the number of features. The system uses parallel nearest-centroid assignment for speed, with outlier handling that prevents noisy points from distorting cluster structure.[^2]
+The clustering radius defaults to 1.0 (squared L2 distance), with automatic K-selection that caps at the number of features. The system uses parallel nearest-centroid assignment for speed, with outlier handling that prevents noisy points from distorting cluster structure.
 
 ## Combined Impact
 
-These three improvements work synergistically. Pre-Laplacian clustering reduces computational burden, magnification ensures numerical stability in the reduced space, and sparsity checking validates the resulting graph structure. The result is a robust, production-ready system that handles diverse datasets with minimal manual tuning.
+These three improvements work synergistically. Pre-Laplacian clustering reduces computational burden, magnification ensures numerical stability in the reduced space, and sparsity checking validates the resulting graph structure. The result is a robust, on the road to be a production-ready system that handles diverse datasets with minimal manual tuning.
 
 ### Real-World Impact
 
 Production deployments report:
 
-- **3-5× faster** graph construction times on datasets exceeding 3,000 items (~30 seconds)
+- **3-5× faster** graph construction times on a dataset of 3,000 items (now ~30 seconds)
 - **Reduced memory footprint** enabling analysis of larger datasets on the same hardware
 - **Fewer failed runs** due to early sparsity detection and scale-aware preprocessing
 - **Consistent spectral indices** across different data scales, enabling meaningful cross-dataset comparisons
 
-Please check the diagrams for more detailed results on a dataset of size 3000x384:
+Please check the diagrams for more detailed results on a dataset of size (NxF) 3000x384:
 
 <img src="../assets/blog/002/alpha_beta_trends.png" alt="Alpha Beta Trends" width="88%"/>
 
@@ -88,7 +86,7 @@ Please check the diagrams for more detailed results on a dataset of size 3000x38
 <img src="../assets/blog/002/query_behavior.png" alt="Query behaviour" width="88%"/>
 
 
-The code to this implementation is proprietary. The codebase has been built on top of [`arrowspace-rs`](https://github.com/Mec-iS/arrowspace-rs).
+The code for this implementation is currently not public. The codebase has been built on top of [`arrowspace-rs`](https://github.com/Mec-iS/arrowspace-rs).
 
 ## Next Steps
 
