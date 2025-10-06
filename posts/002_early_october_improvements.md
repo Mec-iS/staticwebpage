@@ -5,7 +5,7 @@ date: 2025-10-06
 author: tuned.org.uk
 ---
 
-# ArrowSpace: Three Improvements That Redefine Graph-Based Spectral Analysis
+# Know your graphs: Three Improvements To Approach Graph-Based Spectral Analysis
 
 `ArrowSpace` has evolved with three critical enhancements that dramatically improve both performance and analytical capabilities for high-dimensional data processing. These improvements address fundamental challenges in graph construction, data scaling, and computational efficiency—delivering measurable gains that matter to production systems.
 
@@ -95,9 +95,10 @@ The code to this implementation is proprietary. The codebase has been built on t
 `ArrowSpace` represents a significant advancement in practical spectral graph analysis. These improvements form the foundation for even more ambitious features in development.
 
 Next steps include but they are not limited to:
-* Provide dimensionality reduction for further speedup the Laplacian computation
+* Provide dimensionality reduction for further speedup of the Laplacian computation
+* Implement incremental eigenpairs computation for further speedups
 * Focus on out-of-clusters items
-* Develop a storage layer using Apache Arrow and the parquet format. 
+* Develop a storage layer using Apache Arrow and the parquet format
 
 **Interested in learning more?** Whether you're evaluating `ArrowSpace` for your data infrastructure, considering sponsorship, or want to discuss integration strategies, please check the Contacts page.
 
