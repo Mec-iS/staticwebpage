@@ -75,7 +75,7 @@ Production deployments report:
 - **Fewer failed runs** due to early sparsity detection and scale-aware preprocessing
 - **Consistent spectral indices** across different data scales, enabling meaningful cross-dataset comparisons
 
-Please check the diagrams for more detailed results on a dataset of size (NxF) 3000x384:
+Please check the diagrams for more detailed results on a dataset of size (NxF) 3000x384, please keep in mind that alpha is the cosine similarity component of the index and that it can be modulated from 1 to 0 where 1 is full cosine and 0 is full taumode:
 
 <img src="../assets/blog/002/alpha_beta_trends.png" alt="Alpha Beta Trends" width="88%"/>
 
