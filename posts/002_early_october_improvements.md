@@ -85,6 +85,7 @@ Please check the diagrams for more detailed results on a dataset of size (NxF) 3
 
 <img src="../assets/blog/002/query_behavior.png" alt="Query behaviour" width="88%"/>
 
+I will try to discuss these results in posts in the next weeks beside the improvements that will be delivered.
 
 The code for this implementation is currently not public. The codebase has been built on top of [`arrowspace-rs`](https://github.com/Mec-iS/arrowspace-rs).
 
