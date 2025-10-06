@@ -27,7 +27,7 @@ Rather than discovering graph construction failures deep in the analysis pipelin
 
 ## Magnification Over Normalization: Scale-Invariant Spectral Analysis
 
-One of the most significant discoveries in `ArrowSpace` development challenges conventional wisdom about data preprocessing. Traditional approaches normalize feature vectors before graph construction, but this can inadvertently discard critical magnitude information that spectral methods require. In particular this appears when text embeddings are involved, if embeddings values have higher precision requirements, with elements in the same interval less than `1e-6` spectral signal is less relavant and results are equivalent to cosine similarity for the top 10-k. Still, this does not exclude improvements on the tail results where spectral indexing finds better quality results than cosine similarity; enabling data discovery.
+One of the most significant discoveries in `ArrowSpace` development challenges conventional wisdom about data preprocessing. Traditional approaches normalize feature vectors before graph construction, but this can inadvertently discard critical magnitude information that spectral methods require. In particular this appears when text embeddings are involved, if embeddings values have higher precision requirements, with elements in the same interval with distance less than `1e-6`, spectral signal becomes less relavant and results falls back to cosine similarity. Still, this does not exclude improvements on the tail results where spectral indexing finds better quality results than cosine similarity, enabling data discovery.
 
 ### The Insight
 
@@ -35,9 +35,9 @@ One of the most significant discoveries in `ArrowSpace` development challenges c
 
 ### Why This Matters
 
-Graph kernels and spectral computations preserve relative relationships under uniform scaling. By maintaining magnitude information, the system captures richer structural properties while the Rayleigh quotient—used for eigenvalue approximation — remains invariant to scale transformations. This means practitioners can amplify weak signals through simple multiplication without compromising analytical validity.
+Graph kernels and spectral computations preserve relative relationships under uniform scaling. By maintaining magnitude information, the system captures richer structural properties while the Rayleigh quotient remains invariant to scale transformations. This means practitioners can amplify weak signals through simple multiplication without compromising analytical validity.
 
-**Data Quality Example**: A dataset with feature magnitudes ranging from 0.001 to 0.1 benefits from 100× magnification, bringing values to a range of 0.1 to 10.0. Graph construction becomes numerically stable, connectivity patterns strengthen, yet computed spectral indices remain mathematically equivalent.
+**Data Quality Example**: A dataset with feature magnitudes ranging from 0.001 to 0.1 benefits from 100× magnification, bringing values to a range of 0.1 to 10.0. Graph construction becomes numerically stable, connectivity patterns strengthen, yet computed spectral indices remain mathematically equivalent. The adjustment for the sigma for the search radius for neighbours becomes more usable.
 
 ### Configuration Flexibility
 
