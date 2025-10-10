@@ -1,6 +1,6 @@
 ---
 title: 002_early_october_improvements
-layout: default
+layout: blog_default
 date: 2025-10-06
 author: tuned.org.uk
 ---

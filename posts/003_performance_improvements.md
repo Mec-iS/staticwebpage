@@ -1,9 +1,63 @@
 ---
 title: 003_performance_improvements
-layout: default
+layout: blog_default
 date: 2025-10-10
 author: tuned.org.uk
 ---
+
+<style>
+    .table-container {
+        width: 88%;
+        margin: 2em auto;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-left: 4px solid #06070aff;
+        border-radius: 8px;
+        box-shadow: 0 3px 12px 0 #e2e2e2;
+        overflow: hidden;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(255,255,255,0.7);
+    }
+    
+    th {
+        background: #06070aff;
+        color: #fff;
+        padding: 1.25em 1.4em;
+        text-align: left;
+        font-weight: 600;
+        font-size: 1em;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    td {
+        padding: 1.2em 1.4em;
+        border-bottom: 1px solid #dee2e6;
+        font-size: 1em;
+        color: #34495e;
+        line-height: 1.7;
+    }
+    
+    tr:last-child td {
+        border-bottom: none;
+    }
+    
+    tbody tr:hover {
+        background: #eaf3ff;
+    }
+    
+    td:first-child {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+    
+    td:not(:first-child) {
+        color: #495057;
+    }
+</style>
 
 # Road for `arrowspace` to scale: Condense, Project, and Sparsify
 
@@ -95,7 +149,7 @@ Practical notes:
 
 Here the new metrics for these improvements, let's have a reference about what they display. These are all partial and indicative of trends are they are computed on a limited dataset (NxF: 3000x384) of synthetic data.
 
-<img src="../assets/blog/003/ranking_metrics_comparison.png" alt="Similarity metrics comparison" width="88%"/>
+<img src="../assets/blog/003/ranking_metrics_comparison.png" alt="Figure 1: Similarity metrics comparison" width="88%"/>
 
 ### top-left: Ranking Metrics
 
@@ -104,7 +158,59 @@ As one of the main objective of `arrowspace` is to spot alternative pathways for
 A bried summary here for you about these metrics:
 * NDCG: Evaluates the quality of ranking by considering both relevance scores and position, with logarithmic discounting for lower positions.
 * MAP: Average precision across multiple queries, heavily emphasizing precision at each relevant item position.
-* MRR: The average reciprocal of the rank of the first relevant item across queries.
+* MRR: The average reciprocal of the rank of the first relevant item across queries (less relevant as it focuses only on the first ranked item).
+
+A matrix about the characteristics of these metrics:
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>NDCG</th>
+                <th>MAP</th>
+                <th>MRR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Relevance Type</td>
+                <td>Binary or graded</td>
+                <td>Binary only</td>
+                <td>Binary only</td>
+            </tr>
+            <tr>
+                <td>Scope</td>
+                <td>Full ranked list</td>
+                <td>All relevant items</td>
+                <td>First relevant only</td>
+            </tr>
+            <tr>
+                <td>Discount</td>
+                <td>Logarithmic</td>
+                <td>Precision-based</td>
+                <td>None (single position)</td>
+            </tr>
+            <tr>
+                <td>Interpretability</td>
+                <td>Low (complex formula)</td>
+                <td>Medium (area under PR curve)</td>
+                <td>High (average rank)</td>
+            </tr>
+            <tr>
+                <td>Use Case</td>
+                <td>Multi-item recommendations</td>
+                <td>Top-K search results</td>
+                <td>Single-answer search</td>
+            </tr>
+            <tr>
+                <td>Sensitivity</td>
+                <td>Balanced across ranks</td>
+                <td>Top-heavy</td>
+                <td>First position only</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ### bottom-right: Metric Performance Heatmap
 

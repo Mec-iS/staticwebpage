@@ -1,6 +1,6 @@
 ---
 title: 001_energy_informed_db
-layout: default
+layout: blog_default
 date: 2025-10-01
 author: tuned.org.uk
 ---
