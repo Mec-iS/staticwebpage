@@ -157,7 +157,7 @@ Here the new metrics for these improvements, let's have a reference about what t
 
 ### top-left: Ranking Metrics
 
-As one of the main objective of `arrowspace` is to spot alternative pathways for vector similarities, I use different metrics to compare the new measurements to existing. Jaccard metric is quite limited for this purpose as it just spot the perfect overlapping between cosine similairty and `arrowspace` similarity; for widening the landscape I have introduced in the visualisation: NDCG, MAP and MRR. You can see how they compare on the usual scale from alpha=0.0 to alpha=1.0 (the weigth of cosine similarity in the `taumode` computation). What I read in this is that `taumode` starts to be equivalent to cosine similarity between alpha=0.6 and alpha=0.8.
+As one of the main objective of `arrowspace` is to spot alternative pathways for vector similarities, I use different metrics to compare the new measurements to current implementations. Jaccard metric is quite limited for this purpose as it just spots the perfect overlapping between cosine similarities and `arrowspace` similarities; for widening the landscape I have introduced in the visualisation NDCG, MAP and MRR. You can see how they compare on the usual scale from alpha=0.0 to alpha=1.0 (the weigth of cosine similarity in the `taumode` computation). What I read in this is that `taumode` is still equivalent to cosine similarity between alpha=0.6 and alpha=0.8 while making results more interesting as tails may contain alternative pathways.
 
 A bried summary here for you about these metrics:
 * NDCG: Evaluates the quality of ranking by considering both relevance scores and position, with logarithmic discounting for lower positions.
