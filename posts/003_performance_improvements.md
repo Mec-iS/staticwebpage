@@ -59,9 +59,13 @@ author: tuned.org.uk
     }
 </style>
 
-# Road for `arrowspace` to scale: Condense, Project, and Sparsify
+# Condense, Project, and Sparsify
 
-This release rethinks how `arrowspace` builds and queries graph structure from high‑dimensional embedding up to 10⁵ items and 10³ features. The Laplacian computation now:
+You can find `arrowspace` in the:
+* Rust ↪️ `cargo add arrowspace`
+* and Python ecosystems ↪️ `pip install arrowspace`
+
+Road for `arrowspace` to scale: this release `v0.13.3` rethinks how `arrowspace` builds and queries graph structure from high‑dimensional embedding up to 10⁵ items and 10³ features. The Laplacian computation now:
 1) condenses data with clustering and density‑aware sampling,
 2) projects dimensionality proportionally to the problem size (centroids) and keeps queries consistent with that projection, and
 3) sparsifies the graph with a fast spectral method to preserve structure while slashing cost.
@@ -221,6 +225,7 @@ Next steps include but they are not limited to:
 * take some time to finally investigate how to make the queries multi-vector instead of single-vector
 * move the basic flow to GPU! So I have to restart from the non-optimised version to build up a GPU-dedicated computation
 * Build the database stack for this engine! From the storage layer to the API
+
 
 **Interested in learning more?** Whether you're evaluating `ArrowSpace` for your data infrastructure, considering sponsorship, or want to discuss integration strategies, please check the Contact page.
 
