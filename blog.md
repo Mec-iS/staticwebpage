@@ -11,6 +11,23 @@ layout: default
     </div>
 
     <div class="blog-posts">
+    <!-- Blog Post 2: Performance improvements -->
+        <article class="blog-post-card">
+        <div class="blog-post-meta">October 10, 2025</div>
+        <h2 class="blog-post-title">
+        <a href="/posts/003_performance_improvements">Road for `arrowspace` to scale: Condense, Project, and Sparsify</a>
+        </h2>
+        <div class="blog-post-abstract">
+            <p>This release rethinks how `arrowspace` builds and queries graph structure from high‑dimensional embedding up to 10⁵ items and 10³ features. <ul>The Laplacian computation now:
+                <li>condenses data with clustering and density‑aware sampling,</li>
+                <li>projects dimensionality proportionally to the problem size (centroids) and keeps queries consistent with that projection, and </li>
+                <li>sparsifies the graph with a fast spectral method to preserve structure while slashing cost.</li></ul></p>
+        </div>
+        <a href="/posts/003_performance_improvements" class="blog-read-more">Read more →</a>
+        </article>
+    </div>
+
+    <div class="blog-posts">
     <!-- Blog Post 2: October improvements -->
         <article class="blog-post-card">
         <div class="blog-post-meta">October 6, 2025</div>

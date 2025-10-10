@@ -99,7 +99,7 @@ Next steps include but they are not limited to:
 * Focus on out-of-clusters items
 * Develop a storage layer using Apache Arrow and the parquet format
 
-**Interested in learning more?** Whether you're evaluating `ArrowSpace` for your data infrastructure, considering sponsorship, or want to discuss integration strategies, please check the Contacts page.
+**Interested in learning more?** Whether you're evaluating `ArrowSpace` for your data infrastructure, considering sponsorship, or want to discuss integration strategies, please check the Contact page.
 
 Please [consider sponsoring my research](https://github.com/sponsors/Mec-iS) and improve your company's understanding of LLMs and vector databases.
 
