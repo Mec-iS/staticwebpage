@@ -62,8 +62,8 @@ author: tuned.org.uk
 # Condense, Project, and Sparsify
 
 You can find `arrowspace` in the:
-* Rust ↪️ `cargo add arrowspace`
-* and Python ecosystems ↪️ `pip install arrowspace`
+* [Rust repository](https://github.com/Mec-iS/arrowspace-rs) ↪️ `cargo add arrowspace`
+* and [Python repository](https://github.com/tuned-org-uk/pyarrowspace) ↪️ `pip install arrowspace`
 
 Road for `arrowspace` to scale: this release `v0.13.3` rethinks how `arrowspace` builds and queries graph structure from high‑dimensional embedding up to 10⁵ items and 10³ features. The Laplacian computation now:
 1) condenses data with clustering and density‑aware sampling,
