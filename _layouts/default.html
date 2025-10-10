@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@3.0.0/build/pure-min.css">
 
 
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
     <style>
         body { font-family: 'IBM Plex Sans', Arial, sans-serif; margin: 3em; }
@@ -21,6 +23,7 @@
         }
         textarea { height: 6em; }
         textarea, pre { width: 100%; }
+
 
         .main-content {
         padding-left: 2.5em;
@@ -54,10 +57,12 @@
         vertical-align: middle;
         }
 
+
         .pure-menu-item {
             font-weight: 600;
             letter-spacing: 0.02em;
         }
+
 
         .pure-menu-item a:hover {
             font-weight: 700;
@@ -76,6 +81,9 @@
         border-radius: 8px;
         padding: 0.7em 1.2em;
         box-shadow: 0 2px 8px #eee;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         }
         .pure-menu-link {
         color: #005aff;
@@ -85,6 +93,18 @@
         background: #eaf3ff;
         text-decoration: underline;
         }
+
+        .github-icon {
+        color: #0d111a;
+        font-size: 1.5em;
+        transition: all 0.2s ease;
+        }
+        .github-icon:hover {
+        color: #0046cc;
+        transform: scale(1.1);
+        text-shadow: 0 1px 3px rgba(0, 90, 255, 0.3);
+        }
+
 
         .code-block {
         background: #111;
@@ -112,6 +132,7 @@
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
+
         .abstract-section h2 {
         color: #2c3e50;
         font-size: 1.5rem;
@@ -121,6 +142,7 @@
         letter-spacing: 0.5px;
         }
 
+
         .abstract-content {
         font-size: 1.1rem;
         line-height: 1.7;
@@ -128,14 +150,17 @@
         text-align: justify;
         }
 
+
         .abstract-content p {
         margin-bottom: 1.2rem;
         }
+
 
         .abstract-content strong {
         color: #2980b9;
         font-weight: 600;
         }
+
 
         .key-contributions {
         background: rgba(255,255,255,0.7);
@@ -145,6 +170,7 @@
         border: 1px solid #dee2e6;
         }
 
+
         .citation-box {
         background: #f8f9fa;
         border: 1px solid #dee2e6;
@@ -153,6 +179,7 @@
         border-radius: 6px;
         font-family: 'Courier New', monospace;
         }
+
 
         .citation-box strong {
         color: #495057;
@@ -173,11 +200,16 @@
     </head>
     <body style="display: flex; min-height: 100vh; flex-direction: column;padding-left: 3em; padding-right: 3em;">
     {% include nav.html %}
+    <a href="https://github.com/tuned-org-uk" target="_blank" aria-label="GitHub Profile" style="position: absolute; top: 3.5em; right: 4em;">
+        <i class="fab fa-github github-icon"></i>
+    </a>
     <hr>
+
 
     <div class="main-content">
         {{ content }}
     </div>
+
 
     <div class="intermission"></div>
     
