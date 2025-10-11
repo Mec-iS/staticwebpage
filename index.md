@@ -5,9 +5,9 @@ layout: default
 
 <style>
 .research-container {
-  margin: 2em auto 0 auto;
-  max-width: 1200px;
-  text-align: center;
+  margin: 2em auto 1em auto;
+  max-width: 99%;
+  text-align: left;
 }
 
 .research-header {
@@ -15,6 +15,7 @@ layout: default
   color: #2c3e50;
   font-size: 1.5em;
   font-weight: 600;
+  text-align: center;
 }
 
 .research-grid {
@@ -23,19 +24,19 @@ layout: default
   gap: 1.5em;
   padding: 0 1em;
   overflow-x: auto;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
 }
 
 .research-card {
   background: white;
-  padding: 1.5em;
+  padding: 1.2em;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  flex: 0 0 calc(33.333% - 1em);
-  min-width: 250px;
+  flex: 0 0 16%;
+  min-width: 16%;
 }
 
 .research-card:hover {
@@ -207,13 +208,6 @@ layout: default
       <a href="{{ "/bmpp-paper" }}">
         <h3>BMPP Paper</h3>
         <p>Formally define AI Agents</p>
-      </a>
-    </div>
-    
-    <div class="research-card card-arrowspace">
-      <a href="{{ "/blog" }}">
-        <h3>Blog</h3>
-        <p>A collection of development logs</p>
       </a>
     </div>
   </div>
