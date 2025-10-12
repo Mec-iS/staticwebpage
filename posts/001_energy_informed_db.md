@@ -59,7 +59,7 @@ Currently I am looking for partnering with startups or consulting companies to c
 
 **[Read the ArrowSpace paper](https://joss.theoj.org/papers/10.21105/joss.09002)** published in the Journal of Open Source Software.
 
-**[Check out ArrowSpace on GitHub](https://github.com/arrowspace/arrowspace)** and ⭐️ **give the repository a star** to support open-source energy-informed search.
+**[Check out ArrowSpace on GitHub](https://github.com/Mec-iS/arrowspace-rs)** and ⭐️ **give the repository a star** to support open-source energy-informed search.
 
 **[Explore the technical details](https://www.tuned.org.uk/arrowspace-paper)** for deeper insights on spectral indexing and taumode.
 
