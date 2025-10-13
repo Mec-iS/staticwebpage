@@ -163,7 +163,7 @@ Per‑query `NDCG@10` for "taumode" (`τ=0.62`) against "Cosine" ranges from 0.9
 - Tail/Head ratio improves from 0.9114 (Cosine) to 0.9593 (taumode) on average, quantifying better quality and stability for long‑tail recommendations.
 - Rank‑order correlations remain high, confirming that spectral modes re‑weight rather than disrupt, which is desirable for analyst trust and auditability.
 
-We can see below how taumode acts as a kind of "temperature" slider defining the trade-off between top-1 and top-k quality of results but taumode outperforms cosine similarity even on top-1 result according to the adopted score (you check [the score design in the code](https://github.com/tuned-org-uk/pyarrowspace/blob/ca624a919c05bf66a676dc85dfbafa6efc1253d2/tests/test_2_CVE_db.py)).
+We can see below how taumode acts as a kind of "temperature" slider defining the trade-off between top-1 and top-k quality of results but taumode outperforms cosine similarity even on top-1 result according to the adopted score (as displayed in figure 2. You can check [the score design in the code](https://github.com/tuned-org-uk/pyarrowspace/blob/ca624a919c05bf66a676dc85dfbafa6efc1253d2/tests/test_2_CVE_db.py)).
 
 ## Diagrams
 
@@ -193,7 +193,7 @@ As you can read, taumode outperforms in any top-k, demonstating relevant increas
 
 ## Why this is exciting
 
-The combination of high "Average NDCG@10" and materially higher "Tail/Head ratios" suggests taumode can surface relevant alternatives beyond the very top ranks without sacrificing head fidelity, which is precisely what taumode was designed for. This experiment demonstate the effectiveness of Tauomde on a real dataset application.
+The combination of high "Average NDCG@10" and materially higher "Tail/Head ratios" suggests taumode can surface relevant alternatives beyond the very top ranks without sacrificing head fidelity, which is precisely what taumode was designed for. This experiment demonstate the effectiveness of taumode on a real dataset application.
 
 Because the dataset spans two decades of diverse CWE and CVSS phrasing, robustness in the tail indicates <strong>resilience to language drift and domain shift</strong>, a critical property for operational cyber‑threat triage.
 
