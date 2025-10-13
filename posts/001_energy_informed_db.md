@@ -15,7 +15,7 @@ In AI systems, vector databases function as external memory, storing encoded rep
 
 Traditional vector search treats each embedding as an isolated point in high-dimensional space, using simple distance metrics to determine similarity. This approach works for surface-level semantic matching but fails to capture the spectral signature of domains—the underlying energy distributions and structural relationships that define how information flows and connects within specialized fields.
 
-### Energy-Informed Search: Taumode
+### Energy-Informed Search: taumode
 
 [**arrowspace**](https://www.tuned.org.uk/arrowspace-paper) introduces the *first practical implementation of energy-informed vector search* through its **taumode (λτ)** indexing system. This breakthrough approach combines traditional semantic similarity with graph-based spectral properties, creating a new class of memory system that understands not just what information means, but how it relates to the structural manifold of the domain.
 

@@ -59,7 +59,7 @@ author: tuned.org.uk
     }
 </style>
 
-# Taumode: Beyond Cosine Similarity
+# taumode: Beyond Geometric Similarity on the CVE dataset
 
 You can find `arrowspace` in the:
 * [Rust repository](https://github.com/Mec-iS/arrowspace-rs) ↪️ `cargo add arrowspace`
@@ -68,6 +68,8 @@ You can find `arrowspace` in the:
 `ArrowSpace` was exercised on a multi‑year (1999 to 2025) CVE corpus ([cve.org](https://www.cve.org/downloads)) using a domain‑adapted (fine-tuned) encoder and the built‑in `spectral search modes` to evaluate long‑tail retrieval quality against cosine similarity baselines.
 
 The run uses the `ArrowSpaceBuilder` API and the same query pathway for cosine, hybrid, and taumode (τ=0.62, lower taumodes currently in test; τ=0.22 looks even more promising), ensuring identical preprocessing and k‑selection across modes.
+
+TLDR; taumode confirmed itself as a similarity score that can outperform geometric similarity scores by encoding edgewise graphs' topological characteristics into a synthetic linear index as described in its [foundational paper](https://joss.theoj.org/papers/10.21105/joss.09002). This has been demonstrated on the Common Vulnerabilities and Exposures dataset.
 
 ## Why this dataset matters
 
@@ -82,7 +84,7 @@ For this specific run, 310,841 CVEs were parsed from the provided tree, yielding
 
 The script defines NDCG@k by first treating one ranking as a reference and assigning graded relevance to its top‑k as \(k-i\) for rank \(i\), then calling `sklearn`’s `ndcg_score` over the predicted ranking after normalizing prediction scores.
 
-Average `NDCG@10` is computed by evaluating each query’s `NDCG@10` and then taking the mean across queries, reported for "Hybrid vs Cosine" and "Taumode vs Cosine" comparisons.
+Average `NDCG@10` is computed by evaluating each query’s `NDCG@10` and then taking the mean across queries, reported for "Hybrid vs Cosine" and "taumode vs Cosine" comparisons.
 
 - Reference order is cosine; predicted lists are hybrid (τ=0.8) and taumode (τ=0.62), which isolates the spectral contribution while keeping identical candidate pools.
 - Normalisation of predicted scores before NDCG prevents scale artifacts from inflating gains, preserving rank‑quality interpretation at cut‑off \(k=10\).
@@ -130,7 +132,7 @@ End‑to‑end ArrowSpace build time was ~2225 seconds on this snapshot (local m
         <td>Mean across 3 queries</td>
       </tr>
       <tr>
-        <td>Avg NDCG@10 (Taumode vs Cosine)</td>
+        <td>Avg NDCG@10 (taumode vs Cosine)</td>
         <td>0.9886</td>
         <td>Mean across 3 queries</td>
       </tr>
@@ -145,7 +147,7 @@ End‑to‑end ArrowSpace build time was ~2225 seconds on this snapshot (local m
         <td>Consistent uplift over cosine</td>
       </tr>
       <tr>
-        <td>Avg Tail/Head ratio (Taumode)</td>
+        <td>Avg Tail/Head ratio (taumode)</td>
         <td>0.9593 ± 0.0259</td>
         <td>Best long‑tail stability in this run</td>
       </tr>
@@ -155,13 +157,13 @@ End‑to‑end ArrowSpace build time was ~2225 seconds on this snapshot (local m
 
 ## What the numbers show
 
-Across all three queries, `τ<1.0` modes preserve near‑perfect agreement with cosine in the head while delivering stronger scores in ranks 4–10, with Taumode posting the highest Tail/Head ratio and the lowest tail coefficient of variation.
+Across all three queries, `τ<1.0` modes preserve near‑perfect agreement with cosine in the head while delivering stronger scores in ranks 4–10, with taumode posting the highest Tail/Head ratio and the lowest tail coefficient of variation.
 
-Per‑query `NDCG@10` for "Taumode" (`τ=0.62`) against "Cosine" ranges from 0.9754 to 0.9953, and the average settles at 0.9886, indicating head alignment with controlled diversification in the tail. So we see that for these three particular queries Taumode lose a little in mean `NDCG@10`. On the other hand:
-- Tail/Head ratio improves from 0.9114 (Cosine) to 0.9593 (Taumode) on average, quantifying better quality and stability for long‑tail recommendations.
+Per‑query `NDCG@10` for "taumode" (`τ=0.62`) against "Cosine" ranges from 0.9754 to 0.9953, and the average settles at 0.9886, indicating head alignment with controlled diversification in the tail. So we see that for these three particular queries taumode lose a little in mean `NDCG@10`. On the other hand:
+- Tail/Head ratio improves from 0.9114 (Cosine) to 0.9593 (taumode) on average, quantifying better quality and stability for long‑tail recommendations.
 - Rank‑order correlations remain high, confirming that spectral modes re‑weight rather than disrupt, which is desirable for analyst trust and auditability.
 
-We can see below how Taumode acts as a kind of "temperature" slider defining the trade-off between top-1 and top-k quality of results.
+We can see below how taumode acts as a kind of "temperature" slider defining the trade-off between top-1 and top-k quality of results but taumode outperforms cosine similarity even on top-1 result according to the adopted score (you check [the score design in the code](https://github.com/tuned-org-uk/pyarrowspace/blob/ca624a919c05bf66a676dc85dfbafa6efc1253d2/tests/test_2_CVE_db.py)).
 
 ## Diagrams
 
@@ -178,7 +180,7 @@ The bar series compares top‑10 score profiles for the three modes across the q
 
 <img src="../assets/blog/004/cve_top10_comparison.png" alt="Figure 1: Similarity Top 10 comparison on 3 queries" width="88%"/>
 
-Check the scale, Taumode (green on the right) at 0.62 has a ~15% better score than cosine on the three queries.
+Check the scale, taumode (green on the right) at 0.62 has a ~15% better score than cosine on the three queries.
 
 
 ### Scores comparison
@@ -187,18 +189,18 @@ This set of diagrams compare the queries results' tails.
 
 <img src="../assets/blog/004/cve_tail_analysis.png" alt="Figure 2: Tails analysis on 3 queries" width="88%"/>
 
-As you can read, Taumode outperforms in any top-k, demonstating relevant increased tails quality. The curve of the quality decay from top-1 to top-10 moves from something that looks for cosine like an asymptotic relation to a more linear relation for taumode. This represents visually the avoided drop in tails quality.
+As you can read, taumode outperforms in any top-k, demonstating relevant increased tails quality. The curve of the quality decay from top-1 to top-10 moves from something that looks for cosine like an asymptotic relation to a more linear relation for taumode. This represents visually the avoided drop in tails quality.
 
 ## Why this is exciting
 
-The combination of high "Average NDCG@10" and materially higher "Tail/Head ratios" suggests Taumode can surface relevant alternatives beyond the very top ranks without sacrificing head fidelity, which is precisely what Taumode was designed for. This experiment demonstate the effectiveness of Tauomde on a real dataset application.
+The combination of high "Average NDCG@10" and materially higher "Tail/Head ratios" suggests taumode can surface relevant alternatives beyond the very top ranks without sacrificing head fidelity, which is precisely what taumode was designed for. This experiment demonstate the effectiveness of Tauomde on a real dataset application.
 
 Because the dataset spans two decades of diverse CWE and CVSS phrasing, robustness in the tail indicates <strong>resilience to language drift and domain shift</strong>, a critical property for operational cyber‑threat triage.
 
 This aligns with the objectives of a database engine based on `ArrowSpace`:
-* What if we can pass to LLMs documents beyond geometrical relations for more accurate in-context learning? This is what Taumode is for.
+* What if we can pass to LLMs documents beyond geometrical relations for more accurate in-context learning? This is what taumode is for.
 * What if we can search the space of documents using and index that incorporates quality of relations? This is what taumode-aware search makes possible.
-* What if we can compare your dataset with existing datasets and with others in your company? This is what the spectral analysis enabled by Taumode is meant to deliver.
+* What if we can compare your dataset with existing datasets and with others in your company? This is what the spectral analysis enabled by taumode is meant to deliver.
 
 I am working on a such database engine at www.tuned.org.uk please [consider sponsoring my research](https://github.com/sponsors/Mec-iS).
 
@@ -208,7 +210,7 @@ A great feature is that after it has been computed, <strong>the index can be sto
 
 - Build with `ArrowSpaceBuilder` on encoder outputs and persist the artifact for reuse across τ modes to support apples‑to‑apples comparisons.
 - Run the three‑mode search for shared top‑k, compute `NDCG@10` against cosine, and log tail statistics to track long‑rank quality over time.
-- More comparative tests can be run to sweep the space of taumode (preliminary tests suggest that "Average Tail/Head Ratios" for Taumode (τ=0.22) is 0.9824 ± 0.0064)
+- More comparative tests can be run to sweep the space of taumode (preliminary tests suggest that "Average Tail/Head Ratios" for taumode (τ=0.22) is 0.9824 ± 0.0064)
 
 
 ## Next steps
