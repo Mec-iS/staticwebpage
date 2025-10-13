@@ -219,6 +219,17 @@ layout: default
   </div>
 
   <div class="blog-posts">
+    <!-- Blog Post: CVE-scale results -->
+    <article class="blog-post-card">
+        <div class="blog-post-meta">October 13, 2025</div> 
+        <h2 class="blog-post-title"> 
+        <a href="/posts/004_beyond_cosine_similarity">CVE experiment results: Taumode boosts long‑tail quality</a></h2>
+        <div class="blog-post-abstract">
+            <p>Evaluation on a CVE corpus spanning 1999 to 2025 shows spectral modes preserve head agreement with cosine while enhancing long‑tail relevance for analyst discovery.<ul> <li>Dataset loader sweeps years 1999 to 2025, generating 384‑D embeddings and shared candidate pools for cosine, hybrid, and taumode.</li><li>Taumode achieves the highest Tail/Head ratio (≈0.9593) with the lowest tail variability across queries. </li></ul></p>
+        </div>
+        <a href="/posts/004_beyond_cosine_similarity" class="blog-read-more">Read more →</a>
+    </article>
+
     <!-- Blog Post 3: Performance improvements -->
     <article class="blog-post-card">
       <div class="blog-post-meta">October 10, 2025</div>
