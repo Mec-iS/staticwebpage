@@ -85,6 +85,7 @@ Practical notes:
 - Choose target centroid count from budget, not from original feature count.
 - Keep k in the k‑NN graph large enough to avoid fragmentation on the reduced set (e.g., 10–30 for a few hundred centroids).
 - Cache centroid assignments if later stages (evaluation, attribution) need to lift results back to original items.
+- This is practically equivalent to IVF, so it is possible to go a step further to implement IVF-PQ search.
 
 ## 2) Dimensionality Reduction: project to the problem size
 

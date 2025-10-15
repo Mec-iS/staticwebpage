@@ -39,10 +39,10 @@ Read the [presentation paper PDF](https://doi.org/10.21105/joss.09002).
        </div>
 </div>
 
-Read the [full paper PDF](assets/2025-arrowspace.pdf).
+Read the [full paper PDF](assets/pathway_for_vectordb_october_2025.pdf).
 
 <div class="paper-embed">
-<embed src="assets/2025-arrowspace.pdf" type="application/pdf"
+<embed src="assets/pathway_for_vectordb_october_2025.pdf" type="application/pdf"
        style="width:100%; min-height:60vh; background:#111; border-radius:6px; box-sizing:border-box;" />
 </div>
 
