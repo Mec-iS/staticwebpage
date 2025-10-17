@@ -11,7 +11,19 @@ layout: default
     </div>
 
     <div class="blog-posts">
-    <!-- Blog Post: CVE-scale results -->
+
+    <!-- Blog Post 5: Fast Nearest Neighbours -->
+    <article class="blog-post-card">
+        <div class="blog-post-meta">October 17, 2025</div> 
+        <h2 class="blog-post-title"> 
+        <a href="/posts/005_fast_approximate_nearest_neighbours">Fast (not approximate?) Nearest Neighbours</a></h2>
+        <div class="blog-post-abstract">
+            <p>Version 0.16.0 is out with quite relevant news and encouraging results for `arrowspace` to be <strong>one of the fastest approximate nearest neighbours algorithm available in the open</strong>.</p>
+        </div>
+        <a href="/posts/005_fast_approximate_nearest_neighbours" class="blog-read-more">Read more →</a>
+    </article>
+
+    <!-- Blog Post 4: CVE-scale results -->
     <article class="blog-post-card">
         <div class="blog-post-meta">October 13, 2025</div> 
         <h2 class="blog-post-title"> 
