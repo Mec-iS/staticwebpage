@@ -69,7 +69,7 @@ This is an important release as it comes after the confirmation received on the 
 
 In particular I am now quite convinced that `arrowspace` is `one of the fastest Approximate Nearest Neigbours algorithm` out there and as far as the test goes also not approximate, as it returns the same results as cosine similarity. Obviously backing this from a single-researcher perspective will take much more time and effort.
 
-<p>According to the time-complexity computation and and based on public knowledge of other algorithms:
+<p>According to the time-complexity computation and based on public knowledge of other algorithms:
 <ul><li> "training" phase (index building) with complexity: <code>O(n * d * k * log(n))</code>. The latest comparative benchmark achieves index building on 310,000 records dataset at ~1600s (single machine, 12 cores). This involves graph building and linear score computation;</li>
 <li>"inference" phase (index lookup for similar vectors): <code>O(n * log(n * k))</code>, this is the usual complexity for search on a sorted set.</li></ul></p>
 
