@@ -9,11 +9,12 @@ author: tuned.org.uk
 
 ### Generics
 
-Vector databases have become the backbone of modern AI workflows, particularly in Retrieval-Augmented Generation (RAG) systems where they serve as the critical memory layer that enables AI models to access and reason over vast knowledge repositories.
+<p>Vector databases have become the backbone of modern AI workflows, particularly in Retrieval-Augmented Generation (RAG) systems where they serve as the critical memory layer that enables AI models to access and reason over vast knowledge repositories.</p>
 
-In AI systems, vector databases function as external memory, storing encoded representations of knowledge that models can retrieve and process. This memory isn't just storage—it's an active system that determines which contexts, experiences, and data trajectories an AI system can access when solving problems. The **quality** of this memory directly impacts the system's ability to make connections, **discover patterns**, and provide relevant responses.
+<p>In AI systems, vector databases function as external memory, storing encoded representations of knowledge that models can retrieve and process. This memory isn't just storage—it's an active system that determines which contexts, experiences, and data trajectories an AI system can access when solving problems. The <strong>quality</strong> of this memory directly impacts the system's ability to make connections, <strong>discover patterns</strong>, and provide relevant responses.</p>  📜 [Post "Beyond Cosine Similarity"](/posts/004_beyond_cosine_similarity)
 
-Traditional vector search treats each embedding as an isolated point in high-dimensional space, using simple distance metrics to determine similarity. This approach works for surface-level semantic matching but fails to capture the spectral signature of domains—the underlying energy distributions and structural relationships that define how information flows and connects within specialized fields.
+<p>Traditional vector search treats each embedding as an isolated point in high-dimensional space, using simple distance metrics to determine similarity. This approach works for surface-level semantic matching but fails to capture the spectral signature of domains—the underlying energy distributions and structural relationships that define how information flows and connects within specialized fields.</p>
+
 
 ### Energy-Informed Search: taumode
 
@@ -41,6 +42,8 @@ This approach transforms vector databases from simple similarity stores into int
 
 **Bounded Comparability**: Unlike traditional distance metrics that can vary unpredictably across datasets, taumode produces bounded, comparable scores that simplify calibration across collections, time windows, and model updates. This stability is crucial for production pipelines requiring consistent re-ranking and thresholding strategies.
 
+**Speed**: Building the index is based on fast algrithms to build `Eigen Maps` instead of expensive Deep Learning and Montecarlo chains. 📜 [Post "Faster Approximate Nearest Neighbours"](/posts/005_fast_approximate_nearest_neighbours)  
+
 ### The First Energy-Informed Search Library
 
 `arrowspace` represents a fundamental shift in how we think about vector search and AI memory. By introducing practical energy-informed indexing, it enables developers to build AI systems with memory that truly understands the domains they operate in. The **lambda-aware similarity scoring** system allows fine-grained control over how semantic and spectral properties are balanced, with traditional cosine similarity available as a special case when spectral weighting is set to zero.
@@ -49,6 +52,11 @@ The library's high-performance Rust implementation ensures that this advanced fu
 
 For AI systems that need to find not just what's similar, but what truly belongs together within a domain's structural context, `arrowspace` provides the first practical solution for energy-informed memory. It's not just a better vector database—it's a new way of thinking about how AI systems remember, connect, and reason over complex information landscapes.
 
+Read more at:
+📜 [Post "Beyond Cosine Similarity"](/posts/004_beyond_cosine_similarity)
+📜 [Post "Faster Approximate Nearest Neighbours"](/posts/005_fast_approximate_nearest_neighbours)
+
+EDIT: latest update the 20th of October 2025
 ---
 
 Currently I am looking for partnering with startups or consulting companies to create IP (shared patents, collaboration papers, pilot projects and software. I can provide AI research engineering and I am willing to talk to people that are interested in building products around it.
