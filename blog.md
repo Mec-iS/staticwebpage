@@ -6,70 +6,81 @@ layout: default
 
 <div class="blog-container">
     <div class="blog-header">
-        <h1>Blog</h1>
+        <h1>All the posts</h1>
         <p>Thoughts on AI, machine learning, distributed systems, and open-source development</p>
     </div>
 
     <div class="blog-posts">
 
-    <!-- Blog Post 5: Fast Nearest Neighbours -->
-    <article class="blog-post-card">
-        <div class="blog-post-meta">October 17, 2025</div> 
-        <h2 class="blog-post-title"> 
-        <a href="/posts/005_fast_approximate_nearest_neighbours">Fast (not approximate?) Nearest Neighbours</a></h2>
-        <div class="blog-post-abstract">
-            <p>Version 0.16.0 is out with quite relevant news and encouraging results for `arrowspace` to be <strong>one of the fastest approximate nearest neighbours algorithm available in the open</strong>.</p>
-        </div>
-        <a href="/posts/005_fast_approximate_nearest_neighbours" class="blog-read-more">Read more →</a>
-    </article>
-
-    <!-- Blog Post 4: CVE-scale results -->
-    <article class="blog-post-card">
-        <div class="blog-post-meta">October 13, 2025</div> 
-        <h2 class="blog-post-title"> 
-        <a href="/posts/004_beyond_cosine_similarity">taumode: Beyond Cosine Similarity on the CVE dataset</a></h2>
-        <div class="blog-post-abstract">
-            <p>Evaluation on a CVE corpus spanning 1999 to 2025 shows spectral modes preserve head agreement with cosine while enhancing long‑tail relevance for analyst discovery.<ul> <li>Dataset loader sweeps years 1999 to 2025, generating 384‑D embeddings and shared candidate pools for cosine, hybrid, and taumode.</li><li>taumode achieves the highest Tail/Head ratio (≈0.9593) with the lowest tail variability across queries. </li></ul></p>
-        </div>
-        <a href="/posts/004_beyond_cosine_similarity" class="blog-read-more">Read more →</a>
-    </article>
-
-    <!-- Blog Post 3: Performance improvements -->
-    <article class="blog-post-card">
-    <div class="blog-post-meta">October 10, 2025</div>
-    <h2 class="blog-post-title">
-    <a href="/posts/003_performance_improvements">Road for `arrowspace` to scale: Condense, Project, and Sparsify</a>
-    </h2>
+<!-- Blog Post 7: DeepSeek Optical Compression and Energy Search -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">October 24, 2025</div> 
+    <h2 class="blog-post-title"> 
+    <a href="/posts/007_deepseek_optical_compression_rust">DeepSeek-OCR Optical Compression Meets Energy Search: Rust Implementation in ArrowSpace v0.18.0</a></h2>
     <div class="blog-post-abstract">
-        <p>This release rethinks how `arrowspace` builds and queries graph structure from high‑dimensional embedding up to 10⁵ items and 10³ features. <ul>The Laplacian computation now:
-            <li>condenses data with clustering and density‑aware sampling,</li>
-            <li>projects dimensionality proportionally to the problem size (centroids) and keeps queries consistent with that projection, and </li>
-            <li>sparsifies the graph with a fast spectral method to preserve structure while slashing cost.</li></ul></p>
+        <p>Rust implementation of DeepSeek-OCR compression achieves 10× token reduction, while ArrowSpace v0.18.0 introduces energy-informed retrieval that replaces cosine similarity with spectral graph properties.<ul> <li>DeepEncoder architecture (SAM + CLIP + projector) replicated in Rust using burn.dev with cross-platform GPU support and five resolution modes from 64 to 400 tokens.</li><li>Energy search with diffusion parameter sweep on CVE corpus achieves NDCG@10 ≈ 0.99 (η=0.05, steps=6) and MRR=1.0 (η=0.05, steps=4) without any cosine similarity.</li></ul></p>
     </div>
-    <a href="/posts/003_performance_improvements" class="blog-read-more">Read more →</a>
-    </article>
+    <a href="/posts/007_deepseek_optical_compression_rust" class="blog-read-more">Read more →</a>
+</article>
 
-    <!-- Blog Post 2: October improvements -->
-    <article class="blog-post-card">
-    <div class="blog-post-meta">October 6, 2025</div>
-    <h2 class="blog-post-title">
-    <a href="/posts/002_early_october_improvements">Three Improvements That Opens up to Graph-Based Spectral Analysis</a>
-    </h2>
+<!-- Blog Post 5: Fast Nearest Neighbours -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">October 17, 2025</div> 
+    <h2 class="blog-post-title"> 
+    <a href="/posts/005_fast_approximate_nearest_neighbours">Fast (not approximate?) Nearest Neighbours</a></h2>
     <div class="blog-post-abstract">
-        <p>`ArrowSpace` has evolved with three critical enhancements that improve both performance and analytical capabilities for high-dimensional data processing. These improvements address fundamental challenges in graph construction, data scaling, and computational efficiency—delivering measurable gains that matter to production systems</p>
+        <p>Version 0.16.0 is out with quite relevant news and encouraging results for `arrowspace` to be <strong>one of the fastest approximate nearest neighbours algorithm available in the open</strong>.</p>
     </div>
-    <a href="/posts/002_early_october_improvements" class="blog-read-more">Read more →</a>
-    </article>
+    <a href="/posts/005_fast_approximate_nearest_neighbours" class="blog-read-more">Read more →</a>
+</article>
 
-    <!-- Blog Post 1: Energy-Informed Vector Search -->
-    <article class="blog-post-card">
-    <div class="blog-post-meta">October 1, 2025</div>
-    <h2 class="blog-post-title">
-    <a href="/posts/001_energy_informed_db">The Next Evolution in AI Memory: Energy-Informed Vector Search</a>
-    </h2>
+<!-- Blog Post 4: CVE-scale results -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">October 13, 2025</div> 
+    <h2 class="blog-post-title"> 
+    <a href="/posts/004_beyond_cosine_similarity">taumode: Beyond Cosine Similarity on the CVE dataset</a></h2>
     <div class="blog-post-abstract">
-        <p>Vector databases have become the backbone of modern AI workflows, particularly in RAG systems. But traditional approaches are fundamentally limited—they miss the deeper structural patterns that define how information relates within domains. Discover how ArrowSpace introduces energy-informed indexing through taumode, enabling AI systems with memory that truly understands domain contexts through spectral signatures and graph Laplacian energy.</p>
+        <p>Evaluation on a CVE corpus spanning 1999 to 2025 shows spectral modes preserve head agreement with cosine while enhancing long‑tail relevance for analyst discovery.<ul> <li>Dataset loader sweeps years 1999 to 2025, generating 384‑D embeddings and shared candidate pools for cosine, hybrid, and taumode.</li><li>taumode achieves the highest Tail/Head ratio (≈0.9593) with the lowest tail variability across queries. </li></ul></p>
     </div>
-    <a href="/posts/001_energy_informed_db" class="blog-read-more">Read more →</a>
-    </article>
+    <a href="/posts/004_beyond_cosine_similarity" class="blog-read-more">Read more →</a>
+</article>
+
+<!-- Blog Post 3: Performance improvements -->
+<article class="blog-post-card">
+<div class="blog-post-meta">October 10, 2025</div>
+<h2 class="blog-post-title">
+<a href="/posts/003_performance_improvements">Road for `arrowspace` to scale: Condense, Project, and Sparsify</a>
+</h2>
+<div class="blog-post-abstract">
+    <p>This release rethinks how `arrowspace` builds and queries graph structure from high‑dimensional embedding up to 10⁵ items and 10³ features. <ul>The Laplacian computation now:
+        <li>condenses data with clustering and density‑aware sampling,</li>
+        <li>projects dimensionality proportionally to the problem size (centroids) and keeps queries consistent with that projection, and </li>
+        <li>sparsifies the graph with a fast spectral method to preserve structure while slashing cost.</li></ul></p>
+</div>
+<a href="/posts/003_performance_improvements" class="blog-read-more">Read more →</a>
+</article>
+
+<!-- Blog Post 2: October improvements -->
+<article class="blog-post-card">
+<div class="blog-post-meta">October 6, 2025</div>
+<h2 class="blog-post-title">
+<a href="/posts/002_early_october_improvements">Three Improvements That Opens up to Graph-Based Spectral Analysis</a>
+</h2>
+<div class="blog-post-abstract">
+    <p>`ArrowSpace` has evolved with three critical enhancements that improve both performance and analytical capabilities for high-dimensional data processing. These improvements address fundamental challenges in graph construction, data scaling, and computational efficiency—delivering measurable gains that matter to production systems</p>
+</div>
+<a href="/posts/002_early_october_improvements" class="blog-read-more">Read more →</a>
+</article>
+
+<!-- Blog Post 1: Energy-Informed Vector Search -->
+<article class="blog-post-card">
+<div class="blog-post-meta">October 1, 2025</div>
+<h2 class="blog-post-title">
+<a href="/posts/001_energy_informed_db">The Next Evolution in AI Memory: Energy-Informed Vector Search</a>
+</h2>
+<div class="blog-post-abstract">
+    <p>Vector databases have become the backbone of modern AI workflows, particularly in RAG systems. But traditional approaches are fundamentally limited—they miss the deeper structural patterns that define how information relates within domains. Discover how ArrowSpace introduces energy-informed indexing through taumode, enabling AI systems with memory that truly understands domain contexts through spectral signatures and graph Laplacian energy.</p>
+</div>
+<a href="/posts/001_energy_informed_db" class="blog-read-more">Read more →</a>
+</article>
 </div>

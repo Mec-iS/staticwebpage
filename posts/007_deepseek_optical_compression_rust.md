@@ -5,7 +5,7 @@ date: 2025-10-24
 categories: [arrowspace, optical-embeddings, rust, vector-search]
 ---
 
-# DeepSeek Compression Meets Energy Search: Rust Implementation and ArrowSpace v0.18.0
+# DeepSeek-OCR Compression Meets Energy Search: Rust Implementation in ArrowSpace v0.18.0
 
 TLDR; `arrowspace` now speaks the language of energy fields, leaves behind cosine distance usage.
 
