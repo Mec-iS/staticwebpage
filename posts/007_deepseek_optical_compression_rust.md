@@ -423,6 +423,15 @@ let results = aspace.search_energy(&query, &gl_energy, 20, 1.0, 0.5);
 
 ---
 
+### References
+
+**DeepSeek-OCR: Contexts Optical Compression**  
+Haoran Wei, Yaofeng Sun, Yukun Li  
+*arXiv:2510.18234 [cs.CV]*, October 2025  
+[Paper](https://arxiv.org/abs/2510.18234) | [Code & Weights](https://github.com/deepseek-ai/DeepSeek-OCR)
+
+---
+
 ## Summary
 
 **Optical compression** treats text as a visual medium, achieving 10× token reduction while preserving semantic structure. The Rust implementation replicates DeepSeek-OCR's DeepEncoder architecture using `burn.dev`, enabling production deployment with cross-platform GPU support (at current date, [full code available](https://github.com/tuned-org-uk/optical-embeddings-rs) only for sponsors). Optical compression will be available to all users in `arrowspace` [v0.18.1](https://github.com/Mec-iS/arrowspace-rs/pull/37).
