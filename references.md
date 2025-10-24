@@ -7,7 +7,7 @@ layout: blog_default
 
 Field of application: **Vector Databases, Spectral Methods, and Agentic AI**
 
-A curated collection of foundational and emerging papers that inform the design and implementation of ArrowSpace, optical compression, and next-generation retrieval systems.
+A curated collection of foundational and emerging papers that inform the design and implementation of `arrowspace`, optical compression, and next-generation retrieval systems.
 
 ---
 
@@ -18,9 +18,25 @@ A curated collection of foundational and emerging papers that inform the design 
 **Authors**: David I Shuman, Sunil K. Narang, Pascal Frossard, Antonio Ortega, Pierre Vandergheynst  
 **arXiv**: [1211.0053](https://arxiv.org/abs/1211.0053) (2012)
 
-Foundational work extending classical signal processing operations to graph-structured data. This paper establishes the theoretical framework for spectral graph analysis used in ArrowSpace's energy-distance metrics and Laplacian-based search.
+Foundational work extending classical signal processing operations to graph-structured data. This paper establishes the theoretical framework for spectral graph analysis used in `arrowspace`'s energy-distance metrics and Laplacian-based search.
 
 **Key contributions**: Graph Fourier Transform, spectral filtering, and multi-resolution analysis on irregular graph domains.
+
+### What Is Positive Geometry?
+
+**Authors**: Kristian Ranestad, Bernd Sturmfels, Simon Telen  
+**arXiv**: [2502.12815](https://arxiv.org/abs/2502.12815) (2025)
+
+Foundational introduction to positive geometry—an interdisciplinary field bridging particle physics, cosmology, and algebraic geometry. Positive geometries are tuples $$(X, X_{\geq 0}, \Omega(X_{\geq 0}))$$ consisting of a complex algebraic variety, a semi-algebraic positive region, and a canonical differential form satisfying recursive axioms. The framework represents physical observables (scattering amplitudes, cosmological correlators) as geometric structures like amplituhedra and cosmological polytopes.
+
+**Relevance to `arrowspace`**: The canonical form construction—recovering volume integrals from positive regions via $$\Omega(P) = \text{vol}(P-x)^\circ dx$$—directly parallels `arrowspace`'s energy map pipeline. Just as positive geometry "linearizes" high-dimensional semi-algebraic varieties into canonical differential forms, `arrowspace`'s [`energymaps.rs`](https://github.com/Mec-iS/arrowspace-rs/blob/332124a48dae03a710b2de93c9b0aeda156c69d9/src/energymaps.rs#L1) constructs a graph Laplacian over the data manifold and projects it onto a 1-dimensional taumode spectrum (Rayleigh quotients). Both frameworks encode complex geometric structures (amplituhedra / energy graphs) as scalar fields that preserve topological invariants while enabling efficient computation.
+
+**Key contributions**: 
+- Formal definition of positive geometries with recursive boundary factorization and canonical forms
+- Connection between convex polytopes, Grassmannian amplituhedra, and universal barrier functions in optimization
+- Integration of real, complex, and tropical algebraic geometry for computing scattering amplitudes and cosmological correlators
+
+[Full PDF](https://arxiv.org/pdf/2502.12815)
 
 ---
 
@@ -91,7 +107,7 @@ Perspectives on the transition from noisy intermediate-scale quantum (NISQ) devi
 
 ---
 
-## Computational Methods in Engineering
+## Computational Methods in Software Engineering
 
 ### Vulnerability2Vec: A Graph-Embedding Approach for Enhancing Vulnerability Classification
 
@@ -109,7 +125,7 @@ Vulnerability2Vec converts Common Vulnerabilities and Exposures (CVE) text expla
 
 For practical implementations informed by these papers:
 
-- **ArrowSpace**: Spectral vector database with energy-informed search  
+- **arrowspace**: Spectral vector database with energy-informed search  
   [GitHub](https://github.com/Mec-iS/arrowspace-rs) | [PyPI](https://pypi.org/project/arrowspace/) | [crates.io](https://crates.io/crates/arrowspace)
 
 - **BMPP Agents**: Formal protocol for AI agent workflows  

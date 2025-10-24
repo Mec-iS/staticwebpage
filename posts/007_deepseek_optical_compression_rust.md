@@ -443,12 +443,70 @@ The combination of **optical compression** (reducing dimensionality via spatial 
 - **Tail-aware** (high dispersion nodes split to increase local resolution)
 - **Storage-efficient** (only scalar lambdas stored per item, graph discarded)
 
-Is this the architecture for **next-generation vector databases**? Indices that respect the manifold structure of data, not just its geometric projection.
+<p><strong>What improves</strong> is discrimination and stability: the graph, distances, and query scoring are all constructed from energy/dispersion features in a projection‑consistent way, yielding better rank‑ordering: </p>
 
----
+|Aspect                 |  Previous path                           |  energymaps.rs                                      
+|-----------------------|------------------------------------------|-----------------------------------------------------|
+|Cosine usage           |  Used in graph or ranking in places      |  Removed; energy-only distances and scoring         |
+|Dirichlet term         |  Tiling-based and less projection-aware  |  ProjectedEnergy with bounded L2 in projected space |
+|Topology shaping       |  Standard kNN on centroids               |  Diffusion + sub‑centroid splitting + robust scaling|
+|Symmetry/connectivity  |  Parameter‑dependent                     |  Explicit symmetric kNN with candidate pruning      |
 
-**Interested in learning more?** Whether you're evaluating `ArrowSpace` for your data infrastructure, considering sponsorship, or want to discuss integration strategies, please check the [Contact page](https://www.tuned.org.uk/contact).
+<div class="cta-manifold-compact">
+    <div class="cta-icon">⚡</div>
+    <div class="cta-text">
+        <strong>Next-generation vector databases:</strong> Indices that respect the manifold structure of data, not just its geometric projection.
+    </div>
+</div>
+
+<style>
+.cta-manifold-compact {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: linear-gradient(90deg, #3a0ca3 0%, #4361ee 100%);
+    padding: 1.5rem 2rem;
+    margin: 2.5rem 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(67, 97, 238, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-manifold-compact:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(67, 97, 238, 0.4);
+}
+
+.cta-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
+}
+
+.cta-text {
+    color: #f8f9fa;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.cta-text strong {
+    display: block;
+    color: #4cc9f0;
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+@media (max-width: 768px) {
+    .cta-manifold-compact {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    
+    .cta-icon {
+        font-size: 2rem;
+    }
+}
+</style>
 
 Please consider **sponsoring my research** and improve your company's understanding of LLMs and vector databases.
-
-**Book a call on [Calendly](https://calendly.com)** to discuss how `ArrowSpace` can accelerate discovery in your analysis and storage workflows, or discussing these improvements.
