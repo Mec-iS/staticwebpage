@@ -9,6 +9,7 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
     <style>
         body { font-family: 'IBM Plex Sans', Arial, sans-serif; margin: 3em; }
@@ -169,9 +170,185 @@
         border-radius: 10px;
         box-shadow: 0 3px 12px 0 #e2e2e2;
         }
+
+            .table-container {
+        width: 88%;
+        margin: 2em auto;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-left: 4px solid #06070aff;
+        border-radius: 8px;
+        box-shadow: 0 3px 12px 0 #e2e2e2;
+        overflow: hidden;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(255,255,255,0.7);
+    }
+    
+    th {
+        background: #06070aff;
+        color: #fff;
+        padding: 1.25em 1.4em;
+        text-align: left;
+        font-weight: 600;
+        font-size: 1em;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    td {
+        padding: 1.2em 1.4em;
+        border-bottom: 1px solid #dee2e6;
+        font-size: 1em;
+        color: #34495e;
+        line-height: 1.7;
+    }
+    
+    tr:last-child td {
+        border-bottom: none;
+    }
+    
+    tbody tr:hover {
+        background: #eaf3ff;
+    }
+    
+    td:first-child {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+    
+    td:not(:first-child) {
+        color: #495057;
+    }
+
+    /* Base code block styling */
+    pre.highlight {
+        background-color: #2b2b2b;
+        border: 1px solid #404040;
+        border-radius: 6px;
+        padding: 1.2em;
+        overflow-x: auto;
+        font-family: 'Fira Code', 'Source Code Pro', 'Monaco', 'Courier New', monospace;
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #d4d4d4;
+        margin: 1.5em 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Inline code */
+    code.highlight {
+        background-color: #f5f5f5;
+        border: 1px solid #e0e0e0;
+        border-radius: 3px;
+        padding: 0.2em 0.4em;
+        font-family: 'Fira Code', 'Source Code Pro', monospace;
+        font-size: 0.9em;
+        color: #c7254e;
+    }
+
+    /* Rust-specific syntax highlighting */
+    .highlight {
+        /* Keywords (fn, let, mut, pub, impl, etc.) */
+        .k, .kd, .kn { color: #c586c0; font-weight: 600; }
+        
+        /* Function names */
+        .nf { color: #dcdcaa; }
+        
+        /* Types and structs */
+        .nc, .nt, .nb { color: #4ec9b0; }
+        
+        /* String literals */
+        .s, .s1, .s2, .se { color: #ce9178; }
+        
+        /* Numbers */
+        .m, .mf, .mi, .mo, .mh { color: #b5cea8; }
+        
+        /* Comments */
+        .c, .c1, .cm { color: #6a9955; font-style: italic; }
+        
+        /* Attributes and macros (#[derive], println!) */
+        .na, .nd, .fm { color: #9cdcfe; }
+        
+        /* Operators and punctuation */
+        .o, .p { color: #d4d4d4; }
+        
+        /* Variables and identifiers */
+        .n, .nx, .nv { color: #9cdcfe; }
+        
+        /* Special keywords (self, Self) */
+        .bp { color: #569cd6; font-weight: 600; }
+        
+        /* Lifetimes ('a, 'static) */
+        .nl { color: #4fc1ff; }
+        
+        /* Generic parameters (<T>, <B: Backend>) */
+        .gt { color: #4ec9b0; }
+        
+        /* Doc comments (///) */
+        .cd { color: #608b4e; font-style: italic; }
+    }
+
+    /* Scrollbar styling for code blocks */
+    pre.highlight::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    pre.highlight::-webkit-scrollbar-track {
+        background: #1e1e1e;
+        border-radius: 4px;
+    }
+
+    pre.highlight::-webkit-scrollbar-thumb {
+        background: #464646;
+        border-radius: 4px;
+    }
+
+    pre.highlight::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    /* Line numbers (if using Rouge/Pygments with line numbers) */
+    .highlight .lineno {
+        color: #5a5a5a;
+        padding-right: 1em;
+        user-select: none;
+    }
+
+    /* Light theme variant (for sites with light backgrounds) */
+    @media (prefers-color-scheme: light) {
+        pre.highlight {
+            background-color: #f6f8fa;
+            border-color: #d0d7de;
+            color: #24292f;
+        }
+        
+        .highlight {
+            .k, .kd, .kn { color: #cf222e; }
+            .nf { color: #8250df; }
+            .nc, .nt, .nb { color: #953800; }
+            .s, .s1, .s2 { color: #0a3069; }
+            .m, .mf, .mi { color: #116329; }
+            .c, .c1, .cm { color: #6e7781; }
+            .na, .nd, .fm { color: #0550ae; }
+            .n, .nx, .nv { color: #24292f; }
+            .nl { color: #0969da; }
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        pre.highlight {
+            padding: 0.8em;
+            font-size: 0.85em;
+            border-radius: 4px;
+        }
+    }
     </style>
     </head>
-    <body style="display: flex; min-height: 100vh; flex-direction: column;padding-left: 3em; padding-right: 3em;">
+    <body style="display: flex; min-height: 100vh; flex-direction: column;padding-left: 3em; padding-right: 3em;zoom: 110%;">
     {% include nav.html %}
     <hr>
 

@@ -15,13 +15,13 @@ author: tuned.org.uk
         box-shadow: 0 3px 12px 0 #e2e2e2;
         overflow: hidden;
     }
-    
+
     table {
         width: 100%;
         border-collapse: collapse;
         background: rgba(255,255,255,0.7);
     }
-    
+
     th {
         background: #06070aff;
         color: #fff;
@@ -32,7 +32,7 @@ author: tuned.org.uk
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
-    
+
     td {
         padding: 1.2em 1.4em;
         border-bottom: 1px solid #dee2e6;
@@ -40,26 +40,26 @@ author: tuned.org.uk
         color: #34495e;
         line-height: 1.7;
     }
-    
+
     tr:last-child td {
         border-bottom: none;
     }
-    
+
     tbody tr:hover {
         background: #eaf3ff;
     }
-    
+
     td:first-child {
         font-weight: 600;
         color: #2c3e50;
     }
-    
+
     td:not(:first-child) {
         color: #495057;
     }
 </style>
 
-# taumode: Beyond Geometric Similarity on the CVE dataset
+# taumode: Beyond Cosine Similarity on the CVE dataset
 
 You can find `arrowspace` in the:
 * [Rust repository](https://github.com/Mec-iS/arrowspace-rs) ↪️ `cargo add arrowspace`
@@ -151,7 +151,9 @@ End‑to‑end ArrowSpace build time was ~2225 seconds on this snapshot (local m
         <td>0.9593 ± 0.0259</td>
         <td>Best long‑tail stability in this run</td>
       </tr>
-    </tbody>
+    </tbody>    body {
+    zoom: 110%;
+}
   </table>
 </div>
 
