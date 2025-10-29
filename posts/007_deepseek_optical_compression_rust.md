@@ -5,6 +5,56 @@ date: 2025-10-24
 categories: [arrowspace, optical-embeddings, rust, vector-search]
 ---
 
+<style>
+.cta-manifold-compact {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: linear-gradient(90deg, #3a0ca3 0%, #4361ee 100%);
+    padding: 1.5rem 2rem;
+    margin: 2.5rem 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(67, 97, 238, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-manifold-compact:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(67, 97, 238, 0.4);
+}
+
+.cta-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
+}
+
+.cta-text {
+    color: #f8f9fa;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.cta-text strong {
+    display: block;
+    color: #4cc9f0;
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+@media (max-width: 768px) {
+    .cta-manifold-compact {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    
+    .cta-icon {
+        font-size: 2rem;
+    }
+}
+</style>
+
 # DeepSeek-OCR Compression Meets Energy Search: Rust Implementation in ArrowSpace v0.18.0
 
 TLDR; `arrowspace` now speaks the language of energy fields, leaves behind cosine distance usage.
@@ -12,9 +62,8 @@ TLDR; `arrowspace` now speaks the language of energy fields, leaves behind cosin
 <p>In this post, I demonstrate how DeepSeek's optical compression approach—treating rendered text as a visual medium—has been replicated in Rust using `burn.dev`, and how this compression primitive unlocks a new search paradigm in <strong>arrowspace v0.18.0</strong>: energy-informed retrieval that moves decisively beyond cosine similarity.</p>
 
 You can find `arrowspace` in the:
-
-- **Rust repository** ↪️ `cargo add arrowspace`
-- **Python repository** ↪️ `pip install arrowspace`
+* [Rust repository](https://github.com/Mec-iS/arrowspace-rs) ↪️ `cargo add arrowspace`
+* and [Python repository](https://github.com/tuned-org-uk/pyarrowspace) ↪️ `pip install arrowspace`
 
 ## Why Optical Compression Matters
 
@@ -458,55 +507,5 @@ The combination of **optical compression** (reducing dimensionality via spatial 
         <strong>Next-generation vector databases:</strong> Indices that respect the manifold structure of data, not just its geometric projection.
     </div>
 </div>
-
-<style>
-.cta-manifold-compact {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    background: linear-gradient(90deg, #3a0ca3 0%, #4361ee 100%);
-    padding: 1.5rem 2rem;
-    margin: 2.5rem 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(67, 97, 238, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cta-manifold-compact:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(67, 97, 238, 0.4);
-}
-
-.cta-icon {
-    font-size: 2.5rem;
-    flex-shrink: 0;
-    filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
-}
-
-.cta-text {
-    color: #f8f9fa;
-    font-size: 1.1rem;
-    line-height: 1.5;
-}
-
-.cta-text strong {
-    display: block;
-    color: #4cc9f0;
-    font-size: 1.2rem;
-    margin-bottom: 0.3rem;
-}
-
-@media (max-width: 768px) {
-    .cta-manifold-compact {
-        flex-direction: column;
-        text-align: center;
-        padding: 1.5rem;
-    }
-    
-    .cta-icon {
-        font-size: 2rem;
-    }
-}
-</style>
 
 Please consider **sponsoring my research** and improve your company's understanding of LLMs and vector databases.

@@ -219,6 +219,18 @@ layout: default
   </div>
 
   <div class="blog-posts">
+
+  <!-- Blog Post 8: ArrowSpace v0.21.0 Energy-Informed Search POC -->
+  <article class="blog-post-card">
+      <div class="blog-post-meta">October 29, 2025</div> 
+      <h2 class="blog-post-title"> 
+      <a href="/posts/008_arrowspace_proof_of_concept_energy_informed_search">ArrowSpace v0.21.0: Proof of Concept for Energy-Informed Context Search</a></h2>
+      <div class="blog-post-abstract">
+          <p><strong>Milestone release</strong> completes the search–matching–ranking pipeline with stabilized energymaps module, delivering spectral vector search that finds matches beyond geometric proximity.<ul> <li>Two complete build paths: eigenmaps (spectral indexing from Laplacians) and energymaps (pure energy-first with optical compression, diffusion-split subcentroids, and automatic λτ computation).</li><li>CVE corpus diffusion sweep (300K docs) achieves Avg MRR 0.75, NDCG@10 0.7239 (η=0.22, steps=8) with stable 75–83s build times, confirming negligible diffusion overhead and strong spectral ranking quality.</li></ul></p>
+      </div>
+      <a href="/posts/008_arrowspace_proof_of_concept_energy_informed_search" class="blog-read-more">Read more →</a>
+  </article>
+
   <article class="blog-post-card">
       <div class="blog-post-meta">October 24, 2025</div> 
       <h2 class="blog-post-title"> 
@@ -238,17 +250,6 @@ layout: default
           <p>Version 0.16.0 is out with quite relevant news and encouraging results for `arrowspace` to be <strong>one of the fastest approximate nearest neighbours algorithm available in the open</strong>.</p>
       </div>
       <a href="/posts/005_fast_approximate_nearest_neighbours" class="blog-read-more">Read more →</a>
-  </article>
-
-  <!-- Blog Post: CVE-scale results -->
-  <article class="blog-post-card">
-      <div class="blog-post-meta">October 13, 2025</div> 
-      <h2 class="blog-post-title"> 
-      <a href="/posts/004_beyond_cosine_similarity">CVE experiment results: taumode boosts long‑tail quality</a></h2>
-      <div class="blog-post-abstract">
-          <p>Evaluation on a CVE corpus spanning 1999 to 2025 shows spectral modes preserve head agreement with cosine while enhancing long‑tail relevance for analyst discovery.<ul> <li>Dataset loader sweeps years 1999 to 2025, generating 384‑D embeddings and shared candidate pools for cosine, hybrid, and taumode.</li><li>taumode achieves the highest Tail/Head ratio (≈0.9593) with the lowest tail variability across queries. </li></ul></p>
-      </div>
-      <a href="/posts/004_beyond_cosine_similarity" class="blog-read-more">Read more →</a>
   </article>
 
   <!-- Blog Post 1: Energy-Informed Vector Search -->

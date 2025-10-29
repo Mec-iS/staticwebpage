@@ -12,6 +12,18 @@ layout: default
 
     <div class="blog-posts">
 
+<!-- Blog Post 8: ArrowSpace v0.21.0 Energy-Informed Search POC -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">October 29, 2025</div> 
+    <h2 class="blog-post-title"> 
+    <a href="/posts/008_arrowspace_proof_of_concept_energy_informed_search">ArrowSpace v0.21.0: Proof of Concept for Energy-Informed Context Search</a></h2>
+    <div class="blog-post-abstract">
+        <p><strong>Milestone release</strong> completes the search–matching–ranking pipeline with stabilized energymaps module, delivering spectral vector search that finds matches beyond geometric proximity.<ul> <li>Two complete build paths: eigenmaps (spectral indexing from Laplacians) and energymaps (pure energy-first with optical compression, diffusion-split subcentroids, and automatic λτ computation).</li><li>CVE corpus diffusion sweep (300K docs) achieves Avg MRR 0.75, NDCG@10 0.7239 (η=0.22, steps=8) with stable 75–83s build times, confirming negligible diffusion overhead and strong spectral ranking quality.</li></ul></p>
+    </div>
+    <a href="/posts/008_arrowspace_proof_of_concept_energy_informed_search" class="blog-read-more">Read more →</a>
+</article>
+
+
 <!-- Blog Post 7: DeepSeek Optical Compression and Energy Search -->
 <article class="blog-post-card">
     <div class="blog-post-meta">October 24, 2025</div> 
