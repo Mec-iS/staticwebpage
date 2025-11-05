@@ -57,9 +57,9 @@ categories: [arrowspace, optical-embeddings, rust, vector-search]
 
 # DeepSeek-OCR Compression Meets Energy Search: Rust Implementation in ArrowSpace v0.18.0
 
-TLDR; `arrowspace` now speaks the language of energy fields, leaves behind cosine distance usage.
+TLDR; `arrowspace` now speaks the language of energy fields, leaves behind cosine distance usage. Optical compression has been added as a pre-clustering data preparation step.
 
-<p>In this post, I demonstrate how DeepSeek's optical compression approach—treating rendered text as a visual medium—has been replicated in Rust using `burn.dev`, and how this compression primitive unlocks a new search paradigm in <strong>arrowspace v0.18.0</strong>: energy-informed retrieval that moves decisively beyond cosine similarity.</p>
+<p>In this post, I demonstrate how DeepSeek's optical compression approach — treating text as rendered text — has been replicated in Rust using `burn.dev`, and how this compression primitive unlocks a new search paradigm in <strong>arrowspace v0.18.0</strong>: energy-informed retrieval that moves decisively beyond cosine similarity.</p>
 
 You can find `arrowspace` in the:
 * [Rust repository](https://github.com/Mec-iS/arrowspace-rs) ↪️ `cargo add arrowspace`
@@ -70,6 +70,9 @@ You can find `arrowspace` in the:
 Large language models choke on long contexts. Processing thousands of text tokens is computationally expensive and architecturally constraining. DeepSeek-OCR introduced a radical alternative: **render text as images and compress those images into compact vision tokens**.
 
 The core insight is elegant: **text-as-image is a lossy compression medium that preserves semantic structure while dramatically reducing token count**. At 10× compression, the system achieves 97% OCR decoding precision—viable for production retrieval and reasoning tasks.
+
+You can find `optical-embeddings` in the:
+* [Rust crate](https://crates.io/crates/optical-embeddings) ↪️ `cargo add optical-embeddings`
 
 ### The Compression Pipeline
 
