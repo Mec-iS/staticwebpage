@@ -204,7 +204,7 @@ This aligns with the objectives of a database engine based on `ArrowSpace`:
 * What if we can search the space of documents using and index that incorporates quality of relations? This is what taumode-aware search makes possible.
 * What if we can compare your dataset with existing datasets and with others in your company? This is what the spectral analysis enabled by taumode is meant to deliver.
 
-I am working on a such database engine at www.tuned.org.uk please [consider sponsoring my research](https://github.com/sponsors/Mec-iS).
+I am working on a such database engine at www.tuned.org.uk please [consider sponsoring my research](https://github.com/sponsors/tuned-org-uk).
 
 ## Usage at a glance
 
@@ -224,7 +224,7 @@ A great feature is that after it has been computed, <strong>the index can be sto
 
 **Interested in learning more?** Whether you're evaluating `ArrowSpace` for your data infrastructure, considering sponsorship, or want to discuss integration strategies, please check the Contact page.
 
-Please [consider sponsoring my research](https://github.com/sponsors/Mec-iS) and improve your company's understanding of LLMs and vector databases.
+Please [consider sponsoring my research](https://github.com/sponsors/tuned-org-uk) and improve your company's understanding of LLMs and vector databases.
 
 **[Book a call on Calendly](https://calendly.com/tunedconsulting/talk-with-lorenzo)** to discuss how `ArrowSpace` can accelerate discovery in your analysis and storage workflows, or discussing these improvements.
 

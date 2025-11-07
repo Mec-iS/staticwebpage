@@ -191,7 +191,7 @@ The table below places the previously reported `v0.15.0` snapshot next to `v0.16
 
 ### Results
 
-taumode is ready to provide additional features and to step up tests to a cloud environment-scale. I may decide to make the CVE dataset searching capability publicly available thorugh an API. If you are interested in such feature, please consider [sponsoring my Github](https://github.com/sponsors/Mec-iS). I am self-funded independent researcher. 
+taumode is ready to provide additional features and to step up tests to a cloud environment-scale. I may decide to make the CVE dataset searching capability publicly available thorugh an API. If you are interested in such feature, please consider [sponsoring my Github](https://github.com/sponsors/tuned-org-uk). I am self-funded independent researcher. 
 
 ### Interpreting the deltas
 
@@ -223,6 +223,6 @@ Combined with the new default sampler, `v0.16.0` shortens iteration time on larg
 
 **Interested in learning more?** Whether you're evaluating `ArrowSpace` for your data infrastructure, considering sponsorship, or want to discuss integration strategies, please check the Contact page.
 
-Please [consider sponsoring my research](https://github.com/sponsors/Mec-iS) and improve your company's understanding of LLMs and vector databases.
+Please [consider sponsoring my research](https://github.com/sponsors/tuned-org-uk) and improve your company's understanding of LLMs and vector databases.
 
 **[Book a call on Calendly](https://calendly.com/tunedconsulting/talk-with-lorenzo)** to discuss how `ArrowSpace` can accelerate discovery in your analysis and storage workflows, or discussing these improvements.

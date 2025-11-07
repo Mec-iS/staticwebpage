@@ -230,7 +230,7 @@ Next steps include but they are not limited to:
 
 **Interested in learning more?** Whether you're evaluating `ArrowSpace` for your data infrastructure, considering sponsorship, or want to discuss integration strategies, please check the Contact page.
 
-Please [consider sponsoring my research](https://github.com/sponsors/Mec-iS) and improve your company's understanding of LLMs and vector databases.
+Please [consider sponsoring my research](https://github.com/sponsors/tuned-org-uk) and improve your company's understanding of LLMs and vector databases.
 
 **[Book a call on Calendly](https://calendly.com/tunedconsulting/talk-with-lorenzo)** to discuss how `ArrowSpace` can accelerate discovery in your analysis and storage workflows, or discussing these improvements.
 
