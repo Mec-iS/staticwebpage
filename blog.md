@@ -12,6 +12,17 @@ layout: default
 
     <div class="blog-posts">
 
+<!-- Blog Post 9: NanoGPT: A deep dive into the architecture of a Rust-powered GPT-2 -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">November 07, 2025</div>
+    <h2 class="blog-post-title">
+    <a href="/posts/009_llms_nanogpt_model_in_rust">Efficient GPT training: a dive into the architecture of a Rust-powered GPT-2</a></h2>
+    <div class="blog-post-abstract">
+        <p><strong>Deep Dive</strong> into a Rust implementation of a decoder-only transformer inspired by Karpathy's nanochat. <ul> <li>Breaks down the architecture of a modern LLM, explaining the role of key components for an experienced audience.</li><li>Covers modern techniques such as Rotary Position Embeddings (RoPE), Multi-Query Attention (MQA), RMSNorm, and the use of a Squared ReLU in the MLP.</li></ul></p>
+    </div>
+    <a href="/posts/009_llms_nanogpt_model_in_rust" class="blog-read-more">Read more →</a>
+</article>
+
 <!-- Blog Post 8: ArrowSpace v0.21.0 Energy-Informed Search POC -->
 <article class="blog-post-card">
     <div class="blog-post-meta">October 29, 2025</div> 

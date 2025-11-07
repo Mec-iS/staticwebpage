@@ -220,15 +220,15 @@ layout: default
 
   <div class="blog-posts">
 
-  <!-- Blog Post 8: ArrowSpace v0.21.0 Energy-Informed Search POC -->
+  <!-- Blog Post 9: NanoGPT: A deep dive into the architecture of a Rust-powered GPT-2 -->
   <article class="blog-post-card">
-      <div class="blog-post-meta">October 29, 2025</div> 
-      <h2 class="blog-post-title"> 
-      <a href="/posts/008_arrowspace_proof_of_concept_energy_informed_search">ArrowSpace v0.21.0: Proof of Concept for Energy-Informed Context Search</a></h2>
+      <div class="blog-post-meta">November 07, 2025</div>
+      <h2 class="blog-post-title">
+      <a href="/posts/009_llms_nanogpt_model_in_rust">Efficient GPT training: a dive into the architecture of a Rust-powered GPT-2</a></h2>
       <div class="blog-post-abstract">
-          <p><strong>Milestone release</strong> completes the search–matching–ranking pipeline with stabilized energymaps module, delivering spectral vector search that finds matches beyond geometric proximity.<ul> <li>Two complete build paths: eigenmaps (spectral indexing from Laplacians) and energymaps (pure energy-first with optical compression, diffusion-split subcentroids, and automatic λτ computation).</li><li>CVE corpus diffusion sweep (300K docs) achieves Avg MRR 0.75, NDCG@10 0.7239 (η=0.22, steps=8) with stable 75–83s build times, confirming negligible diffusion overhead and strong spectral ranking quality.</li></ul></p>
+          <p><strong>Deep Dive</strong> into a Rust implementation of a decoder-only transformer inspired by Karpathy's nanochat. <ul> <li>Breaks down the architecture of a modern LLM, explaining the role of key components for an experienced audience.</li><li>Covers modern techniques such as Rotary Position Embeddings (RoPE), Multi-Query Attention (MQA), RMSNorm, and the use of a Squared ReLU in the MLP.</li></ul></p>
       </div>
-      <a href="/posts/008_arrowspace_proof_of_concept_energy_informed_search" class="blog-read-more">Read more →</a>
+      <a href="/posts/009_llms_nanogpt_model_in_rust" class="blog-read-more">Read more →</a>
   </article>
 
   <article class="blog-post-card">
