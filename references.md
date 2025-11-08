@@ -10,6 +10,27 @@ Field of application: **Vector Databases, Spectral Methods, and Agentic AI**
 A curated collection of foundational and emerging papers that inform the design and implementation of `arrowspace`, optical compression, and next-generation retrieval systems.
 
 ---
+## Graph Embeddings
+
+### Ontology Embedding: A Survey of Methods, Applications and Resources
+
+**Authors**: Jiaoyan Chen, Olga Mashkova, Ernesto Jiménez-Ruiz, Ian Horrocks, Diego M. López, Przemyslaw Andrzej Nowak, et al.
+**arXiv**: 2406.10964 (2024), accepted to IEEE TKDE
+
+Comprehensive survey of ontology embedding, covering formal definitions, method categories, resources, and applications across ontology engineering, machine learning augmentation, and life sciences, consolidating works from AI and bioinformatics venues. This connects to `arrowspace` by framing how logical structure can be embedded into vector spaces to complement spectral and graph-based similarity in hybrid search.
+
+**Key contributions**: Taxonomy of ontology embedding approaches, resource catalog, application landscape, and challenges/future directions in integrating symbolic semantics with embeddings.
+
+### The RDF2vec Family of Knowledge Graph Embedding Methods
+
+**Authors**: Petar Ristoski, Simone Paolo Ponzetto, Heiko Paulheim (and collaborators across variants)
+**Journal**: Semantic Web – Interoperability, Usability, Applicability (SWJ), “The RDF2vec Family of Knowledge Graph Embedding Methods”
+
+In-depth study of RDF2vec variants that generate embeddings from random walks over RDF graphs, with a comprehensive evaluation revealing representational strengths and weaknesses relative to other KG embedding methods. For `arrowspace`, this informs walk-based feature extraction that can be blended with Laplacian-based distances for structure- and path-aware retrieval.
+
+**Key contributions**: Unified overview of RDF2vec techniques, large-scale comparative evaluation, and practical guidance for selecting variants by task characteristics.
+
+---
 
 ## Graph Signal Processing & Spectral Methods
 
