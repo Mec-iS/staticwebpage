@@ -20,6 +20,8 @@ You can find `arrowspace` in the:
 
 `arrowspace` is a database for vectors supported by a graph representation and a key-value store. The main use-cases targeted are: **AI search capabilities as advanced vector similarity, graph characterisation analysis and search, indexing of high-dimensional vectors**.
 
+If you want to know the entire background to this story, please peek at the [devlog](/blog).
+
 ## What ArrowSpace Is
 
 `arrowspace` treats any dataset as a vector space with an added graph layered over vectors, enabling both geometric and topological operations in one index for search, matching, ranking, and dataset characterization at any lifecycle stage.
