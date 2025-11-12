@@ -12,6 +12,15 @@ layout: default
 
     <div class="blog-posts">
 
+<!-- Blog Post 10: Why `arrowspace` is game-changing for data operations at scale -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">November 12, 2025</div>
+    <h2 class="blog-post-title"> 
+    <a href="/posts/010_game_changer_unifying_vectors_and_features_graphs">Why <code>arrowspace</code> is game-changing for data operations at scale</a></h2>
+    <div class="blog-post-abstract"> <p><strong>Test‑bed milestone</strong> for a unified vector, graph, and key‑value engine built on spectral indexing and energy‑informed search. <ul> <li>Turns any dataset into a features graph, enabling manifold‑aware search, matching, ranking, and dataset characterization at any lifecycle stage.</li> <li>Designed for high dimensions by default: robust on biotech‑scale sequences, large vocabularies, and model‑sized embedding spaces.</li> </ul></p> </div>
+    <a href="/posts/010_game_changer_unifying_vectors_and_features_graphs" class="blog-read-more">Read more →</a>
+</article>
+
 <!-- Blog Post 9: NanoGPT: A deep dive into the architecture of a Rust-powered GPT-2 -->
 <article class="blog-post-card">
     <div class="blog-post-meta">November 07, 2025</div>

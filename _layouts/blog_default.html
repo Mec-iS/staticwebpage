@@ -27,7 +27,7 @@
         padding-left: 2.5em;
         padding-right: 2.5em;
         }
-        footer {
+        footer, .head-on {
         margin-top: 2em;
         padding: 1.25em 1em 0.75em 1em;
         background-color: #fafbfc; /* Fallback color */
@@ -40,12 +40,12 @@
         font-size: 1em;
         box-shadow: 0 3px 12px 0 #e2e2e2;
         }
-        footer a {
+        footer a, .head-on a {
         color: #005aff;
         font-weight: bold;
         text-decoration: underline;
         }
-        footer ul {
+        footer ul, .head-on ul {
         padding-left: 0;
         list-style: none;
         margin-bottom: 1em;
@@ -351,6 +351,26 @@
     <body style="display: flex; min-height: 100vh; flex-direction: column;padding-left: 3em; padding-right: 3em;zoom: 110%;">
     {% include nav.html %}
     <hr>
+
+    <div class="head-on" style="flex-shrink: 0;">
+        <div style="margin: .7em 0;">
+            <a href="https://github.com/sponsors/tuned-org-uk" target="_blank">
+            Sponsor me on GitHub! 👈
+            </a>
+        </div>
+        <ul style="padding-left: 1.4em; text-align: left; margin: 0 auto; display: inline-block;">
+            <li>💡 Improve how your organisation thinks about and uses LLMs</li>
+            <li>📜 Original patent-ready IP tailored for your startup (workflows, connectors, ad-hoc KV caching)</li>
+            <li>🔒 Fail-safe systems for Agentic workflows</li>
+            <li>🦾 Automated, safe, and formally proved code generation</li>
+            <li>🤖 Make me vibecode these game-changer technologies in my full-time capacity</li>
+        </ul>
+        <div>
+            <a href="https://github.com/sponsors/tuned-org-uk" target="_blank">
+            Become a sponsor today! 🚀
+            </a>
+        </div>
+    </div>
 
     <div class="main-content">
         {{ content }}
