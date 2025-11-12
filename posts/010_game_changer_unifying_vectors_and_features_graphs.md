@@ -18,7 +18,7 @@ You can find `arrowspace` in the:
 
 ## Intro
 
-`arrowspace` can be a database for vectors, a graph database and a key-value store. At which levels it can reach performance at any of these depends on the use-cases and the specific implementation. The main use-cases targeted are: **AI search capabilities as advanced vector similarity, graph characterisation analysis and search, indexing of high-dimensional vectors**.
+`arrowspace` is a database for vectors supported by a graph representation and a key-value store. The main use-cases targeted are: **AI search capabilities as advanced vector similarity, graph characterisation analysis and search, indexing of high-dimensional vectors**.
 
 ## What ArrowSpace Is
 
