@@ -6,7 +6,7 @@ author: tuned-org-uk
 categories: arrowspace, ai-safety, vector-search
 ---
 
-# Safer LLMS require open search - Building the AI Memory Layer
+# Safer LLMs require open search - Building the AI Memory Layer
 
 TLDR; `arrowspace` reframes AI retrieval as an open, topology‑aware search problem so that systems can keep the benefits of intuitive pattern‑finding while structurally detecting and constraining subtle hallucinations.
 

@@ -87,6 +87,16 @@
         text-decoration: underline;
         }
 
+        .github-icon {
+        color: #0d111a;
+        font-size: 1.5em;
+        transition: all 0.2s ease;
+        }
+        .github-icon:hover {
+        color: #0046cc;
+        transform: scale(1.1);
+        text-
+
         .code-block {
         background: #111;
         color: #fff;
@@ -350,6 +360,9 @@
     </head>
     <body style="display: flex; min-height: 100vh; flex-direction: column;padding-left: 3em; padding-right: 3em;zoom: 110%;">
     {% include nav.html %}
+    <a href="https://github.com/tuned-org-uk" target="_blank" aria-label="GitHub Profile" style="position: absolute; top: 3.5em; right: 4em;">
+        <i class="fab fa-github github-icon"></i>
+    </a>
     <hr>
 
     <div class="head-on" style="flex-shrink: 0;">
