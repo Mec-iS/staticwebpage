@@ -215,10 +215,25 @@ layout: default
 
 <div class="blog-container">
   <div class="blog-header">
-    <h2>📝 Blog Posts Collection</h2>
+    <h2>📝 Selected Posts</h2>
   </div>
 
   <div class="blog-posts">
+<!-- Blog Post 11: Safer Is a More Open Search -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">November 26, 2025</div>
+    <h2 class="blog-post-title">
+    <a href="/posts/011_safer_LLMs_require_more_open_search_building_AI_memory_layer">Safer LLMS require open search - Building the AI Memory Layer</a></h2>
+    <div class="blog-post-abstract">
+        <p><strong>AI safety</strong> through topology‑aware, energy‑informed retrieval that separates stable facts from risky intuitions.</p>
+        <ul>
+            <li>Shows how geometry‑only vector search and semantic caching accumulate retrieval errors, turning context drift into subtle hallucinations.</li>
+            <li>Introduces arrowspace as an “open search” layer where graph Laplacians, energy dispersion, and topology‑quality scores expose and constrain off‑manifold results instead of hiding them inside black‑box similarity.</li>
+        </ul>
+    </div>
+    <a href="/posts/011_safer_LLMs_require_more_open_search_building_AI_memory_layer" class="blog-read-more">Read more →</a>
+</article>
+  
 <!-- Blog Post 10: Why `arrowspace` is game-changing for data operations at scale -->
 <article class="blog-post-card">
     <div class="blog-post-meta">November 12, 2025</div>
