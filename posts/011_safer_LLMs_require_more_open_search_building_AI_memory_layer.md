@@ -31,9 +31,9 @@ Semantic caches and naive RAG pipelines amplify this effect. If the cache is tun
 
 ### Intuitions, subtle hallucinations, and safety
 
-My 2022 paper ["Cybernetics Interfaces and Networks: intuitions as a toolbox"](https://www.techrxiv.org/users/685780/articles/679427-cybernetics-interfaces-and-networks-intuitions-as-a-toolbox) reflects on intuitions in tools usage: pattern proposals that are valuable exactly because they are *not* yet commitments. In an LLM context, the danger appears when those intuitive jumps are silently promoted to "facts" by the surrounding retrieval context and ranking logic, instead of being flagged and interrogated as hypotheses. How to skim these patterns when every search focuses on the geometrical relations of documents and concepts?
+My 2022 paper ["Cybernetics Interfaces and Networks: intuitions as a toolbox"](https://www.techrxiv.org/users/685780/articles/679427-cybernetics-interfaces-and-networks-intuitions-as-a-toolbox) reflects on intuitions in tools usage: intuitions are pattern proposals that are valuable exactly because they are *not* yet commitments. In an LLM context, the danger appears when those intuitive jumps are silently promoted to "facts" by the surrounding retrieval context and ranking logic, instead of being flagged and interrogated as hypotheses. How to skim these patterns when every search focuses on the geometrical relations of documents and concepts?
 
-According to common consensus, the safety issue is not the easily debunked mistake, but the subtle plausible error that passes through ranking, caching, and user interfaces without any visible sign that the system has left the reliable part of its knowledge graph.[^1]
+According to common consensus, the safety issue is not the easily debunked mistake but the subtle plausible error that passes through ranking, caching, and user interfaces without any visible sign that the system has left the reliable part of its knowledge graph.[^1]
 
 ### Why geometry‑only search is brittle
 
