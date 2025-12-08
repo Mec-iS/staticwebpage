@@ -10,6 +10,53 @@ Field of application: **Vector Databases, Spectral Methods, and Agentic AI**
 A curated collection of foundational and emerging papers that inform the design and implementation of `arrowspace`, optical compression, and next-generation retrieval systems.
 
 ---
+## Graph-based Vector Search
+
+### Paper: Graph-Based Vector Search: An Experimental Evaluation of the State-of-the-Art
+
+Authors: Ilias Azizi, Karima Echihabi, Themis Palpanas, Vassilis Christophides.​
+Link: https://openreview.net/pdf?id=ALnwJjieOi​
+
+Comprehensive experimental evaluation of twelve state‑of‑the‑art graph‑based ANN vector search methods on up to billion‑scale datasets; identification of incremental insertion plus neighborhood diversification as the most effective current paradigm; analysis of how base‑graph design impacts scalability and search quality; and articulation of open directions, especially more data‑adaptive seed selection and diversification strategies for future vector search systems
+
+Key contributions: the paper highlights limitations: quality–latency tradeoffs, sensitivity to choice of base graph, lack of sophisticated data‑adaptive diversification, and open needs for more adaptive, structure‑aware strategies to build and traverse graphs.
+
+#### What arrowspace can bring to the table
+
+* Spectral re‑ranking layer: `arrowspace` can take any of these graph indices as a base and add a per‑vector spectral score (taumode) derived from a Laplacian over the dataset, allowing re‑ranking of graph‑returned candidates by both cosine distance and spectral smoothness, which targets systemically relevant but geometrically “outlier” neighbours the surveyed methods may miss.​​
+* Data‑adaptive diversification: Instead of purely local degree or heuristic pruning, diversification can be guided by differences in spectral scores and eigenstructure, encouraging candidate sets that span distinct spectral modes of the dataset manifold, directly addressing the paper’s call for more data‑adaptive diversification strategies.​​
+* Better seed selection: Seed nodes for graph search can be chosen using spectral signatures (e.g., low‑energy, “central” signals or high‑energy, “boundary” signals), making initial entry points more robust to embedding drifts and cluster imbalances than purely metric‑based seeds discussed in the evaluation.​
+* Multi‑vector and subvector search: ArrowSpace’s ability to index subvectors and aggregate spectral scores per item gives a principled route to multi‑vector queries on top of the existing graph methods, which the evaluated algorithms largely treat as single‑query problems.
+
+### Paper: A Quantitative Analysis and Performance Study for Similarity-Search Methods in High-Dimensional Spaces
+Authors: Roger Weber, Hans-J. Schek, Stephen Blott
+
+Foundational analysis of similarity search in high-dimensional vector spaces, proving that tree- and partition-based indexes (R*-tree, X-tree, etc.) degrade to linear scan as dimensionality grows and introducing the VA-file as an approximation-based layout that makes this unavoidable scan as efficient as possible. This connects to arrowspace by precisely characterizing the “dimensionality curse” that spectral indexing aims to escape, suggesting that instead of fighting geometric sparsity with ever more complex trees, one should change the representation (e.g., spectral graph + taumode) so that similarity is no longer driven solely by fragile high‑d metric properties.​
+
+Key contributions: Formal cost model and lower bounds for high‑dimensional nearest neighbor search, empirical demonstration that classic multidimensional indexes are outperformed by sequential scan beyond ~10–20 dimensions, and proposal of the VA‑file as a practical, approximation‑based alternative for similarity search in HDVSs.
+
+#### What arrowspace can bring to the table
+
+`arrowspace` complements this paper by attacking the dimensionality curse at the signal and graph level instead of only in the raw metric space, so it can keep using simple approximate indexes (including VA‑like layouts) while prioritizing candidates that are structurally meaningful in very high dimensions.
+
+Spectral rather than purely geometric structure: `arrowspace` first builds a graph Laplacian over items (using approximate k‑NN plus random projection if needed), then computes per‑feature Rayleigh energies that reflect how smoothly each signal varies over that graph, capturing a low‑dimensional spectral structure even when the original embedding dimension is large.​
+
+#### How `arrowspace` sidesteps the curse of dimensionality
+
+- Spectral rather than purely geometric structure: `arrowspace` first builds a graph Laplacian over items (using approximate k‑NN plus random projection if needed), then computes per‑feature Rayleigh energies that reflect how smoothly each signal varies over that graph, capturing a low‑dimensional spectral structure even when the original embedding dimension is large.
+- Bounded taumode score as a second axis: These Rayleigh energies are transformed into a bounded, comparable scalar $$\lambda_\tau$$ per feature (taumode), and per‑item scores can be aggregated, so search is performed in a joint space “cosine distance × spectral roughness” instead of only Euclidean/cosine distance in $$d$$ dimensions, which reduces reliance on fragile high‑dimensional metric properties highlighted by Weber et al.
+- Compatible with VA‑style layouts: Because `arrowspace` stores dense arrays plus a single extra scalar per row and does not require storing the full graph at query time, it can be overlaid on VA‑file‑like or HNSW‑like approximate indices: the coarse approximate index prunes by geometry, while `arrowspace` re‑ranks and filters by spectral score, effectively using high $$d$$ only once at index‑build time rather than repeatedly at query time.
+- Targeting non‑uniform, structured data: The Weber–Schek–Blott analysis assumes uniform, independent dimensions; `arrowspace` explicitly exploits non‑uniformity (clusters and manifolds) via the Laplacian, so the “everything degenerates to a scan” result no longer applies in the same way for real‑world structured datasets where spectral energies concentrate in a few modes.
+
+
+#### `arrowspace` improvements vs. VA‑file and trees
+
+- Where VA‑file speeds up the *inevitable scan* in high $$d$$, `arrowspace` reduces *how much of the dataset is relevant* by focusing on spectrally consistent neighbours, so for a fixed approximate index (tree, graph, or VA‑style), fewer candidates need full scoring to reach useful recall.
+- Tree and partition indexes degrade because their bounding regions expand in effective volume at high $$d$$; `arrowspace` instead builds its main discriminative signal (taumode) from a sparse graph on items, whose complexity depends on the number of items and local k‑NN degrees, not directly on the original feature dimension after optional random projection.
+- In practice, this means: keep simple approximate indexing (including VA‑like) for coarse filtering, and let ArrowSpace’s spectral index handle fine‑grained selection and ranking, turning the “curse” into a manageable one‑off preprocessing cost rather than a per‑query explosion.
+
+
+---
 ## Graph Embeddings
 
 ### Ontology Embedding: A Survey of Methods, Applications and Resources
