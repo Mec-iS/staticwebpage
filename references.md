@@ -55,6 +55,15 @@ Spectral rather than purely geometric structure: `arrowspace` first builds a gra
 - Tree and partition indexes degrade because their bounding regions expand in effective volume at high $$d$$; `arrowspace` instead builds its main discriminative signal (taumode) from a sparse graph on items, whose complexity depends on the number of items and local k‑NN degrees, not directly on the original feature dimension after optional random projection.
 - In practice, this means: keep simple approximate indexing (including VA‑like) for coarse filtering, and let ArrowSpace’s spectral index handle fine‑grained selection and ranking, turning the “curse” into a manageable one‑off preprocessing cost rather than a per‑query explosion.
 
+### Paper: Leveraging Graph Dimensions in Online Graph Search
+Authors:  Zhu, Yu, Qin
+
+Propose a distance- and structure-preserving (DS-preserved) mapping that automatically selects a small set of informative subgraphs as dimensions, enabling fast top‑k similarity search over large graph databases without expensive NP-hard operations.
+
+#### Core conceptual link
+The paper learns a graph dimension: a small set of subgraphs that become coordinates of a multidimensional space, so that distances in that space approximate graph edit/MCS distances while preserving query‑time structure.
+​
+`arrowspace` builds a spectral index over an embedding matrix, using Laplacian‑based structure to define a space where similarity scores (λτ) reflect both content and dataset topology, not just raw cosine geometry.
 
 ---
 ## Graph Embeddings
