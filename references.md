@@ -60,6 +60,8 @@ Authors:  Zhu, Yu, Qin
 
 Propose a distance- and structure-preserving (DS-preserved) mapping that automatically selects a small set of informative subgraphs as dimensions, enabling fast top‑k similarity search over large graph databases without expensive NP-hard operations.
 
+The paper shows that mapping graphs into a learned structural dimension lets you answer similarity queries with vector operations while still respecting underlying graph structure. ArrowSpace follows the same pattern for high‑dimensional embeddings: its spectral index builds a structure‑aware space where λτ scores play the role of DS‑preserving coordinates, enabling fast, topology‑sensitive search over large vector corpora.
+
 #### Core conceptual link
 The paper learns a graph dimension: a small set of subgraphs that become coordinates of a multidimensional space, so that distances in that space approximate graph edit/MCS distances while preserving query‑time structure.
 ​
