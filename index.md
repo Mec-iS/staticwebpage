@@ -60,6 +60,10 @@ layout: default
   line-height: 1.5;
 }
 
+.card-tauformer {
+  border-top: 4px solid #db9834ff; 
+}
+
 .card-arrowspace {
   border-top: 4px solid #3498db;
 }
@@ -176,6 +180,13 @@ layout: default
   </h2>
 
   <div class="research-grid">
+    <div class="research-card card-tauformer">
+      <a href="{{ "/posts/012_topological_transformer_tauformer_domain_memory_in_attention" }}">
+        <h3>Tauformer</h3>
+        <p>The Topological Transformer</p>
+      </a>
+    </div>
+
     <div class="research-card card-arrowspace">
       <a href="{{ "/arrowspace-paper" }}">
         <h3>ArrowSpace</h3>
@@ -219,6 +230,21 @@ layout: default
   </div>
 
   <div class="blog-posts">
+<!-- Blog Post 12: Tauformer / Topological Transformer -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">January 5, 2026</div>
+    <h2 class="blog-post-title">
+    <a href="/posts/012_topological_transformer_tauformer_domain_memory_in_attention">The Topological Transformer: Tauformer (domain-memory and faster attention)</a></h2>
+    <div class="blog-post-abstract">
+        <p><strong>Domain memory</strong> injected directly inside self-attention via a persistent Graph Laplacian (distilled knowledge graphs with <code>arrowspace</code>).</p>
+        <ul>
+            <li>Replaces the dot-product attention kernel with a topology-aware scalar signal (taumode / λ-distance), so attention is driven by distances in a domain manifold rather than raw geometry.</li>
+            <li>Targets scaling pain points: ~50% KV-cache savings (values + λ<sub>k</sub> instead of K+V) and ~20% faster time-per-token vs a nanoGPT baseline in the reported benchmarks.</li>
+        </ul>
+    </div>
+    <a href="/posts/012_topological_transformer_tauformer_domain_memory_in_attention" class="blog-read-more">Read more →</a>
+</article>
+
 <!-- Blog Post 11: Safer Is a More Open Search -->
 <article class="blog-post-card">
     <div class="blog-post-meta">November 26, 2025</div>
