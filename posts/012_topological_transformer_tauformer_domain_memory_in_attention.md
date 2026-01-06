@@ -39,9 +39,9 @@ In practice, this connects naturally to the broader "AI Memory Layer" direction 
 ## Why it shines at scale (speed + VRAM)
 
 The immediate systems win is KV-cache: standard causal attention must store $$K$$ and $$V$$ (two full tensors), while Tauformer stores $$V$$ plus the compact key-side scalar history $$(\lambda_k)$$, yielding roughly **~50% KV-cache size savings** per layer (with small overhead for the scalar stream). 
-Because decode-time memory grows linearly with context length $$(T)$$, this reduction translates into "real" VRAM savings when prompts get long (often gigabytes at scale, depending on model size and context).
+Because decode-time memory grows linearly with context length $$(T)$$, this reduction translates into VRAM savings (in term of Gbytes per GPU) when prompts, context windows and vectors dimension get large.
 
-On compute: the paper reports $$\sim20%$$ time-per-token improvement vs a nanoGPT baseline in the provided benchmark setting, and motivates stronger advantages as context windows and embedding/head dimensions grow.
+On the compute side: the paper reports $$\sim20%$$ time-per-token improvement vs a nanoGPT baseline in the provided benchmark setting, and motivates stronger advantages as context windows and embedding/head dimensions grow.
 A key part of the scaling story is sparsity: if the domain Laplacian is sparse, computing the $$(\lambda_\tau\)$$ signals can shift from a dense $$(O(D^2))$$ cost to a sparsity-dependent $$(O(\mathrm{nnz}(L)))$$, making the incremental overhead less sensitive to sequence length.
 
 These diagrams show the speedups when context window, prompt length and emebeddings dimensions grow:
