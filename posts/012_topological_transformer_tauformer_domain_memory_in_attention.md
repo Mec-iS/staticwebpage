@@ -62,6 +62,11 @@ Enjoy the new year. This is tuned-org-uk — consider sponsoring on GitHub.
 
 ## Keep challenging dimensionality
 
+<div class="paper-embed">
+<embed src="/assets/Topological_Transformer-uploaded_version.pdf" type="application/pdf"
+       style="width:100%; min-height:60vh; background:#111; border-radius:6px; box-sizing:border-box;" />
+</div>
+
 <table style="border-collapse:collapse; border:none;">
   <tr>
     <td style="border:none; padding:0; vertical-align:top;">
