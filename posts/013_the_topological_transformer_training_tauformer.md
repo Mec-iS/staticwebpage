@@ -41,7 +41,7 @@ Data comes from a local JSONL file (`train.jsonl`) streamed through an IterableD
 
 | Category | Setting | Value |
 | :-- | :-- | :-- |
-| Model | Class / size | TauGPT ~30M parameters (as labeled in the script output/logging)  |
+| Model | Class / size | TauGPT ~30M parameters  (GPT2-inspired)  |
 | Model | Layers (`n_layer`) | 6  |
 | Model | Heads (`n_head`) | 6  |
 | Model | Embedding size (`n_embd`) | 384  |
