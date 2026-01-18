@@ -60,7 +60,7 @@ Data comes from a local JSONL file (`train.jsonl`) streamed through an IterableD
 
 At step 100 the run reports train loss 4.6772 and val loss 4.9255 (PPL 107.47), and by step 2000 it reaches val loss 2.3585 (Perplexity 6.59).
 The best validation point in the log is step 4500 with `val_loss=1.9146`, after which validation regresses to `2.3746` by step 5000.
-The final run summary records `step=5000`, `best_val_loss=1.914555`, `current_lr_scale=0.03125`, and `total_tokens=655360000`. That is a good result for $~2$ hours of training on the smallest model.
+The final run summary records `step=5000`, `best_val_loss=1.914555`, `current_lr_scale=0.03125`, and `total_tokens=655360000`. That is a good result for $$~2$$ hours of training on this smallest model (at an average of ~60K Tokens Per Second).
 
 The early phase is strong: validation drops from 4.93 at step 100 to ~2.36 by step 2000, showing that the model and pipeline learn effectively at this scale.
 After that, validation becomes noisy (e.g., rising back to 2.92 at step 2100 and peaking near 2.95 at step 4200) before the late "lucky break" to 1.91 at step 4500.
@@ -112,4 +112,4 @@ Through the epiplexity lens, the operations carried on by `arrowspace` and Taufo
 I am happy I have somehow anticipated this switch in point of view in `arrowspace`. 
 
 ## Acknoledgements
-I gratefully acknowledge Enverge Labs for kindly providing the computation time used to run these experiments on their H100 GPU cluster powered by clean and cheap energy, this aligns perfectly with the topological tranformer objective to provide cheaper computation for Transformers.
+I gratefully acknowledge [Enverge Labs](https://www.enverge.ai/enverge-labs) for kindly providing the computation time used to run these experiments on their H100 GPU cluster powered by clean and cheap energy, this aligns perfectly with the topological tranformer objective to provide cheaper computation for Transformers.
