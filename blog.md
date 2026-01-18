@@ -12,6 +12,25 @@ layout: default
 
     <div class="blog-posts">
 
+<!-- Blog Post 13: Training Tauformer -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">January 18, 2026</div>
+    <h2 class="blog-post-title">
+        <a href="/posts/013_the_topological_transformer_training_tauformer">
+            The Topological Transformer: Training Tauformer (30M TauGPT runbook)
+        </a>
+    </h2>
+    <div class="blog-post-abstract">
+        <p><strong>Training</strong> notes for a 30M-class TauGPT run including the data pipeline, validation routing, and stabilization knobs.</p>
+        <ul>
+            <li>Streams training data via an IterableDataset-style loader, with a routed split where every 20th batch goes to validation (~5%).</li>
+            <li>Uses AdamW with LR warmup (100 steps) then a constant base LR, with optional plateau-based scaling logic.</li>
+            <li>Documents taumode calibration and strategy controls (fixed/adaptive/gradient) for reproducible restarts and diagnostics.</li>
+        </ul>
+    </div>
+    <a href="/posts/013_the_topological_transformer_training_tauformer" class="blog-read-more">Read more →</a>
+</article>
+
 <!-- Blog Post 12: Tauformer / Topological Transformer -->
 <article class="blog-post-card">
     <div class="blog-post-meta">January 5, 2026</div>
