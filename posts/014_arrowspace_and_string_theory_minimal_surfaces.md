@@ -8,9 +8,9 @@ categories: [arrowspace, vector-search, knowledge-graphs, string-theory, surface
 
 # Graph Wiring, Dirichlet Energy, and Minimal Surfaces: a (surprising) ArrowSpace plus String Theory hypothesis
 
-A recurring theme in my work on `arrowspace` is that **vector spaces are not just geometry**: they also hide a graph, and that graph exposes structure you can search, partition, and audit. In the last few weeks a new angle emerged from a preliminary assessment: the Dirichlet-energy machinery already implemented in `arrowspace` may be more than a spectral trick — it may approximate a class of **minimal-surface** computation in String Theory as recently demonstrated in the [Meng at al. paper](https://www.nature.com/articles/s41586-025-09784-4).
+A recurring theme in my work on `arrowspace` is that **vector spaces are not just geometry**: they also hide a graph, and that graph exposes structure you can search, partition, and audit. In the last few weeks a new angle emerged from a preliminary assessment: the Dirichlet energy machinery already implemented in `arrowspace` may be more than a spectral trick: it may approximate a class of **minimal surface** computation in String Theory as recently demonstrated in the [Meng at al. paper](https://www.nature.com/articles/s41586-025-09784-4).
 
-This post is a progress update. It's exploratory, its proof is not fully written down yet, but it's concrete enough to outline what would need to be shown and why it could matter for both sciences (anything using minimising surfaces) and **data engineering**.
+This post is a progress update. It's exploratory, its proof is not fully written down yet but it's concrete enough to outline what would need to be shown and why it could matter for both sciences (anything using minimising surfaces) and **data engineering**.
 
 ## The trigger: Meng et al. (2026) and surface optimization
 

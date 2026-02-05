@@ -11,6 +11,7 @@ layout: default
     </div>
 
     <div class="blog-posts">
+<!-- Blog Post 14: Graph Wiring -->
 <article class="blog-post-card">
     <div class="blog-post-meta">February 5, 2026</div>
     <h2 class="blog-post-title">
