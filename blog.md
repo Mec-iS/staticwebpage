@@ -11,6 +11,23 @@ layout: default
     </div>
 
     <div class="blog-posts">
+<article class="blog-post-card">
+    <div class="blog-post-meta">February 5, 2026</div>
+    <h2 class="blog-post-title">
+        <a href="/posts/014_arrowspace_and_string_theory_minimal_surfaces">
+            Graph Wiring and Minimal Surface problem in String Theory
+        </a>
+    </h2>
+    <div class="blog-post-abstract">
+        <p><strong>Training</strong> An hypothesis for arrowspace as minimal surface approximator.</p>
+        <ul>
+            <li>Meng et al. (2026) study physical networks (connectomes, vasculature, corals, plants) and argue that classical "wiring minimization" misses key observed motifs.</li>
+            <li>arrowspace may be an efficient, graph-algorithmic route to approximate minimal-surface-like solutions in a discrete setting.</li>
+            <li>Why I’m calling it "Graph Wiring"</li>
+        </ul>
+    </div>
+    <a href="/posts/014_arrowspace_and_string_theory_minimal_surfaces" class="blog-read-more">Read more →</a>
+</article>
 
 <!-- Blog Post 13: Training Tauformer -->
 <article class="blog-post-card">
