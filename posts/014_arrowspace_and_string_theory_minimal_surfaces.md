@@ -6,7 +6,7 @@ author: tuned-org-uk
 categories: [arrowspace, vector-search, knowledge-graphs, string-theory, surfaces, interfaces]
 ---
 
-# Graph Wiring, Dirichlet Energy, and Minimal Surfaces: a (surprising) ArrowSpace plus String Theory hypothesis
+# Graph Wiring: a (surprising) ArrowSpace plus String Theory hypothesis
 
 A recurring theme in my work on `arrowspace` is that **vector spaces are not just geometry**: they also hide a graph, and that graph exposes structure you can search, partition, and audit. In the last few weeks a new angle emerged from a preliminary assessment: the Dirichlet energy machinery already implemented in `arrowspace` may be more than a spectral trick: it may approximate a class of **minimal surface** computation in String Theory as recently demonstrated in the [Meng at al. paper](https://www.nature.com/articles/s41586-025-09784-4).
 
