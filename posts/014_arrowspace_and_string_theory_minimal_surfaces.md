@@ -16,7 +16,7 @@ This post is a progress update. It's exploratory, its proof is not fully written
 
 Meng et al. (2026) study physical networks (connectomes, vasculature, corals, plants) and argue that classical "wiring minimization" (length/Steiner-tree style) misses key observed motifs. They propose that the right cost must account for **surface constraints**, and they report an exact mapping of surface minimization to higher-dimensional Feynman diagrams in string theory, with predictions like the emergence of **trifurcations** and stable branching morphologies.
 
-What caught my attention is not the biology per se — it's the computational move: an intractable 3D geometric optimization becomes tractable by moving to a 2D surface (a "worldsheet" in String Theory) formulation. This is similar to what `arrowspace` does, trying to approximate high-dimensional spaces to spectral surfaces that are 2D in terms of computational costs.
+What caught my attention is thge computation strategy: an intractable 3D geometric optimization becomes tractable by moving to a 2D surface (a "worldsheet" in String Theory) formulation. This is similar to what `arrowspace` does, trying to approximate high-dimensional spaces to spectral surfaces that are 2D-ish in terms of computational costs.
 
 ## What ArrowSpace already computes: Dirichlet energy on kNN Laplacians
 
