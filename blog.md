@@ -11,6 +11,25 @@ layout: default
     </div>
 
     <div class="blog-posts">
+<!-- Blog Post 15: Graph Wiring -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">February 5, 2026</div>
+    <h2 class="blog-post-title">
+        <a href="/posts/015_arrowspace_stress-test_on_dorothea_dataset">
+            `ArrowSpace` Performance Analysis: 100K Dimensions on Dorothea
+        </a>
+    </h2>
+    <div class="blog-post-abstract">
+        <p><strong>Training</strong> Graph Wiring on the Dorothea dataset.</p>
+        <ul>
+            <li>How fast is `arrowspace` on a 100K dimensions dataset</li>
+            <li>What are the potential applications for Graph Wiring</li>
+            <li>What is the connection between Rayleigh score and epiplexity</li>
+        </ul>
+    </div>
+    <a href="/posts/015_arrowspace_stress-test_on_dorothea_dataset" class="blog-read-more">Read more →</a>
+</article>
+
 <!-- Blog Post 14: Graph Wiring -->
 <article class="blog-post-card">
     <div class="blog-post-meta">February 5, 2026</div>
