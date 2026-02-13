@@ -192,3 +192,6 @@ This is the **first systematic comparison** of normalized vs unnormalized inputs
 This reverses standard preprocessing wisdom for a specific but important algorithm class: feature-space manifold learning on high-dimensional (sparse) data.
 
 To find out how all of this connects to surface minimisation in physical networks, you'll have to wait for `surfface-rs` to be operational. `surfface-rs` will hopefully bring together vector search (Graph Wiring), epiplexity and surface minimisation in a coherent framework to approximate computation for this and others classes of algorithms.
+
+## Acknoledgements
+I gratefully acknowledge [Enverge Labs](https://www.enverge.ai/enverge-labs) for kindly providing the computation time used to run these experiments on their H100 GPU cluster powered by clean and cheap energy.
