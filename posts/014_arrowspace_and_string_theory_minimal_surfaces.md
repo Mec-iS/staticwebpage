@@ -12,6 +12,8 @@ A recurring theme in my work on `arrowspace` is that **vector spaces are not jus
 
 This post is a progress update. It's exploratory, its proof is not fully written down yet but it's concrete enough to outline what would need to be shown and why it could matter for both sciences (anything using minimising surfaces) and **data engineering**.
 
+UPDATE: These ideas are now be put into testable code with [`surfface-rs`](https://github.com/tuned-org-uk/surfface-rs), a library that will try to demonstrate the principles defined in this post.
+
 ## The trigger: Meng et al. (2026) and surface optimization
 
 Meng et al. (2026) study physical networks (connectomes, vasculature, corals, plants) and argue that classical "wiring minimization" (length/Steiner-tree style) misses key observed motifs. They propose that the right cost must account for **surface constraints**, and they report an exact mapping of surface minimization to higher-dimensional Feynman diagrams in string theory, with predictions like the emergence of **trifurcations** and stable branching morphologies.
