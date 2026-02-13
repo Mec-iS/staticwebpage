@@ -8,6 +8,8 @@ categories: [arrowspace, vector-search, knowledge-graphs, string-theory, surface
 
 # ArrowSpace Performance Analysis: 100K Dimensions on Dorothea
 
+Summary: `arrowspace` is quite fast at building graphs also in high-dimensional scenarios, in particular considering its early stage of development (paper and codebase were published in September 2025). Rayleigh confirms itself as an [epiplexity](https://arxiv.org/abs/2601.03220) index. Relevant critical points are raised against normalising raw input for this class of algorithms. Rayleigh-based score score provides a computationally cheap proxy for "how much an item deviates from learned structure", which is operationally useful for active learning and OOD detection in RAG systems.
+
 `arrowspace` successfully scaled to 100,000-dimensional data, processing 800 samples from the Dorothea biomarker dataset in 41-110 seconds with >600× memory compression (610 MB → 1 MB). The system achieved 5-22% graph density (mean: 11.7%) through 648 parameter sweep experiments, with 24% of configurations reaching >10% density in under 60 seconds.
 
 This is a good step forward for Graph Wiring and the potential AI Memory Layer that will provide next-gen tools for AI engineering and AI operations at scale.
@@ -23,8 +25,6 @@ The `ArrowSpace` pipeline consists of four stages with vastly different costs:
 **Laplacian Construction** (<1% of runtime): Builds sparse feature-space Laplacian from centroid transpose, enforcing the critical invariant `Manifold = Laplacian(Transpose(Centroids))`. Logs confirm "Building Laplacian from 25 centroids × 214 features" producing 214×214 matrices with 1,164-4,690 non-zeros (mean: 2,741). Construction time: <100ms, negligible at this scale.
 
 **TauMode Computation** (62% of runtime, **critical bottleneck**): Computes Rayleigh quotient λᵢ = xᵢᵀLxᵢ/‖xᵢ‖² for each item using **original 100k features**, not JL-reduced space. Throughput: 27 items/sec on 6 threads, yielding 33s ± 11s for 800 items . This stage cannot be accelerated by JL projection because it requires spectral fidelity on the full feature manifold.
-
-TLDR; `arrowspace` is quite fast at building graphs also in high-dimensional scenarios, in particular considering its early stage of development (paper and codebase were published in September 2025). Rayleigh confirms itself as an [epiplexity](https://arxiv.org/abs/2601.03220) index. Relevant critical points are raised against normalising raw input for this class of algorithms. Rayleigh-based score score provides a computationally cheap proxy for "how much an item deviates from learned structure", which is operationally useful for active learning and OOD detection in RAG systems.
 
 All data and logs are available in [this repo](https://github.com/tuned-org-uk/arrowspace_dorothea/tree/main/storage).
 
