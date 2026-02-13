@@ -8,7 +8,7 @@ categories: [arrowspace, vector-search, knowledge-graphs, string-theory, surface
 
 # ArrowSpace Performance Analysis: 100K Dimensions on Dorothea
 
-Summary: `arrowspace` is quite fast at building graphs also in high-dimensional scenarios, in particular considering its early stage of development (paper and codebase were published in September 2025). Rayleigh confirms itself as an [epiplexity](https://arxiv.org/abs/2601.03220) index. Relevant critical points are raised against normalising raw input for this class of algorithms. Rayleigh-based score score provides a computationally cheap proxy for "how much an item deviates from learned structure", which is operationally useful for active learning and OOD detection in RAG systems.
+Summary: `arrowspace` is quite fast at building graphs also in high-dimensional scenarios, in particular considering its early stage of development (paper and codebase were published in September 2025). Rayleigh confirms itself as a good proxy for [epiplexity](https://arxiv.org/abs/2601.03220). Relevant critical points are raised against normalising raw input for this class of algorithms. Rayleigh-based score provides a computationally cheap proxy for "how much an item deviates from learned structure", which is operationally useful for active learning and OOD detection in RAG systems.
 
 `arrowspace` successfully scaled to 100,000-dimensional data, processing 800 samples from the Dorothea biomarker dataset in 41-110 seconds with >600× memory compression (610 MB → 1 MB). The system achieved 5-22% graph density (mean: 11.7%) through 648 parameter sweep experiments, with 24% of configurations reaching >10% density in under 60 seconds.
 
@@ -154,7 +154,7 @@ Standard ML wisdom says "always normalize for distance-based algorithms," but `A
 
 **1. Feature-space duality**: `ArrowSpace` builds `Laplacian(Transpose(Centroids))`, clustering features in item-space rather than items in feature-space. After transpose, feature magnitudes encode biological importance (i.e. gene activation levels). L2 normalization forces all features to "equal importance," destroying the signal hierarchy we need to preserve .
 
-**2. Curse of dimensionality on hypersphere**: In 100k dimensions, hypersphere volume concentrates in a thin shell. All normalized vectors become nearly orthogonal with distances $$\approx \sqrt{2}$$ (constant). Natural clusters based on magnitude vanish; distance-based clustering sees only noise .
+**2. Curse of dimensionality on hypersphere**: In 100k dimensions, hypersphere volume concentrates in a thin shell. All normalized vectors become nearly orthogonal with distances $$\approx \sqrt{2}$$ (constant). Natural clusters based on magnitude vanish; distance-based clustering sees only noise.
 
 **3. JL projection amplification**: Johnson-Lindenstrauss preserves distances with error $$\epsilon$$, but on a hypersphere where all $$\|x - y\| \approx \sqrt{2}$$, reconstruction error dominates structure. For unnormalized sparse vectors with distances varying $$0.1-10+$$, JL preserves relative distances better, and clustering sees hierarchical scales.
 
