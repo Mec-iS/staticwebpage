@@ -24,7 +24,7 @@ The `ArrowSpace` pipeline consists of four stages with vastly different costs:
 
 **TauMode Computation** (62% of runtime, **critical bottleneck**): Computes Rayleigh quotient λᵢ = xᵢᵀLxᵢ/‖xᵢ‖² for each item using **original 100k features**, not JL-reduced space. Throughput: 27 items/sec on 6 threads, yielding 33s ± 11s for 800 items . This stage cannot be accelerated by JL projection because it requires spectral fidelity on the full feature manifold.
 
-TLDR; `arrowspace` is quite fast to build graphs also in high-dimensional data considering is early stage of development. Rayleigh confirms itself as an [epiplexity](https://arxiv.org/abs/2601.03220) index. Relevant critical points are raised against normalising raw input for this class of algorithms. Rayleigh-based score score provides a computationally cheap proxy for "how much an item deviates from learned structure", which is operationally useful for active learning and OOD detection in RAG systems.
+TLDR; `arrowspace` is quite fast at building graphs also in high-dimensional scenarios, in particular considering its early stage of development (paper and codebase were published in September 2025). Rayleigh confirms itself as an [epiplexity](https://arxiv.org/abs/2601.03220) index. Relevant critical points are raised against normalising raw input for this class of algorithms. Rayleigh-based score score provides a computationally cheap proxy for "how much an item deviates from learned structure", which is operationally useful for active learning and OOD detection in RAG systems.
 
 All data and logs are available in [this repo](https://github.com/tuned-org-uk/arrowspace_dorothea/tree/main/storage).
 
