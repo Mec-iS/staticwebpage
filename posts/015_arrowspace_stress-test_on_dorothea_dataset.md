@@ -154,11 +154,9 @@ Standard ML wisdom says "always normalize for distance-based algorithms," but `A
 
 **1. Feature-space duality**: `ArrowSpace` builds `Laplacian(Transpose(Centroids))`, clustering features in item-space rather than items in feature-space. After transpose, feature magnitudes encode biological importance (i.e. gene activation levels). L2 normalization forces all features to "equal importance," destroying the signal hierarchy we need to preserve .
 
-**2. Curse of dimensionality on hypersphere**: In 100k dimensions, hypersphere volume concentrates in a thin shell. All normalized vectors become nearly orthogonal with distances ≈√2 (constant). Natural clusters based on magnitude vanish; distance-based clustering sees only noise .
+**2. Curse of dimensionality on hypersphere**: In 100k dimensions, hypersphere volume concentrates in a thin shell. All normalized vectors become nearly orthogonal with distances $$\approx \sqrt{2}$$ (constant). Natural clusters based on magnitude vanish; distance-based clustering sees only noise .
 
-**3. JL projection amplification**: Johnson-Lindenstrauss preserves distances with error ε, but on a hypersphere where all $$||x-y|| ≈ \sqrt2$$, reconstruction error dominates structure. For unnormalized sparse vectors with distances varying 0.1-10+, JL preserves relative distances better, and clustering sees hierarchical scales .
-
-**4. Sparsity loss**: Dorothea is 99.9% sparse (binary biomarkers). Unnormalized: xᵀLx skips zeros (fast). Normalized: xᵀLx computes all entries (slow). Effect scales with dimensionality, JL target dimension, and Laplacian density .
+**3. JL projection amplification**: Johnson-Lindenstrauss preserves distances with error $$\epsilon$$, but on a hypersphere where all $$\|x - y\| \approx \sqrt{2}$$, reconstruction error dominates structure. For unnormalized sparse vectors with distances varying $$0.1-10+$$, JL preserves relative distances better, and clustering sees hierarchical scales.
 
 ### Theoretical Implications: Epiplexity and Scale Awareness
 
@@ -167,7 +165,7 @@ From the epiplexity framework, $$\lambda = \frac{x^\top Lx}{\|x\|^2}$$ measures 
 - **Unnormalized**: $$\|x\|$$ encodes total activity, λ measures alignment. High $$\|x\|$$, high λ = strong structured signal. High $$\|x\|$$, low λ = strong unstructured noise.
 - **Normalized** ($$\|x\|$$=1): Total activity information erased. λ only measures alignment, cannot distinguish strong vs weak patterns.
 
-The Rayleigh quotient is **not invariant** under individual item rescaling: x → αx changes λ by factor α². L2 normalization scales each item by 1/$$\|x\|$$, introducing per-item bias that breaks the natural spectral distribution we seek to measure .
+The Rayleigh quotient is **not invariant** under individual item rescaling: x → αx changes λ by factor α². L2 normalization scales each item by $$1/\|x\|$$, introducing per-item bias that breaks the natural spectral distribution we seek to measure .
 
 ### Novel Contribution and Recommendations
 
