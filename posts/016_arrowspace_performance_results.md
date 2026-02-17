@@ -54,7 +54,7 @@ All 18 individual query curves confirm the pattern: green (Taumode) sits above o
 
 <img src="../assets/blog/016/cve/cve_c7_per_query_curves.png" alt="diagram 7 Per Query Score Curves" width="88%"/>
 
-## Ranking Agreement \& NDCG
+## Ranking Agreement & NDCG
 
 ### NDCG@10 per Query
 
