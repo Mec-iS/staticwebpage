@@ -229,7 +229,25 @@ layout: default
     <h2>📝 Selected Posts</h2>
   </div>
 
-  <div class="blog-posts">
+  <div class="blog-posts"><!-- Blog Post 16: Capabilities, speed and accuracy -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">February 17, 2026</div>
+    <h2 class="blog-post-title">
+        <a href="/posts/016_arrowspace_performance_results">
+            `arrowspace`: Capabilities, speed and accuracy
+        </a>
+    </h2>
+    <div class="blog-post-abstract">
+        <p><strong>Testing</strong> all aspect of Graph Wiring on semantic data.</p>
+        <ul>
+            <li>How fast is `arrowspace`</li>
+            <li>How accurate is `arrowspace`</li>
+            <li>`arrowspace` can relevantly improve RAG systems</li>
+        </ul>
+    </div>
+    <a href="/posts/016_arrowspace_performance_results" class="blog-read-more">Read more →</a>
+</article>
+
 <!-- Blog Post 12: Tauformer / Topological Transformer -->
 <article class="blog-post-card">
     <div class="blog-post-meta">January 5, 2026</div>

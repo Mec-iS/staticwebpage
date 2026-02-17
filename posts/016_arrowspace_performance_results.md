@@ -6,7 +6,7 @@ author: tuned-org-uk
 categories: [arrowspace, vector-search, knowledge-graphs, string-theory, surfaces, interfaces]
 ---
 
-# arrowspace decisive bench: capabilities, speed and accuracy 
+# Capabilities, speed and accuracy 
 
 `arrowspace` v0.25.14 is available.
 
@@ -15,20 +15,20 @@ You can find `arrowspace` in the:
 * [Rust repository](https://github.com/Mec-iS/arrowspace-rs) ↪️ `cargo add arrowspace`
 * and [Python repository](https://github.com/tuned-org-uk/pyarrowspace) ↪️ `pip install arrowspace`
 
-## summing up
+## Summing up
 
 It is now six months that the [Spectral Indexing](/arrowspace-paper) paper has been published and it is time to account for the current state of development with a showdown of perfomance in different dimensions: capabilities, speed, accuracy.
 
-You can read something about performace in the [previous post](/posts/015_arrowspace_stress-test_on_dorothea_dataset.md), in this one I am going to extend the analysis to every aspect thanks to the results returned by a major test campaign leveraging two datasets at the opposite edges of vector spaces applications: text emebeddings (Sentence Transformer on the [CVE dataset](https://cve.org)) and sparse biochemical one-hot embeddings (Dorothea 100K dimensions for biochemical markers classifications).
+You can read something about performace in the [previous post](/posts/015_arrowspace_stress-test_on_dorothea_dataset.md), in this one I am going to extend the analysis to every aspect thanks to the results returned by a major test campaign leveraging two datasets at the opposite edges of vector spaces applications: text embeddings (Sentence Transformer on the [CVE dataset](https://cve.org), high semantic content) and biochemical data (Dorothea 100K dimensions for biochemical markers classifications, sparse, one-hot, non-embedded).
 
-These datasets have been selected because they represent opposite in the spectrum of vector spaces characteristics so to highlight strenghts and non-covered areas for `arrowspace`. Briefly, text embeddings are dense representation with high semantic content used for text documents and AI/Transformers workloads while Dorothea 100K is a one-hot sparse representation mostly used for numerical analysis and biochemistry classification. In general, the first one has been used to test what `arrowspace` can do, the second for what it cannot do.
+These datasets have been selected because they stand as opposites in the spectrum of vector spaces characteristics so to highlight strenghts and non-covered areas for `arrowspace`. Briefly, text embeddings are dense representation with high semantic content used for text documents and AI/Transformers workloads while Dorothea 100K is a one-hot sparse representation mostly used for numerical analysis and biochemistry classification. In general, the first one has been used to test what `arrowspace` can do, the second for what it cannot do.
 
 | dataset | link | results |
 |----------|----------|----------|
 | CVE | [data](https://www.cve.org/Downloads) | [v0.25.x](https://github.com/tuned-org-uk/pyarrowspace/tree/main/tests/output/v0_25/1771184871_test_2_5K_clusters) |
-| Dorothea 100K | [data](https://archive.ics.uci.edu/dataset/169/dorothea) | [experiment 7](https://github.com/tuned-org-uk/arrowspace_dorothea/tree/main/storage) |
+| Dorothea 100K | [data](https://archive.ics.uci.edu/dataset/169/dorothea) | [experiment 7 on v0.25.14](https://github.com/tuned-org-uk/arrowspace_dorothea/tree/main/storage) |
 
-For the build-up to this level of testing, please see previous posts: [004](/posts/004_beyond_cosine_similarity), [005](/posts/005_fast_approximate_nearest_neighbours),  [008](/posts/008_arrowspace_proof_of_concept_energy_informed_search), [015](/posts/015_arrowspace_stress-test_on_dorothea_dataset).
+For the building-up to this level of testing, please see previous posts: [004](/posts/004_beyond_cosine_similarity), [005](/posts/005_fast_approximate_nearest_neighbours),  [008](/posts/008_arrowspace_proof_of_concept_energy_informed_search), [015](/posts/015_arrowspace_stress-test_on_dorothea_dataset).
 
 ---
 
