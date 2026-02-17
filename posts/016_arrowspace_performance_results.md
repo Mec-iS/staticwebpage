@@ -322,6 +322,8 @@ Each config traces a unique path through spectral metrics but **converges to ide
 
 ## Conclusion
 
+Consider joining the [next online event about all this](https://luma.com/n9zexz3g).
+
 Take aways:
 * `arrowspace` eigenmaps excels in semantically linked features.
 * to work on non-semantically linked (sparse) features, energymaps will be tested if they perform better; `surfface` will be probably a better tool also for classification because it redesigns the compression step and build a much more information-dense laplacian (we will try to see also how this is related to the concept of Epiplexity). There is a lot to understand in terms of distribution of lambdas and/or how to build a better 1D representation. **taumode** works for searching-indexing but other 1D scores can be designed for other purpose using the same base provided by [Graph Wiring](/posts/014_arrowspace_and_string_theory_minimal_surfaces).
