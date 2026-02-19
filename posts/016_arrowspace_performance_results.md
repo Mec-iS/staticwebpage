@@ -40,19 +40,25 @@ Here is the full visual analysis of the CVE spectral search test across 18 vulne
 
 Taumode maintains the highest scores at every rank position (1–15), with an average score of 0.887 versus Cosine's 0.833 — a **+0.054 absolute lift** across all 270 query-rank cells. The shaded bands show Taumode also has tighter variance.
 
-<img src="../assets/blog/016/cve/cve_c1_score_decay.png" alt="diagram 1" width="88%"/>
+<div class="image-box">
+    <img src="../assets/blog/016/cve/cve_c1_score_decay.png" alt="diagram 1 average on all queries" width="88%"/>
+</div>
 
 ### Score Lift Over Cosine
 
 The per-rank lift is consistently positive for both spectral methods, with Taumode gaining +0.04 to +0.07 at every position. The lift is strongest at rank 1 and remains significant even at rank 15 — critical for RAG tail stability.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c2_score_lift.png" alt="diagram 2 Score Lift" width="88%"/>
+</div>
 
 ### Per-Query Score Curves
 
 All 18 individual query curves confirm the pattern: green (Taumode) sits above orange (Hybrid) which sits above blue (Cosine) with near-perfect consistency. Only Q14 (command injection) shows Taumode with slightly steeper tail decay.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c7_per_query_curves.png" alt="diagram 7 Per Query Score Curves" width="88%"/>
+</div>
 
 ## Ranking Agreement & NDCG
 
@@ -60,19 +66,25 @@ All 18 individual query curves confirm the pattern: green (Taumode) sits above o
 
 Taumode vs Hybrid achieves NDCG ≥ 0.93 on 15/18 queries, meaning the spectral methods largely agree on ranking. The Taumode-vs-Cosine NDCG is more variable (mean 0.685, std 0.407), reflecting that spectral re-ranking genuinely reshuffles results for some queries (Q1, Q4, Q7, Q14).
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c3_ndcg.png" alt="diagram 3 NDCG" width="88%"/>
+</div>
 
 ### Rank Correlation Heatmap
 
 The Spearman/Kendall heatmap reveals three query categories: fully concordant (green rows like Q2, Q3, Q5, Q15, Q18), partially concordant (Q6, Q10, Q12), and divergent (Q1, Q4, Q7, Q14 with ρ ≈ 0). Divergent queries are where the spectral manifold injects the most novel structure.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c4_rank_corr.png" alt="diagram 4 Rank Correlation" width="88%"/>
+</div>
 
 ### Ranking Agreement Categories
 
 7 of 18 queries have perfect agreement across all methods, while 6 show "spectral divergence" where Hybrid and Taumode agree but diverge from Cosine. This pattern is useful: λ provides a computationally cheap proxy for detecting where learned manifold structure differs from raw cosine similarity.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c8_agreement.png" alt="diagram 8 Ranking Agreement" width="88%"/>
+</div>
 
 ### Tail Quality Analysis (RAG Stability)
 
@@ -82,20 +94,25 @@ Per the scoring methodology, tail quality metrics are the primary indicators of 
 
 Taumode achieves the highest T/H ratio (0.990) versus Cosine (0.989), meaning scores decay less from head to tail. While the absolute difference is small (~0.001), Taumode wins on 14/18 queries — a statistically meaningful pattern.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c5_th_ratio.png" alt="diagram 5 RAG Stability" width="88%"/>
+</div>
 
 #### Tail Coefficient of Variation
 
 Lower CV means more stable tail scores. Taumode achieves the lowest CV on 14/18 queries (avg 0.0028 vs Cosine's 0.0029). The advantage is most pronounced on harder queries like Q3 (deserialization) and Q14 (command injection).
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c6_tail_cv.png" alt="diagram 6 Tail Coefficient Variation" width="88%"/>
+</div>
 
 #### Tail Decay Rate by Difficulty
 
 When sorted by query difficulty (hardest left), Taumode consistently shows lower or comparable decay rates. The exception is Q14 (command injection) where Taumode's aggressive re-ranking creates a steeper tail — a known tradeoff of stronger spectral weighting.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c13_decay_rate.png" alt="diagram 13 Tail Decay Tail" width="88%"/>
----
+</div>
 
 ### Explorative Visualizations
 
@@ -103,61 +120,81 @@ When sorted by query difficulty (hardest left), Taumode consistently shows lower
 
 This query × rank heatmap shows the exact score difference (Taumode − Cosine) at every cell. The nearly uniform green confirms that spectral search provides a **global score elevation**, not just a top-k effect. The few yellow/red cells indicate where re-ranking shifts results rather than just boosting.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c14_boost_map.png" alt="diagram 14 Spectral Boost Map" width="88%"/>
+</div>
 
 #### Head Score: Cosine vs Taumode
 
 Every point sits above the diagonal, confirming Taumode improves head scores for **all 18 queries**. Point size encodes T/H ratio improvement — queries with larger bubbles benefit most from spectral search in the tail.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c9_head_scatter.png" alt="diagram 9 Head Score" width="88%"/>
+</div>
 
 #### Score Distribution Violins
 
 Pooling all 270 scores per method, the violins show Taumode's entire distribution is shifted ~0.05 higher than Cosine. The Cosine distribution has a wider lower tail (more low-scoring results), which Taumode compresses upward.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c12_violin.png" alt="diagram 12 Score Dist Violins Head" width="88%"/>
+</div>
 
 #### Top-10 Result Overlap
 
 Hybrid–Taumode overlap averages ~0.85, confirming the spectral methods retrieve similar items. Cosine–Taumode overlap is lower (~0.65), particularly on divergent queries Q1, Q4, Q7, Q14 where spectral structure surfaces different CVEs.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c11_overlap.png" alt="diagram 11 Results Overlap" width="88%"/>
+</div>
 
 #### Re-ranking Position Shifts
 
 The histogram of rank shifts (Cosine → Taumode) shows a sharp peak at 0 with symmetric tails, meaning Taumode mostly preserves cosine ordering while making targeted swaps. This is the ideal profile: not random reshuffling, but structured refinement.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c15_rerank_hist.png" alt="diagram 15 Re-ranking Position Shift" width="88%"/>
+</div>
 
 #### Cumulative Score Advantage
 
 The running cumulative advantage shows Taumode accumulating **+0.65 total score** over Cosine by rank 15, growing linearly. This linearity means the spectral advantage doesn't diminish deeper in the results — exactly the property needed for stable RAG retrieval.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c22_cumul_adv.png" alt="diagram 22 Cumulative Score Advantage" width="88%"/>
+</div>
 
 #### Cross-Query Stability
 
 Taumode reduces inter-query score variability at the tail ranks (10–15), meaning it produces more **predictable scores regardless of query difficulty**. This is the multi-query stability property that the test_2_CVE_db scoring prioritises.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c17_stability.png" alt="diagram 17 Cross Query Stability" width="88%"/>
+</div>
 
 #### Score Landscape Heatmaps
 
 The side-by-side query×rank heatmaps show Taumode's surface is uniformly brighter (higher scores) with less dark patches in the lower-left (hard queries, deep ranks).
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c20_landscape.png" alt="diagram 20 Score Heatmap" width="88%"/>
+</div>
 
 ### Method Dominance
 
 Taumode wins top-1 score on **all 18 queries**, T/H ratio on 14/18, and lowest tail CV on 14/18. Cosine wins lowest decay on only 3 queries (typically ones where Taumode's re-ranking creates slightly steeper drops).
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c19_wins.png" alt="diagram 19 Method Wins" width="88%"/>
+</div>
 
 ### Spectral Score Lift per Query
 
 Every query shows positive lift, ranging from +0.02 (Q14) to +0.07 (Q3). This confirms that even when the spectral re-ranking diverges from cosine, it produces higher absolute scores.
 
+<div class="image-box">
 <img src="../assets/blog/016/cve/cve_c16_benefit.png" alt="diagram 16 Spectral Score Lift" width="88%"/>
+</div>
 
 ### CVE Dataset Summary Table
 
@@ -181,20 +218,25 @@ The CVE results validate the operationally useful interpretation: even if the ep
 
 The grouped bar chart shows that **pure lambda k-NN achieves F1=0.000 across all five graph configurations**, while cosine k-NN reaches F1=0.867 consistently. Hybrid methods only approach cosine performance when alpha nears 1.0 (minimal spectral component).
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart1_f1_comparison.png" alt="diagram 1 F1 Comparison" width="88%"/>
-
+</div>
 
 #### Balanced Accuracy Heatmap
 
 The heatmap reveals a stark binary pattern: methods involving cosine similarity show green (balanced accuracy ~0.93), while lambda-only and UMAP methods show red (~0.50, random chance). No graph wiring configuration improves the outcome for pure spectral classification.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart2_balanced_acc_heatmap.png" alt="diagram 2 Balanced Acc Heatmap" width="88%"/>
+</div>
 
 #### Method Ranking
 
 The horizontal ranking confirms cosine k-NN as the clear winner, with hybrid methods degrading monotonically as spectral weight increases (lower alpha). Lambda k-NN and UMAP 2D both fail to classify the minority class.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart25_verdict.png" alt="diagram 25 Summary" width="88%"/>
+</div>
 
 ### Search / Hybrid Analysis
 
@@ -202,25 +244,33 @@ The horizontal ranking confirms cosine k-NN as the clear winner, with hybrid met
 
 F1 monotonically increases with alpha across all configurations, meaning **more cosine = better performance** on this dataset. The tight_clusters config shows the strongest hybrid result (F1=0.857 at α=0.9), but still below pure cosine.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart3_alpha_sweep_f1.png" alt="diagram 3 Alpha sweep F1" width="88%"/>
+</div>
 
 #### Precision-Recall Tradeoff
 
 The dual panel reveals that lower alpha values sacrifice recall heavily while providing only marginal precision gains in some configs. The precision-recall curves show that spectral weighting creates an unfavorable tradeoff for classification tasks.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart4_alpha_tradeoffs.png" alt="diagram 4 Alpha tradeoffs" width="88%"/>
+</div>
 
 #### Time vs F1 Tradeoff
 
 Hybrid search takes ~390s per query versus ~45s for pure cosine—an **8× slowdown for equal or worse F1**. The star markers (cosine baseline) consistently sit higher than hybrid points that cost 8× more compute.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart15_time_vs_f1.png" alt="diagram 15 Time vs F1" width="88%"/>
+</div>
 
 #### k-Sensitivity Curves
 
 Lambda k-NN produces flat-zero lines for F1, precision, and recall regardless of k, while cosine k-NN stabilizes quickly at k≥3. UMAP shows noisy, near-zero signals. This confirms the failure mode is structural, not parametric.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart13_k_sensitivity.png" alt="diagram 13 K-sensitivity" width="88%"/>
+</div>
 
 ### Spectral Diagnostics (Novel)
 
@@ -228,27 +278,33 @@ Lambda k-NN produces flat-zero lines for F1, precision, and recall regardless of
 
 The violin plots deliver the core diagnostic: **positive and negative class lambda distributions are nearly identical**. Cohen's d ranges from 0.046 to 0.086 (negligible effect size) across all configurations.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart5_lambda_violins.png" alt="diagram 5 Lambda distribution violins" width="88%"/>
+</div>
 
 #### Lambda Density Landscape
 
 The KDE comparison shows that different graph configs shift the lambda mean (0.21–0.35) but classes remain inseparable within every config. The manifold L = Laplacian(Cᵀ) captures geometric structure but not the biochemical class boundary.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart12_lambda_kde.png" alt="diagram 12 Lambda Density" width="88%"/>
+</div>
 
 #### Lambda CDF with KS Test
 
 The cumulative distribution functions for positive vs negative classes are nearly superimposed. KS statistics are small and p-values large, formally confirming no distributional separation via lambda.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart24_lambda_cdf_ks.png" alt="diagram 24 cumulative distribution functions" width="88%"/>
+</div>
 
 #### Lambda Quantile Class Composition
 
 Breaking items into lambda deciles shows that **no quantile consistently enriches the positive class** above the 9.8% base rate. This rules out even threshold-based spectral classification strategies.
 
-
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart16_lambda_quantile_class.png" alt="diagram 16 Lambda Quantile" width="88%"/>
-
+</div>
 
 ### Novel Structural Visualizations
 
@@ -256,63 +312,73 @@ Breaking items into lambda deciles shows that **no quantile consistently enriche
 
 The contour maps interpolate lambda as a continuous field over UMAP 2D space. The × markers (positive class) scatter across all lambda regions without clustering into distinct spectral zones—lambda topology doesn't align with class boundaries.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart22_lambda_contour.png" alt="diagram 22 UMAP Lambdas Contours" width="88%"/>
+</div>
 
 #### Lambda-UMAP Fusion
 
 Coloring UMAP scatter plots by lambda value reveals that spectral energy is **spatially diffuse**: high-lambda and low-lambda items are interleaved with no class-correlated spatial patterns.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart8_lambda_umap_fusion.png" alt="diagram 8 Lambda UMAP Fusion" width="88%"/>
+</div>
 
 #### Spectral Quality Radar Profiles
 
 Each graph configuration produces a distinct spectral fingerprint, but none achieves the combination needed for classification: high Cohen's d + low overlap. HiCompress shows the highest spectral gap but worst Cohen's d.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart6_spectral_radar.png" alt="diagram 6 Spectral Radar" width="88%"/>
-
+</div>
 
 #### Spectral-Performance Correlation Matrix
 
 The correlation analysis reveals a **negative correlation (-0.73) between best alpha and best hybrid F1**. Lambda std (+0.75) and lambda mean (+0.60) correlate positively with F1—but this reflects that configs with wider lambda spread allow the cosine component to do more work at higher alpha, not that spectral features help.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart14_correlation_matrix.png" alt="diagram 14 Spectral Correlation Matrix" width="88%"/>
-
+</div>
 
 #### Rank Stability Across Configs
 
 The Spearman rank-order correlation between lambda orderings across configs is **near zero** (ρ ∈ [-0.05, 0.11]). This means the manifold Laplacian assigns items to different spectral positions depending on config—lambda is not a stable item property on Dorothea.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart20_rank_stability.png" alt="diagram 20 Spearman Rank-order correlation" width="88%"/>
-
+</div>
 
 #### Effective Rank vs Participation Ratio
 
 Both metrics sit near N=800 (the number of items), indicating the Laplacian spectrum is **near full-rank with minimal compression**. The manifold captures little low-dimensional structure from the 100k sparse features—there's no spectral bottleneck to exploit.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart17_rank_vs_participation.png" alt="diagram 17 Rank vs Participation" width="88%"/>
-
+</div>
 
 #### Information Bottleneck Pipeline
 
 The pipeline visualization traces dimensionality from 100k → 220 (JL projection) → 50 (clusters) → 220 (Laplacian) → 1 (lambda). Classification signal survives through the cosine path but is completely lost at the lambda compression stage.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart21_info_bottleneck.png" alt="diagram 21 Information Bottleneck" width="88%"/>
-
+</div>
 
 #### Method Dominance Sankey
 
 The Sankey flow visualizes how all five configs route through four method types into performance tiers. **Only cosine reaches the "High F1" tier**; lambda and UMAP flow entirely to "Failed."
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart23_sankey.png" alt="diagram 23 Sankey method flows" width="88%"/>
-
+</div>
 
 #### Spectral Diagnostic Bubble
 
 The bubble chart places each config in Cohen's d × F1 space, sized by Fiedler value and colored by overlap. All configs cluster in the low-d, moderate-F1 region—confirming that spectral class separation is the binding constraint.
 
+<div class="image-box">
 <img src="../assets/blog/016/dorothea/chart9_spectral_diagnostic.png" alt="diagram 9 Spectral Diagnostic bubble" width="88%"/>
-
-
+</div>
 
 #### Parallel Coordinates: Config Signatures
 
