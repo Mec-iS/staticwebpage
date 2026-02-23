@@ -349,6 +349,29 @@
         }
     }
 
+    .image-box {
+        display: flex;
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center;    /* Center them horizontally */
+        margin: 20px auto;
+        max-width: fit-content; /* Container shrinks to fit the image width */
+    }
+
+    .image-box img {
+        display: block;
+        border-radius: 8px;    /* Optional: rounded corners */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .image-caption {
+        margin-top: 10px;
+        font-family: sans-serif;
+        font-size: 0.9rem;
+        color: #555;
+        font-style: italic;
+        text-align: center;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
         pre.highlight {
@@ -357,6 +380,7 @@
             border-radius: 4px;
         }
     }
+    
     </style>
     </head>
     <body style="display: flex; min-height: 100vh; flex-direction: column;padding-left: 3em; padding-right: 3em;zoom: 110%;">
@@ -412,4 +436,11 @@
     </div>
     </footer>
 </body>
+<script>
+  document.querySelectorAll('.image-box img').forEach(img => {
+    const caption = document.createElement('p');
+    caption.textContent = img.alt;
+    img.after(caption); // Places the alt text directly below the image
+  });
+</script>
 </html>
