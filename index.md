@@ -172,7 +172,7 @@ layout: default
 </style>
 
 # 👋 Welcome!
-<p><strong class="pure-menu-item">I am Lorenzo</strong> — AI Research Engineer — I produce novel research and code leveraging Large Language Models (GPTs and LLMs). I focus on <strong class="pure-menu-item">workflows automation with AI Agents and code generation</strong>.<br/> Also check out my research on <a href="{{ "/posts/001_energy_informed_db" }}">a new generation of data engineering tools.</a> and a list of my <a href="https://www.techrxiv.org/users/685780">publications at this page</a>.</p>
+<p><strong class="pure-menu-item">I am Lorenzo</strong> — AI Research Engineer — I produce novel research and code leveraging Large Language Models (GPTs and LLMs). I focus on <strong class="pure-menu-item">workflows automation with AI Agents and code generation</strong>.<br/> Also check out my research on <a href="{{ "/posts/001_energy_informed_db" }}">a new generation of data engineering tools.</a> and a list of my <a href="https://www.techrxiv.org/users/685780?articles_format=list&view_mode=publications">publications at this page</a>.</p>
 
 <div class="research-container">
   <h2 class="research-header">
@@ -180,6 +180,13 @@ layout: default
   </h2>
 
   <div class="research-grid">
+    <div class="research-card card-bmpp-paper">
+      <a href="{{ "/graph-wiring" }}">
+        <h3>Graph Wiring</h3>
+        <p>Vector Analysis, Retrieval and Curation</p>
+      </a>
+    </div>
+
     <div class="research-card card-tauformer">
       <a href="{{ "/posts/012_topological_transformer_tauformer_domain_memory_in_attention" }}">
         <h3>Tauformer</h3>
