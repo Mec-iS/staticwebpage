@@ -12,7 +12,7 @@ Here it is summary of the last six months of research: from the idea for Spectra
 
 ## Why cosine can be arbitrary
 
-Steck et al. show that when embeddings are learned under a dot‑product objective, there can be a “degree of freedom” that makes cosine outcomes non‑unique even when dot‑product predictions are well‑defined. In particular, for one common regularization, the solution is invariant not only to rotations but also to per‑dimension rescalings $D$ (diagonal), and those rescalings change cosine similarities after normalization. In a full‑rank example, an allowed choice of $D$ makes item–item cosine similarity collapse to the identity matrix (each item only similar to itself), illustrating how cosine can become meaningless without violating the training objective.
+Steck et al. show that when embeddings are learned under a dot‑product objective, there can be a “degree of freedom” that makes cosine outcomes non‑unique even when dot‑product predictions are well‑defined. In particular, for one common regularization, the solution is invariant not only to rotations but also to per‑dimension rescalings $$D$$ (diagonal), and those rescalings change cosine similarities after normalization. In a full‑rank example, an allowed choice of $$D$$ makes item–item cosine similarity collapse to the identity matrix (each item only similar to itself), illustrating how cosine can become meaningless without violating the training objective.
 
 Paper: *Is Cosine-Similarity of Embeddings Really About Similarity?*
 [https://arxiv.org/pdf/2403.05440](https://arxiv.org/pdf/2403.05440)
@@ -26,7 +26,7 @@ Paper: *MRR-Top0: A Topology-Aware Extension of Mean Reciprocal Rank for Semanti
 
 ## Reweighting with ArrowSpace
 
-ArrowSpace’s core move is to stop treating similarity as “just an angle” and instead blend geometry with dataset structure using a manifold invariant computed in feature‑space. From this Laplacian manifold, `ArrowSpace` compresses global structure into per‑item scalar spectral signatures (Rayleigh‑quotient style $\lambda$), so retrieval can reweight candidates by “how aligned they are with learned structure,” not merely how close they are in cosine space. Even if you treat $\lambda$’s deeper interpretation cautiously, it is still an operationally cheap proxy for deviation‑from‑structure that you can use for tail stabilization and OOD‑style flags in retrieval pipelines.
+ArrowSpace’s core move is to stop treating similarity as “just an angle” and instead blend geometry with dataset structure using a manifold invariant computed in feature‑space. From this Laplacian manifold, `ArrowSpace` compresses global structure into per‑item scalar spectral signatures (Rayleigh‑quotient style $$\lambda$$), so retrieval can reweight candidates by “how aligned they are with learned structure,” not merely how close they are in cosine space. Even if you treat $$\lambda$$’s deeper interpretation cautiously, it is still an operationally cheap proxy for deviation‑from‑structure that you can use for tail stabilization and OOD‑style flags in retrieval pipelines.
 
 Core ArrowSpace / spectral indexing reference:
 Moriondo, *ArrowSpace: introducing Spectral Indexing for vector search* (JOSS 2025)
@@ -34,7 +34,7 @@ Moriondo, *ArrowSpace: introducing Spectral Indexing for vector search* (JOSS 20
 
 ## Measuring the win: MRR‑Top0
 
-MRR‑Top0 extends MRR by scoring the entire top‑k list, weighting each relevant item’s reciprocal rank by a topology factor $T_{q,i}$. That topology factor explicitly combines:
+MRR‑Top0 extends MRR by scoring the entire top‑k list, weighting each relevant item’s reciprocal rank by a topology factor $$T_{q,i}$$. That topology factor explicitly combines:
 
 - Query‑anchored Personalized PageRank
 - A conductance‑based cohesion reward
@@ -63,11 +63,11 @@ Blog: [*Beyond Cosine: TauMode Excels on CVE Dataset*](/posts/015_arrowspace_str
 
 ### 1. MRR-Top0: Topology-Aware Ranking Quality
 
-The new MRR-Top0 metric was introduced to measure both relevance order and structural quality by weighting the reciprocal rank with the normalised $\lambda$ score (a surrogate for Dirichlet dispersion / topological PageRank).
+The new MRR-Top0 metric was introduced to measure both relevance order and structural quality by weighting the reciprocal rank with the normalised $$\lambda$$ score (a surrogate for Dirichlet dispersion / topological PageRank).
 
 - **Taumode Dominance**: Across the 18 queries, `Taumode (τ=0.42)` consistently achieves the highest MRR-Top0 score, averaging **0.0218** compared to `Hybrid` (0.0201) and pure `Cosine` (0.0078).
 - **High Variance by Query**: The bar chart `cve_mrr_top0.jpg` shows that on certain queries (e.g., Q7, Q14, Q16), the topological MRR-Top0 spikes significantly for Taumode and Hybrid. This indicates that for queries where the semantic similarity alone struggles to differentiate candidates, ArrowSpace's graph-wiring successfully identifies items that are central to the underlying feature manifold.
-- **Why this matters**: A higher MRR-Top0 means that items returned at the top of the ranking are not just semantically close to the query, but they occupy structurally important (high-$\lambda$) positions in the dataset graph.
+- **Why this matters**: A higher MRR-Top0 means that items returned at the top of the ranking are not just semantically close to the query, but they occupy structurally important (high-$$\lambda$$) positions in the dataset graph.
 
 
 ### 2. Tail Quality and Stability
@@ -102,7 +102,7 @@ $$
 E = \frac{x^T L \, x}{x^T x}
 $$
 
-where $L = \text{Laplacian}(C^T)$ is the feature-space graph Laplacian over centroids, producing a bounded synthetic score $\lambda = \tau \cdot E_{\text{bounded}} + (1 - \tau) \cdot G_{\text{clamped}}$ that captures how much an item deviates from the learned manifold structure. Epiplexity (Finzi et al., 2026) uses essentially the same mathematical object — the information in the program that minimizes the time-bounded MDL — but applied to the *training process* of neural networks. Its practical estimator is the area under the loss curve above the final loss, which measures how much *structural* information (as opposed to random information) a computationally-bounded observer extracts from data.
+where $$L = \text{Laplacian}(C^T)$$ is the feature-space graph Laplacian over centroids, producing a bounded synthetic score $$\lambda = \tau \cdot E_{\text{bounded}} + (1 - \tau) \cdot G_{\text{clamped}}$$ that captures how much an item deviates from the learned manifold structure. Epiplexity (Finzi et al., 2026) uses essentially the same mathematical object — the information in the program that minimizes the time-bounded MDL — but applied to the *training process* of neural networks. Its practical estimator is the area under the loss curve above the final loss, which measures how much *structural* information (as opposed to random information) a computationally-bounded observer extracts from data.
 
 The RQGNN paper (Dong et al., 2023) directly proves that accumulated spectral energy — representable as a Rayleigh quotient — is the "driving factor behind the anomalous properties of graphs," achieving +6.74% Macro-F1 over rivals in graph-level anomaly detection. This independently validates the connection: Rayleigh quotients detect deviation from normal structure in both retrieval (arrowspace) and anomaly detection contexts.
 
@@ -155,7 +155,7 @@ This connects to epiplexity's core finding that loss alone (analogous to cosine 
 
 The honest caveat is important: arrowspace's λ operates on a *static* graph Laplacian over pre-computed centroids, while epiplexity is defined over the *training dynamics* of a computationally-bounded observer. Arrowspace λ is an instantaneous snapshot of spectral position; epiplexity is an integral over the learning process. The connection is that both measure deviation from structure — one at retrieval time (O(1) per item), the other at training time (requires full loss curve). This makes λ operationally useful as a *cheap runtime proxy* for a property that epiplexity characterizes rigorously but expensively.
 
-The Dorothea results provide the important boundary condition: on sparse, non-semantic data (100K one-hot features), λ distributions for positive and negative classes are indistinguishable (Cohen's d < 0.09), confirming that the manifold $L = \text{Laplacian}(C^T)$ only captures useful structure when the feature space has genuine semantic content — exactly the domain where epiplexity is non-trivial.
+The Dorothea results provide the important boundary condition: on sparse, non-semantic data (100K one-hot features), λ distributions for positive and negative classes are indistinguishable (Cohen's d < 0.09), confirming that the manifold $$L = \text{Laplacian}(C^T)$$ only captures useful structure when the feature space has genuine semantic content — exactly the domain where epiplexity is non-trivial.
 
 ### Recommended Next Step
 
