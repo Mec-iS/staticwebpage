@@ -63,6 +63,8 @@ Blog: [*Beyond Cosine: TauMode Excels on CVE Dataset*](/posts/015_arrowspace_str
 
 ### 1. MRR-Top0: Topology-Aware Ranking Quality
 
+[Results and code](https://github.com/tuned-org-uk/pyarrowspace/tree/db3a5a3894b09451b896eda1df2d82d259babfb6/tests/output/v0_25/1772482454_test_2_pagerank) 
+
 The new MRR-Top0 metric was introduced to measure both relevance order and structural quality by weighting the reciprocal rank with the normalised $$\lambda$$ score (a surrogate for Dirichlet dispersion / topological PageRank).
 
 - **Taumode Dominance**: Across the 18 queries, `Taumode (τ=0.42)` consistently achieves the highest MRR-Top0 score, averaging **0.0218** compared to `Hybrid` (0.0201) and pure `Cosine` (0.0078).
@@ -71,6 +73,8 @@ The new MRR-Top0 metric was introduced to measure both relevance order and struc
 
 
 ### 2. Tail Quality and Stability
+
+[Results and code](https://github.com/tuned-org-uk/pyarrowspace/tree/db3a5a3894b09451b896eda1df2d82d259babfb6/tests/output/v0_25/1772482454_test_2_pagerank) 
 
 The tail analysis (ranks 4–15) reveals how well the search algorithm maintains relevance deeper into the result set, which is critical for RAG contexts.
 
