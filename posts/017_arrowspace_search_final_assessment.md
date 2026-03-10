@@ -1,7 +1,7 @@
 ---
 title: 017_arrowspace_search_final_assessment.md
 layout: blog_default
-date: 2026-0-08
+date: 2026-03-08
 author: tuned-org-uk
 categories: [arrowspace, vector-search, knowledge-graphs,similarity, cosine]
 ---
