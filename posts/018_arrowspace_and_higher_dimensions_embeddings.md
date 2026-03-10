@@ -210,11 +210,11 @@ At 100M documents:
 - **Compute:** ~2.7× reduction in FLOPs for training, index build, and per‑query similarity; this directly reduces GPU/CPU hours and energy.
 - **Throughput:** the same ArrowSpace cluster can handle ~2–3× more agent calls or serve the same agents with lower p95 latency.
 
-**Throughput** is the most problematic expense: storage and raw compute will probably keep getting cheaper, but the cost of serving ever higher dimensions at inference time is a rising concern. That is why the [compression of structural information that ArrowSpace provides](https://github.com/tuned-org-uk/graph-wiring-epiplexity/blob/main/paper/Epiplexity_A_measure_on_Graph_Wiring.pdf) becomes critical for efficiency and cost savings. If the target scale is “web‑scale retrieval”, having similar or better structural performance using a fraction of the dimensions is a real comparative advantage — especially when ArrowSpace keeps outperforming cosine regardless of how big your embedding model becomes.
+**Throughput** is the most problematic expense: storage and raw compute will probably keep getting cheaper, but the cost of serving ever higher dimensions at inference time is a rising concern. That is why the [compression of structural information that ArrowSpace provides](https://github.com/tuned-org-uk/graph-wiring-epiplexity/blob/main/paper/Epiplexity_A_measure_on_Graph_Wiring.pdf) becomes critical for efficiency and cost savings. If the target scale is “web‑scale retrieval”, having similar or better structural performance using a fraction of the dimensions is a real comparative advantage — especially when ArrowSpace keeps outperforming cosine regardless of how big your embedding model becomes (this should be confirmed on the 4B parameters model but at that point costs moves really on a different order of magnitude).
 
 # Conclusions
 
-Just for reference: fine‑tuning the embeddings for Test 15 (384‑dim) was done on a local laptop with a few hours of compute; Test 16 embeddings (the version used is the 0.6B parameters) required 20 GB of RAM for approximately the same amount of time, using a dedicated Colab environment with an A100 machine.
+Just for reference: for an average developer, fine‑tuning the embeddings for Test 15 (384‑dim) was done on a local laptop with a few hours of compute; Test 16 embeddings (the version used is the 0.6B parameters) required 20 GB of RAM for approximately the same amount of time, using a dedicated Colab environment with an A100 machine.
 
 Increasing embeddings dimensions indeed improved the embeddings by providing part of the additional information that was missing from the 384-dim embeddings but at a given cost; so the team behind this embeddings indeed provided value for the cosine pipeline.
 
