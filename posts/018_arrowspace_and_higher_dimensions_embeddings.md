@@ -223,7 +223,7 @@ At 100M documents:
 
 Just for reference: for an average developer, fine‑tuning the embeddings for Test 15 (384‑dim) was done on a local laptop with a few hours of compute; Test 16 embeddings (the version used is the 0.6B parameters) required 20 GB of RAM for approximately the same amount of time, using a dedicated Colab environment with an A100 machine.
 
-Increasing embeddings dimensions indeed improved the embeddings by providing part of the additional information that was missing from the 384-dim embeddings but at a given cost; so the team behind this embeddings indeed provided value for the cosine pipeline.
+Increasing embeddings dimensions indeed improved the embeddings by providing part of the additional information that was missing from the 384-dim embeddings but at a given cost; so the team behind these embeddings indeed provided value for the cosine pipeline.
 
 `ArrowSpace`'s Taumode still performs better on average in carrying topological information that is structural to the feature-space of the vector collection.
 
