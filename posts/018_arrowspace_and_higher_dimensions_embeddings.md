@@ -17,6 +17,13 @@ TLDR;
 
 Even when we upgrade to strong 1024‑dim embeddings, ArrowSpace’s spectral modes (hybrid/taumode) keep their edge on structure‑aware retrieval and tail behaviour, while the cost gap between 384 and 1024 dimensions stays significant.
 
+Previous blog posts on testing ArrowSpace on CVE [here](/blog).
+
+Code and data:
+* [new embeddings training script](https://github.com/tuned-org-uk/pyarrowspace/blob/main/tests/embeddings_ppx_0_6B.py)
+* [testing script](https://github.com/tuned-org-uk/pyarrowspace/blob/main/tests/test_16_CVE_ppx_embed.py)
+* [test results](https://github.com/tuned-org-uk/pyarrowspace/tree/main/tests/output/v0_25/1772809663_test_16_ppx_low_k)
+
 ## 1. Experimental setups (test 15 vs 16)
 
 - Both tests use the same CVE JSON pipeline, the same query set (18 security queries), the same ArrowSpace graph parameters, the same tau grid (cosine τ=1.0, hybrid τ=0.72, taumode τ=0.42) and the same evaluation metrics (Spearman, Kendall, NDCG@10, MRR‑Top0, tail metrics).
