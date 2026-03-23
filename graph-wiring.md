@@ -143,6 +143,20 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
+  <!-- 2026-03-15 Epiplexity & Graph Wiring -->
+  <div class="timeline-item">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <div class="timeline-item__date">..., 2026</div>
+      <h2 class="timeline-item__title">
+        ...
+      </h2>
+    </div>
+  </div>
+
 </div>
 
 <div class="scroll-down-indicator">
