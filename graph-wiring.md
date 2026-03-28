@@ -31,10 +31,9 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       </h2>
       <p class="timeline-item__meta">
         <strong>Paper:</strong>
-        <a href="https://www.techrxiv.org/users/685780/articles/1329993-arrowspace-spectral-indexing-of-embeddings-using-taumode-%CE%BB%CF%84" target="_blank" rel="noopener">
-          TechRxiv preprint
+        <a href="https://doi.org/10.21105/joss.09002" target="_blank" rel="noopener">
+          <img src="https://zenodo.org/badge/DOI/10.21105/09002.svg" alt="DOI:joss.10.21105.09002">
         </a>
-        · <strong>Author:</strong> Lorenzo Moriondo
       </p>
       <ul class="timeline-item__bullets">
         <li>Introduces ArrowSpace as a spectral vector search library that blends semantic similarity with graph Laplacian energies via the synthetic λτ (taumode) index.</li>
@@ -63,10 +62,9 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       </h2>
       <p class="timeline-item__meta">
         <strong>Paper:</strong>
-        <a href="https://www.techrxiv.org/users/685780/articles/1391083-graph-wiring-eigenstructures-for-vector-datasets-and-llm-operations" target="_blank" rel="noopener">
-          TechRxiv preprint
+        <a href="https://doi.org/10.36227/techrxiv.177220780.02840438/v1" target="_blank" rel="noopener">
+          <img src="https://zenodo.org/badge/DOI/177220780/02840438.svg" alt="DOI:au.177220780.02840438">
         </a>
-        · <strong>Author:</strong> Lorenzo Moriondo
       </p>
       <ul class="timeline-item__bullets">
         <li>Generalises the ArrowSpace intuition into a <em>graph wiring</em> framework that builds discrete graphs from arbitrary vector spaces by transposing data into feature space and wiring features via nearest‑neighbour pairing.</li>
@@ -75,8 +73,7 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       </ul>
       <p class="timeline-item__links">
         <strong>Code:</strong>
-        <a href="https://github.com/tuned-org-uk/graph-wiring-paper" target="_blank" rel="noopener">graph-wiring-paper</a>
-        · <a href="https://github.com/tuned-org-uk/arrowspace" target="_blank" rel="noopener">arrowspace</a>
+        <a href="https://github.com/tuned-org-uk/arrowspace" target="_blank" rel="noopener">arrowspace</a>
         · <a href="https://github.com/tuned-org-uk/surfface" target="_blank" rel="noopener">surfface</a>
       </p>
     </div>
@@ -95,10 +92,9 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       </h2>
       <p class="timeline-item__meta">
         <strong>Paper:</strong>
-        <a href="https://github.com/tuned-org-uk/topological-pagerank/blob/main/mrr-top0-paper.pdf" target="_blank" rel="noopener">
-          preprint
+        <a href="https://doi.org/10.22541/au.177430061.18235541/v1" target="_blank" rel="noopener">
+          <img src="https://zenodo.org/badge/DOI/177430061/18235541.svg" alt="DOI:au.177430061.18235541">
         </a>
-        · <strong>Author:</strong> Lorenzo Moriondo
       </p>
       <ul class="timeline-item__bullets">
         <li>Extends classical MRR with a topology-aware score (MRR‑Top0) that evaluates the full top‑k list using graph signals such as personalized PageRank, conductance, and modularity, rather than only the first relevant hit.</li>
@@ -125,10 +121,9 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       </h2>
       <p class="timeline-item__meta">
         <strong>Paper:</strong>
-        <a href="https://github.com/tuned-org-uk/graph-wiring-epiplexity/blob/main/paper/Epiplexity_A_measure_on_Graph_Wiring.pdf" target="_blank" rel="noopener">
-          preprint
+        <a href="https://doi.org/10.22541/au.177430060.02394540/v1" target="_blank" rel="noopener">
+          <img src="https://zenodo.org/badge/DOI/177430060/02394540.svg" alt="DOI:au.177430060.02394540">
         </a>
-        · <strong>Author:</strong> Lorenzo Moriondo
       </p>
       <ul class="timeline-item__bullets">
         <li>Connects ArrowSpace's λ scores and the emerging <em>graph wiring</em> perspective to <strong>epiplexity</strong>, treating λ as a cheap proxy for how much an item deviates from the learned manifold structure.</li>
@@ -143,7 +138,26 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
-  <!-- 2026-03-15 Epiplexity & Graph Wiring -->
+  <!-- 2026-03-27 MLops Community Podcast -->
+  <div class="timeline-item">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <div class="timeline-item__date">March 27, 2026</div>
+      <h2 class="timeline-item__title">
+        arrowspace: Vector Spaces and Graph Wiring
+      </h2>
+      <p class="timeline-item__meta">
+        <strong>Interview/Podcast:</strong>
+        <a href="https://home.mlops.community/public/videos/arrowspace-vector-spaces-and-graph-wiring" target="_blank" rel="noopener">
+          MLOps Community Podcast
+        </a>
+      </p>
+    </div>
+  </div>
+
   <div class="timeline-item">
     <div class="timeline-item__marker">
       <div class="timeline-dot"></div>
