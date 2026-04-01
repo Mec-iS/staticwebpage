@@ -92,7 +92,7 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       </h2>
       <p class="timeline-item__meta">
         <strong>Paper:</strong>
-        <a href="https://doi.org/10.22541/au.177430061.18235541/v1" target="_blank" rel="noopener">
+        <a href="https://www.authorea.com/users/685780/articles/1397240-mrr-top0-a-topology-aware-extension-of-mean-reciprocal-rank-for-semantic-sensitive-retrieval-evaluation" target="_blank" rel="noopener">
           <img src="https://zenodo.org/badge/DOI/177430061/18235541.svg" alt="DOI:au.177430061.18235541">
         </a>
       </p>
@@ -121,7 +121,7 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       </h2>
       <p class="timeline-item__meta">
         <strong>Paper:</strong>
-        <a href="https://doi.org/10.22541/au.177430060.02394540/v1" target="_blank" rel="noopener">
+        <a href="https://www.authorea.com/users/685780/articles/1397239-epiplexity-and-graph-wiring-an-empirical-study-for-the-design-of-a-generic-algorithm" target="_blank" rel="noopener">
           <img src="https://zenodo.org/badge/DOI/177430060/02394540.svg" alt="DOI:au.177430060.02394540">
         </a>
       </p>
