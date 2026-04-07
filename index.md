@@ -238,11 +238,123 @@ layout: default
 .blog-read-more:hover {
   color: #2980b9;
 }
+
+.media-feature {
+  margin: 2.5rem auto 0;
+  max-width: 1100px;
+}
+
+.media-feature-card {
+  display: grid;
+  grid-template-columns: 1.05fr 1.25fr;
+  gap: 1.25rem;
+  align-items: stretch;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  overflow: hidden;
+}
+
+.media-feature-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  justify-content: center;
+}
+
+.media-feature-points {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.media-feature-links {
+  margin: 0.35rem 0 0;
+}
+
+.media-frame-wrap {
+  min-width: 0;
+}
+
+.media-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: calc(var(--radius-xl) - 0.25rem);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-offset);
+  box-shadow: var(--shadow-sm);
+}
+
+.media-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 860px) {
+  .media-feature-card {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 
 # 👋 Welcome!
 <p><strong class="pure-menu-item">I am Lorenzo</strong> — AI Research Engineer — I produce novel research and code leveraging Large Language Models. I focus on <strong class="pure-menu-item">workflows automation with AI Agents and code generation</strong>.</p>
 <p>An example of my my research on <a href="{{ "/graph-wiring" }}">a new generation of data engineering tools.</a>. More details on <a href="https://github.com/sponsors/tuned-org-uk">Github.</a></p>
+
+
+<section class="media-feature" aria-labelledby="podcast-feature-title">
+  <div class="media-feature-card">
+    <div class="media-feature-copy">
+      <span class="card-badge" style="--card-accent: #01696f;">Podcast</span>
+      <h2 class="section-title" id="podcast-feature-title">
+        Guest appearance: Graph Wiring, epiplexity, and next-gen ML / LLM ops
+      </h2>
+      <p class="section-subtitle">
+        A podcast conversation on Graph Wiring, epiplexity, and the next generation
+        of tools for machine learning and LLM operations.
+      </p>
+
+      <ul class="media-feature-points">
+        <li>How Graph Wiring reframes vector datasets as feature-space manifolds.</li>
+        <li>Why epiplexity matters for retrieval, curation, and model operations.</li>
+        <li>Where spectral tooling can improve ML and LLM infrastructure.</li>
+        <li>What is structural information and how to generate information from datasets</li>
+      </ul>
+
+      <p class="media-feature-links">
+        <a
+          href="https://www.youtube.com/watch?v=S5xbQXBiLs4"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="blog-read-more"
+        >
+          Watch on YouTube <span aria-hidden="true">→</span>
+        </a>
+      </p>
+    </div>
+
+    <div class="media-frame-wrap">
+      <div class="media-frame">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/S5xbQXBiLs4"
+          title="Podcast appearance on Graph Wiring, epiplexity, and next-gen ML and LLM operations"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <div class="research-container">
