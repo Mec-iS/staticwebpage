@@ -314,9 +314,6 @@ layout: default
   <div class="media-feature-card">
     <div class="media-feature-copy">
       <span class="card-badge" style="--card-accent: #01696f;">Podcast</span>
-      <h2 class="section-title" id="podcast-feature-title">
-        Guest appearance: Graph Wiring, epiplexity, and next-gen ML / LLM ops
-      </h2>
       <p class="section-subtitle">
         A podcast conversation on Graph Wiring, epiplexity, and the next generation
         of tools for machine learning and LLM operations.
