@@ -40,13 +40,16 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-    font-family: var(--font-body);
-    background: var(--color-bg);
-    color: var(--color-text);
-    min-height: 100dvh;
-    padding: 0.25rem 0.25rem;
-    -webkit-font-smoothing: antialiased;
-    transition: background var(--transition), color var(--transition);
+        font-family: var(--font-body);
+        background: var(--color-bg);
+        color: var(--color-text);
+        min-height: 100dvh;
+        padding: 0.25rem 0.25rem;
+        -webkit-font-smoothing: antialiased;
+        transition: background var(--transition), color var(--transition);
+        margin: 0;
+        font-size: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
+        line-height: 1.65;
     }
 
     /* ── Section header ────────────────────────────── */
