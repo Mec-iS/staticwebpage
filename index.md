@@ -359,16 +359,6 @@ layout: default
     🔬 Explore my <span>research</span>, protocols and open-source implementations
   </h2>
 
-  <!-- Tag filter bar -->
-  <div class="filter-bar" role="group" aria-label="Filter research by topic">
-    <button class="filter-btn active" data-tag="all">All</button>
-    <button class="filter-btn" data-tag="vector-search">Vector Search</button>
-    <button class="filter-btn" data-tag="graph">Graph</button>
-    <button class="filter-btn" data-tag="transformer">Transformer</button>
-    <button class="filter-btn" data-tag="agents">Agents</button>
-    <button class="filter-btn" data-tag="rust">Rust / OSS</button>
-  </div>
-
   <p class="count-label" id="count-label"></p>
 
   <!-- Cards grid -->

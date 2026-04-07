@@ -1,104 +1,94 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tuned-org-uk - AI Research Engineering</title>
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@3.0.0/build/pure-min.css">
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
-
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
-    <style>
-    /* ── Design tokens ─────────────────────────────── */
-    :root, [data-theme="light"] {
-    --color-bg:             #f7f6f2;
-    --color-surface:        #f9f8f5;
-    --color-surface-2:      #ffffff;
-    --color-surface-offset: #f0ede8;
-    --color-border:         rgba(40,37,29,0.12);
-    --color-text:           #28251d;
-    --color-text-muted:     #7a7974;
-    --color-text-faint:     #bab9b4;
-    --color-primary:        #01696f;
-    --color-primary-hover:  #0c4e54;
-    --shadow-sm: 0 1px 3px rgba(40,37,29,0.07);
-    --shadow-md: 0 4px 16px rgba(40,37,29,0.10);
-    --shadow-lg: 0 12px 36px rgba(40,37,29,0.13);
-    --radius-md: 0.5rem;
-    --radius-lg: 0.75rem;
-    --radius-xl: 1rem;
-    --radius-full: 9999px;
-    --font-body: 'IBM Plex Sans', Arial, sans-serif; margin: 3em;
-    --transition: 200ms cubic-bezier(0.16,1,0.3,1);
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }} - AI Research Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@3.0.0/build/pure-min.css">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --color-bg: #f7f6f2;
+      --color-surface: #f9f8f5;
+      --color-surface-2: #ffffff;
+      --color-surface-offset: #f0ede8;
+      --color-border: rgba(40,37,29,0.12);
+      --color-text: #28251d;
+      --color-text-muted: #7a7974;
+      --color-text-faint: #bab9b4;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --shadow-sm: 0 1px 3px rgba(40,37,29,0.07);
+      --shadow-md: 0 4px 16px rgba(40,37,29,0.10);
+      --shadow-lg: 0 12px 36px rgba(40,37,29,0.13);
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-full: 9999px;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --content-width: min(72rem, calc(100vw - 2rem));
+      --font-body: 'IBM Plex Sans', Arial, sans-serif;
+      --font-mono: 'Ubuntu Mono', monospace;
+      --transition: 200ms cubic-bezier(0.16,1,0.3,1);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
     body {
-        font-family: var(--font-body);
-        background: var(--color-bg);
-        color: var(--color-text);
-        min-height: 100dvh;
-        padding: 0.25rem 0.25rem;
-        -webkit-font-smoothing: antialiased;
-        transition: background var(--transition), color var(--transition);
-        margin: 0;
-        font-size: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
-        line-height: 1.65;
+      margin: 0;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
+      line-height: 1.65;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    /* ── Section header ────────────────────────────── */
-    .research-container { max-width: 1100px; margin: 0 auto; margin-top: 8%; }
-    .research-header {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    font-weight: 600; color: var(--color-text);
-    text-align: center; margin-bottom: 2rem;
-    letter-spacing: -0.01em;
-    }
-    .research-header span { color: var(--color-primary); }
+    a { color: var(--color-primary); }
+    img, svg, video, iframe, embed { display: block; max-width: 100%; }
+    table { width: 100%; border-collapse: collapse; }
+    pre, code, textarea { font-family: var(--font-mono); }
+    pre { overflow-x: auto; }
 
-    /* ── Tag filter bar ────────────────────────────── */
-    .filter-bar {
-    display: flex; gap: 0.5rem; flex-wrap: wrap;
-    justify-content: center; margin-bottom: 2rem;
+    .site-shell {
+      width: min(100%, 84rem);
+      margin: 0 auto;
+      padding-inline: clamp(0.9rem, 3vw, 2rem);
+      padding-top: 0.8rem;
+      padding-bottom: 2rem;
     }
-    .filter-btn {
-    padding: 0.35rem 0.9rem;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
-    color: var(--color-text-muted);
-    font-size: 0.8rem; font-weight: 500;
-    cursor: pointer; transition: all var(--transition);
-    font-family: var(--font-body);
+
+    nav a { margin-right: 1em; }
+    textarea, pre, code {
+        width: 100%;
+        font-family: 'Ubuntu Mono', monospace;
+        color: #fff;
+        background: #111;
     }
-    .filter-btn:hover { color: var(--color-text); border-color: var(--color-primary); }
-    .filter-btn.active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: #fff;
-    }
-        nav a { margin-right: 1em; }
-        textarea, pre, code {
-            width: 100%;
-            font-family: 'Ubuntu Mono', monospace;
-            color: #fff;
-            background: #111;
-        }
-        textarea { height: 6em; }
-        textarea, pre { width: 100%; }
+    textarea { height: 6em; }
+    textarea, pre { width: 100%; }
 
 
-        .main-content {
+    .main-content {
         padding-left: 2.5em;
         padding-right: 2.5em;
-        }
-        footer {
+    }
+    footer {
         margin-top: 2em;
         padding: 1.25em 1em 0.75em 1em;
         background-color: #fafbfc; /* Fallback color */
@@ -110,152 +100,95 @@
         color: #222;
         font-size: 1em;
         box-shadow: 0 3px 12px 0 #e2e2e2;
-        }
-        footer a {
+    }
+    footer a {
         color: #005aff;
         font-weight: bold;
         text-decoration: underline;
-        }
-        footer ul {
+    }
+    footer ul {
         padding-left: 0;
         list-style: none;
         margin-bottom: 1em;
-        }
-        .cta-emoji {
+    }
+    .cta-emoji {
         font-size: 1.3em;
         vertical-align: middle;
-        }
+    }
 
+    nav {
+      font-family: 'Satoshi', Arial, sans-serif;   
+    }
 
-        .pure-menu-item {
-            font-weight: 600;
-            letter-spacing: 0.02em;
-        }
+    nav.pure-menu,
+    .head-on,
+    .intermission,
+    footer,
+    .main-content {
+      width: 100%;
+      max-width: var(--content-width);
+      margin-inline: auto;
+    }
 
+    footer {
+        font-family: 'Satoshi', Arial, sans-serif;  
+    }
 
-        .pure-menu-item a:hover {
-            font-weight: 700;
-            text-shadow: 0 1px 3px rgba(0, 90, 255, 0.3);
-        }
-    
-        .pure-button-primary {
-        background: #005aff;
-        color: #fff;
-        border-radius: 4px;
-        font-weight: bold;
-        letter-spacing: 0.03em;
-        }
-        nav.pure-menu {
-        background: #fafbfc;
-        border-radius: 8px;
-        padding: 0.7em 1.2em;
-        box-shadow: 0 2px 8px #eee;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        }
-        .pure-menu-link {
-        color: #005aff;
-        font-weight: 500;
-        }
-        .pure-menu-link:hover {
-        background: #eaf3ff;
-        text-decoration: underline;
-        }
+    nav.pure-menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: 0.9rem 1rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: var(--space-5);
+      overflow-x: auto;
+    }
 
-        .github-icon {
-        color: #0d111a;
-        font-size: 1.5em;
-        transition: all 0.2s ease;
-        }
-        .github-icon:hover {
-        color: #0046cc;
-        transform: scale(1.1);
-        text-shadow: 0 1px 3px rgba(0, 90, 255, 0.3);
-        }
+    .pure-menu-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
 
+    .pure-menu-link {
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      padding: 0.45rem 0.8rem;
+    }
 
-        .code-block {
-        background: #111;
-        color: #fff;
-        font-family: 'Ubuntu Mono', 'Fira Mono', monospace;
-        font-size: 1em;
-        border-radius: 8px;
-        padding: 1.4em 2.2em;
-        overflow-x: auto;
-        }
-        .code-block .comment {
-        color: #6fa8dc;
-        font-style: italic;
-        }
-        .code-block .function {
-        color: #ffd580;
-        font-weight: bold;
-        }
-        .abstract-section {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        border-left: 4px solid #007bff;
-        padding: 2rem;
-        margin: 2rem 0;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+    .pure-menu-link:hover,
+    .pure-menu-link:focus-visible {
+      background: color-mix(in srgb, var(--color-primary) 10%, white);
+      text-decoration: none;
+    }
 
+    .topbar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: var(--space-5);
+    }
 
-        .abstract-section h2 {
-        color: #2c3e50;
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        }
+    .github-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      box-shadow: var(--shadow-sm);
+      flex-shrink: 0;
+    }
 
-
-        .abstract-content {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: #34495e;
-        text-align: justify;
-        }
-
-
-        .abstract-content p {
-        margin-bottom: 1.2rem;
-        }
-
-
-        .abstract-content strong {
-        color: #2980b9;
-        font-weight: 600;
-        }
-
-
-        .key-contributions {
-        background: rgba(255,255,255,0.7);
-        padding: 1rem;
-        border-radius: 6px;
-        margin: 1rem 0;
-        border: 1px solid #dee2e6;
-        }
-
-
-        .citation-box {
-        background: #f8f9fa;
-        border: 1px solid #dee2e6;
-        padding: 1.5rem;
-        margin: 2rem 0;
-        border-radius: 6px;
-        font-family: 'Courier New', monospace;
-        }
-
-
-        .citation-box strong {
-        color: #495057;
-        }
-        .intermission {
-        background-image: url('assets/footer_14_web.jpg');
-        min-height: 5em;
+    footer, .head-on {
         margin-top: 2em;
         padding: 1.25em 1em 0.75em 1em;
         background-color: #fafbfc; /* Fallback color */
@@ -263,25 +196,193 @@
         background-position: center;
         background-repeat: no-repeat;
         border-radius: 10px;
+        text-align: center;
+        color: #222;
+        font-size: 1em;
         box-shadow: 0 3px 12px 0 #e2e2e2;
-        }
-    </style>
-    </head>
-    <body style="display: flex; min-height: 100vh; flex-direction: column;padding-left: 3em; padding-right: 3em;zoom: 110%;">
-    {% include nav.html %}
-    <a href="https://github.com/tuned-org-uk" target="_blank" aria-label="GitHub Profile" style="position: absolute; top: 3.5em; right: 4em;">
-        <i class="fab fa-github github-icon"></i>
-    </a>
-    <hr>
+    }
+    footer a, .head-on a {
+        color: #005aff;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    footer ul, .head-on ul {
+        padding-left: 0;
+        list-style: none;
+        margin-bottom: 1em;
+    }
+    .cta-emoji {
+        font-size: 1.3em;
+        vertical-align: middle;
+    }
 
+    .head-on,
+    footer,
+    .intermission {
+      margin-top: var(--space-6);
+      padding: 1.1rem 1rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
 
-    <div class="main-content">
-        {{ content }}
+    .main-content > * {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .main-content p,
+    .main-content li {
+      max-width: 72ch;
+    }
+
+    .image-box {
+        margin: 2rem auto;
+        width: min(100%, 1100px);
+    }
+
+    .image-box img {
+        display: block;
+        width: 110%;
+        height: auto;
+        max-width: 1100px;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .image-caption {
+        margin-top: 0.75rem;
+        font-size: 0.95rem;
+        color: #555;
+        text-align: center;
+    }
+
+    .figure-compare {
+        margin: 2rem 0;
+    }
+
+    .fig-compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    .fig-compare-table .image-col {
+        width: 50%;
+        text-align: center;
+        padding: 0.75rem;
+    }
+
+    .fig-compare-table img {
+        width: 100%;
+        max-width: 560px;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+
+    @media (max-width: 900px) {
+    .fig-compare-table,
+    .fig-compare-table tbody,
+    .fig-compare-table tr,
+    .fig-compare-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .fig-compare-table .image-col {
+        width: 100%;
+    }
+
+    .fig-compare-table img {
+        max-width: 100%;
+    }
+    }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .table-container table { min-width: 640px; }
+    th, td { padding: 0.95rem 1rem; text-align: left; }
+    th { background: #06070a; color: #fff; font-size: 0.9rem; }
+    td { border-bottom: 1px solid #dee2e6; color: #34495e; }
+    tr:last-child td { border-bottom: none; }
+
+    pre.highlight,
+    .code-block {
+      background: #111;
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      overflow-x: auto;
+    }
+
+    .paper-embed,
+    embed[type='application/pdf'] {
+      width: 100%;
+      min-height: min(70vh, 38rem);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    footer ul,
+    .head-on ul {
+      padding-left: 1.1rem;
+      margin: 0.75rem auto 0;
+      max-width: 42rem;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      .site-shell { padding-inline: 0.85rem; }
+      nav.pure-menu { padding: 0.8rem; }
+      .topbar-row { align-items: stretch; }
+      .head-on,
+      footer,
+      .intermission { padding: 1rem 0.9rem; }
+      th, td { padding: 0.8rem 0.75rem; }
+      pre.highlight,
+      .code-block { font-size: 0.88rem; }
+    }
+
+    @media (max-width: 560px) {
+      .topbar-row { flex-direction: column; align-items: stretch; }
+      .github-link { align-self: flex-end; }
+      .pure-menu-list { flex-wrap: nowrap; width: max-content; }
+      .head-on,
+      footer,
+      .intermission { border-radius: var(--radius-lg); }
+      .paper-embed,
+      embed[type='application/pdf'] { min-height: 55vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <div class="topbar-row">
+      {% include nav.html %}
+      <a href="https://github.com/tuned-org-uk" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="github-link">
+        <i class="fab fa-github"></i>
+      </a>
     </div>
 
+    <main class="main-content">
+      {{ content }}
+    </main>
 
     <div class="intermission"></div>
-    
+
     <footer style="flex-shrink: 0;">
     <div style="margin: .7em 0;">
         <a href="https://github.com/sponsors/tuned-org-uk" target="_blank">
@@ -300,6 +401,7 @@
         Become a sponsor today! 🚀
         </a>
     </div>
-</footer>
+    </footer>
+  </div>
 </body>
 </html>
