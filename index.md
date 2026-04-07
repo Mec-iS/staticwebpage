@@ -4,96 +4,6 @@ layout: default
 ---
 
 <style>
-/* ── Design tokens ─────────────────────────────── */
-:root, [data-theme="light"] {
-  --color-bg:             #f7f6f2;
-  --color-surface:        #f9f8f5;
-  --color-surface-2:      #ffffff;
-  --color-surface-offset: #f0ede8;
-  --color-border:         rgba(40,37,29,0.12);
-  --color-text:           #28251d;
-  --color-text-muted:     #7a7974;
-  --color-text-faint:     #bab9b4;
-  --color-primary:        #01696f;
-  --color-primary-hover:  #0c4e54;
-  --shadow-sm: 0 1px 3px rgba(40,37,29,0.07);
-  --shadow-md: 0 4px 16px rgba(40,37,29,0.10);
-  --shadow-lg: 0 12px 36px rgba(40,37,29,0.13);
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-full: 9999px;
-  --font-body: 'Satoshi', 'Inter', sans-serif;
-  --transition: 200ms cubic-bezier(0.16,1,0.3,1);
-}
-[data-theme="dark"] {
-  --color-bg:             #141312;
-  --color-surface:        #1c1b19;
-  --color-surface-2:      #232220;
-  --color-surface-offset: #2a2927;
-  --color-border:         rgba(255,255,255,0.10);
-  --color-text:           #d4d3d0;
-  --color-text-muted:     #8a8987;
-  --color-text-faint:     #56554f;
-  --color-primary:        #4f98a3;
-  --color-primary-hover:  #7bbfc8;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.25);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.35);
-  --shadow-lg: 0 12px 36px rgba(0,0,0,0.45);
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: var(--font-body);
-  background: var(--color-bg);
-  color: var(--color-text);
-  min-height: 100dvh;
-  padding: 3rem 1.5rem;
-  -webkit-font-smoothing: antialiased;
-  transition: background var(--transition), color var(--transition);
-}
-
-/* ── Theme toggle ──────────────────────────────── */
-.theme-toggle {
-  position: fixed; top: 1rem; left: 1.25rem;
-  background: var(--color-surface); border: 1px solid var(--color-border);
-  border-radius: var(--radius-full); padding: 0.4rem 0.75rem;
-  cursor: pointer; font-size: 0.8rem; color: var(--color-text-muted);
-  display: flex; align-items: center; gap: 0.4rem;
-  box-shadow: var(--shadow-sm); transition: all var(--transition); z-index: 100;
-}
-.theme-toggle:hover { color: var(--color-text); box-shadow: var(--shadow-md); }
-
-/* ── Section header ────────────────────────────── */
-.research-container { max-width: 1100px; margin: 0 auto; margin-top: 8%; }
-.research-header {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  font-weight: 600; color: var(--color-text);
-  text-align: center; margin-bottom: 2rem;
-  letter-spacing: -0.01em;
-}
-.research-header span { color: var(--color-primary); }
-
-/* ── Tag filter bar ────────────────────────────── */
-.filter-bar {
-  display: flex; gap: 0.5rem; flex-wrap: wrap;
-  justify-content: center; margin-bottom: 2rem;
-}
-.filter-btn {
-  padding: 0.35rem 0.9rem;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-text-muted);
-  font-size: 0.8rem; font-weight: 500;
-  cursor: pointer; transition: all var(--transition);
-  font-family: var(--font-body);
-}
-.filter-btn:hover { color: var(--color-text); border-color: var(--color-primary); }
-.filter-btn.active {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #fff;
-}
 
 /* ── Cards grid ────────────────────────────────── */
 .research-grid {
@@ -331,14 +241,11 @@ body {
 </style>
 
 # 👋 Welcome!
-<p><strong class="pure-menu-item">I am Lorenzo</strong> — AI Research Engineer — I produce novel research and code leveraging Large Language Models (GPTs and LLMs). I focus on <strong class="pure-menu-item">workflows automation with AI Agents and code generation</strong>.</p>
-<p>An example of my my research on <a href="{{ "/graph-wiring" }}">a new generation of data engineering tools.</a>.</p>
+<p><strong class="pure-menu-item">I am Lorenzo</strong> — AI Research Engineer — I produce novel research and code leveraging Large Language Models. I focus on <strong class="pure-menu-item">workflows automation with AI Agents and code generation</strong>.</p>
+<p>An example of my my research on <a href="{{ "/graph-wiring" }}">a new generation of data engineering tools.</a>. More details on <a href="https://github.com/sponsors/tuned-org-uk">Github.</a></p>
+
 
 <div class="research-container">
-  <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    Theme
-  </button>
   <h2 class="research-header">
     🔬 Explore my <span>research</span>, protocols and open-source implementations
   </h2>
@@ -667,95 +574,3 @@ body {
 <strong>Curious?</strong> 
 Start exploring the pages above or reach out via the Contact page for questions, collaborations, or sponsorship info!
 </div>
-
-<script>
-/* ── Theme toggle ─────────────────────────────── */
-(function(){
-  const toggle = document.querySelector('[data-theme-toggle]');
-  const html = document.documentElement;
-  let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  html.setAttribute('data-theme', theme);
-  toggle.addEventListener('click', () => {
-    theme = theme === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', theme);
-    toggle.querySelector('svg').innerHTML = theme === 'dark'
-      ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'
-      : '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
-  });
-})();
-
-/* ── Filter logic ─────────────────────────────── */
-const filterBtns = document.querySelectorAll('.filter-btn');
-const cards      = document.querySelectorAll('.research-card');
-const countLabel = document.getElementById('count-label');
-const emptyState = document.getElementById('empty-state');
-
-function applyFilter(tag) {
-  let visible = 0;
-  cards.forEach(card => {
-    const tags = card.dataset.tags.split(',');
-    const show = tag === 'all' || tags.includes(tag);
-    if (show) {
-      card.classList.remove('hidden');
-      visible++;
-    } else {
-      card.classList.add('hidden');
-    }
-  });
-  countLabel.textContent = tag === 'all'
-    ? `${visible} projects`
-    : `${visible} project${visible !== 1 ? 's' : ''} · ${tag}`;
-  emptyState.classList.toggle('visible', visible === 0);
-}
-
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    applyFilter(btn.dataset.tag);
-  });
-});
-applyFilter('all');
-
-/* ── Detail modal ─────────────────────────────── */
-const overlay    = document.getElementById('detail-overlay');
-const panel      = document.getElementById('detail-panel');
-const closeBtn   = document.getElementById('detail-close');
-const detailBadge= document.getElementById('detail-badge');
-const detailTitle= document.getElementById('detail-title');
-const detailDesc = document.getElementById('detail-desc');
-const detailLink = document.getElementById('detail-link');
-
-function openDetail(card) {
-  const accent = card.dataset.accent || 'var(--color-primary)';
-  panel.style.setProperty('--panel-accent', accent);
-  detailBadge.style.setProperty('--panel-accent', accent);
-  detailBadge.textContent = card.querySelector('.card-badge').textContent;
-  detailTitle.textContent = card.querySelector('.card-title').textContent;
-  detailDesc.textContent  = card.dataset.long || card.querySelector('.card-desc').textContent;
-  detailLink.href         = card.href;
-  overlay.classList.add('open');
-  closeBtn.focus();
-  document.body.style.overflow = 'hidden';
-}
-
-function closeDetail() {
-  overlay.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// Click cards to open modal (prevent default navigation — open modal instead)
-cards.forEach(card => {
-  card.addEventListener('click', e => {
-    e.preventDefault();
-    openDetail(card);
-  });
-  card.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDetail(card); }
-  });
-});
-
-closeBtn.addEventListener('click', closeDetail);
-overlay.addEventListener('click', e => { if (e.target === overlay) closeDetail(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeDetail(); });
-</script>
