@@ -3,20 +3,18 @@ title: Graph Wiring
 layout: timeline
 ---
 
+
 # From ArrowSpace to Graph Wiring
 
-## Fields of application
 
-* Vector database and retrieval
-* Training data curation for LLMs
-* Online supervision and safety
-* Structural and mechanistic analysis of embedding models / LLMs
-* Spectral/topological search supervision
-* generic algorithm design (search, diffusion, classification, ...)
+## Timeline
+
 
 A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplexity* experiments converged into the **Graph Wiring** framework.
 
+
 <div class="timeline timeline--vertical">
+
 
   <!-- 2025-09-10 ArrowSpace -->
   <div class="timeline-item">
@@ -49,6 +47,7 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
+
   <!-- 2026-02-27 Graph Wiring -->
   <div class="timeline-item">
     <div class="timeline-item__marker">
@@ -78,6 +77,7 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       </p>
     </div>
   </div>
+
 
   <!-- 2026-03-06 MRR-Top0 -->
   <div class="timeline-item">
@@ -133,7 +133,7 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       <p class="timeline-item__links">
         <strong>Code:</strong>
         <a href="https://github.com/tuned-org-uk/graph-wiring-epiplexity" target="_blank" rel="noopener">epiplexity and Graph Wiring</a>
-        · <a href="https://github.com/tuned-org-uk/pyarrowspace/blob/af8d97b4ea20267b2bd49a1a902b8013b63a5248/tests/test_2_CVE_db.py" target="_blank" rel="noopener"><code>test_2_CVE_db.txt</code></a> and related CVE pipelines in arrowspace experiments
+        · <a href="https://github.com/tuned-org-uk/pyarrowspace/blob/af8d97b4ea20267b2bd49a1a902b8013b63a5248/tests/test_2_CVE_db.py" target="_blank" rel="noopener">de>test_2_CVE_db.txt</code></a> and related CVE pipelines in arrowspace experiments
       </p>
     </div>
   </div>
@@ -158,6 +158,31 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
+  <!-- 2026-04-10 Spectral-aware IDs -->
+  <div class="timeline-item">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <div class="timeline-item__date">April 10, 2026</div>
+      <h2 class="timeline-item__title">
+        Spectral-aware Unique Identifiers for Generative Retrieval and Vector Search
+      </h2>
+      <p class="timeline-item__meta">
+        <strong>Paper:</strong>
+        <a href="https://www.authorea.com/users/685780/articles/1400103-spectral-aware-unique-identifiers-for-generative-retrieval-and-vector-search" target="_blank" rel="noopener">
+          <img src="https://zenodo.org/badge/DOI/177585107/76021942.svg" alt="DOI:au.177585107.76021942">
+        </a>
+      </p>
+      <ul class="timeline-item__bullets">
+        <li>Introduces spectral-aware unique identifiers as composite codes that pair a simple integer ID with an order key derived from taumode, aligning identifiers with the underlying spectral manifold.</li>
+        <li>Shows how these IDs improve manifold consistency and interpretability compared with conventional generative retrieval identifiers, while remaining compatible with standard vector databases and RAG pipelines.</li>
+        <li>Positions spectral-aware IDs as a bridge between ArrowSpace-style spectral indexing and modern generative retrieval, enabling topology-aware item addressing and routing in large vector spaces.</li>
+      </ul>
+    </div>
+  </div>
+
   <div class="timeline-item">
     <div class="timeline-item__marker">
       <div class="timeline-dot"></div>
@@ -171,9 +196,5 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
-</div>
 
-<div class="scroll-down-indicator">
-  <div>Scroll down</div>
-  <div class="scroll-down-indicator__arrow"></div>
 </div>
