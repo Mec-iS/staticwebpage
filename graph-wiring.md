@@ -3,18 +3,41 @@ title: Graph Wiring
 layout: timeline
 ---
 
-
 # From ArrowSpace to Graph Wiring
-
 
 ## Timeline
 
-
 A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplexity* experiments converged into the **Graph Wiring** framework.
 
+<style>
+/* Animation starting state */
+.timeline-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animation active state */
+.timeline-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add a slight delay to the dot/line appearance for a cascading effect */
+.timeline-item .timeline-dot,
+.timeline-item .timeline-line {
+  opacity: 0;
+  transition: opacity 0.5s ease-in 0.3s;
+}
+
+.timeline-item.is-visible .timeline-dot,
+.timeline-item.is-visible .timeline-line {
+  opacity: 1;
+}
+</style>
 
 <div class="timeline timeline--vertical">
-
 
   <!-- 2025-09-10 ArrowSpace -->
   <div class="timeline-item">
@@ -47,7 +70,6 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
-
   <!-- 2026-02-27 Graph Wiring -->
   <div class="timeline-item">
     <div class="timeline-item__marker">
@@ -77,7 +99,6 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       </p>
     </div>
   </div>
-
 
   <!-- 2026-03-06 MRR-Top0 -->
   <div class="timeline-item">
@@ -128,12 +149,12 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       <ul class="timeline-item__bullets">
         <li>Connects ArrowSpace's λ scores and the emerging <em>graph wiring</em> perspective to <strong>epiplexity</strong>, treating λ as a cheap proxy for how much an item deviates from the learned manifold structure.</li>
         <li>Uses MRR‑Top0 and tails‑sensitive scores (developed on the CVE benchmarks) to study how epiplexity‑weighted retrieval behaves, with a focus on tail behavior, OOD items, and active learning candidates.</li>
-        <li>Empirically tests how a generic algorithm can use Laplacian‑derived λ, epiplexity, and topological quality metrics together to design spectral/topological search strategies better aligned with RAG workloads.</li>
+        <li>Empirically tests how a generic algorithm can use Laplacian‑derived λ, epiplexity, and topological quality metrics together to design spectral/topological search strategies better aligned with RAG workloads. Try it with `pip install epiplexity`</li>
       </ul>
       <p class="timeline-item__links">
         <strong>Code:</strong>
         <a href="https://github.com/tuned-org-uk/graph-wiring-epiplexity" target="_blank" rel="noopener">epiplexity and Graph Wiring</a>
-        · <a href="https://github.com/tuned-org-uk/pyarrowspace/blob/af8d97b4ea20267b2bd49a1a902b8013b63a5248/tests/test_2_CVE_db.py" target="_blank" rel="noopener">de>test_2_CVE_db.txt</code></a> and related CVE pipelines in arrowspace experiments
+        · <a href="https://github.com/tuned-org-uk/pyarrowspace/blob/af8d97b4ea20267b2bd49a1a902b8013b63a5248/tests/test_2_CVE_db.py" target="_blank" rel="noopener"><code>test_2_CVE_db.txt</code></a> and related CVE pipelines in arrowspace experiments
       </p>
     </div>
   </div>
@@ -206,6 +227,7 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
+  <!-- The Future -->
   <div class="timeline-item">
     <div class="timeline-item__marker">
       <div class="timeline-dot"></div>
@@ -219,5 +241,40 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
-
 </div>
+
+<!-- Scroll down indicator -->
+<div class="scroll-down-indicator">
+  <div>Scroll down</div>
+  <div class="scroll-down-indicator__arrow"></div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Setup the Intersection Observer
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15 // Triggers when 15% of the item is in view
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      // Add the animation class if the item intersects with the viewport
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        
+        // Optional: Stop observing the item once it has animated in
+        // so it doesn't disappear and reappear if they scroll back up.
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, observerOptions);
+
+  // Grab all timeline items and observe them
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  timelineItems.forEach(item => {
+    observer.observe(item);
+  });
+});
+</script>
