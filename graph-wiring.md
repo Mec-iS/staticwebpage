@@ -151,10 +151,33 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       </h2>
       <p class="timeline-item__meta">
         <strong>Interview/Podcast:</strong>
-        <a href="https://home.mlops.community/public/videos/arrowspace-vector-spaces-and-graph-wiring" target="_blank" rel="noopener">
-          MLOps Community Podcast
-        </a>
       </p>
+      <div class="media-feature-card">
+        <div class="media-feature-copy">
+          <p class="section-subtitle">
+            A podcast conversation on Graph Wiring, epiplexity, and the next generation
+            of tools for machine learning and LLM operations.
+          </p>
+
+          <ul class="media-feature-points">
+            <li>How Graph Wiring reframes vector datasets as feature-space manifolds.</li>
+            <li>Why epiplexity matters for retrieval, curation, and model operations.</li>
+            <li>Where spectral tooling can improve ML and LLM infrastructure.</li>
+            <li>What is structural information and how to generate information from datasets</li>
+          </ul>
+
+          <p class="media-feature-links">
+            <a
+              href="https://www.youtube.com/watch?v=S5xbQXBiLs4"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="blog-read-more"
+            >
+              Watch on YouTube <span aria-hidden="true">→</span>
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 
