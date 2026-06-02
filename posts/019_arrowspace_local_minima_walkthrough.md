@@ -8,7 +8,7 @@ categories: [arrowspace, vector-search, latent-space, mechanistic-interpretabili
 
 # ArrowSpace for Latent Spaces - part 1
 
-**ArrowSpace for Local Minima in Latent Space**
+## ArrowSpace for Local Minima in Latent Space
 
 This is the first post of a series that will lead into the details of running semantic analysis on large highly dimensional vector spaces leveraging the graph Laplacian in feature-space as a semantic web of the latent space. This approach is made possible by the `arrowspace` library.
 
@@ -85,9 +85,11 @@ def build_feature_laplacian(X, k=8):
 
 The result is an `F×F` graph Laplacian `L_feat`. Each feature is connected to its 8 most cosine-similar neighbours. The graph captures *which features co-vary across items* — a structural property invisible to item-level methods.
 
-**The Rayleigh quotient** is then computed per item row $$\mathbf{x}_i$$:
+**The Rayleigh quotient** is then computed per item row $\mathbf{x}_i$:
 
-$$R(\mathbf{x}_i) = \frac{\mathbf{x}_i^T L_{\text{feat}} \, \mathbf{x}_i}{\mathbf{x}_i^T \mathbf{x}_i}$$
+$$ 
+R(\mathbf{x}_i) = \frac{\mathbf{x}_i^T L_{\text{feat}} \, \mathbf{x}_i}{\mathbf{x}_i^T \mathbf{x}_i}
+$$
 
 ```python
 def rayleigh_energy(X, L):
@@ -158,9 +160,11 @@ Alternates stochastic Monte Carlo perturbations with local Nelder-Mead optimisat
 
 **Cell 4 — blending arrowspace Rayleigh energy with vanilla scores**
 
-This is the conceptual core of the notebook. Every vanilla method defines a scalar *distance-to-minimum* $$s(x)$$. ArrowSpace augments it with normalised Rayleigh energy $$R_\text{norm}(x)$$:
+This is the conceptual core of the notebook. Every vanilla method defines a scalar *distance-to-minimum* $s(x)$. ArrowSpace augments it with normalised Rayleigh energy $R_\text{norm}(x)$:
 
-$$s_{\text{aug}}(x) = \alpha \cdot s_{\text{vanilla}}(x) + (1 - \alpha) \cdot R_{\text{norm}}(x)$$
+$$
+s_{\text{aug}}(x) = \alpha \cdot s_{\text{vanilla}}(x) + (1 - \alpha) \cdot R_{\text{norm}}(x)
+$$
 
 ```python
 ALPHA = 0.50   # blend weight
