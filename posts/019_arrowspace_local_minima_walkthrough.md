@@ -327,6 +327,8 @@ geometric false positives that no item-space method alone can detect. At this po
 it is possible to say with confidence that this is a clue for *the bottom-left cluster to be a
 false positive*.
 
+In this framework, a minimum is real if it is simultaneously a density mode (geometry) and a Rayleigh attractor (feature-manifold smoothness). The bottom-left candidate satisfies the first condition but not the second — it is a geometric accident of the KDE surface, not a true on-manifold energy valley. The top-right and right minima satisfy both, which is why they survive augmentation as green stable points. This is the H1→H2 claim the notebook is designed to test.
+
 <div class="image-box">
     <img src="../assets/blog/019/c6_bh_overlay.png" alt="Basin-Hopping — vanilla vs ArrowSpace-augmented minima" width="88%"/>
 </div>
