@@ -2,6 +2,129 @@
 layout: default
 ---
 <style>
+  /* ── Code blocks ─────────────────────────────────────────────────────── */
+
+  /* Inline code */
+  .blog-prose code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.875em;
+    background: var(--color-surface-offset);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.15em 0.4em;
+    color: var(--color-primary);
+  }
+
+  /* Fenced code blocks: reset inline style inside pre */
+  .blog-prose pre {
+    background: #1e1e2e;           /* dark canvas, works in any page theme */
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow-x: auto;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+
+  .blog-prose pre code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    color: #cdd6f4;                /* Catppuccin Mocha text */
+    font-size: inherit;
+  }
+
+  /* ── Rouge / Catppuccin Mocha token colours ───────────────────────────
+     Rouge outputs: .k .kd .kn .kp .kr .kt  (keywords)
+                    .nb .nc .nf .ni .nn      (names)
+                    .s .s1 .s2 .sb .sc .sd .se .si .ss  (strings)
+                    .m .mi .mf .mo .mh       (numbers)
+                    .c .c1 .cm .cs           (comments)
+                    .o .ow                   (operators)
+                    .p                       (punctuation)
+  ──────────────────────────────────────────────────────────────────────── */
+
+  /* Keywords: def, class, import, return, for, if, with, as, in … */
+  .highlight .k,
+  .highlight .kd,
+  .highlight .kn,
+  .highlight .kp,
+  .highlight .kr,
+  .highlight .kt  { color: #cba6f7; }   /* mauve */
+
+  /* Built-ins and class names */
+  .highlight .nb  { color: #89b4fa; }   /* blue */
+  .highlight .nc  { color: #89dceb; }   /* sky */
+  .highlight .nf  { color: #89b4fa; }   /* blue – function names */
+  .highlight .nn  { color: #cdd6f4; }   /* text */
+
+  /* Strings */
+  .highlight .s,
+  .highlight .s1,
+  .highlight .s2,
+  .highlight .sb,
+  .highlight .sc,
+  .highlight .sd,
+  .highlight .se,
+  .highlight .si,
+  .highlight .ss  { color: #a6e3a1; }   /* green */
+
+  /* Numbers */
+  .highlight .m,
+  .highlight .mi,
+  .highlight .mf,
+  .highlight .mo,
+  .highlight .mh  { color: #fab387; }   /* peach */
+
+  /* Comments */
+  .highlight .c,
+  .highlight .c1,
+  .highlight .cm,
+  .highlight .cs  { color: #6c7086; font-style: italic; }  /* overlay0 */
+
+  /* Operators: =, +, -, @, *, /, ->, not, and … */
+  .highlight .o,
+  .highlight .ow  { color: #89dceb; }   /* sky */
+
+  /* Decorators (@something) */
+  .highlight .nd  { color: #f38ba8; }   /* red */
+
+  /* Self / special identifiers */
+  .highlight .bp  { color: #f5c2e7; }   /* pink */
+
+  /* Punctuation: ( ) [ ] { } , : */
+  .highlight .p   { color: #cdd6f4; }
+
+  /* Variable names (generic) */
+  .highlight .n,
+  .highlight .na,
+  .highlight .ni  { color: #cdd6f4; }
+
+  /* Escape sequences inside strings */
+  .highlight .se  { color: #f9e2af; }   /* yellow */
+
+  /* ── Scrollbar styling for code blocks ───────────────────────────────── */
+  .blog-prose pre::-webkit-scrollbar        { height: 6px; }
+  .blog-prose pre::-webkit-scrollbar-track  { background: #181825; border-radius: 3px; }
+  .blog-prose pre::-webkit-scrollbar-thumb  { background: #45475a; border-radius: 3px; }
+  .blog-prose pre::-webkit-scrollbar-thumb:hover { background: #585b70; }
+
+  /* ── Language badge (e.g. "python" label top-right) ──────────────────── */
+  .blog-prose .highlight {
+    position: relative;
+    margin: 1.5rem 0;
+  }
+
+  .blog-prose .highlight pre {
+    margin: 0;
+  }
+
+  /* ── All other layout / prose styles (unchanged) ─────────────────────── */
+
   .head-on {
     display: grid;
     gap: 0.8rem;
@@ -77,6 +200,9 @@ layout: default
   }
 </style>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
 <div class="head-on">
     <div style="margin: .7em 0;">
         <a href="https://github.com/sponsors/tuned-org-uk" target="_blank">
@@ -108,5 +234,22 @@ layout: default
     caption.className = 'image-caption';
     caption.textContent = img.alt;
     img.after(caption);
+  });
+
+  /* Add language badge to fenced code blocks */
+  document.querySelectorAll('.highlight').forEach((block) => {
+    const pre = block.querySelector('pre');
+    if (!pre) return;
+    const lang = pre.className.match(/language-(\w+)/);
+    if (!lang) return;
+    const badge = document.createElement('span');
+    badge.textContent = lang[1];
+    badge.style.cssText = [
+      'position:absolute', 'top:0.5rem', 'right:0.75rem',
+      'font-family:monospace', 'font-size:0.7rem', 'opacity:0.45',
+      'color:#cdd6f4', 'pointer-events:none', 'text-transform:uppercase',
+      'letter-spacing:0.08em'
+    ].join(';');
+    block.appendChild(badge);
   });
 </script>
