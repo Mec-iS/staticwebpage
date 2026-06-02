@@ -521,24 +521,25 @@ layout: default
   </div>
 
   <div class="blog-posts">
-<!-- Blog Post 18: ArrowSpace using 1024-dimensional embeddings -->
+<!-- Blog Post 19: ArrowSpace for Local Minima in Latent Space -->
 <article class="blog-post-card">
-    <div class="blog-post-meta">March 8, 2026</div>
+    <div class="blog-post-meta">June 2, 2026</div>
     <h2 class="blog-post-title">
-        <a href="/posts/018_arrowspace_and_higher_dimensions_embeddings">
-            `arrowspace` tested with the new 1024-dim embeddings
+        <a href="/posts/019_arrowspace_local_minima_walkthrough">
+            `arrowspace` for Latent Spaces - part 1
         </a>
     </h2>
     <div class="blog-post-abstract">
-        <p>Compare 384-dim embeddings with the new 1024-dim embeddings</p>
+        <p>Notebook walkthrough: using Rayleigh energy as a landscape signal for high-dimensional embedding spaces</p>
         <ul>
-            <li>Comparative advantages of spectral indexing</li>
-            <li>Improvements for cosine</li>
-            <li>estimation of increased costs for 1024-dim embeddings</li>
+            <li>Feature-space Laplacian and per-item spectral smoothness</li>
+            <li>Augmenting KDE, Diffusion Maps and Basin-Hopping with arrowspace</li>
+            <li>BasinHop + ArrowSpace achieves 100% cluster purity at α = 0.35</li>
+            <li>Baseline for mechanistic interpretability of latent spaces</li>
         </ul>
     </div>
-    <a href="/posts/018_arrowspace_and_higher_dimensions_embeddings" class="blog-read-more">Read more →</a>
-</article> 
+    <a href="/posts/019_arrowspace_local_minima_walkthrough" class="blog-read-more">Read more →</a>
+</article>
 
 <!-- Blog Post 17: ArrowSpace hits the spot for semantic augmented retrieval -->
 <article class="blog-post-card">

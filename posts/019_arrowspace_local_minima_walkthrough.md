@@ -6,7 +6,11 @@ author: tuned-org-uk
 categories: [arrowspace, vector-search, latent-space, mechanistic-interpretability, minima, spectral, python]
 ---
 
-# ArrowSpace for Local Minima in Latent Space
+# ArrowSpace for Latent Spaces - part 1
+
+**ArrowSpace for Local Minima in Latent Space**
+
+This is the first post of a series that will lead into the details of running semantic analysis on large highly dimensional vector spaces leveraging the graph Laplacian in feature-space as a semantic web of the latent space. This approach is made possible by the `arrowspace` library.
 
 *Notebook 01 walkthrough — [`01__arrowspace_local_minima.ipynb`](https://github.com/tuned-org-uk/arrowspace-analysis/blob/main/notebooks/01__arrowspace_local_minima.ipynb)*
 
