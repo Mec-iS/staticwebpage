@@ -16,9 +16,9 @@ This is the first post of a series that will lead into the details of running se
 
 ---
 
-Previous posts have shown arrowspace delivering measurable gains in spectral vector search: taumode lifts NDCG@10 on the CVE corpus, and MRR-Top0 formalises topological quality of retrieval. The Rayleigh quotient — the core scalar arrowspace computes per item — turns out to be useful beyond search ranking. This post uses it as a **landscape signal**: a way to find local minima in high-dimensional, high-semantic latent spaces.
+Previous posts have shown arrowspace delivering measurable gains in spectral vector search: taumode provided semantic uplift on the CVE corpus and the TREC-COVID corpus, MRR-Top0 formalises topological quality of retrieval. The Rayleigh quotient — the core scalar arrowspace computes per item — turns out to be useful beyond search ranking. This post uses it as a **landscape signal**: a way to find local minima in high-dimensional, high-semantic latent spaces.
 
-This is a baseline for a new track of research. The long-term goal is to apply arrowspace to **mechanistic analysis** of latent spaces: identifying which regions of an embedding space correspond to stable, semantically coherent concepts — the same problem Anthropic tackled with dictionary learning and SAE features in their [*Mapping the Mind of a Large Language Model*](https://www.anthropic.com/research/mapping-mind-language-model) work on Claude 3 Sonnet. Finding minima is the first, independently verifiable step toward that goal.
+This is a baseline for a new track of research. The long-term goal is to apply arrowspace to **mechanistic analysis** of latent spaces: identifying which regions of an embedding space correspond to stable, semantically coherent concepts — the same problem Anthropic tackled with dictionary learning and SAE features in their [*Mapping the Mind of a Large Language Model*](https://www.anthropic.com/research/mapping-mind-language-model) work on Claude 3 Sonnet. Finding minima is the first, independently verifiable step toward that goal. And finally to try to evaluate the qualities and target applications for embeddings models. 
 
 You can find `arrowspace` in the:
 
@@ -36,7 +36,9 @@ Given a high-dimensional embedding matrix — the kind produced by any language 
 1. **Geometrically central** — inside a dense cluster.
 2. **Spectrally smooth** — their feature signal varies gently across the feature graph.
 
-Standard methods (KDE modes, diffusion basins, basin-hopping) only address the first criterion. ArrowSpace's Rayleigh energy addresses the second. The notebook tests whether combining them improves minima quality.
+Standard methods (KDE modes, diffusion basins, basin-hopping) only address the first criterion. ArrowSpace's Rayleigh energy addresses the second. For contextm, ArrowSpace search applies a linear combination of geometric similarity and spectral similarity, allowing augmenting search results with a relevant amount of information that is left behind by geometric search.
+
+The notebook tests whether combining existing method with `arrowspace` improves minima quality.
 
 ---
 
@@ -83,9 +85,9 @@ def build_feature_laplacian(X, k=8):
     return np.diag(W.sum(axis=1)) - W, W
 ```
 
-The result is an `F×F` graph Laplacian `L_feat`. Each feature is connected to its 8 most cosine-similar neighbours. The graph captures *which features co-vary across items* — a structural property invisible to item-level methods.
+The result is an `F×F` graph Laplacian `L_feat`. Each feature is connected to its 8 most cosine-similar neighbours. The graph captures *which features co-vary across items* — a structural property invisible to item-level methods. This can be computed using the library via the `ArrowSpaceBuilder` class. Please consider that: the richer the semantics of the vector space, the more relevant is the `arrowspace` contribution, with best performance between 60-400 dimensions depending on the quality of the feature-engineering process upstream. Thanks to its design, `arrowspace` can work easily up to 10000+ dimensions if the use-case requires it. 
 
-**The Rayleigh quotient** is then computed per item row $$\mathbf{x}_i$$:
+In the tradition of `arrowspace` that mixes graphs and vibrational systems, **the Rayleigh quotient** is then computed per item row $$\mathbf{x}_i$$:
 
 $$ 
 R(\mathbf{x}_i) = \frac{\mathbf{x}_i^T L_{\text{feat}} \, \mathbf{x}_i}{\mathbf{x}_i^T \mathbf{x}_i}
@@ -179,8 +181,9 @@ diff_aug_score = ALPHA * diff_vanilla_score + (1-ALPHA) * R_norm
 bh_aug_score   = ALPHA * bh_vanilla_score   + (1-ALPHA) * R_norm
 ```
 
-The blend works because the two signals are **nearly orthogonal**: vanilla methods find minima in *item space*, Rayleigh energy finds minima in *feature space*. Imposing both constraints simultaneously selects items that are *typical* **and** *manifold-consistent*.
+Similarly to what happens in search, as a clue for the claim that `arrowspace` is a generic algorithm (see [papers](/graph-wiring)), the blend works because the two signals are **nearly orthogonal**: vanilla methods find minima in *item space*, Rayleigh energy finds minima in *feature space*. Imposing both constraints simultaneously selects items that are *typical* **and** *manifold-consistent*.
 
+The knob to tweak the mix (similar to *tau*-modulation in search):
 - **α = 0** → pure arrowspace (spectral smoothness only)
 - **α = 1** → pure vanilla (density / Markov basins only)
 - **α = 0.5** → balanced blend
@@ -200,6 +203,8 @@ The blend works because the two signals are **nearly orthogonal**: vanilla metho
 ---
 
 ## Measuring Quality
+
+To generilise a little, a sweep is run on the mix of α. This is similar to what is done in search via *tau*-modulation. The mix of the two signal is adjusted to catch the spot-on level of blending.
 
 **Cell 5 — α sweep (21 steps from 0 to 1)**
 
@@ -294,6 +299,34 @@ The Jaccard heatmap summarises all pairwise overlaps across the 7 method variant
 
 The qualitative shift from vanilla to augmented is clearest in the Basin-Hopping overlay.
 
+Chart 6 overlays four point classes in PCA-2D: grey background items,
+**orange** (vanilla Basin-Hopping only — removed by augmentation), **purple**
+(augmented only — added by augmentation), and **green** (stable, present in both
+sets). The three Gaussian clusters sit at bottom-left, right, and top-right in
+this projection. The right and top-right clusters produce green and purple minima
+because those points satisfy both constraints simultaneously: Basin-Hopping's
+`neg_log_kde` confirms a sharp, deep density mode there, and their normalised
+Rayleigh quotient is low — their 32-dimensional feature pattern is smooth on the
+feature-space Laplacian, meaning they are genuine attractors of the feature
+manifold, not just geometric accidents. The bottom-left cluster tells the
+opposite story. Orange points appear there: vanilla BH found a density mode, but
+ArrowSpace rejected those items because their $$\lambda$$ was too high —
+they are rough and atypical on the feature graph rather than spectrally smooth.
+This is consistent with vanilla BH reaching a purity of only 0.525, barely above
+the three-class random baseline of 0.33: the bottom-left KDE basin is shallower
+and more diffuse than the other two, wide enough for BH seeds to converge there
+from multiple directions but not deep enough to be a semantically coherent valley.
+Because the Rayleigh energy and KDE density are nearly orthogonal (Pearson
+$$r \approx 0.02$$), satisfying both simultaneously is a strictly tighter
+criterion. A point that passes both tests is **a density peak and a
+feature-manifold attractor** — the strongest available definition of a real local
+minimum in latent space. The augmented set, with mean $$\lambda = 0.155$$
+against 0.550 for vanilla BH and cluster purity jumping to 1.000, confirms the
+principle directly: ArrowSpace does not relocate the minima, it filters out the
+geometric false positives that no item-space method alone can detect. At this point
+it is possible to say with confidence that this is a clue for *the bottom-left cluster to be a
+false positive*.
+
 <div class="image-box">
     <img src="../assets/blog/019/c6_bh_overlay.png" alt="Basin-Hopping — vanilla vs ArrowSpace-augmented minima" width="88%"/>
 </div>
@@ -308,7 +341,7 @@ Three results stand out from the notebook:
 
 * **Orthogonality justifies blending.** Pearson r between Rayleigh energy and KDE score is +0.02; between Rayleigh energy and diffusion distance only +0.19. The two information sources are nearly independent, so combining them adds genuine new signal rather than redundancy.
 * **BasinHop + ArrowSpace is the strongest combination.** At α = 0.35, the augmented basin-hopping minima reach 100% cluster purity — every discovered minimum is a true on-manifold energy valley.
-* **The α knob is a tunable axis.** Dial α toward 0 to emphasise spectral smoothness (useful for OOD and anomaly detection); dial α toward 1 to emphasise the geometric/density structure of the baseline.
+* **The α knob is a tunable axis.** (like in *tau*-modulation for search) Dial α toward 0 to emphasise spectral smoothness (useful for OOD and anomaly detection); dial α toward 1 to emphasise the geometric/density structure of the baseline.
 
 ---
 
