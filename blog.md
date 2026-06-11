@@ -11,6 +11,25 @@ layout: default
     </div>
 
     <div class="blog-posts">
+<!-- Blog Post 20: ArrowSpace Comparative Semantic Probing — part 2 -->
+<article class="blog-post-card">
+    <div class="blog-post-meta">June 11, 2026</div>
+    <h2 class="blog-post-title">
+        <a href="/posts/020_arrowspace_semantic_basins_part2">
+            `arrowspace` for Latent Spaces — part 2
+        </a>
+    </h2>
+    <div class="blog-post-abstract">
+        <p>Comparative semantic probing: dual-space analysis on transformer weights and embeddings</p>
+        <ul>
+            <li>Probe A (token space <code>E_tok</code>) vs Probe B (weight space <code>model.encode</code>): two complementary circuit-level views</li>
+            <li>Principled primal/dual FFN split — <code>W_ffn1</code> as write operator, <code>W_ffn2<sup>⊤</sup></code> as readout — mirrors ArrowSpace's feature-space Laplacian</li>
+            <li>36 weight-role subspaces probed across 6 layers; dual readout axis is the most field-selective signal</li>
+            <li>Self-consistency bias in Probe B documented at 7–16% per field — epistemic limit, not a correction</li>
+        </ul>
+    </div>
+    <a href="/posts/020_arrowspace_semantic_basins_part2" class="blog-read-more">Read more →</a>
+</article>
 
 <!-- Blog Post 19: ArrowSpace for Local Minima in Latent Space -->
 <article class="blog-post-card">
