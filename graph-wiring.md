@@ -5,11 +5,65 @@ layout: timeline
 
 # From ArrowSpace to Graph Wiring
 
-## Timeline
-
-A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplexity* experiments converged into the **Graph Wiring** framework.
-
 <style>
+/* ══════════════════════════════════════════════
+   DASHBOARD SHELL
+   ══════════════════════════════════════════════ */
+:root {
+  --panel-max: 960px;
+  --panel-gap: clamp(1rem, 4vw, 3rem);
+  --nav-h: 52px;
+}
+
+/* ── Panel nav ─────────────────────────────── */
+.dash-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-bg, #f7f6f2);
+  border-bottom: 1px solid var(--color-border, #d4d1ca);
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  height: var(--nav-h);
+}
+.dash-nav::-webkit-scrollbar { display: none; }
+
+.dash-nav-btn {
+  flex: 0 0 auto;
+  padding: 0 1.25rem;
+  height: 100%;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: none;
+  color: var(--color-text-muted, #7a7974);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 160ms, border-color 160ms;
+}
+.dash-nav-btn:hover { color: var(--color-text, #28251d); }
+.dash-nav-btn.active {
+  color: var(--color-primary, #01696f);
+  border-bottom-color: var(--color-primary, #01696f);
+}
+
+/* ── Panel sections ────────────────────────── */
+.dash-panel {
+  display: none;
+  padding-top: var(--panel-gap);
+  padding-bottom: calc(var(--panel-gap) * 2);
+  min-height: calc(100vh - var(--nav-h));
+}
+.dash-panel.active { display: block; }
+
+/* ══════════════════════════════════════════════
+   EXISTING TIMELINE STYLES (preserved)
+   ══════════════════════════════════════════════ */
 /* ── Filter bar ──────────────────────────────── */
 .tl-filter-bar {
   display: flex;
@@ -302,6 +356,25 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
   margin-top: 0.4rem;
 }
 </style>
+
+<!-- ══════════════════════════════════════════════
+     PANEL NAV
+     ══════════════════════════════════════════════ -->
+<nav class="dash-nav" role="tablist" aria-label="Dashboard panels">
+  <button class="dash-nav-btn active" role="tab" aria-selected="true"  aria-controls="panel-1" data-panel="1">📅 Timeline</button>
+  <button class="dash-nav-btn"        role="tab" aria-selected="false" aria-controls="panel-2" data-panel="2">📊 Blog Figures</button>
+  <button class="dash-nav-btn"        role="tab" aria-selected="false" aria-controls="panel-3" data-panel="3">⭐ NeurIPS 2026</button>
+  <button class="dash-nav-btn"        role="tab" aria-selected="false" aria-controls="panel-4" data-panel="4">❤️ Sponsor</button>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 1 — TIMELINE
+     ══════════════════════════════════════════════ -->
+<section id="panel-1" class="dash-panel active" role="tabpanel" aria-labelledby="panel-1-tab">
+
+## Timeline
+
+A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplexity* experiments converged into the **Graph Wiring** framework.
 
 <!-- ── Filter bar ─────────────────────────────────── -->
 <div class="tl-filter-bar" role="group" aria-label="Filter timeline events">
@@ -925,179 +998,63 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
 
 </div><!-- /.timeline -->
 
-<!-- ── Sponsor strip ──────────────────────────────────── -->
-<div class="sponsor-strip">
-  <div class="sponsor-strip-stats">
-    <strong>Research so far</strong>
-    <div>
-      <span class="stat-pill">5 papers</span>
-      <span class="stat-pill">11 blog posts</span>
-      <span class="stat-pill">2 pip packages</span>
-      <span class="stat-pill">11 Rust crates</span>
-      <span class="stat-pill">1 podcast</span>
-      <span class="stat-pill">NeurIPS 2026 submitted</span>
-    </div>
-    <div style="margin-top:0.55rem; font-size:0.78rem;">
-      Sponsor independent research on spectral vector databases and graph-based LLM operations.
-    </div>
-  </div>
-  <div class="sponsor-strip-cta">
-    <a href="https://github.com/sponsors/tuned-org-uk" target="_blank" rel="noopener noreferrer" class="sponsor-btn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.593c-.425-.394-8.507-7.77-8.507-12.194C3.493 5.272 7.076 2 12 2s8.507 3.272 8.507 7.399c0 4.424-8.082 11.8-8.507 12.194z"/></svg>
-      Sponsor on GitHub
-    </a>
-  </div>
-</div>
+</section><!-- /#panel-1 -->
 
-<!-- ── Blog impact panel ───────────────────────────────── -->
-<section class="blog-panel">
-  <h2 class="blog-panel-title">📝 Selected Posts — Value Delivered</h2>
-  <div class="blog-panel-grid">
-
-    <a href="/posts/020_arrowspace_semantic_basins_part2" class="bp-card" style="--bp-accent:#01696f">
-      <div class="bp-meta">Jun 11, 2026 · #020</div>
-      <div class="bp-title">`arrowspace` for Latent Spaces — part 2</div>
-      <div class="bp-metric">36 weight-role subspaces · bias 7–16% documented</div>
-      <div class="bp-tags">
-        <span class="bp-tag">mechanistic-interpretability</span>
-        <span class="bp-tag">latent-space</span>
-      </div>
-      <div class="bp-readmore">Read post →</div>
-    </a>
-
-    <a href="/posts/019_arrowspace_local_minima_walkthrough" class="bp-card" style="--bp-accent:#01696f">
-      <div class="bp-meta">Jun 2, 2026 · #019</div>
-      <div class="bp-title">`arrowspace` for Latent Spaces — part 1</div>
-      <div class="bp-metric">100% cluster purity at α=0.35</div>
-      <div class="bp-tags">
-        <span class="bp-tag">KDE</span>
-        <span class="bp-tag">diffusion-maps</span>
-        <span class="bp-tag">spectral</span>
-      </div>
-      <div class="bp-readmore">Read post →</div>
-    </a>
-
-    <a href="/posts/017_arrowspace_search_final_assessment" class="bp-card" style="--bp-accent:#27ae60">
-      <div class="bp-meta">Mar 8, 2026 · #017</div>
-      <div class="bp-title">`arrowspace` hits the spot for semantic augmented retrieval</div>
-      <div class="bp-metric">cosine geometry fails at tail — MRR-Top0 validates topo-quality</div>
-      <div class="bp-tags">
-        <span class="bp-tag">RAG</span>
-        <span class="bp-tag">evaluation</span>
-        <span class="bp-tag">MRR-Top0</span>
-      </div>
-      <div class="bp-readmore">Read post →</div>
-    </a>
-
-    <a href="/posts/016_arrowspace_performance_results" class="bp-card" style="--bp-accent:#3498db">
-      <div class="bp-meta">Feb 17, 2026 · #016</div>
-      <div class="bp-title">`arrowspace`: Capabilities, speed and accuracy</div>
-      <div class="bp-metric">dense CVE: high MRR/NDCG · limits on sparse Dorothea documented</div>
-      <div class="bp-tags">
-        <span class="bp-tag">benchmarks</span>
-        <span class="bp-tag">RAG</span>
-        <span class="bp-tag">spectral</span>
-      </div>
-      <div class="bp-readmore">Read post →</div>
-    </a>
-
-    <a href="/posts/012_topological_transformer_tauformer_domain_memory_in_attention" class="bp-card" style="--bp-accent:#db9834">
-      <div class="bp-meta">Jan 5, 2026 · #012</div>
-      <div class="bp-title">The Topological Transformer: Tauformer</div>
-      <div class="bp-metric">~50% KV-cache savings · ~20% faster vs nanoGPT</div>
-      <div class="bp-tags">
-        <span class="bp-tag">transformer</span>
-        <span class="bp-tag">attention</span>
-        <span class="bp-tag">LLM</span>
-      </div>
-      <div class="bp-readmore">Read post →</div>
-    </a>
-
-    <a href="/posts/011_safer_LLMs_require_more_open_search_building_AI_memory_layer" class="bp-card" style="--bp-accent:#9b59b6">
-      <div class="bp-meta">Nov 26, 2025 · #011</div>
-      <div class="bp-title">Safer LLMs require open search — Building the AI Memory Layer</div>
-      <div class="bp-metric">geometry-only search → hallucination accumulation</div>
-      <div class="bp-tags">
-        <span class="bp-tag">AI safety</span>
-        <span class="bp-tag">RAG</span>
-        <span class="bp-tag">hallucination</span>
-      </div>
-      <div class="bp-readmore">Read post →</div>
-    </a>
-
-    <a href="/posts/010_game_changer_unifying_vectors_and_features_graphs" class="bp-card" style="--bp-accent:#27ae60">
-      <div class="bp-meta">Nov 12, 2025 · #010</div>
-      <div class="bp-title">Why `arrowspace` is game-changing for data ops at scale</div>
-      <div class="bp-metric">unified vector+graph+KV engine · biotech-scale robust</div>
-      <div class="bp-tags">
-        <span class="bp-tag">data engineering</span>
-        <span class="bp-tag">graph</span>
-        <span class="bp-tag">scale</span>
-      </div>
-      <div class="bp-readmore">Read post →</div>
-    </a>
-
-    <a href="/posts/009_llms_nanogpt_model_in_rust" class="bp-card" style="--bp-accent:#e74c3c">
-      <div class="bp-meta">Nov 7, 2025 · #009</div>
-      <div class="bp-title">Efficient GPT training: Rust-powered GPT-2 deep dive</div>
-      <div class="bp-metric">RoPE · MQA · RMSNorm · Squared ReLU — full Rust impl</div>
-      <div class="bp-tags">
-        <span class="bp-tag">LLM</span>
-        <span class="bp-tag">Rust</span>
-        <span class="bp-tag">architecture</span>
-      </div>
-      <div class="bp-readmore">Read post →</div>
-    </a>
-
-    <a href="/posts/007_deepseek_optical_compression_rust" class="bp-card" style="--bp-accent:#f39c12">
-      <div class="bp-meta">Oct 24, 2025 · #007</div>
-      <div class="bp-title">DeepSeek-OCR + Energy Search in ArrowSpace v0.18.0</div>
-      <div class="bp-metric">10× token reduction · NDCG@10 ≈ 0.99 · MRR=1.0</div>
-      <div class="bp-tags">
-        <span class="bp-tag">OCR</span>
-        <span class="bp-tag">energy-search</span>
-        <span class="bp-tag">benchmarks</span>
-      </div>
-      <div class="bp-readmore">Read post →</div>
-    </a>
-
-    <a href="/posts/005_fast_approximate_nearest_neighbours" class="bp-card" style="--bp-accent:#3498db">
-      <div class="bp-meta">Oct 17, 2025 · #005</div>
-      <div class="bp-title">Fast (not approximate?) Nearest Neighbours</div>
-      <div class="bp-metric">v0.16.0 — among fastest open ANN algorithms</div>
-      <div class="bp-tags">
-        <span class="bp-tag">ANN</span>
-        <span class="bp-tag">performance</span>
-        <span class="bp-tag">Rust</span>
-      </div>
-      <div class="bp-readmore">Read post →</div>
-    </a>
-
-    <a href="/posts/001_energy_informed_db" class="bp-card" style="--bp-accent:#01696f">
-      <div class="bp-meta">Oct 1, 2025 · #001</div>
-      <div class="bp-title">The Next Evolution in AI Memory: Energy-Informed Vector Search</div>
-      <div class="bp-metric">founding post — taumode · spectral signatures · Laplacian energy</div>
-      <div class="bp-tags">
-        <span class="bp-tag">vector-db</span>
-        <span class="bp-tag">RAG</span>
-        <span class="bp-tag">foundation</span>
-      </div>
-      <div class="bp-readmore">Read post →</div>
-    </a>
-
+<!-- ══════════════════════════════════════════════
+     PANEL 2 — BLOG FIGURES (placeholder commit 1)
+     ══════════════════════════════════════════════ -->
+<section id="panel-2" class="dash-panel" role="tabpanel" aria-labelledby="panel-2-tab">
+  <div style="max-width:var(--panel-max);margin:0 auto;padding:0 1rem">
+    <h2 style="font-size:clamp(1.2rem,1rem+1vw,1.6rem);font-weight:700;margin-bottom:0.5rem">📊 Blog Figures</h2>
+    <p style="color:var(--color-text-muted,#7a7974);font-size:0.9rem">Interactive charts from benchmark blog posts — coming in next commit.</p>
   </div>
 </section>
 
-<!-- ── Scroll down indicator ──────────────────────────── -->
-<div class="scroll-down-indicator">
-  <div>Scroll down</div>
-  <div class="scroll-down-indicator__arrow"></div>
-</div>
+<!-- ══════════════════════════════════════════════
+     PANEL 3 — NEURIPS (placeholder commit 1)
+     ══════════════════════════════════════════════ -->
+<section id="panel-3" class="dash-panel" role="tabpanel" aria-labelledby="panel-3-tab">
+  <div style="max-width:var(--panel-max);margin:0 auto;padding:0 1rem">
+    <h2 style="font-size:clamp(1.2rem,1rem+1vw,1.6rem);font-weight:700;margin-bottom:0.5rem">⭐ NeurIPS 2026 Data</h2>
+    <p style="color:var(--color-text-muted,#7a7974);font-size:0.9rem">Figures and interactive charts from the NeurIPS 2026 submission — coming in next commit.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     PANEL 4 — SPONSOR (placeholder commit 1)
+     ══════════════════════════════════════════════ -->
+<section id="panel-4" class="dash-panel" role="tabpanel" aria-labelledby="panel-4-tab">
+  <div style="max-width:var(--panel-max);margin:0 auto;padding:0 1rem">
+    <h2 style="font-size:clamp(1.2rem,1rem+1vw,1.6rem);font-weight:700;margin-bottom:0.5rem">❤️ Sponsor</h2>
+    <p style="color:var(--color-text-muted,#7a7974);font-size:0.9rem">Sponsor CTA and Value Delivered section — coming in next commit.</p>
+  </div>
+</section>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  // ── 1. Scroll-reveal (IntersectionObserver) ────────────────
+  // ── Panel nav ──────────────────────────────────────────────
+  const navBtns  = document.querySelectorAll('.dash-nav-btn');
+  const panels   = document.querySelectorAll('.dash-panel');
+
+  function activatePanel(id) {
+    navBtns.forEach(b => {
+      const active = b.dataset.panel === id;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-selected', active);
+    });
+    panels.forEach(p => p.classList.toggle('active', p.id === 'panel-' + id));
+    // re-trigger scroll-reveal for items in the newly visible panel
+    document.querySelectorAll('#panel-' + id + ' .timeline-item:not(.is-visible)').forEach(el => observer.observe(el));
+  }
+
+  navBtns.forEach(btn => btn.addEventListener('click', () => activatePanel(btn.dataset.panel)));
+
+  // Handle direct hash links e.g. #panel-3
+  const hash = location.hash.match(/^#panel-(\d)$/);
+  if (hash) activatePanel(hash[1]);
+
+  // ── Scroll-reveal (IntersectionObserver) ──────────────────
   const observer = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach(entry => {
@@ -1111,8 +1068,8 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
 
-  // ── 2. Filter toggle ───────────────────────────────────────
-  const filterBtns = document.querySelectorAll('.tl-filter-btn');
+  // ── Filter toggle ──────────────────────────────────────────
+  const filterBtns   = document.querySelectorAll('.tl-filter-btn');
   const timelineItems = document.querySelectorAll('.timeline-item[data-type]');
 
   filterBtns.forEach(btn => {
@@ -1122,14 +1079,12 @@ document.addEventListener("DOMContentLoaded", function () {
       timelineItems.forEach(item => {
         const match = filter === 'all' || item.dataset.type === filter;
         item.classList.toggle('tl-hidden', !match);
-        if (match && !item.classList.contains('is-visible')) {
-          observer.observe(item);
-        }
+        if (match && !item.classList.contains('is-visible')) observer.observe(item);
       });
     });
   });
 
-  // ── 3. Expand / collapse drawer ───────────────────────────
+  // ── Expand / collapse drawer ───────────────────────────────
   document.querySelectorAll('.tl-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
       const drawer = btn.nextElementSibling;
