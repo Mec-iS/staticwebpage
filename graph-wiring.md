@@ -101,6 +101,18 @@ layout: timeline
   transition: opacity 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275),
               transform 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .timeline-item .timeline-dot,
+  .timeline-item .timeline-line {
+    opacity: 1;
+    transition: none;
+  }
+}
 .timeline-item.is-visible {
   opacity: 1;
   transform: translateY(0);
@@ -193,6 +205,9 @@ layout: timeline
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tl-drawer { transition: none; }
 }
 .tl-drawer.open { max-height: 600px; }
 .tl-drawer-inner {
@@ -319,6 +334,9 @@ layout: timeline
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .bp-card, .bp-card::before { transition: none; }
 }
 .bp-card:hover::before { transform: scaleX(1); }
 .bp-card:hover {
@@ -1001,7 +1019,7 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
 </section><!-- /#panel-1 -->
 
 <!-- ══════════════════════════════════════════════
-     PANEL 2 — BLOG FIGURES (placeholder commit 1)
+     PANEL 2 — BLOG FIGURES (placeholder)
      ══════════════════════════════════════════════ -->
 <section id="panel-2" class="dash-panel" role="tabpanel" aria-labelledby="panel-2-tab">
   <div style="max-width:var(--panel-max);margin:0 auto;padding:0 1rem">
@@ -1011,7 +1029,7 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
 </section>
 
 <!-- ══════════════════════════════════════════════
-     PANEL 3 — NEURIPS (placeholder commit 1)
+     PANEL 3 — NEURIPS (placeholder)
      ══════════════════════════════════════════════ -->
 <section id="panel-3" class="dash-panel" role="tabpanel" aria-labelledby="panel-3-tab">
   <div style="max-width:var(--panel-max);margin:0 auto;padding:0 1rem">
@@ -1021,7 +1039,7 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
 </section>
 
 <!-- ══════════════════════════════════════════════
-     PANEL 4 — SPONSOR (placeholder commit 1)
+     PANEL 4 — SPONSOR (placeholder)
      ══════════════════════════════════════════════ -->
 <section id="panel-4" class="dash-panel" role="tabpanel" aria-labelledby="panel-4-tab">
   <div style="max-width:var(--panel-max);margin:0 auto;padding:0 1rem">
@@ -1034,25 +1052,69 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
 document.addEventListener("DOMContentLoaded", function () {
 
   // ── Panel nav ──────────────────────────────────────────────
-  const navBtns  = document.querySelectorAll('.dash-nav-btn');
-  const panels   = document.querySelectorAll('.dash-panel');
+  const navBtns = document.querySelectorAll('.dash-nav-btn');
+  const panels  = document.querySelectorAll('.dash-panel');
+  let   activeId = '1'; // track last clicked panel to prevent IO fighting clicks
 
-  function activatePanel(id) {
+  function activatePanel(id, pushHistory) {
+    activeId = String(id);
     navBtns.forEach(b => {
-      const active = b.dataset.panel === id;
+      const active = b.dataset.panel === activeId;
       b.classList.toggle('active', active);
-      b.setAttribute('aria-selected', active);
+      b.setAttribute('aria-selected', String(active));
     });
-    panels.forEach(p => p.classList.toggle('active', p.id === 'panel-' + id));
-    // re-trigger scroll-reveal for items in the newly visible panel
-    document.querySelectorAll('#panel-' + id + ' .timeline-item:not(.is-visible)').forEach(el => observer.observe(el));
+    panels.forEach(p => p.classList.toggle('active', p.id === 'panel-' + activeId));
+    // re-trigger scroll-reveal for items that entered a newly visible panel
+    document.querySelectorAll('#panel-' + activeId + ' .timeline-item:not(.is-visible)').forEach(el => {
+      if (!prefersReducedMotion) observer.observe(el);
+      else el.classList.add('is-visible');
+    });
+    if (pushHistory) history.replaceState(null, '', '#panel-' + activeId);
   }
 
-  navBtns.forEach(btn => btn.addEventListener('click', () => activatePanel(btn.dataset.panel)));
+  navBtns.forEach(btn => btn.addEventListener('click', () => activatePanel(btn.dataset.panel, true)));
 
-  // Handle direct hash links e.g. #panel-3
-  const hash = location.hash.match(/^#panel-(\d)$/);
-  if (hash) activatePanel(hash[1]);
+  // Handle direct hash links: #panel-N or #section-4b
+  const rawHash = location.hash;
+  const panelHash = rawHash.match(/^#panel-(\d+)$/);
+  if (panelHash) {
+    activatePanel(panelHash[1], false);
+  } else if (rawHash === '#section-4b') {
+    activatePanel('4', false);
+    // defer scroll until panel is painted
+    requestAnimationFrame(() => {
+      const t = document.getElementById('section-4b');
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  // ── IntersectionObserver: sync active nav to visible panel ─
+  // Only fires when user scrolls — does not override click-based activation.
+  const panelIO = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id.replace('panel-', '');
+          if (id !== activeId) {
+            activeId = id;
+            navBtns.forEach(b => {
+              const active = b.dataset.panel === activeId;
+              b.classList.toggle('active', active);
+              b.setAttribute('aria-selected', String(active));
+            });
+          }
+        }
+      });
+    },
+    { threshold: 0.35 }
+  );
+  // NOTE: panels use display:none/block switching, so the IO only
+  // fires in practice when the layout switches to a scroll-based view.
+  // This is intentional — the tab model takes priority over scroll.
+  panels.forEach(p => panelIO.observe(p));
+
+  // ── prefers-reduced-motion guard ──────────────────────────
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ── Scroll-reveal (IntersectionObserver) ──────────────────
   const observer = new IntersectionObserver(
@@ -1066,10 +1128,16 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     { root: null, rootMargin: '0px', threshold: 0.12 }
   );
-  document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+
+  if (prefersReducedMotion) {
+    // mark all visible immediately — CSS already removes the animation
+    document.querySelectorAll('.timeline-item').forEach(el => el.classList.add('is-visible'));
+  } else {
+    document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+  }
 
   // ── Filter toggle ──────────────────────────────────────────
-  const filterBtns   = document.querySelectorAll('.tl-filter-btn');
+  const filterBtns    = document.querySelectorAll('.tl-filter-btn');
   const timelineItems = document.querySelectorAll('.timeline-item[data-type]');
 
   filterBtns.forEach(btn => {
@@ -1079,7 +1147,10 @@ document.addEventListener("DOMContentLoaded", function () {
       timelineItems.forEach(item => {
         const match = filter === 'all' || item.dataset.type === filter;
         item.classList.toggle('tl-hidden', !match);
-        if (match && !item.classList.contains('is-visible')) observer.observe(item);
+        if (match && !item.classList.contains('is-visible')) {
+          if (prefersReducedMotion) item.classList.add('is-visible');
+          else observer.observe(item);
+        }
       });
     });
   });
