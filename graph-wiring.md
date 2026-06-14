@@ -2021,5 +2021,253 @@ document.addEventListener("DOMContentLoaded", function () {
   // Stop click-through on the image itself
   lbImg.addEventListener('click', e => e.stopPropagation());
 
+  // ══════════════════════════════════════════════
+  // PANEL 3 — NeurIPS 2026 CVE data loader
+  // Uses type="module"-style dynamic import to
+  // avoid CSP eval violation from Chart.js UMD.
+  // All Chart.js usage is deferred until the
+  // panel is first activated.
+  // ══════════════════════════════════════════════
+
+  const N3_BASE = 'https://raw.githubusercontent.com/tuned-org-uk/pyarrowspace/1ca2c9b94228e11136b9ed282e4c30b206b683b9/neurips/CVE/output/v2/';
+
+  // PNG figures to display in the static grid
+  const N3_PNGS = [
+    { file: 'cve_win_loss_heatmap.png',              label: 'Win / Loss heatmap' },
+    { file: 'cve_metric_deltas.png',                 label: 'Metric deltas' },
+    { file: 'cve_pareto_tradeoff.png',               label: 'Pareto trade-off' },
+    { file: 'cve_headk_sweep.png',                   label: 'Head-k sweep' },
+    { file: 'cve_semantic_recall_comparison.png',    label: 'Semantic recall comparison' },
+    { file: 'cve_top25_comparison.png',              label: 'Top-25 comparison (full)' },
+  ];
+
+  // CSV files to render as interactive Chart.js charts
+  const N3_CSVS = [
+    { file: 'cve_summary.csv',                label: 'Summary metrics',          type: 'bar'  },
+    { file: 'cve_comparison_metrics.csv',     label: 'Comparison metrics',       type: 'bar'  },
+    { file: 'cve_semantic_recall_metrics.csv',label: 'Semantic recall',          type: 'line' },
+    { file: 'cve_tail_metrics.csv',           label: 'Tail metrics',             type: 'bar'  },
+    { file: 'cve_headk_sweep.csv',            label: 'Head-k sweep',             type: 'line' },
+  ];
+
+  let n3Loaded = false;
+
+  // Minimal CSV parser — no eval, no external lib
+  function parseCSV(text) {
+    const lines = text.trim().split('\n');
+    const headers = lines[0].split(',').map(h => h.trim());
+    const rows = lines.slice(1).map(line =>
+      line.split(',').reduce((obj, val, i) => {
+        obj[headers[i]] = isNaN(val.trim()) ? val.trim() : parseFloat(val.trim());
+        return obj;
+      }, {})
+    );
+    return { headers, rows };
+  }
+
+  function n3ErrorCard(msg) {
+    const div = document.createElement('div');
+    div.className = 'n3-error-card';
+    div.textContent = '⚠ ' + msg;
+    return div;
+  }
+
+  async function loadPanel3() {
+    if (n3Loaded) return;
+    n3Loaded = true;
+
+    const pngGrid    = document.getElementById('n3-png-grid');
+    const chartsGrid = document.getElementById('n3-charts-grid');
+
+    // ── Load run metadata ──────────────────────
+    try {
+      const metaRes  = await fetch(N3_BASE + 'cve_run_metadata.json');
+      const meta     = await metaRes.json();
+      const tbody    = document.querySelector('#n3-runinfo-table tbody');
+      tbody.innerHTML = Object.entries(meta)
+        .map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`)
+        .join('');
+    } catch (e) {
+      document.querySelector('#n3-runinfo-table tbody').innerHTML =
+        '<tr><td colspan="2" style="color:var(--color-text-muted)">Metadata unavailable</td></tr>';
+    }
+
+    // ── Load static PNGs ───────────────────────
+    pngGrid.innerHTML = '';
+    N3_PNGS.forEach(({ file, label }) => {
+      const card = document.createElement('div');
+      card.className = 'n3-png-card';
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', 'Open figure ' + label);
+      card.innerHTML = `
+        <img src="${N3_BASE}${file}" alt="${label}" loading="lazy" width="800" height="600"
+             onerror="this.parentElement.replaceWith((() => { const d=document.createElement('div'); d.className='n3-error-card'; d.textContent='⚠ Image unavailable: ${file}'; return d; })())">
+        <div class="n3-png-caption">
+          <div class="n3-png-name">${label}</div>
+        </div>`;
+
+      // PNG zoom using n3-lightbox
+      function openN3Lightbox() {
+        const lbImg = document.getElementById('n3-lightbox-img');
+        const lbCap = document.getElementById('n3-lightbox-caption');
+        lbImg.src = N3_BASE + file;
+        lbImg.alt = label;
+        lbCap.textContent = label;
+        document.getElementById('n3-lightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      card.addEventListener('click', openN3Lightbox);
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openN3Lightbox(); }
+      });
+      pngGrid.appendChild(card);
+    });
+
+    // ── Load Chart.js ESM (CSP-safe, no eval) ──
+    let Chart;
+    try {
+      const mod = await import('https://cdn.jsdelivr.net/npm/chart.js@4.4.3/+esm');
+      Chart = mod.Chart;
+      // Register only what we need — avoids tree-shaking issues
+      const { CategoryScale, LinearScale, PointElement, LineElement,
+              BarElement, ScatterController, LineController, BarController,
+              Tooltip, Legend, Filler } = mod;
+      Chart.register(CategoryScale, LinearScale, PointElement, LineElement,
+                     BarElement, ScatterController, LineController, BarController,
+                     Tooltip, Legend, Filler);
+    } catch (e) {
+      chartsGrid.innerHTML = '';
+      chartsGrid.appendChild(n3ErrorCard('Chart.js failed to load: ' + e.message));
+      return;
+    }
+
+    // ── Render CSV charts ──────────────────────
+    chartsGrid.innerHTML = '';
+    const PALETTE = [
+      'var(--color-primary, #01696f)',
+      'var(--color-blue, #5591c7)',
+      'var(--color-gold, #d19900)',
+      'var(--color-orange, #da7101)',
+      'var(--color-purple, #7a39bb)',
+    ];
+
+    for (const { file, label, type } of N3_CSVS) {
+      const card = document.createElement('div');
+      card.className = 'n3-chart-card';
+
+      const title = document.createElement('div');
+      title.className = 'n3-chart-title';
+      title.textContent = label;
+      card.appendChild(title);
+
+      const wrap = document.createElement('div');
+      wrap.className = 'n3-chart-wrap';
+      const canvas = document.createElement('canvas');
+      wrap.appendChild(canvas);
+      card.appendChild(wrap);
+      chartsGrid.appendChild(card);
+
+      try {
+        const res  = await fetch(N3_BASE + file);
+        const text = await res.text();
+        const { headers, rows } = parseCSV(text);
+
+        // First column = labels/x; remaining = datasets
+        const xKey = headers[0];
+        const yKeys = headers.slice(1);
+
+        const labels   = rows.map(r => r[xKey]);
+        const datasets = yKeys.map((key, i) => ({
+          label: key,
+          data: type === 'scatter'
+            ? rows.map(r => ({ x: r[xKey], y: r[key] }))
+            : rows.map(r => r[key]),
+          borderColor: PALETTE[i % PALETTE.length],
+          backgroundColor: PALETTE[i % PALETTE.length] + '33',
+          tension: 0.35,
+          pointRadius: type === 'scatter' ? 4 : 3,
+          borderWidth: 2,
+          fill: type === 'line' && i === 0,
+        }));
+
+        new Chart(canvas, {
+          type,
+          data: type === 'scatter' ? { datasets } : { labels, datasets },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: prefersReducedMotion ? false : { duration: 500 },
+            plugins: {
+              legend: { labels: { font: { size: 11 }, boxWidth: 12 } },
+              tooltip: { mode: 'index', intersect: false },
+            },
+            scales: {
+              x: { ticks: { font: { size: 11 }, maxRotation: 45 } },
+              y: { ticks: { font: { size: 11 } }, beginAtZero: false },
+            },
+          },
+        });
+
+      } catch (e) {
+        wrap.replaceWith(n3ErrorCard('Failed to load ' + file + ': ' + e.message));
+      }
+    }
+  }
+
+  // ── Run-info overlay controls ──────────────────────────────
+  const n3RunInfoBtn     = document.getElementById('n3-runinfo-btn');
+  const n3RunInfoOverlay = document.getElementById('n3-runinfo-overlay');
+  const n3RunInfoClose   = document.getElementById('n3-runinfo-close');
+
+  if (n3RunInfoBtn) {
+    n3RunInfoBtn.addEventListener('click', () => {
+      n3RunInfoOverlay.classList.add('open');
+      n3RunInfoBtn.setAttribute('aria-expanded', 'true');
+      n3RunInfoClose.focus();
+    });
+    n3RunInfoClose.addEventListener('click', () => {
+      n3RunInfoOverlay.classList.remove('open');
+      n3RunInfoBtn.setAttribute('aria-expanded', 'false');
+    });
+    n3RunInfoOverlay.addEventListener('click', e => {
+      if (e.target === n3RunInfoOverlay) {
+        n3RunInfoOverlay.classList.remove('open');
+        n3RunInfoBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // ── n3-lightbox controls ───────────────────────────────────
+  const n3Lightbox = document.getElementById('n3-lightbox');
+  if (n3Lightbox) {
+    const n3LbClose = n3Lightbox.querySelector('.fig-lightbox-close');
+    const n3LbImg   = document.getElementById('n3-lightbox-img');
+    n3LbClose.addEventListener('click', () => {
+      n3Lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    n3Lightbox.addEventListener('click', e => {
+      if (e.target === n3Lightbox) {
+        n3Lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+    n3LbImg.addEventListener('click', e => e.stopPropagation());
+  }
+
+  // ── Lazy-load panel 3 on first activation ─────────────────
+  // Hook into the existing navBtns click listener already present.
+  // Re-wire: patch activatePanel to trigger loadPanel3 when panel 3 opens.
+  const _origActivate = activatePanel;  // save reference captured in closure above
+  // We can't reassign the closed-over function, so we listen directly:
+  navBtns.forEach(btn => {
+    if (btn.dataset.panel === '3') {
+      btn.addEventListener('click', () => loadPanel3());
+    }
+  });
+  // Also fire immediately if page loaded with #panel-3 hash
+  if (location.hash === '#panel-3') loadPanel3();
+
 });
 </script>
