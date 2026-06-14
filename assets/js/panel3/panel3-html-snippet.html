@@ -1,0 +1,80 @@
+<!--
+  PANEL 3 — CVE Interactive Charts — HTML Snippet
+  ================================================
+  INSERT the <head> CDN block and the <section> block into your dashboard HTML.
+
+  ── STEP 1: Add to <head> (before your closing </head>) ──────────────────────
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.1.0/dist/chartjs-plugin-annotation.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+
+  ── STEP 2: Register Chart.js plugins once (add after Chart.js CDN) ──────────
+
+  <script>
+    // Register globally after all CDN scripts load
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof Chart !== 'undefined' && typeof ChartAnnotation !== 'undefined') {
+        Chart.register(ChartAnnotation);
+      }
+      if (typeof ChartZoom !== 'undefined') {
+        Chart.register(ChartZoom);
+      }
+    });
+  </script>
+
+  ── STEP 3: Add CSS (link or inline in <head>) ───────────────────────────────
+  Link: <link rel="stylesheet" href="assets/js/panel3/panel3-styles.css">
+
+  ── STEP 4: Replace / extend existing panel3 div with this section ───────────
+-->
+
+<section id="panel3" class="panel" aria-label="CVE Retrieval Analysis Charts">
+
+  <details open>
+    <summary class="panel-section-header">Top-25 Score Comparison (per query)</summary>
+    <p class="chart-desc">Grouped bar chart per query: 3 bars per rank (Cosine / Hybrid / Taumode). X labels show CVE year suffix. Scroll-zoom + pan enabled.</p>
+    <div id="top25-container" class="charts-stack"></div>
+  </details>
+
+  <details>
+    <summary class="panel-section-header">Tail Analysis (4 sub-charts per query)</summary>
+    <p class="chart-desc">Score distribution with HEAD_K=3 split line; tail scores rank 4+; tail variability (mean ± std); tail metrics grouped bar.</p>
+    <div id="tail-container" class="charts-stack"></div>
+  </details>
+
+  <details>
+    <summary class="panel-section-header">Semantic Recall Comparison (3 × 3)</summary>
+    <p class="chart-desc">Per method: Recall bars (Traditional / Semantic / Tolerant); scatter Traditional vs Semantic with y=x diagonal; Tolerant − Traditional uplift histogram.</p>
+    <div id="recall-container" class="charts-stack"></div>
+  </details>
+
+  <details>
+    <summary class="panel-section-header">Metric Deltas vs Cosine baseline</summary>
+    <p class="chart-desc">Δ Tail/Head Ratio, Δ Semantic Recall, Δ Tolerant Recall — Hybrid and Taumode relative to Cosine, per query.</p>
+    <div id="deltas-container" class="charts-stack"></div>
+  </details>
+
+  <details>
+    <summary class="panel-section-header">Win/Loss Heatmap (D3)</summary>
+    <p class="chart-desc">Per-query winner for T/H Ratio, Tail CV, Tail Decay, Semantic Recall, Tolerant Recall. Cell colour = winning method; C/H/T annotation.</p>
+    <div id="heatmap-container" class="heatmap-wrapper"></div>
+  </details>
+
+  <details>
+    <summary class="panel-section-header">HEAD_K Sweep (±1 std band)</summary>
+    <p class="chart-desc">Mean Tail/Head Ratio, Tail CV, Tail Decay vs HEAD_K, with ±1 std shaded band per method.</p>
+    <div id="headk-container" class="charts-stack"></div>
+  </details>
+
+</section>
+
+<!-- Module scripts — keep at bottom of <body> -->
+<script src="assets/js/panel3/chart-top25.js"></script>
+<script src="assets/js/panel3/chart-tail.js"></script>
+<script src="assets/js/panel3/chart-recall.js"></script>
+<script src="assets/js/panel3/chart-deltas.js"></script>
+<script src="assets/js/panel3/chart-heatmap.js"></script>
+<script src="assets/js/panel3/chart-headk.js"></script>
