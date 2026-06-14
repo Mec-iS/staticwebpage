@@ -884,7 +884,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">October 2025 (≈ 8 months ago)</div>
+      <div class="timeline-item__date">October 2025</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/optical-embeddings" target="_blank" rel="noopener"><code>optical-embeddings</code> v0.3.0</a></h2>
       <p class="timeline-item__meta">DeepSeek-OCR — compress text into images. Optical token-compression for dense-context pipelines.</p>
       <div class="tl-dl-stats">
@@ -949,7 +949,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">November 2025 (≈ 6 months ago)</div>
+      <div class="timeline-item__date">November 2025</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/nanogpt" target="_blank" rel="noopener"><code>nanogpt</code> v0.1.0</a></h2>
       <p class="timeline-item__meta">Nanochat in Rust. Companion to the GPT-2 deep-dive post; full transformer impl with RoPE, MQA, RMSNorm.</p>
       <div class="tl-dl-stats">
@@ -968,7 +968,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">November 2025 (≈ 6 months ago)</div>
+      <div class="timeline-item__date">November 2025</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/dspm-rs" target="_blank" rel="noopener"><code>dspm-rs</code> v0.1.0</a></h2>
       <p class="timeline-item__meta">Graph dimensionality reduction for vector similarities via subgraphs.</p>
       <div class="tl-dl-stats">
@@ -987,7 +987,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">November 2025 (≈ 6 months ago)</div>
+      <div class="timeline-item__date">November 2025</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/javelin-tui" target="_blank" rel="noopener"><code>javelin-tui</code> v0.10.0</a></h2>
       <p class="timeline-item__meta">TUI for displaying and working with Lance matrices — developer tooling for the ArrowSpace ecosystem.</p>
       <div class="tl-dl-stats">
@@ -1036,7 +1036,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">December 2025 (≈ 5 months ago)</div>
+      <div class="timeline-item__date">December 2025</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/deep-delta-learn" target="_blank" rel="noopener"><code>deep-delta-learn</code> v0.1.0</a></h2>
       <p class="timeline-item__meta">Implementation of Deep Delta Learning (paper 2601.00417). Structured incremental learning for spectral models.</p>
       <div class="tl-dl-stats">
@@ -1071,7 +1071,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">February 2026 (≈ 4 months ago)</div>
+      <div class="timeline-item__date">February 2026</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/kalman_clustering" target="_blank" rel="noopener"><code>kalman_clustering</code> v0.3.0</a></h2>
       <p class="timeline-item__meta">Clustering vectors using Kalman Filter. Powers the diffusion-split subcentroids and spectral partitioning approach.</p>
       <div class="tl-dl-stats">
@@ -1265,7 +1265,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">March 2026 (≈ 3 months ago)</div>
+      <div class="timeline-item__date">March 2026</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/constraint-decoding-trie" target="_blank" rel="noopener"><code>constraint-decoding-trie</code> v0.1.0</a></h2>
       <p class="timeline-item__meta">Generative Retrieval: Transition Matrix Trie for Constraint Decoding (STATIC). Companion implementation to the Spectral IDs paper.</p>
       <div class="tl-dl-stats">
@@ -1331,7 +1331,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">April 2026 (≈ 2 months ago)</div>
+      <div class="timeline-item__date">April 2026</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/arrowspace" target="_blank" rel="noopener"><code>arrowspace</code> v0.26.2</a></h2>
       <p class="timeline-item__meta">Graph Wiring for embeddings using physical networks wiring. Graph analysis, vector search, and energy-distribution stats.</p>
       <div class="tl-dl-stats">
