@@ -390,10 +390,6 @@ layout: timeline
      ══════════════════════════════════════════════ -->
 <section id="panel-1" class="dash-panel active" role="tabpanel" aria-labelledby="panel-1-tab">
 
-## Timeline
-
-A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplexity* experiments converged into the **Graph Wiring** framework.
-
 <!-- ── Filter bar ─────────────────────────────────── -->
 <div class="tl-filter-bar" role="group" aria-label="Filter timeline events">
   <button class="tl-filter-btn active" data-filter="all">All</button>
