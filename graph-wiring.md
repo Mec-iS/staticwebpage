@@ -669,7 +669,7 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     <div class="timeline-item__content">
       <span class="tl-badge milestone">Milestone</span>
       <div class="timeline-item__date">..., 2026</div>
-      <h2 class="timeline-item__title">⏳ Next</h2>
+      <h2 class="timeline-item__title">⏳ Next? Become a sponsor to be part of this endeavour</h2>
     </div>
   </div>
 
@@ -695,7 +695,6 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.593c-.425-.394-8.507-7.77-8.507-12.194C3.493 5.272 7.076 2 12 2s8.507 3.272 8.507 7.399c0 4.424-8.082 11.8-8.507 12.194z"/></svg>
       Sponsor on GitHub
     </a>
-    <img src="https://img.shields.io/github/stars/tuned-org-uk/arrowspace?style=flat-square&label=arrowspace%20stars" alt="GitHub stars" loading="lazy" width="130" height="20">
   </div>
 </div>
 
