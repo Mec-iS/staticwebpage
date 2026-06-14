@@ -1810,16 +1810,6 @@ layout: timeline
       </div>
     </div>
 
-    <!-- ── Static PNG figures ──────────────────────────────── -->
-    <p class="n3-section-label">Static output figures</p>
-    <div class="n3-png-grid" id="n3-png-grid">
-      <!-- skeletons shown until images load -->
-      <div class="n3-skeleton n3-skeleton-png"></div>
-      <div class="n3-skeleton n3-skeleton-png"></div>
-      <div class="n3-skeleton n3-skeleton-png"></div>
-      <div class="n3-skeleton n3-skeleton-png"></div>
-    </div>
-
     <!-- ── Interactive Chart.js charts ────────────────────── -->
     <p class="n3-section-label" style="margin-top:1.5rem">Interactive charts (from CSV data)</p>
     <div class="n3-charts-grid" id="n3-charts-grid">
@@ -2031,16 +2021,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const N3_BASE = 'https://raw.githubusercontent.com/tuned-org-uk/pyarrowspace/1ca2c9b94228e11136b9ed282e4c30b206b683b9/neurips/CVE/output/v2/';
 
-  // PNG figures to display in the static grid
-  const N3_PNGS = [
-    { file: 'cve_win_loss_heatmap.png',              label: 'Win / Loss heatmap' },
-    { file: 'cve_metric_deltas.png',                 label: 'Metric deltas' },
-    { file: 'cve_pareto_tradeoff.png',               label: 'Pareto trade-off' },
-    { file: 'cve_headk_sweep.png',                   label: 'Head-k sweep' },
-    { file: 'cve_semantic_recall_comparison.png',    label: 'Semantic recall comparison' },
-    { file: 'cve_top25_comparison.png',              label: 'Top-25 comparison (full)' },
-  ];
-
   // CSV files to render as interactive Chart.js charts
   const N3_CSVS = [
     { file: 'cve_summary.csv',                label: 'Summary metrics',          type: 'bar'  },
@@ -2091,38 +2071,6 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector('#n3-runinfo-table tbody').innerHTML =
         '<tr><td colspan="2" style="color:var(--color-text-muted)">Metadata unavailable</td></tr>';
     }
-
-    // ── Load static PNGs ───────────────────────
-    pngGrid.innerHTML = '';
-    N3_PNGS.forEach(({ file, label }) => {
-      const card = document.createElement('div');
-      card.className = 'n3-png-card';
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', 'Open figure ' + label);
-      card.innerHTML = `
-        <img src="${N3_BASE}${file}" alt="${label}" loading="lazy" width="800" height="600"
-             onerror="this.parentElement.replaceWith((() => { const d=document.createElement('div'); d.className='n3-error-card'; d.textContent='⚠ Image unavailable: ${file}'; return d; })())">
-        <div class="n3-png-caption">
-          <div class="n3-png-name">${label}</div>
-        </div>`;
-
-      // PNG zoom using n3-lightbox
-      function openN3Lightbox() {
-        const lbImg = document.getElementById('n3-lightbox-img');
-        const lbCap = document.getElementById('n3-lightbox-caption');
-        lbImg.src = N3_BASE + file;
-        lbImg.alt = label;
-        lbCap.textContent = label;
-        document.getElementById('n3-lightbox').classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-      card.addEventListener('click', openN3Lightbox);
-      card.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openN3Lightbox(); }
-      });
-      pngGrid.appendChild(card);
-    });
 
     // ── Load Chart.js ESM (CSP-safe, no eval) ──
     let Chart;
