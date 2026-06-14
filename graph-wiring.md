@@ -373,6 +373,172 @@ layout: timeline
   color: var(--bp-accent, var(--color-primary, #01696f));
   margin-top: 0.4rem;
 }
+
+/* ══════════════════════════════════════════════
+   PANEL 2 — BLOG FIGURES GALLERY
+   ══════════════════════════════════════════════ */
+.fig-panel-wrap {
+  max-width: var(--panel-max);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.fig-panel-header {
+  margin-bottom: 1.5rem;
+}
+.fig-panel-header h2 {
+  font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: var(--color-text, #28251d);
+}
+.fig-panel-header p {
+  font-size: 0.88rem;
+  color: var(--color-text-muted, #7a7974);
+  margin: 0;
+}
+
+/* ── Post filter bar ─────────────────────────── */
+.fig-filter-bar {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+.fig-filter-btn {
+  padding: 0.28rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border, #d4d1ca);
+  background: var(--color-surface, #f9f8f5);
+  color: var(--color-text-muted, #7a7974);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 180ms, color 180ms, border-color 180ms;
+}
+.fig-filter-btn:hover {
+  background: var(--color-surface-offset, #f3f0ec);
+  color: var(--color-text, #28251d);
+}
+.fig-filter-btn.active {
+  background: var(--color-primary, #01696f);
+  color: #fff;
+  border-color: var(--color-primary, #01696f);
+}
+
+/* ── Section label ───────────────────────────── */
+.fig-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-faint, #bab9b4);
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-divider, #dcd9d5);
+}
+
+/* ── Masonry grid ────────────────────────────── */
+.fig-masonry {
+  columns: 2 260px;
+  column-gap: 0.85rem;
+}
+@media (min-width: 680px) { .fig-masonry { columns: 3 220px; } }
+@media (min-width: 900px) { .fig-masonry { columns: 4 200px; } }
+
+/* ── Figure card ─────────────────────────────── */
+.fig-card {
+  break-inside: avoid;
+  margin-bottom: 0.85rem;
+  background: var(--color-surface, #f9f8f5);
+  border: 1px solid oklch(from var(--color-text, #28251d) l c h / 0.08);
+  border-radius: 0.6rem;
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: transform 180ms cubic-bezier(0.16,1,0.3,1),
+              box-shadow 180ms cubic-bezier(0.16,1,0.3,1);
+}
+@media (prefers-reduced-motion: reduce) { .fig-card { transition: none; } }
+.fig-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px oklch(0.2 0.01 80 / 0.1);
+}
+.fig-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--color-surface-offset, #f3f0ec);
+}
+.fig-card-caption {
+  padding: 0.45rem 0.6rem 0.5rem;
+}
+.fig-card-post {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.4rem;
+  border-radius: 9999px;
+  margin-bottom: 0.2rem;
+  background: color-mix(in srgb, var(--color-primary, #01696f) 12%, transparent);
+  color: var(--color-primary, #01696f);
+}
+.fig-card-name {
+  font-size: 0.73rem;
+  color: var(--color-text-muted, #7a7974);
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+/* ── Lightbox ────────────────────────────────── */
+.fig-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: oklch(0.1 0 0 / 0.88);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  cursor: zoom-out;
+}
+.fig-lightbox.open { display: flex; }
+.fig-lightbox img {
+  max-width: min(90vw, 1100px);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 24px 64px oklch(0 0 0 / 0.55);
+  cursor: default;
+}
+.fig-lightbox-close {
+  position: absolute;
+  top: 1rem; right: 1.25rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 150ms;
+}
+.fig-lightbox-close:hover { opacity: 1; }
+.fig-lightbox-caption {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: oklch(0.12 0 0 / 0.75);
+  color: #e8e8e6;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+  pointer-events: none;
+}
 </style>
 
 <!-- ══════════════════════════════════════════════
@@ -1015,14 +1181,359 @@ layout: timeline
 </section><!-- /#panel-1 -->
 
 <!-- ══════════════════════════════════════════════
-     PANEL 2 — BLOG FIGURES (placeholder)
+     PANEL 2 — BLOG FIGURES GALLERY
      ══════════════════════════════════════════════ -->
 <section id="panel-2" class="dash-panel" role="tabpanel" aria-labelledby="panel-2-tab">
-  <div style="max-width:var(--panel-max);margin:0 auto;padding:0 1rem">
-    <h2 style="font-size:clamp(1.2rem,1rem+1vw,1.6rem);font-weight:700;margin-bottom:0.5rem">📊 Blog Figures</h2>
-    <p style="color:var(--color-text-muted,#7a7974);font-size:0.9rem">Interactive charts from benchmark blog posts — coming in next commit.</p>
-  </div>
-</section>
+  <div class="fig-panel-wrap">
+
+    <div class="fig-panel-header">
+      <h2>📊 Blog Figures Gallery</h2>
+      <p>All benchmark charts from published posts. Click any figure to expand.</p>
+    </div>
+
+    <!-- Post filter -->
+    <div class="fig-filter-bar" role="group" aria-label="Filter figures by post">
+      <button class="fig-filter-btn active" data-fig-filter="all">All posts</button>
+      <button class="fig-filter-btn" data-fig-filter="016">Post 016 — Performance</button>
+      <button class="fig-filter-btn" data-fig-filter="019">Post 019 — Latent Spaces pt.1</button>
+    </div>
+
+    <!-- ── Post 016 / CVE ──────────────────────────────────── -->
+    <p class="fig-section-label" data-fig-group="016">Post 016 · arrowspace: Capabilities, speed and accuracy · CVE benchmark</p>
+    <div class="fig-masonry" data-fig-group="016">
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c1_score_decay">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c1_score_decay.png"
+             alt="Score decay across ranks (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Score decay across ranks</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c2_score_lift">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c2_score_lift.png"
+             alt="Score lift (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Score lift</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c3_ndcg">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c3_ndcg.png"
+             alt="NDCG@k (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">NDCG@k</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c4_rank_corr">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c4_rank_corr.png"
+             alt="Rank correlation (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Rank correlation</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c5_th_ratio">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c5_th_ratio.png"
+             alt="Threshold ratio (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Threshold ratio</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c6_tail_cv">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c6_tail_cv.png"
+             alt="Tail CV (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Tail coefficient of variation</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c7_per_query_curves">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c7_per_query_curves.png"
+             alt="Per-query precision curves (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Per-query precision curves</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c8_agreement">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c8_agreement.png"
+             alt="Ranker agreement (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Ranker agreement</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c9_head_scatter">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c9_head_scatter.png"
+             alt="Head-query scatter (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Head-query scatter</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c10_tail_radar">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c10_tail_radar.png"
+             alt="Tail-query radar (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Tail-query radar</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c11_overlap">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c11_overlap.png"
+             alt="Result overlap (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Result overlap</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c12_violin">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c12_violin.png"
+             alt="Score distribution violin (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Score distribution violin</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c13_decay_rate">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c13_decay_rate.png"
+             alt="Decay rate (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Decay rate</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c14_boost_map">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c14_boost_map.png"
+             alt="Boost heatmap (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Boost heatmap</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c15_rerank_hist">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c15_rerank_hist.png"
+             alt="Re-rank histogram (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Re-rank histogram</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c16_benefit">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c16_benefit.png"
+             alt="Benefit analysis (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Benefit analysis</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c17_stability">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c17_stability.png"
+             alt="Ranking stability (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Ranking stability</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c18_range">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c18_range.png"
+             alt="Score range (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Score range</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c19_wins">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c19_wins.png"
+             alt="Win-rate analysis (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Win-rate analysis</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c20_landscape">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c20_landscape.png"
+             alt="Performance landscape (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Performance landscape</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c21_parcoords">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c21_parcoords.png"
+             alt="Parallel coordinates (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Parallel coordinates</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c22_cumul_adv">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c22_cumul_adv.png"
+             alt="Cumulative advantage (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Cumulative advantage</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="016" tabindex="0" role="button" aria-label="Open figure cve_c23_summary_table">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/016/cve/cve_c23_summary_table.png"
+             alt="Summary table (CVE)" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">016</span>
+          <div class="fig-card-name">Summary table</div>
+        </div>
+      </div>
+
+    </div><!-- /.fig-masonry 016 -->
+
+    <!-- ── Post 019 ──────────────────────────────────────── -->
+    <p class="fig-section-label" style="margin-top:2rem" data-fig-group="019">Post 019 · arrowspace for Latent Spaces — part 1</p>
+    <div class="fig-masonry" data-fig-group="019">
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c1_arrowspace_energy">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c1_arrowspace_energy.png"
+             alt="ArrowSpace energy distribution" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">ArrowSpace energy distribution</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c2_kde_vanilla">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c2_kde_vanilla.png"
+             alt="KDE — vanilla embeddings" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">KDE — vanilla embeddings</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c3_kde_aug">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c3_kde_aug.png"
+             alt="KDE — augmented embeddings" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">KDE — augmented embeddings</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c4_diff_vanilla">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c4_diff_vanilla.png"
+             alt="Diffusion map — vanilla" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">Diffusion map — vanilla</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c5_diff_aug">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c5_diff_aug.png"
+             alt="Diffusion map — augmented" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">Diffusion map — augmented</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c6_bh_overlay">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c6_bh_overlay.png"
+             alt="Barnes-Hut overlay" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">Barnes-Hut overlay</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c7_quality_bar">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c7_quality_bar.png"
+             alt="Cluster quality bar chart" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">Cluster quality bar chart</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c8_alpha_purity">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c8_alpha_purity.png"
+             alt="α vs cluster purity" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">α vs cluster purity</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c9_alpha_lambda">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c9_alpha_lambda.png"
+             alt="α vs λ energy" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">α vs λ energy</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c10_jaccard7">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c10_jaccard7.png"
+             alt="Jaccard@7 overlap" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">Jaccard@7 overlap</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c11_r_vs_kde">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c11_r_vs_kde.png"
+             alt="Radius vs KDE bandwidth" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">Radius vs KDE bandwidth</div>
+        </div>
+      </div>
+
+      <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c12_r_vs_diff">
+        <img src="https://raw.githubusercontent.com/Mec-iS/staticwebpage/feat/multipanel-dashboard/assets/blog/019/c12_r_vs_diff.png"
+             alt="Radius vs diffusion scale" loading="lazy" width="600" height="450">
+        <div class="fig-card-caption">
+          <span class="fig-card-post">019</span>
+          <div class="fig-card-name">Radius vs diffusion scale</div>
+        </div>
+      </div>
+
+    </div><!-- /.fig-masonry 019 -->
+
+  </div><!-- /.fig-panel-wrap -->
+</section><!-- /#panel-2 -->
+
+<!-- ── Lightbox (shared, outside panels) ──────── -->
+<div class="fig-lightbox" id="fig-lightbox" role="dialog" aria-modal="true" aria-label="Figure lightbox">
+  <button class="fig-lightbox-close" aria-label="Close lightbox">✕</button>
+  <img src="" alt="" id="fig-lightbox-img">
+  <div class="fig-lightbox-caption" id="fig-lightbox-caption"></div>
+</div>
 
 <!-- ══════════════════════════════════════════════
      PANEL 3 — NEURIPS (placeholder)
@@ -1050,7 +1561,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ── Panel nav ──────────────────────────────────────────────
   const navBtns = document.querySelectorAll('.dash-nav-btn');
   const panels  = document.querySelectorAll('.dash-panel');
-  let   activeId = '1'; // track last clicked panel to prevent IO fighting clicks
+  let   activeId = '1';
 
   function activatePanel(id, pushHistory) {
     activeId = String(id);
@@ -1060,7 +1571,6 @@ document.addEventListener("DOMContentLoaded", function () {
       b.setAttribute('aria-selected', String(active));
     });
     panels.forEach(p => p.classList.toggle('active', p.id === 'panel-' + activeId));
-    // re-trigger scroll-reveal for items that entered a newly visible panel
     document.querySelectorAll('#panel-' + activeId + ' .timeline-item:not(.is-visible)').forEach(el => {
       if (!prefersReducedMotion) observer.observe(el);
       else el.classList.add('is-visible');
@@ -1070,22 +1580,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   navBtns.forEach(btn => btn.addEventListener('click', () => activatePanel(btn.dataset.panel, true)));
 
-  // Handle direct hash links: #panel-N or #section-4b
   const rawHash = location.hash;
   const panelHash = rawHash.match(/^#panel-(\d+)$/);
   if (panelHash) {
     activatePanel(panelHash[1], false);
   } else if (rawHash === '#section-4b') {
     activatePanel('4', false);
-    // defer scroll until panel is painted
     requestAnimationFrame(() => {
       const t = document.getElementById('section-4b');
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 
-  // ── IntersectionObserver: sync active nav to visible panel ─
-  // Only fires when user scrolls — does not override click-based activation.
   const panelIO = new IntersectionObserver(
     (entries) => {
       entries.forEach(entry => {
@@ -1104,15 +1610,12 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     { threshold: 0.35 }
   );
-  // NOTE: panels use display:none/block switching, so the IO only
-  // fires in practice when the layout switches to a scroll-based view.
-  // This is intentional — the tab model takes priority over scroll.
   panels.forEach(p => panelIO.observe(p));
 
-  // ── prefers-reduced-motion guard ──────────────────────────
+  // ── prefers-reduced-motion ────────────────────────────────
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ── Scroll-reveal (IntersectionObserver) ──────────────────
+  // ── Scroll-reveal ─────────────────────────────────────────
   const observer = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach(entry => {
@@ -1126,13 +1629,12 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   if (prefersReducedMotion) {
-    // mark all visible immediately — CSS already removes the animation
     document.querySelectorAll('.timeline-item').forEach(el => el.classList.add('is-visible'));
   } else {
     document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
   }
 
-  // ── Filter toggle ──────────────────────────────────────────
+  // ── Timeline filter ───────────────────────────────────────
   const filterBtns    = document.querySelectorAll('.tl-filter-btn');
   const timelineItems = document.querySelectorAll('.timeline-item[data-type]');
 
@@ -1151,7 +1653,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // ── Expand / collapse drawer ───────────────────────────────
+  // ── Expand / collapse drawer ──────────────────────────────
   document.querySelectorAll('.tl-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
       const drawer = btn.nextElementSibling;
@@ -1160,6 +1662,70 @@ document.addEventListener("DOMContentLoaded", function () {
       btn.textContent = isOpen ? 'Hide details ↑' : 'Show details ↓';
     });
   });
+
+  // ── Figure gallery filter ─────────────────────────────────
+  const figFilterBtns = document.querySelectorAll('.fig-filter-btn');
+
+  figFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.figFilter;
+      figFilterBtns.forEach(b => b.classList.toggle('active', b === btn));
+
+      // Show/hide section labels
+      document.querySelectorAll('[data-fig-group]').forEach(el => {
+        el.style.display = (f === 'all' || el.dataset.figGroup === f) ? '' : 'none';
+      });
+
+      // Show/hide individual cards
+      document.querySelectorAll('.fig-card').forEach(card => {
+        card.style.display = (f === 'all' || card.dataset.figPost === f) ? '' : 'none';
+      });
+    });
+  });
+
+  // ── Lightbox ──────────────────────────────────────────────
+  const lightbox     = document.getElementById('fig-lightbox');
+  const lbImg        = document.getElementById('fig-lightbox-img');
+  const lbCaption    = document.getElementById('fig-lightbox-caption');
+  const lbClose      = lightbox.querySelector('.fig-lightbox-close');
+
+  function openLightbox(card) {
+    const img     = card.querySelector('img');
+    const caption = card.querySelector('.fig-card-name');
+    const post    = card.querySelector('.fig-card-post');
+    lbImg.src     = img.src;
+    lbImg.alt     = img.alt;
+    lbCaption.textContent = (post ? 'Post ' + post.textContent + ' · ' : '') + (caption ? caption.textContent : '');
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.fig-card').forEach(card => {
+    card.addEventListener('click', () => openLightbox(card));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(card); }
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+
+  // Click outside image closes lightbox
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+
+  // Stop click-through on the image itself
+  lbImg.addEventListener('click', e => e.stopPropagation());
 
 });
 </script>
