@@ -60,7 +60,6 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
 .timeline-item.is-visible .timeline-line {
   opacity: 1;
 }
-/* hide filtered items */
 .timeline-item.tl-hidden {
   display: none;
 }
@@ -80,6 +79,12 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
   background: var(--color-orange, #da7101);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-orange, #da7101) 22%, transparent);
 }
+.timeline-item[data-type="code"] .timeline-dot {
+  background: var(--color-blue, #5591c7);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-blue, #5591c7) 20%, transparent);
+  width: 0.65rem !important;
+  height: 0.65rem !important;
+}
 
 /* ── Category badge ──────────────────────────── */
 .tl-badge {
@@ -92,9 +97,10 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
   border-radius: 9999px;
   margin-bottom: 0.3rem;
 }
-.tl-badge.paper    { background: color-mix(in srgb, var(--color-primary, #01696f) 15%, transparent); color: var(--color-primary, #01696f); }
-.tl-badge.blog     { background: color-mix(in srgb, var(--color-gold, #d19900) 15%, transparent);    color: #9a6f00; }
-.tl-badge.milestone{ background: color-mix(in srgb, var(--color-orange, #da7101) 15%, transparent);  color: var(--color-orange, #da7101); }
+.tl-badge.paper     { background: color-mix(in srgb, var(--color-primary, #01696f) 15%, transparent); color: var(--color-primary, #01696f); }
+.tl-badge.blog      { background: color-mix(in srgb, var(--color-gold, #d19900) 15%, transparent);    color: #9a6f00; }
+.tl-badge.milestone { background: color-mix(in srgb, var(--color-orange, #da7101) 15%, transparent);  color: var(--color-orange, #da7101); }
+.tl-badge.code      { background: color-mix(in srgb, var(--color-blue, #5591c7) 15%, transparent);    color: var(--color-blue, #5591c7); }
 
 /* ── Value chip ──────────────────────────────── */
 .tl-value-chip {
@@ -108,6 +114,25 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
   margin-left: 0.4rem;
   vertical-align: middle;
 }
+
+/* ── Download stats chips ────────────────────── */
+.tl-dl-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.4rem 0 0.2rem;
+}
+.tl-dl-chip {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.12rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border, #d4d1ca);
+  background: var(--color-surface-offset, #f3f0ec);
+  color: var(--color-text-muted, #7a7974);
+}
+.tl-dl-chip.total  { color: var(--color-blue, #5591c7); border-color: color-mix(in srgb, var(--color-blue, #5591c7) 35%, transparent); background: color-mix(in srgb, var(--color-blue, #5591c7) 8%, transparent); }
+.tl-dl-chip.recent { color: var(--color-success, #437a22); border-color: color-mix(in srgb, var(--color-success, #437a22) 35%, transparent); background: color-mix(in srgb, var(--color-success, #437a22) 8%, transparent); }
 
 /* ── Expand drawer ───────────────────────────── */
 .tl-drawer {
@@ -284,9 +309,27 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
   <button class="tl-filter-btn" data-filter="paper">📄 Papers</button>
   <button class="tl-filter-btn" data-filter="blog">✍️ Blog</button>
   <button class="tl-filter-btn" data-filter="milestone">🏆 Milestones</button>
+  <button class="tl-filter-btn" data-filter="code">📦 Code</button>
 </div>
 
 <div class="timeline timeline--vertical">
+
+  <!-- 2024-02 smartcore v0.5.0 (Rust) -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Rust Crate</span>
+      <div class="timeline-item__date">2024 (earliest release in corpus)</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/smartcore" target="_blank" rel="noopener"><code>smartcore</code> v0.5.0</a></h2>
+      <p class="timeline-item__meta">Machine Learning in Rust. Foundation library underpinning spectral clustering and manifold utilities across the stack.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">📥 contributor</span>
+      </div>
+    </div>
+  </div>
 
   <!-- 2025-09-10 ArrowSpace paper -->
   <div class="timeline-item" data-type="paper">
@@ -338,6 +381,25 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
+  <!-- ~2025-10 optical-embeddings v0.3.0 -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Rust Crate</span>
+      <div class="timeline-item__date">October 2025 (≈ 8 months ago)</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/optical-embeddings" target="_blank" rel="noopener"><code>optical-embeddings</code> v0.3.0</a></h2>
+      <p class="timeline-item__meta">DeepSeek-OCR — compress text into images. Optical token-compression for dense-context pipelines.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">📥 225 total</span>
+        <span class="tl-dl-chip recent">⚡ 5 recent</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/optical-embeddings-rs" target="_blank" rel="noopener">Repository</a> · <a href="https://docs.rs/optical-embeddings-rs" target="_blank" rel="noopener">Docs</a></p>
+    </div>
+  </div>
+
   <!-- 2025-10-17 Post 005 -->
   <div class="timeline-item" data-type="blog">
     <div class="timeline-item__marker">
@@ -384,6 +446,63 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
+  <!-- ~2025-11 nanogpt v0.1.0 -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Rust Crate</span>
+      <div class="timeline-item__date">November 2025 (≈ 6 months ago)</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/nanogpt" target="_blank" rel="noopener"><code>nanogpt</code> v0.1.0</a></h2>
+      <p class="timeline-item__meta">Nanochat in Rust. Companion to the GPT-2 deep-dive post; full transformer impl with RoPE, MQA, RMSNorm.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">📥 22 total</span>
+        <span class="tl-dl-chip recent">⚡ 5 recent</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/nanogpt-rs" target="_blank" rel="noopener">Repository</a> · <a href="https://docs.rs/nanogpt-rs" target="_blank" rel="noopener">Docs</a></p>
+    </div>
+  </div>
+
+  <!-- ~2025-11 dspm-rs v0.1.0 -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Rust Crate</span>
+      <div class="timeline-item__date">November 2025 (≈ 6 months ago)</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/dspm-rs" target="_blank" rel="noopener"><code>dspm-rs</code> v0.1.0</a></h2>
+      <p class="timeline-item__meta">Graph dimensionality reduction for vector similarities via subgraphs.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">📥 21 total</span>
+        <span class="tl-dl-chip recent">⚡ 3 recent</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/topolog-embeddings" target="_blank" rel="noopener">Repository</a></p>
+    </div>
+  </div>
+
+  <!-- ~2025-11 javelin-tui v0.10.0 -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Rust Crate</span>
+      <div class="timeline-item__date">November 2025 (≈ 6 months ago)</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/javelin-tui" target="_blank" rel="noopener"><code>javelin-tui</code> v0.10.0</a></h2>
+      <p class="timeline-item__meta">TUI for displaying and working with Lance matrices — developer tooling for the ArrowSpace ecosystem.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">📥 142 total</span>
+        <span class="tl-dl-chip recent">⚡ 3 recent</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/javelin-tui" target="_blank" rel="noopener">Repository</a></p>
+    </div>
+  </div>
+
   <!-- 2025-11-12 Post 010 -->
   <div class="timeline-item" data-type="blog">
     <div class="timeline-item__marker">
@@ -414,6 +533,25 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
+  <!-- ~2025-12 deep-delta-learn v0.1.0 -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Rust Crate</span>
+      <div class="timeline-item__date">December 2025 (≈ 5 months ago)</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/deep-delta-learn" target="_blank" rel="noopener"><code>deep-delta-learn</code> v0.1.0</a></h2>
+      <p class="timeline-item__meta">Implementation of Deep Delta Learning (paper 2601.00417). Structured incremental learning for spectral models.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">📥 22 total</span>
+        <span class="tl-dl-chip recent">⚡ 4 recent</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/deep-delta-learn" target="_blank" rel="noopener">Repository</a> · <a href="https://docs.rs/deep-delta-learn" target="_blank" rel="noopener">Docs</a></p>
+    </div>
+  </div>
+
   <!-- 2026-01-05 Post 012 -->
   <div class="timeline-item" data-type="blog">
     <div class="timeline-item__marker">
@@ -427,6 +565,25 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
         <span class="tl-value-chip">~50% KV-cache · ~20% faster</span>
       </h2>
       <p class="timeline-item__links"><a href="/posts/012_topological_transformer_tauformer_domain_memory_in_attention">Read post →</a></p>
+    </div>
+  </div>
+
+  <!-- ~2026-02 kalman_clustering v0.3.0 -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Rust Crate</span>
+      <div class="timeline-item__date">February 2026 (≈ 4 months ago)</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/kalman_clustering" target="_blank" rel="noopener"><code>kalman_clustering</code> v0.3.0</a></h2>
+      <p class="timeline-item__meta">Clustering vectors using Kalman Filter. Powers the diffusion-split subcentroids and spectral partitioning approach.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">📥 446 total</span>
+        <span class="tl-dl-chip recent">⚡ 364 recent</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/kalman_centroids" target="_blank" rel="noopener">Repository</a> · <a href="https://docs.rs/kalman_centroids" target="_blank" rel="noopener">Docs</a></p>
     </div>
   </div>
 
@@ -560,6 +717,24 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     </div>
   </div>
 
+  <!-- ~2026-03 Python: epiplexity (pip) -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Python Package</span>
+      <div class="timeline-item__date">March 2026</div>
+      <h2 class="timeline-item__title"><a href="https://pypi.org/project/epiplexity/" target="_blank" rel="noopener"><code>epiplexity</code></a> <code style="font-size:0.75rem; color:var(--color-text-faint)">pip install epiplexity</code></h2>
+      <p class="timeline-item__meta">Python interface to the epiplexity + Graph Wiring algorithm. Companion to the empirical study paper.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">🐍 PyPI</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/graph-wiring-epiplexity" target="_blank" rel="noopener">Repository</a></p>
+    </div>
+  </div>
+
   <!-- 2026-03-27 Podcast milestone -->
   <div class="timeline-item" data-type="milestone">
     <div class="timeline-item__marker">
@@ -584,6 +759,25 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
           </p>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ~2026-03 constraint-decoding-trie v0.1.0 -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Rust Crate</span>
+      <div class="timeline-item__date">March 2026 (≈ 3 months ago)</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/constraint-decoding-trie" target="_blank" rel="noopener"><code>constraint-decoding-trie</code> v0.1.0</a></h2>
+      <p class="timeline-item__meta">Generative Retrieval: Transition Matrix Trie for Constraint Decoding (STATIC). Companion implementation to the Spectral IDs paper.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">📥 16 total</span>
+        <span class="tl-dl-chip recent">⚡ 4 recent</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/constraint-decoding-trie-static" target="_blank" rel="noopener">Repository</a> · <a href="https://docs.rs/constraint-decoding-trie-static" target="_blank" rel="noopener">Docs</a></p>
     </div>
   </div>
 
@@ -613,6 +807,62 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
           </ul>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ~2026-04 Python: arrowspace (pip) -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Python Package</span>
+      <div class="timeline-item__date">April 2026</div>
+      <h2 class="timeline-item__title"><a href="https://pypi.org/project/arrowspace/" target="_blank" rel="noopener"><code>arrowspace</code></a> <code style="font-size:0.75rem; color:var(--color-text-faint)">pip install arrowspace</code></h2>
+      <p class="timeline-item__meta">Python bindings to the ArrowSpace Rust engine. Full graph analysis, vector search, and energy-distribution stats from Python.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">🐍 PyPI</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/pyarrowspace" target="_blank" rel="noopener">Repository</a></p>
+    </div>
+  </div>
+
+  <!-- ~2026-04 arrowspace (Rust crate) v0.26.2 -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Rust Crate</span>
+      <div class="timeline-item__date">April 2026 (≈ 2 months ago)</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/arrowspace" target="_blank" rel="noopener"><code>arrowspace</code> v0.26.2</a></h2>
+      <p class="timeline-item__meta">Graph Wiring for embeddings using physical networks wiring. Graph analysis, vector search, and energy-distribution stats.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">📥 6,604 total</span>
+        <span class="tl-dl-chip recent">⚡ 736 recent</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/surfface-rs" target="_blank" rel="noopener">Repository</a> · <a href="https://docs.rs/surfface-rs" target="_blank" rel="noopener">Docs</a></p>
+    </div>
+  </div>
+
+  <!-- ~2026-05 genegraph-storage v0.12.0 -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Rust Crate</span>
+      <div class="timeline-item__date">May 2026 (≈ 25 days ago)</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/genegraph-storage" target="_blank" rel="noopener"><code>genegraph-storage</code> v0.12.0</a></h2>
+      <p class="timeline-item__meta">Vector database: base Lance storage layer. Core persistence engine for the ArrowSpace graph wiring stack.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">📥 974 total</span>
+        <span class="tl-dl-chip recent">⚡ 286 recent</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/genegraph-storage" target="_blank" rel="noopener">Repository</a> · <a href="https://docs.rs/genegraph-storage" target="_blank" rel="noopener">Docs</a></p>
     </div>
   </div>
 
@@ -682,7 +932,8 @@ A short chronology of how **ArrowSpace**, topology-aware evaluation and *epiplex
     <div>
       <span class="stat-pill">5 papers</span>
       <span class="stat-pill">11 blog posts</span>
-      <span class="stat-pill">1 pip package</span>
+      <span class="stat-pill">2 pip packages</span>
+      <span class="stat-pill">11 Rust crates</span>
       <span class="stat-pill">1 podcast</span>
       <span class="stat-pill">NeurIPS 2026 submitted</span>
     </div>
@@ -871,7 +1122,6 @@ document.addEventListener("DOMContentLoaded", function () {
       timelineItems.forEach(item => {
         const match = filter === 'all' || item.dataset.type === filter;
         item.classList.toggle('tl-hidden', !match);
-        // re-trigger reveal for newly shown items not yet animated
         if (match && !item.classList.contains('is-visible')) {
           observer.observe(item);
         }
