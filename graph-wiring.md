@@ -539,6 +539,248 @@ layout: timeline
   white-space: nowrap;
   pointer-events: none;
 }
+/* ══════════════════════════════════════════════
+   PANEL 3 — NeurIPS 2026 CVE RESULTS
+   ══════════════════════════════════════════════ */
+
+.n3-wrap {
+  max-width: var(--panel-max);
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+/* ── Header ──────────────────────────────────── */
+.n3-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.n3-title {
+  font-size: clamp(1.4rem, 1rem + 2vw, 2.1rem);
+  font-weight: 700;
+  color: var(--color-text, #28251d);
+  line-height: 1.15;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+.n3-title .n3-star-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--color-gold, #d19900) 18%, transparent);
+  color: #8a5b00;
+  border: 1px solid color-mix(in srgb, var(--color-gold, #d19900) 40%, transparent);
+  vertical-align: middle;
+}
+.n3-subtitle {
+  font-size: 0.88rem;
+  color: var(--color-text-muted, #7a7974);
+  margin-top: 0.3rem;
+}
+
+/* ── Run-info button + overlay ──────────────── */
+.n3-runinfo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-primary, #01696f);
+  background: color-mix(in srgb, var(--color-primary, #01696f) 8%, var(--color-surface, #f9f8f5));
+  border: 1px solid color-mix(in srgb, var(--color-primary, #01696f) 30%, transparent);
+  border-radius: 9999px;
+  padding: 0.35rem 0.85rem;
+  cursor: pointer;
+  transition: background 160ms, color 160ms;
+  white-space: nowrap;
+  align-self: flex-start;
+  margin-top: 0.2rem;
+}
+.n3-runinfo-btn:hover {
+  background: color-mix(in srgb, var(--color-primary, #01696f) 15%, var(--color-surface, #f9f8f5));
+}
+.n3-runinfo-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: oklch(0.1 0 0 / 0.55);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.n3-runinfo-overlay.open { display: flex; }
+.n3-runinfo-card {
+  background: var(--color-surface-2, #fbfbf9);
+  border: 1px solid var(--color-border, #d4d1ca);
+  border-radius: 1rem;
+  padding: 1.75rem 2rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 16px 48px oklch(0 0 0 / 0.2);
+  position: relative;
+}
+.n3-runinfo-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--color-text, #28251d);
+}
+.n3-runinfo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.83rem;
+}
+.n3-runinfo-table tr + tr td { border-top: 1px solid var(--color-divider, #dcd9d5); }
+.n3-runinfo-table td {
+  padding: 0.45rem 0.25rem;
+  vertical-align: top;
+  color: var(--color-text-muted, #7a7974);
+}
+.n3-runinfo-table td:first-child {
+  font-weight: 700;
+  color: var(--color-text, #28251d);
+  white-space: nowrap;
+  padding-right: 1rem;
+  width: 38%;
+}
+.n3-runinfo-close {
+  position: absolute;
+  top: 0.85rem; right: 1rem;
+  background: none; border: none;
+  font-size: 1.35rem; line-height: 1;
+  cursor: pointer;
+  color: var(--color-text-muted, #7a7974);
+  opacity: 0.7;
+  transition: opacity 150ms;
+}
+.n3-runinfo-close:hover { opacity: 1; }
+
+/* ── Skeleton loader ─────────────────────────── */
+@keyframes n3-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.n3-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-offset, #f3f0ec) 25%,
+    var(--color-surface-dynamic, #e6e4df) 50%,
+    var(--color-surface-offset, #f3f0ec) 75%
+  );
+  background-size: 200% 100%;
+  animation: n3-shimmer 1.5s ease-in-out infinite;
+  border-radius: 0.5rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .n3-skeleton { animation: none; background: var(--color-surface-offset, #f3f0ec); }
+}
+.n3-skeleton-png   { height: 220px; margin-bottom: 1rem; }
+.n3-skeleton-chart { height: 280px; margin-bottom: 1rem; }
+
+/* ── Error card ──────────────────────────────── */
+.n3-error-card {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.6rem;
+  background: color-mix(in srgb, var(--color-error, #a12c7b) 8%, var(--color-surface, #f9f8f5));
+  border: 1px solid color-mix(in srgb, var(--color-error, #a12c7b) 30%, transparent);
+  font-size: 0.8rem;
+  color: var(--color-error, #a12c7b);
+  font-weight: 600;
+}
+
+/* ── Section label ───────────────────────────── */
+.n3-section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-text-faint, #bab9b4);
+  margin: 0 0 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-divider, #dcd9d5);
+}
+
+/* ── PNG grid ────────────────────────────────── */
+.n3-png-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+  margin-bottom: 2.5rem;
+}
+@media (max-width: 600px) {
+  .n3-png-grid { grid-template-columns: 1fr; }
+}
+.n3-png-card {
+  background: var(--color-surface, #f9f8f5);
+  border: 1px solid oklch(from var(--color-text, #28251d) l c h / 0.08);
+  border-radius: 0.65rem;
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: transform 180ms cubic-bezier(0.16,1,0.3,1), box-shadow 180ms;
+}
+@media (prefers-reduced-motion: reduce) { .n3-png-card { transition: none; } }
+.n3-png-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px oklch(0.2 0.01 80 / 0.1);
+}
+.n3-png-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--color-surface-offset, #f3f0ec);
+}
+.n3-png-caption {
+  padding: 0.45rem 0.7rem 0.55rem;
+}
+.n3-png-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #7a7974);
+  line-height: 1.3;
+}
+
+/* ── Chart.js interactive charts ────────────── */
+.n3-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 660px) {
+  .n3-charts-grid { grid-template-columns: 1fr; }
+}
+.n3-chart-card {
+  background: var(--color-surface, #f9f8f5);
+  border: 1px solid var(--color-border, #d4d1ca);
+  border-radius: 0.75rem;
+  padding: 1rem 1rem 0.75rem;
+}
+.n3-chart-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text, #28251d);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.01em;
+}
+.n3-chart-wrap {
+  position: relative;
+  height: 240px;
+}
 </style>
 
 <!-- ══════════════════════════════════════════════
@@ -1536,14 +1778,66 @@ layout: timeline
 </div>
 
 <!-- ══════════════════════════════════════════════
-     PANEL 3 — NEURIPS (placeholder)
+     PANEL 3 — NEURIPS 2026 CVE RESULTS
      ══════════════════════════════════════════════ -->
 <section id="panel-3" class="dash-panel" role="tabpanel" aria-labelledby="panel-3-tab">
-  <div style="max-width:var(--panel-max);margin:0 auto;padding:0 1rem">
-    <h2 style="font-size:clamp(1.2rem,1rem+1vw,1.6rem);font-weight:700;margin-bottom:0.5rem">⭐ NeurIPS 2026 Data</h2>
-    <p style="color:var(--color-text-muted,#7a7974);font-size:0.9rem">Figures and interactive charts from the NeurIPS 2026 submission — coming in next commit.</p>
+  <div class="n3-wrap">
+
+    <!-- Header -->
+    <div class="n3-header">
+      <div>
+        <h2 class="n3-title">
+          ⭐ NeurIPS 2026 CVE Results
+          <span class="n3-star-badge">⭐ Special Panel</span>
+        </h2>
+        <p class="n3-subtitle">Figures and interactive charts from the NeurIPS 2026 submission · CVE benchmark · v2 output</p>
+      </div>
+      <button class="n3-runinfo-btn" id="n3-runinfo-btn" aria-expanded="false" aria-controls="n3-runinfo-overlay">
+        ℹ️ Run info
+      </button>
+    </div>
+
+    <!-- Run-info modal -->
+    <div class="n3-runinfo-overlay" id="n3-runinfo-overlay" role="dialog" aria-modal="true" aria-label="Run metadata">
+      <div class="n3-runinfo-card">
+        <button class="n3-runinfo-close" id="n3-runinfo-close" aria-label="Close run info">✕</button>
+        <h3>Run Metadata</h3>
+        <table class="n3-runinfo-table" id="n3-runinfo-table">
+          <tbody>
+            <tr><td>Status</td><td>Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Static PNG figures ──────────────────────────────── -->
+    <p class="n3-section-label">Static output figures</p>
+    <div class="n3-png-grid" id="n3-png-grid">
+      <!-- skeletons shown until images load -->
+      <div class="n3-skeleton n3-skeleton-png"></div>
+      <div class="n3-skeleton n3-skeleton-png"></div>
+      <div class="n3-skeleton n3-skeleton-png"></div>
+      <div class="n3-skeleton n3-skeleton-png"></div>
+    </div>
+
+    <!-- ── Interactive Chart.js charts ────────────────────── -->
+    <p class="n3-section-label" style="margin-top:1.5rem">Interactive charts (from CSV data)</p>
+    <div class="n3-charts-grid" id="n3-charts-grid">
+      <div class="n3-skeleton n3-skeleton-chart"></div>
+      <div class="n3-skeleton n3-skeleton-chart"></div>
+      <div class="n3-skeleton n3-skeleton-chart"></div>
+      <div class="n3-skeleton n3-skeleton-chart"></div>
+    </div>
+
   </div>
 </section>
+
+<!-- Run-info lightbox (reuses fig-lightbox pattern for PNG zoom in panel 3) -->
+<div class="fig-lightbox" id="n3-lightbox" role="dialog" aria-modal="true" aria-label="Figure lightbox">
+  <button class="fig-lightbox-close" aria-label="Close lightbox">✕</button>
+  <img src="" alt="" id="n3-lightbox-img">
+  <div class="fig-lightbox-caption" id="n3-lightbox-caption"></div>
+</div>
 
 <!-- ══════════════════════════════════════════════
      PANEL 4 — SPONSOR (placeholder)
