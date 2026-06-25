@@ -2,8 +2,6 @@
 title: Blog
 layout: default
 permalink: /blog/
-pagination:
-  enabled: true
 ---
 
 <style>
@@ -28,7 +26,7 @@ pagination:
   </div>
 
   <div class="blog-posts">
-    {% for post in paginator.posts %}
+    {% for post in site.posts %}
     <article class="blog-post-card">
       <div class="blog-post-meta">{{ post.date | date: "%B %d, %Y" }}</div>
       <h2 class="blog-post-title">
@@ -42,16 +40,4 @@ pagination:
     </article>
     {% endfor %}
   </div>
-
-  <nav class="pagination">
-    {% if paginator.total_pages > 1 %}
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Newer</a>
-      {% endif %}
-      <span>Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}">Older &raquo;</a>
-      {% endif %}
-    {% endif %}
-  </nav>
 </div>
