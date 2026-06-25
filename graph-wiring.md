@@ -1037,15 +1037,6 @@ layout: timeline
       </div>
     </div>
 
-    <!-- Summary CSV charts (lazy-loaded) -->
-    <p class="n3-section-label">Quick overview &mdash; summary charts (from CSV data)</p>
-    <div class="n3-charts-grid" id="n3-charts-grid">
-      <div class="n3-skeleton n3-skeleton-chart"></div>
-      <div class="n3-skeleton n3-skeleton-chart"></div>
-      <div class="n3-skeleton n3-skeleton-chart"></div>
-      <div class="n3-skeleton n3-skeleton-chart"></div>
-    </div>
-
     <!-- Detailed interactive chart modules -->
     <p class="n3-section-label">Detailed analysis &mdash; interactive chart modules</p>
 
