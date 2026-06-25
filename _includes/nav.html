@@ -9,29 +9,6 @@
       <a href="{{ '/' | relative_url }}">Home</a>
     </li>
 
-    {% assign is_research_active = false %}
-    {% if page.url contains 'arrowspace' %}{% assign is_research_active = true %}{% endif %}
-    {% if page.url contains '/bmpp' and page.url != '/bmpp-paper' %}{% assign is_research_active = true %}{% endif %}
-    {% if page.url contains 'bmpp-paper' %}{% assign is_research_active = true %}{% endif %}
-    {% if page.url contains 'smartcore' %}{% assign is_research_active = true %}{% endif %}
-    {% if page.url contains 'vibelang' %}{% assign is_research_active = true %}{% endif %}
-    {% if page.url contains 'reference' %}{% assign is_research_active = true %}{% endif %}
-
-    <li class="nav-item nav-has-children{% if is_research_active %} active{% endif %}">
-      <button class="nav-dropdown-btn" aria-haspopup="true">
-        Research
-        <svg class="nav-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <ul class="nav-dropdown">
-        <li{% if page.url contains 'arrowspace' %} class="active"{% endif %}><a href="/arrowspace-paper">ArrowSpace Paper</a></li>
-        <li{% if page.url contains '/bmpp' and page.url != '/bmpp-paper' and page.url != '/bmpp-paper.html' %} class="active"{% endif %}><a href="/bmpp">BMPP</a></li>
-        <li{% if page.url contains 'bmpp-paper' %} class="active"{% endif %}><a href="/bmpp-paper">BMPP Paper</a></li>
-        <li{% if page.url contains 'smartcore' %} class="active"{% endif %}><a href="/smartcorelib">Smartcore</a></li>
-        <li{% if page.url contains 'vibelang' %} class="active"{% endif %}><a href="/vibelang-rs">Vibelang-rs</a></li>
-        <li{% if page.url contains 'reference' %} class="active"{% endif %}><a href="/references">References</a></li>
-      </ul>
-    </li>
-
     <li class="nav-item{% if page.url contains 'graph-wiring' %} active{% endif %}">
       <a href="/graph-wiring">Graph Wiring</a>
     </li>
