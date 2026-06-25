@@ -1,0 +1,24 @@
+{% assign is_top = false %}
+{% if page.url == '/' or page.url == '/index.html' %}
+  {% assign is_top = true %}
+{% elsif page.url == '/graph-wiring' or page.url == '/graph-wiring.html' %}
+  {% assign is_top = true %}
+{% elsif page.url == '/contact' or page.url == '/contact.html' %}
+  {% assign is_top = true %}
+{% elsif page.url == '/blog' or page.url == '/blog.html' %}
+  {% assign is_top = true %}
+{% endif %}
+
+{% unless is_top %}
+<nav aria-label="Breadcrumb" class="breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li>
+    {% if page.url contains 'arrowspace' or page.url contains 'bmpp' or page.url contains 'smartcore' or page.url contains 'vibelang' or page.url contains 'reference' %}
+    <li><a href="/">Research</a></li>
+    {% elsif page.layout == 'blog_default' %}
+    <li><a href="/blog">DevLog</a></li>
+    {% endif %}
+    <li aria-current="page">{{ page.title }}</li>
+  </ol>
+</nav>
+{% endunless %}
