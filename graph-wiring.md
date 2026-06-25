@@ -631,6 +631,35 @@ layout: timeline
     </div>
   </div>
 
+  <!-- 2026-06-19 Energy Dispersion Networks paper -->
+  <div class="timeline-item" data-type="paper">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge paper">Paper</span>
+      <div class="timeline-item__date">June 19, 2026</div>
+      <h2 class="timeline-item__title">From Embedding Geometry to Spectral Search: Energy Dispersion Networks For Vector Retrieval</h2>
+      <p class="timeline-item__meta">
+        <strong>arXiv:</strong>
+        <a href="https://arxiv.org/abs/2606.21535" target="_blank" rel="noopener">2606.21535</a>
+        &nbsp;·&nbsp; Lorenzo Moriondo, Ilias Azizi
+      </p>
+      <button class="tl-toggle" aria-expanded="false">Show details ↓</button>
+      <div class="tl-drawer" role="region">
+        <div class="tl-drawer-inner">
+          <ul>
+            <li>Introduces Graph Wiring: a general framework for exploiting feature-space spectral structure in vector search, together with its task-specific instantiation Spectral Indexing.</li>
+            <li>Couples geometric similarity with spectral information to improve head-tail coherence and semantic alignment relative to purely geometric retrieval.</li>
+            <li>Supports adaptive search via tau-modulation for modern RAG pipelines; establishes theoretical foundation through epiplexity.</li>
+            <li>Evaluated across benchmark and industrial settings using the open-source <code>arrowspace</code> library.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Future -->
   <div class="timeline-item" data-type="milestone">
     <div class="timeline-item__marker">
