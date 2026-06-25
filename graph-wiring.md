@@ -3,8 +3,6 @@ title: Graph Wiring
 layout: timeline
 ---
 
-# From ArrowSpace to Graph Wiring
-
 <link rel="stylesheet" href="assets/css/dashboard.css">
 <link rel="stylesheet" href="assets/css/panel1-timeline.css">
 <link rel="stylesheet" href="assets/css/panel2-figures.css">
