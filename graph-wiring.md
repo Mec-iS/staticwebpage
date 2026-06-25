@@ -5,783 +5,10 @@ layout: timeline
 
 # From ArrowSpace to Graph Wiring
 
-<style>
-/* ══════════════════════════════════════════════
-   DASHBOARD SHELL
-   ══════════════════════════════════════════════ */
-:root {
-  --panel-max: 960px;
-  --panel-gap: clamp(1rem, 4vw, 3rem);
-  --nav-h: 52px;
-}
-
-/* ── Panel nav ─────────────────────────────── */
-.dash-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--color-bg, #f7f6f2);
-  border-bottom: 1px solid var(--color-border, #d4d1ca);
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  height: var(--nav-h);
-}
-.dash-nav::-webkit-scrollbar { display: none; }
-
-.dash-nav-btn {
-  flex: 0 0 auto;
-  padding: 0 1.25rem;
-  height: 100%;
-  border: none;
-  border-bottom: 3px solid transparent;
-  background: none;
-  color: var(--color-text-muted, #7a7974);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: color 160ms, border-color 160ms;
-}
-.dash-nav-btn:hover { color: var(--color-text, #28251d); }
-.dash-nav-btn.active {
-  color: var(--color-primary, #01696f);
-  border-bottom-color: var(--color-primary, #01696f);
-}
-
-/* ── Panel sections ────────────────────────── */
-.dash-panel {
-  display: none;
-  padding-top: var(--panel-gap);
-  padding-bottom: calc(var(--panel-gap) * 2);
-  min-height: calc(100vh - var(--nav-h));
-}
-.dash-panel.active { display: block; }
-
-/* ══════════════════════════════════════════════
-   EXISTING TIMELINE STYLES (preserved)
-   ══════════════════════════════════════════════ */
-/* ── Filter bar ──────────────────────────────── */
-.tl-filter-bar {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin: 0 auto 2rem;
-  max-width: 900px;
-}
-.tl-filter-btn {
-  padding: 0.3rem 0.85rem;
-  border-radius: 9999px;
-  border: 1px solid var(--color-border, #d4d1ca);
-  background: var(--color-surface, #f9f8f5);
-  color: var(--color-text-muted, #7a7974);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  transition: background 180ms, color 180ms, border-color 180ms;
-}
-.tl-filter-btn:hover {
-  background: var(--color-surface-offset, #f3f0ec);
-  color: var(--color-text, #28251d);
-}
-.tl-filter-btn.active {
-  background: var(--color-primary, #01696f);
-  color: #fff;
-  border-color: var(--color-primary, #01696f);
-}
-
-/* ── Timeline item base ──────────────────────── */
-.timeline-item {
-  opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              transform 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-@media (prefers-reduced-motion: reduce) {
-  .timeline-item {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .timeline-item .timeline-dot,
-  .timeline-item .timeline-line {
-    opacity: 1;
-    transition: none;
-  }
-}
-.timeline-item.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.timeline-item .timeline-dot,
-.timeline-item .timeline-line {
-  opacity: 0;
-  transition: opacity 0.4s ease-in 0.25s;
-}
-.timeline-item.is-visible .timeline-dot,
-.timeline-item.is-visible .timeline-line {
-  opacity: 1;
-}
-.timeline-item.tl-hidden {
-  display: none;
-}
-
-/* ── Type-specific dot colours ───────────────── */
-.timeline-item[data-type="paper"] .timeline-dot {
-  background: var(--color-primary, #01696f);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary, #01696f) 20%, transparent);
-}
-.timeline-item[data-type="blog"] .timeline-dot {
-  background: var(--color-gold, #d19900);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-gold, #d19900) 18%, transparent);
-  width: 0.6rem !important;
-  height: 0.6rem !important;
-}
-.timeline-item[data-type="milestone"] .timeline-dot {
-  background: var(--color-orange, #da7101);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-orange, #da7101) 22%, transparent);
-}
-.timeline-item[data-type="code"] .timeline-dot {
-  background: var(--color-blue, #5591c7);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-blue, #5591c7) 20%, transparent);
-  width: 0.65rem !important;
-  height: 0.65rem !important;
-}
-
-/* ── Category badge ──────────────────────────── */
-.tl-badge {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  padding: 0.15rem 0.5rem;
-  border-radius: 9999px;
-  margin-bottom: 0.3rem;
-}
-.tl-badge.paper     { background: color-mix(in srgb, var(--color-primary, #01696f) 15%, transparent); color: var(--color-primary, #01696f); }
-.tl-badge.blog      { background: color-mix(in srgb, var(--color-gold, #d19900) 15%, transparent);    color: #9a6f00; }
-.tl-badge.milestone { background: color-mix(in srgb, var(--color-orange, #da7101) 15%, transparent);  color: var(--color-orange, #da7101); }
-.tl-badge.code      { background: color-mix(in srgb, var(--color-blue, #5591c7) 15%, transparent);    color: var(--color-blue, #5591c7); }
-
-/* ── Value chip ──────────────────────────────── */
-.tl-value-chip {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 0.15rem 0.55rem;
-  border-radius: 9999px;
-  background: color-mix(in srgb, var(--color-success, #437a22) 12%, transparent);
-  color: var(--color-success, #437a22);
-  margin-left: 0.4rem;
-  vertical-align: middle;
-}
-
-/* ── Download stats chips ────────────────────── */
-.tl-dl-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  margin: 0.4rem 0 0.2rem;
-}
-.tl-dl-chip {
-  font-size: 0.68rem;
-  font-weight: 600;
-  padding: 0.12rem 0.5rem;
-  border-radius: 9999px;
-  border: 1px solid var(--color-border, #d4d1ca);
-  background: var(--color-surface-offset, #f3f0ec);
-  color: var(--color-text-muted, #7a7974);
-}
-.tl-dl-chip.total  { color: var(--color-blue, #5591c7); border-color: color-mix(in srgb, var(--color-blue, #5591c7) 35%, transparent); background: color-mix(in srgb, var(--color-blue, #5591c7) 8%, transparent); }
-.tl-dl-chip.recent { color: var(--color-success, #437a22); border-color: color-mix(in srgb, var(--color-success, #437a22) 35%, transparent); background: color-mix(in srgb, var(--color-success, #437a22) 8%, transparent); }
-
-/* ── Expand drawer ───────────────────────────── */
-.tl-drawer {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-@media (prefers-reduced-motion: reduce) {
-  .tl-drawer { transition: none; }
-}
-.tl-drawer.open { max-height: 600px; }
-.tl-drawer-inner {
-  padding: 0.75rem 0 0.5rem;
-  font-size: 0.88rem;
-  color: var(--color-text-muted, #7a7974);
-  line-height: 1.6;
-}
-.tl-drawer-inner ul {
-  padding-left: 1.1rem;
-  margin: 0.4rem 0 0.6rem;
-}
-.tl-drawer-inner li { margin-top: 0.3rem; }
-.tl-toggle {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--color-primary, #01696f);
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  margin-top: 0.3rem;
-  letter-spacing: 0.02em;
-}
-.tl-toggle:hover { text-decoration: underline; }
-
-/* ── Sponsor strip ───────────────────────────── */
-.sponsor-strip {
-  max-width: 900px;
-  margin: 3rem auto 2rem;
-  padding: 1.5rem 2rem;
-  background: color-mix(in srgb, var(--color-primary, #01696f) 7%, var(--color-surface, #f9f8f5));
-  border: 1px solid color-mix(in srgb, var(--color-primary, #01696f) 25%, transparent);
-  border-radius: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.2rem;
-}
-.sponsor-strip-stats {
-  font-size: 0.82rem;
-  color: var(--color-text-muted, #7a7974);
-  line-height: 1.7;
-}
-.sponsor-strip-stats strong {
-  color: var(--color-text, #28251d);
-  font-size: 0.95rem;
-  display: block;
-  margin-bottom: 0.3rem;
-}
-.stat-pill {
-  display: inline-block;
-  background: var(--color-surface, #f9f8f5);
-  border: 1px solid var(--color-border, #d4d1ca);
-  border-radius: 9999px;
-  padding: 0.15rem 0.6rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  margin: 0.15rem 0.15rem 0 0;
-  color: var(--color-text, #28251d);
-}
-.sponsor-strip-cta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.6rem;
-}
-.sponsor-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  background: var(--color-primary, #01696f);
-  color: #fff;
-  text-decoration: none;
-  padding: 0.55rem 1.25rem;
-  border-radius: 9999px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  transition: opacity 180ms;
-}
-.sponsor-btn:hover { opacity: 0.85; }
-@media (max-width: 600px) {
-  .sponsor-strip { flex-direction: column; align-items: flex-start; }
-  .sponsor-strip-cta { align-items: flex-start; }
-}
-
-/* ── Blog impact panel ───────────────────────── */
-.blog-panel {
-  max-width: 900px;
-  margin: 2rem auto 3rem;
-}
-.blog-panel-title {
-  font-size: clamp(1.1rem, 1rem + 0.6vw, 1.45rem);
-  font-weight: 700;
-  margin-bottom: 1.25rem;
-  color: var(--color-text, #28251d);
-}
-.blog-panel-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-  gap: 1rem;
-}
-.bp-card {
-  background: var(--color-surface, #f9f8f5);
-  border: 1px solid var(--color-border, #d4d1ca);
-  border-radius: 0.75rem;
-  padding: 1.15rem 1.15rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: inherit;
-  position: relative;
-  overflow: hidden;
-  transition: transform 180ms cubic-bezier(0.16,1,0.3,1), box-shadow 180ms;
-}
-.bp-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--bp-accent, var(--color-primary, #01696f));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
-}
-@media (prefers-reduced-motion: reduce) {
-  .bp-card, .bp-card::before { transition: none; }
-}
-.bp-card:hover::before { transform: scaleX(1); }
-.bp-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px oklch(0.2 0.01 80 / 0.1);
-}
-.bp-meta { font-size: 0.7rem; color: var(--color-text-faint, #bab9b4); text-transform: uppercase; letter-spacing: 0.07em; }
-.bp-title { font-size: 0.95rem; font-weight: 700; line-height: 1.25; color: var(--color-text, #28251d); }
-.bp-metric {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-success, #437a22);
-  background: color-mix(in srgb, var(--color-success, #437a22) 10%, transparent);
-  border-radius: 9999px;
-  padding: 0.15rem 0.55rem;
-  display: inline-block;
-  width: fit-content;
-}
-.bp-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; padding-top: 0.3rem; }
-.bp-tag {
-  font-size: 0.63rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 0.1rem 0.45rem;
-  border-radius: 9999px;
-  background: var(--color-surface-offset, #f3f0ec);
-  color: var(--color-text-muted, #7a7974);
-  border: 1px solid var(--color-border, #d4d1ca);
-}
-.bp-readmore {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--bp-accent, var(--color-primary, #01696f));
-  margin-top: 0.4rem;
-}
-
-/* ══════════════════════════════════════════════
-   PANEL 2 — BLOG FIGURES GALLERY
-   ══════════════════════════════════════════════ */
-.fig-panel-wrap {
-  max-width: var(--panel-max);
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-.fig-panel-header {
-  margin-bottom: 1.5rem;
-}
-.fig-panel-header h2 {
-  font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem);
-  font-weight: 700;
-  margin-bottom: 0.3rem;
-  color: var(--color-text, #28251d);
-}
-.fig-panel-header p {
-  font-size: 0.88rem;
-  color: var(--color-text-muted, #7a7974);
-  margin: 0;
-}
-
-/* ── Post filter bar ─────────────────────────── */
-.fig-filter-bar {
-  display: flex;
-  gap: 0.45rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.75rem;
-}
-.fig-filter-btn {
-  padding: 0.28rem 0.85rem;
-  border-radius: 9999px;
-  border: 1px solid var(--color-border, #d4d1ca);
-  background: var(--color-surface, #f9f8f5);
-  color: var(--color-text-muted, #7a7974);
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  transition: background 180ms, color 180ms, border-color 180ms;
-}
-.fig-filter-btn:hover {
-  background: var(--color-surface-offset, #f3f0ec);
-  color: var(--color-text, #28251d);
-}
-.fig-filter-btn.active {
-  background: var(--color-primary, #01696f);
-  color: #fff;
-  border-color: var(--color-primary, #01696f);
-}
-
-/* ── Section label ───────────────────────────── */
-.fig-section-label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-faint, #bab9b4);
-  margin: 0 0 0.75rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--color-divider, #dcd9d5);
-}
-
-/* ── Masonry grid ────────────────────────────── */
-.fig-masonry {
-  columns: 2 260px;
-  column-gap: 0.85rem;
-}
-@media (min-width: 680px) { .fig-masonry { columns: 3 220px; } }
-@media (min-width: 900px) { .fig-masonry { columns: 4 200px; } }
-
-/* ── Figure card ─────────────────────────────── */
-.fig-card {
-  break-inside: avoid;
-  margin-bottom: 0.85rem;
-  background: var(--color-surface, #f9f8f5);
-  border: 1px solid oklch(from var(--color-text, #28251d) l c h / 0.08);
-  border-radius: 0.6rem;
-  overflow: hidden;
-  cursor: zoom-in;
-  transition: transform 180ms cubic-bezier(0.16,1,0.3,1),
-              box-shadow 180ms cubic-bezier(0.16,1,0.3,1);
-}
-@media (prefers-reduced-motion: reduce) { .fig-card { transition: none; } }
-.fig-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px oklch(0.2 0.01 80 / 0.1);
-}
-.fig-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: var(--color-surface-offset, #f3f0ec);
-}
-.fig-card-caption {
-  padding: 0.45rem 0.6rem 0.5rem;
-}
-.fig-card-post {
-  display: inline-block;
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  padding: 0.1rem 0.4rem;
-  border-radius: 9999px;
-  margin-bottom: 0.2rem;
-  background: color-mix(in srgb, var(--color-primary, #01696f) 12%, transparent);
-  color: var(--color-primary, #01696f);
-}
-.fig-card-name {
-  font-size: 0.73rem;
-  color: var(--color-text-muted, #7a7974);
-  line-height: 1.35;
-  word-break: break-word;
-}
-
-/* ── Lightbox ────────────────────────────────── */
-.fig-lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: oklch(0.1 0 0 / 0.88);
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  cursor: zoom-out;
-}
-.fig-lightbox.open { display: flex; }
-.fig-lightbox img {
-  max-width: min(90vw, 1100px);
-  max-height: 88vh;
-  width: auto;
-  height: auto;
-  border-radius: 0.5rem;
-  box-shadow: 0 24px 64px oklch(0 0 0 / 0.55);
-  cursor: default;
-}
-.fig-lightbox-close {
-  position: absolute;
-  top: 1rem; right: 1.25rem;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.75rem;
-  line-height: 1;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 150ms;
-}
-.fig-lightbox-close:hover { opacity: 1; }
-.fig-lightbox-caption {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: oklch(0.12 0 0 / 0.75);
-  color: #e8e8e6;
-  font-size: 0.8rem;
-  padding: 0.35rem 0.9rem;
-  border-radius: 9999px;
-  white-space: nowrap;
-  pointer-events: none;
-}
-/* ══════════════════════════════════════════════
-   PANEL 3 — NeurIPS 2026 CVE RESULTS
-   ══════════════════════════════════════════════ */
-
-.n3-wrap {
-  max-width: var(--panel-max);
-  margin: 0 auto;
-  padding: 0 1rem 3rem;
-}
-
-/* ── Header ──────────────────────────────────── */
-.n3-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
-}
-.n3-title {
-  font-size: clamp(1.4rem, 1rem + 2vw, 2.1rem);
-  font-weight: 700;
-  color: var(--color-text, #28251d);
-  line-height: 1.15;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  flex-wrap: wrap;
-}
-.n3-title .n3-star-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.65rem;
-  border-radius: 9999px;
-  background: color-mix(in srgb, var(--color-gold, #d19900) 18%, transparent);
-  color: #8a5b00;
-  border: 1px solid color-mix(in srgb, var(--color-gold, #d19900) 40%, transparent);
-  vertical-align: middle;
-}
-.n3-subtitle {
-  font-size: 0.88rem;
-  color: var(--color-text-muted, #7a7974);
-  margin-top: 0.3rem;
-}
-
-/* ── Run-info button + overlay ──────────────── */
-.n3-runinfo-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--color-primary, #01696f);
-  background: color-mix(in srgb, var(--color-primary, #01696f) 8%, var(--color-surface, #f9f8f5));
-  border: 1px solid color-mix(in srgb, var(--color-primary, #01696f) 30%, transparent);
-  border-radius: 9999px;
-  padding: 0.35rem 0.85rem;
-  cursor: pointer;
-  transition: background 160ms, color 160ms;
-  white-space: nowrap;
-  align-self: flex-start;
-  margin-top: 0.2rem;
-}
-.n3-runinfo-btn:hover {
-  background: color-mix(in srgb, var(--color-primary, #01696f) 15%, var(--color-surface, #f9f8f5));
-}
-.n3-runinfo-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9000;
-  background: oklch(0.1 0 0 / 0.55);
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-.n3-runinfo-overlay.open { display: flex; }
-.n3-runinfo-card {
-  background: var(--color-surface-2, #fbfbf9);
-  border: 1px solid var(--color-border, #d4d1ca);
-  border-radius: 1rem;
-  padding: 1.75rem 2rem;
-  max-width: 480px;
-  width: 100%;
-  box-shadow: 0 16px 48px oklch(0 0 0 / 0.2);
-  position: relative;
-}
-.n3-runinfo-card h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--color-text, #28251d);
-}
-.n3-runinfo-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.83rem;
-}
-.n3-runinfo-table tr + tr td { border-top: 1px solid var(--color-divider, #dcd9d5); }
-.n3-runinfo-table td {
-  padding: 0.45rem 0.25rem;
-  vertical-align: top;
-  color: var(--color-text-muted, #7a7974);
-}
-.n3-runinfo-table td:first-child {
-  font-weight: 700;
-  color: var(--color-text, #28251d);
-  white-space: nowrap;
-  padding-right: 1rem;
-  width: 38%;
-}
-.n3-runinfo-close {
-  position: absolute;
-  top: 0.85rem; right: 1rem;
-  background: none; border: none;
-  font-size: 1.35rem; line-height: 1;
-  cursor: pointer;
-  color: var(--color-text-muted, #7a7974);
-  opacity: 0.7;
-  transition: opacity 150ms;
-}
-.n3-runinfo-close:hover { opacity: 1; }
-
-/* ── Skeleton loader ─────────────────────────── */
-@keyframes n3-shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
-}
-.n3-skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--color-surface-offset, #f3f0ec) 25%,
-    var(--color-surface-dynamic, #e6e4df) 50%,
-    var(--color-surface-offset, #f3f0ec) 75%
-  );
-  background-size: 200% 100%;
-  animation: n3-shimmer 1.5s ease-in-out infinite;
-  border-radius: 0.5rem;
-}
-@media (prefers-reduced-motion: reduce) {
-  .n3-skeleton { animation: none; background: var(--color-surface-offset, #f3f0ec); }
-}
-.n3-skeleton-png   { height: 220px; margin-bottom: 1rem; }
-.n3-skeleton-chart { height: 280px; margin-bottom: 1rem; }
-
-/* ── Error card ──────────────────────────────── */
-.n3-error-card {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.85rem 1rem;
-  border-radius: 0.6rem;
-  background: color-mix(in srgb, var(--color-error, #a12c7b) 8%, var(--color-surface, #f9f8f5));
-  border: 1px solid color-mix(in srgb, var(--color-error, #a12c7b) 30%, transparent);
-  font-size: 0.8rem;
-  color: var(--color-error, #a12c7b);
-  font-weight: 600;
-}
-
-/* ── Section label ───────────────────────────── */
-.n3-section-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--color-text-faint, #bab9b4);
-  margin: 0 0 0.85rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--color-divider, #dcd9d5);
-}
-
-/* ── PNG grid ────────────────────────────────── */
-.n3-png-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.9rem;
-  margin-bottom: 2.5rem;
-}
-@media (max-width: 600px) {
-  .n3-png-grid { grid-template-columns: 1fr; }
-}
-.n3-png-card {
-  background: var(--color-surface, #f9f8f5);
-  border: 1px solid oklch(from var(--color-text, #28251d) l c h / 0.08);
-  border-radius: 0.65rem;
-  overflow: hidden;
-  cursor: zoom-in;
-  transition: transform 180ms cubic-bezier(0.16,1,0.3,1), box-shadow 180ms;
-}
-@media (prefers-reduced-motion: reduce) { .n3-png-card { transition: none; } }
-.n3-png-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px oklch(0.2 0.01 80 / 0.1);
-}
-.n3-png-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  background: var(--color-surface-offset, #f3f0ec);
-}
-.n3-png-caption {
-  padding: 0.45rem 0.7rem 0.55rem;
-}
-.n3-png-name {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-text-muted, #7a7974);
-  line-height: 1.3;
-}
-
-/* ── Chart.js interactive charts ────────────── */
-.n3-charts-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 2rem;
-}
-@media (max-width: 660px) {
-  .n3-charts-grid { grid-template-columns: 1fr; }
-}
-.n3-chart-card {
-  background: var(--color-surface, #f9f8f5);
-  border: 1px solid var(--color-border, #d4d1ca);
-  border-radius: 0.75rem;
-  padding: 1rem 1rem 0.75rem;
-}
-.n3-chart-title {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--color-text, #28251d);
-  margin-bottom: 0.6rem;
-  letter-spacing: 0.01em;
-}
-.n3-chart-wrap {
-  position: relative;
-  height: 240px;
-}
-</style>
+<link rel="stylesheet" href="assets/css/dashboard.css">
+<link rel="stylesheet" href="assets/css/panel1-timeline.css">
+<link rel="stylesheet" href="assets/css/panel2-figures.css">
+<link rel="stylesheet" href="assets/css/panel3-neurips.css">
 
 <!-- ══════════════════════════════════════════════
      PANEL NAV
@@ -1654,7 +881,7 @@ layout: timeline
     </div><!-- /.fig-masonry 016 -->
 
     <!-- ── Post 019 ──────────────────────────────────────── -->
-    <p class="fig-section-label" style="margin-top:2rem" data-fig-group="019">Post 019 · arrowspace for Latent Spaces — part 1</p>
+    <p class="fig-section-label" data-fig-group="019">Post 019 · arrowspace for Latent Spaces — part 1</p>
     <div class="fig-masonry" data-fig-group="019">
 
       <div class="fig-card" data-fig-post="019" tabindex="0" role="button" aria-label="Open figure c1_arrowspace_energy">
@@ -1787,31 +1014,31 @@ layout: timeline
     <div class="n3-header">
       <div>
         <h2 class="n3-title">
-          ⭐ NeurIPS 2026 CVE Results
-          <span class="n3-star-badge">⭐ Special Panel</span>
+          &#11088; NeurIPS 2026 CVE Results
+          <span class="n3-star-badge">&#11088; Special Panel</span>
         </h2>
-        <p class="n3-subtitle">Figures and interactive charts from the NeurIPS 2026 submission · CVE benchmark · v2 output</p>
+        <p class="n3-subtitle">Figures and interactive charts from the NeurIPS 2026 submission &middot; CVE benchmark &middot; v2 output</p>
       </div>
       <button class="n3-runinfo-btn" id="n3-runinfo-btn" aria-expanded="false" aria-controls="n3-runinfo-overlay">
-        ℹ️ Run info
+        &#8505;&#65039; Run info
       </button>
     </div>
 
     <!-- Run-info modal -->
     <div class="n3-runinfo-overlay" id="n3-runinfo-overlay" role="dialog" aria-modal="true" aria-label="Run metadata">
       <div class="n3-runinfo-card">
-        <button class="n3-runinfo-close" id="n3-runinfo-close" aria-label="Close run info">✕</button>
+        <button class="n3-runinfo-close" id="n3-runinfo-close" aria-label="Close run info">&#10005;</button>
         <h3>Run Metadata</h3>
         <table class="n3-runinfo-table" id="n3-runinfo-table">
           <tbody>
-            <tr><td>Status</td><td>Loading…</td></tr>
+            <tr><td>Status</td><td>Loading&hellip;</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- ── Interactive Chart.js charts ────────────────────── -->
-    <p class="n3-section-label" style="margin-top:1.5rem">Interactive charts (from CSV data)</p>
+    <!-- Summary CSV charts (lazy-loaded) -->
+    <p class="n3-section-label">Quick overview &mdash; summary charts (from CSV data)</p>
     <div class="n3-charts-grid" id="n3-charts-grid">
       <div class="n3-skeleton n3-skeleton-chart"></div>
       <div class="n3-skeleton n3-skeleton-chart"></div>
@@ -1819,403 +1046,117 @@ layout: timeline
       <div class="n3-skeleton n3-skeleton-chart"></div>
     </div>
 
-  </div>
-</section>
+    <!-- Detailed interactive chart modules -->
+    <p class="n3-section-label">Detailed analysis &mdash; interactive chart modules</p>
 
-<!-- Run-info lightbox (reuses fig-lightbox pattern for PNG zoom in panel 3) -->
-<div class="fig-lightbox" id="n3-lightbox" role="dialog" aria-modal="true" aria-label="Figure lightbox">
-  <button class="fig-lightbox-close" aria-label="Close lightbox">✕</button>
-  <img src="" alt="" id="n3-lightbox-img">
-  <div class="fig-lightbox-caption" id="n3-lightbox-caption"></div>
-</div>
+    <details open>
+      <summary class="panel-section-header">Top-25 Score Comparison (per query)</summary>
+      <p class="chart-desc">Grouped bar chart per query: 3 bars per rank (Cosine / Hybrid / Taumode). X labels show CVE year suffix. Scroll-zoom + pan enabled.</p>
+      <div id="top25-container" class="charts-stack"></div>
+    </details>
+
+    <details>
+      <summary class="panel-section-header">Tail Analysis (4 sub-charts per query)</summary>
+      <p class="chart-desc">Score distribution with HEAD_K=3 split line; tail scores rank 4+; tail variability (mean &plusmn; std); tail metrics grouped bar.</p>
+      <div id="tail-container" class="charts-stack"></div>
+    </details>
+
+    <details>
+      <summary class="panel-section-header">Semantic Recall Comparison (3 &times; 3)</summary>
+      <p class="chart-desc">Per method: Recall bars (Traditional / Semantic / Tolerant); scatter Traditional vs Semantic with y=x diagonal; Tolerant &minus; Traditional uplift histogram.</p>
+      <div id="recall-container" class="charts-stack"></div>
+    </details>
+
+    <details>
+      <summary class="panel-section-header">Metric Deltas vs Cosine baseline</summary>
+      <p class="chart-desc">&Delta; Tail/Head Ratio, &Delta; Semantic Recall, &Delta; Tolerant Recall &mdash; Hybrid and Taumode relative to Cosine, per query.</p>
+      <div id="deltas-container" class="charts-stack"></div>
+    </details>
+
+    <details>
+      <summary class="panel-section-header">Win/Loss Heatmap (D3)</summary>
+      <p class="chart-desc">Per-query winner for T/H Ratio, Tail CV, Tail Decay, Semantic Recall, Tolerant Recall. Cell colour = winning method; C/H/T annotation.</p>
+      <div id="heatmap-container" class="heatmap-wrapper"></div>
+    </details>
+
+    <details>
+      <summary class="panel-section-header">HEAD_K Sweep (&plusmn;1 std band)</summary>
+      <p class="chart-desc">Mean Tail/Head Ratio, Tail CV, Tail Decay vs HEAD_K, with &plusmn;1 std shaded band per method.</p>
+      <div id="headk-container" class="charts-stack"></div>
+    </details>
+
+  </div>
+
+    <!-- Lightbox for panel 3 PNG zoom -->
+    <div class="fig-lightbox" id="n3-lightbox" role="dialog" aria-modal="true" aria-label="Figure lightbox">
+      <button class="fig-lightbox-close" aria-label="Close lightbox">&#10005;</button>
+      <img src="" alt="" id="n3-lightbox-img">
+      <div class="fig-lightbox-caption" id="n3-lightbox-caption"></div>
+    </div>
+
+  </div>
+</section></section>
 
 <!-- ══════════════════════════════════════════════
-     PANEL 4 — SPONSOR (placeholder)
+     PANEL 4 — SPONSOR
      ══════════════════════════════════════════════ -->
 <section id="panel-4" class="dash-panel" role="tabpanel" aria-labelledby="panel-4-tab">
-  <div style="max-width:var(--panel-max);margin:0 auto;padding:0 1rem">
-    <h2 style="font-size:clamp(1.2rem,1rem+1vw,1.6rem);font-weight:700;margin-bottom:0.5rem">❤️ Sponsor</h2>
-    <p style="color:var(--color-text-muted,#7a7974);font-size:0.9rem">Sponsor CTA and Value Delivered section — coming in next commit.</p>
+  <div class="n3-wrap">
+    <div class="n3-header">
+      <div>
+        <h2 class="n3-title">&#10084;&#65039; Sponsor</h2>
+        <p class="n3-subtitle">Support the ArrowSpace &amp; Graph Wiring ecosystem</p>
+      </div>
+    </div>
+    <div class="sponsor-strip">
+      <div class="sponsor-strip-stats">
+        <strong>Invest in research-grade infrastructure</strong>
+        Your sponsorship directly funds open-source development of spectral vector search, graph-based retrieval, and the tooling around it.
+        <div class="sponsor-strip-pills">
+          <span class="stat-pill">&#128640; ArrowSpace</span>
+          <span class="stat-pill">&#128200; Graph Wiring</span>
+          <span class="stat-pill">&#128220; Epiplexity</span>
+          <span class="stat-pill">&#129302; Kalman Clustering</span>
+        </div>
+      </div>
+      <div class="sponsor-strip-cta">
+        <a href="https://github.com/sponsors/tuned-org-uk" target="_blank" rel="noopener noreferrer" class="sponsor-btn">
+          &#9829; Become a sponsor
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- Chart.js + plugins (CDN, UMD) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.1.0/dist/chartjs-plugin-annotation.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+
+<!-- Register Chart.js plugins -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  // ── Panel nav ──────────────────────────────────────────────
-  const navBtns = document.querySelectorAll('.dash-nav-btn');
-  const panels  = document.querySelectorAll('.dash-panel');
-  let   activeId = '1';
-
-  function activatePanel(id, pushHistory) {
-    activeId = String(id);
-    navBtns.forEach(b => {
-      const active = b.dataset.panel === activeId;
-      b.classList.toggle('active', active);
-      b.setAttribute('aria-selected', String(active));
-    });
-    panels.forEach(p => p.classList.toggle('active', p.id === 'panel-' + activeId));
-    document.querySelectorAll('#panel-' + activeId + ' .timeline-item:not(.is-visible)').forEach(el => {
-      if (!prefersReducedMotion) observer.observe(el);
-      else el.classList.add('is-visible');
-    });
-    if (pushHistory) history.replaceState(null, '', '#panel-' + activeId);
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof Chart !== 'undefined' && typeof ChartAnnotation !== 'undefined') {
+    Chart.register(ChartAnnotation);
   }
-
-  navBtns.forEach(btn => btn.addEventListener('click', () => activatePanel(btn.dataset.panel, true)));
-
-  const rawHash = location.hash;
-  const panelHash = rawHash.match(/^#panel-(\d+)$/);
-  if (panelHash) {
-    activatePanel(panelHash[1], false);
-  } else if (rawHash === '#section-4b') {
-    activatePanel('4', false);
-    requestAnimationFrame(() => {
-      const t = document.getElementById('section-4b');
-      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+  if (typeof ChartZoom !== 'undefined') {
+    Chart.register(ChartZoom);
   }
-
-  const panelIO = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id.replace('panel-', '');
-          if (id !== activeId) {
-            activeId = id;
-            navBtns.forEach(b => {
-              const active = b.dataset.panel === activeId;
-              b.classList.toggle('active', active);
-              b.setAttribute('aria-selected', String(active));
-            });
-          }
-        }
-      });
-    },
-    { threshold: 0.35 }
-  );
-  panels.forEach(p => panelIO.observe(p));
-
-  // ── prefers-reduced-motion ────────────────────────────────
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // ── Scroll-reveal ─────────────────────────────────────────
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    },
-    { root: null, rootMargin: '0px', threshold: 0.12 }
-  );
-
-  if (prefersReducedMotion) {
-    document.querySelectorAll('.timeline-item').forEach(el => el.classList.add('is-visible'));
-  } else {
-    document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
-  }
-
-  // ── Timeline filter ───────────────────────────────────────
-  const filterBtns    = document.querySelectorAll('.tl-filter-btn');
-  const timelineItems = document.querySelectorAll('.timeline-item[data-type]');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
-      filterBtns.forEach(b => b.classList.toggle('active', b === btn));
-      timelineItems.forEach(item => {
-        const match = filter === 'all' || item.dataset.type === filter;
-        item.classList.toggle('tl-hidden', !match);
-        if (match && !item.classList.contains('is-visible')) {
-          if (prefersReducedMotion) item.classList.add('is-visible');
-          else observer.observe(item);
-        }
-      });
-    });
-  });
-
-  // ── Expand / collapse drawer ──────────────────────────────
-  document.querySelectorAll('.tl-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const drawer = btn.nextElementSibling;
-      const isOpen = drawer.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen);
-      btn.textContent = isOpen ? 'Hide details ↑' : 'Show details ↓';
-    });
-  });
-
-  // ── Figure gallery filter ─────────────────────────────────
-  const figFilterBtns = document.querySelectorAll('.fig-filter-btn');
-
-  figFilterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const f = btn.dataset.figFilter;
-      figFilterBtns.forEach(b => b.classList.toggle('active', b === btn));
-
-      // Show/hide section labels
-      document.querySelectorAll('[data-fig-group]').forEach(el => {
-        el.style.display = (f === 'all' || el.dataset.figGroup === f) ? '' : 'none';
-      });
-
-      // Show/hide individual cards
-      document.querySelectorAll('.fig-card').forEach(card => {
-        card.style.display = (f === 'all' || card.dataset.figPost === f) ? '' : 'none';
-      });
-    });
-  });
-
-  // ── Lightbox ──────────────────────────────────────────────
-  const lightbox     = document.getElementById('fig-lightbox');
-  const lbImg        = document.getElementById('fig-lightbox-img');
-  const lbCaption    = document.getElementById('fig-lightbox-caption');
-  const lbClose      = lightbox.querySelector('.fig-lightbox-close');
-
-  function openLightbox(card) {
-    const img     = card.querySelector('img');
-    const caption = card.querySelector('.fig-card-name');
-    const post    = card.querySelector('.fig-card-post');
-    lbImg.src     = img.src;
-    lbImg.alt     = img.alt;
-    lbCaption.textContent = (post ? 'Post ' + post.textContent + ' · ' : '') + (caption ? caption.textContent : '');
-    lightbox.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    lbClose.focus();
-  }
-
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  document.querySelectorAll('.fig-card').forEach(card => {
-    card.addEventListener('click', () => openLightbox(card));
-    card.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(card); }
-    });
-  });
-
-  lbClose.addEventListener('click', closeLightbox);
-
-  // Click outside image closes lightbox
-  lightbox.addEventListener('click', e => {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
-  });
-
-  // Stop click-through on the image itself
-  lbImg.addEventListener('click', e => e.stopPropagation());
-
-  // ══════════════════════════════════════════════
-  // PANEL 3 — NeurIPS 2026 CVE data loader
-  // Uses type="module"-style dynamic import to
-  // avoid CSP eval violation from Chart.js UMD.
-  // All Chart.js usage is deferred until the
-  // panel is first activated.
-  // ══════════════════════════════════════════════
-
-  const N3_BASE = 'https://raw.githubusercontent.com/tuned-org-uk/pyarrowspace/1ca2c9b94228e11136b9ed282e4c30b206b683b9/neurips/CVE/output/v2/';
-
-  // CSV files to render as interactive Chart.js charts
-  const N3_CSVS = [
-    { file: 'cve_summary.csv',                label: 'Summary metrics',          type: 'bar'  },
-    { file: 'cve_comparison_metrics.csv',     label: 'Comparison metrics',       type: 'bar'  },
-    { file: 'cve_semantic_recall_metrics.csv',label: 'Semantic recall',          type: 'line' },
-    { file: 'cve_tail_metrics.csv',           label: 'Tail metrics',             type: 'bar'  },
-    { file: 'cve_headk_sweep.csv',            label: 'Head-k sweep',             type: 'line' },
-  ];
-
-  let n3Loaded = false;
-
-  // Minimal CSV parser — no eval, no external lib
-  function parseCSV(text) {
-    const lines = text.trim().split('\n');
-    const headers = lines[0].split(',').map(h => h.trim());
-    const rows = lines.slice(1).map(line =>
-      line.split(',').reduce((obj, val, i) => {
-        obj[headers[i]] = isNaN(val.trim()) ? val.trim() : parseFloat(val.trim());
-        return obj;
-      }, {})
-    );
-    return { headers, rows };
-  }
-
-  function n3ErrorCard(msg) {
-    const div = document.createElement('div');
-    div.className = 'n3-error-card';
-    div.textContent = '⚠ ' + msg;
-    return div;
-  }
-
-  async function loadPanel3() {
-    if (n3Loaded) return;
-    n3Loaded = true;
-
-    const pngGrid    = document.getElementById('n3-png-grid');
-    const chartsGrid = document.getElementById('n3-charts-grid');
-
-    // ── Load run metadata ──────────────────────
-    try {
-      const metaRes  = await fetch(N3_BASE + 'cve_run_metadata.json');
-      const meta     = await metaRes.json();
-      const tbody    = document.querySelector('#n3-runinfo-table tbody');
-      tbody.innerHTML = Object.entries(meta)
-        .map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`)
-        .join('');
-    } catch (e) {
-      document.querySelector('#n3-runinfo-table tbody').innerHTML =
-        '<tr><td colspan="2" style="color:var(--color-text-muted)">Metadata unavailable</td></tr>';
-    }
-
-    // ── Load Chart.js ESM (CSP-safe, no eval) ──
-    let Chart;
-    try {
-      const mod = await import('https://cdn.jsdelivr.net/npm/chart.js@4.4.3/+esm');
-      Chart = mod.Chart;
-      // Register only what we need — avoids tree-shaking issues
-      const { CategoryScale, LinearScale, PointElement, LineElement,
-              BarElement, ScatterController, LineController, BarController,
-              Tooltip, Legend, Filler } = mod;
-      Chart.register(CategoryScale, LinearScale, PointElement, LineElement,
-                     BarElement, ScatterController, LineController, BarController,
-                     Tooltip, Legend, Filler);
-    } catch (e) {
-      chartsGrid.innerHTML = '';
-      chartsGrid.appendChild(n3ErrorCard('Chart.js failed to load: ' + e.message));
-      return;
-    }
-
-    // ── Render CSV charts ──────────────────────
-    chartsGrid.innerHTML = '';
-    const PALETTE = [
-      'var(--color-primary, #01696f)',
-      'var(--color-blue, #5591c7)',
-      'var(--color-gold, #d19900)',
-      'var(--color-orange, #da7101)',
-      'var(--color-purple, #7a39bb)',
-    ];
-
-    for (const { file, label, type } of N3_CSVS) {
-      const card = document.createElement('div');
-      card.className = 'n3-chart-card';
-
-      const title = document.createElement('div');
-      title.className = 'n3-chart-title';
-      title.textContent = label;
-      card.appendChild(title);
-
-      const wrap = document.createElement('div');
-      wrap.className = 'n3-chart-wrap';
-      const canvas = document.createElement('canvas');
-      wrap.appendChild(canvas);
-      card.appendChild(wrap);
-      chartsGrid.appendChild(card);
-
-      try {
-        const res  = await fetch(N3_BASE + file);
-        const text = await res.text();
-        const { headers, rows } = parseCSV(text);
-
-        // First column = labels/x; remaining = datasets
-        const xKey = headers[0];
-        const yKeys = headers.slice(1);
-
-        const labels   = rows.map(r => r[xKey]);
-        const datasets = yKeys.map((key, i) => ({
-          label: key,
-          data: type === 'scatter'
-            ? rows.map(r => ({ x: r[xKey], y: r[key] }))
-            : rows.map(r => r[key]),
-          borderColor: PALETTE[i % PALETTE.length],
-          backgroundColor: PALETTE[i % PALETTE.length] + '33',
-          tension: 0.35,
-          pointRadius: type === 'scatter' ? 4 : 3,
-          borderWidth: 2,
-          fill: type === 'line' && i === 0,
-        }));
-
-        new Chart(canvas, {
-          type,
-          data: type === 'scatter' ? { datasets } : { labels, datasets },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            animation: prefersReducedMotion ? false : { duration: 500 },
-            plugins: {
-              legend: { labels: { font: { size: 11 }, boxWidth: 12 } },
-              tooltip: { mode: 'index', intersect: false },
-            },
-            scales: {
-              x: { ticks: { font: { size: 11 }, maxRotation: 45 } },
-              y: { ticks: { font: { size: 11 } }, beginAtZero: false },
-            },
-          },
-        });
-
-      } catch (e) {
-        wrap.replaceWith(n3ErrorCard('Failed to load ' + file + ': ' + e.message));
-      }
-    }
-  }
-
-  // ── Run-info overlay controls ──────────────────────────────
-  const n3RunInfoBtn     = document.getElementById('n3-runinfo-btn');
-  const n3RunInfoOverlay = document.getElementById('n3-runinfo-overlay');
-  const n3RunInfoClose   = document.getElementById('n3-runinfo-close');
-
-  if (n3RunInfoBtn) {
-    n3RunInfoBtn.addEventListener('click', () => {
-      n3RunInfoOverlay.classList.add('open');
-      n3RunInfoBtn.setAttribute('aria-expanded', 'true');
-      n3RunInfoClose.focus();
-    });
-    n3RunInfoClose.addEventListener('click', () => {
-      n3RunInfoOverlay.classList.remove('open');
-      n3RunInfoBtn.setAttribute('aria-expanded', 'false');
-    });
-    n3RunInfoOverlay.addEventListener('click', e => {
-      if (e.target === n3RunInfoOverlay) {
-        n3RunInfoOverlay.classList.remove('open');
-        n3RunInfoBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  // ── n3-lightbox controls ───────────────────────────────────
-  const n3Lightbox = document.getElementById('n3-lightbox');
-  if (n3Lightbox) {
-    const n3LbClose = n3Lightbox.querySelector('.fig-lightbox-close');
-    const n3LbImg   = document.getElementById('n3-lightbox-img');
-    n3LbClose.addEventListener('click', () => {
-      n3Lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-    n3Lightbox.addEventListener('click', e => {
-      if (e.target === n3Lightbox) {
-        n3Lightbox.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-    });
-    n3LbImg.addEventListener('click', e => e.stopPropagation());
-  }
-
-  // ── Lazy-load panel 3 on first activation ─────────────────
-  // Hook into the existing navBtns click listener already present.
-  // Re-wire: patch activatePanel to trigger loadPanel3 when panel 3 opens.
-  const _origActivate = activatePanel;  // save reference captured in closure above
-  // We can't reassign the closed-over function, so we listen directly:
-  navBtns.forEach(btn => {
-    if (btn.dataset.panel === '3') {
-      btn.addEventListener('click', () => loadPanel3());
-    }
-  });
-  // Also fire immediately if page loaded with #panel-3 hash
-  if (location.hash === '#panel-3') loadPanel3();
-
 });
 </script>
+
+<!-- Dashboard scripts -->
+<script src="assets/js/dashboard.js"></script>
+<script src="assets/js/panel1-timeline.js"></script>
+<script src="assets/js/panel2-figures.js"></script>
+<script src="assets/js/panel3-main.js"></script>
+
+<!-- Panel 3 interactive chart modules -->
+<script src="assets/js/panel3/chart-top25.js"></script>
+<script src="assets/js/panel3/chart-tail.js"></script>
+<script src="assets/js/panel3/chart-recall.js"></script>
+<script src="assets/js/panel3/chart-deltas.js"></script>
+<script src="assets/js/panel3/chart-heatmap.js"></script>
+<script src="assets/js/panel3/chart-headk.js"></script>
