@@ -1113,7 +1113,7 @@ layout: timeline
     </div>
 
   </div>
-</section></section>
+</section>
 
 <!-- ══════════════════════════════════════════════
      PANEL 4 — SPONSOR
