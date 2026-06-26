@@ -396,6 +396,14 @@ layout: default
       benchmark_url="/graph-wiring"
       tags="graph"
     %}
+
+    {% include triad-card.html
+      title="Epiplexity: Spectral Feature Interactions in Embeddings"
+      abstract="Epiplexity measures spectral feature interactions in high-dimensional embedding spaces, providing a formal framework for understanding how graph Laplacian eigenstructure influences retrieval quality and manifold geometry."
+      paper_url="https://www.authorea.com/doi/full/10.22541/au.177430060.02394540/v1"
+      source_url="https://github.com/tuned-org-uk/graph-wiring-epiplexity"
+      tags="spectral-graph"
+    %}
   </div>
 </section>
 
@@ -422,6 +430,12 @@ layout: default
       url="https://github.com/tuned-org-uk/genegraph-storage"
       name="genegraph-storage"
       description="Graph-based storage engine for genomic data with spectral indexing"
+    %}
+
+    {% include repo-card.html
+      url="https://github.com/tuned-org-uk/graph-wiring-epiplexity"
+      name="graph-wiring-epiplexity"
+      description="Epiplexity-based graph analysis for spectral feature interactions in vector embeddings"
     %}
 
     {% include repo-card.html
