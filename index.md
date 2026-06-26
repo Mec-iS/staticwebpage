@@ -297,7 +297,7 @@ layout: default
 
 # 🌐🛰️🐍🦀 Welcome!
 <p><strong class="pure-menu-item">I am Lorenzo</strong> — AI Research Engineer — I produce novel research and code leveraging Large Language Models. I focus on <strong class="pure-menu-item">workflows automation with AI Agents and code generation</strong>.</p>
-<p>An example of my my research on <a href="{{ "/graph-wiring" }}">a new generation of data engineering tools.</a>. More details on <a href="https://github.com/sponsors/tuned-org-uk">Github.</a></p>
+<p>An example of my my research on <a href="{{ "/graph-wiring#panel-1" }}">a new generation of data engineering tools.</a>. More details on <a href="https://github.com/sponsors/tuned-org-uk">Github.</a></p>
 
 
 <section class="media-feature" aria-labelledby="podcast-feature-title">
@@ -391,7 +391,7 @@ layout: default
     {% include triad-card.html
       title="Graph Wiring: Vector Analysis & Retrieval"
       abstract="A library for vector analysis, retrieval and curation using graph-wiring techniques. Explores how topological structure in embedding spaces improves retrieval quality beyond naive cosine similarity."
-      paper_url="/graph-wiring"
+      paper_url="/graph-wiring#panel-1"
       source_url="https://github.com/Mec-iS/arrowspace-rs"
       benchmark_url="/graph-wiring#panel-2"
       tags="graph"
