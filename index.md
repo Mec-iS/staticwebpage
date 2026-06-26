@@ -347,7 +347,6 @@ layout: default
     <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     <p>No projects match this filter yet.</p>
   </div>
-</div>
 
 <div class="detail-overlay" id="detail-overlay" role="dialog" aria-modal="true" aria-labelledby="detail-title">
   <div class="detail-panel" id="detail-panel">
