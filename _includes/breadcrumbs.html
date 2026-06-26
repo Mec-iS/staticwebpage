@@ -7,6 +7,8 @@
   {% assign is_top = true %}
 {% elsif page.url == '/blog' or page.url == '/blog.html' %}
   {% assign is_top = true %}
+{% elsif page.url == '/support' or page.url == '/support.html' %}
+  {% assign is_top = true %}
 {% endif %}
 
 {% unless is_top %}

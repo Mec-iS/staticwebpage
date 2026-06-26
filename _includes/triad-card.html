@@ -1,0 +1,29 @@
+<article class="triad-card" data-tags="{{ include.tags | default: '' }}">
+  <div class="triad-card__body">
+    <h3 class="triad-card__title">{{ include.title }}</h3>
+    <p class="triad-card__abstract">{{ include.abstract }}</p>
+  </div>
+  <div class="triad-card__actions">
+    {% if include.paper_url %}
+    <a href="{{ include.paper_url }}" class="triad-card__btn artifact-link" target="_blank" rel="noopener noreferrer">
+      <span class="triad-card__btn-icon">&#128196;</span>
+      <span class="triad-card__btn-label">Read Paper</span>
+      <span class="triad-card__btn-sub">Theory</span>
+    </a>
+    {% endif %}
+    {% if include.source_url %}
+    <a href="{{ include.source_url }}" class="triad-card__btn artifact-link" target="_blank" rel="noopener noreferrer">
+      <span class="triad-card__btn-icon">&#128187;</span>
+      <span class="triad-card__btn-label">View Source</span>
+      <span class="triad-card__btn-sub">Implementation</span>
+    </a>
+    {% endif %}
+    {% if include.benchmark_url %}
+    <a href="{{ include.benchmark_url }}" class="triad-card__btn artifact-link" target="_blank" rel="noopener noreferrer">
+      <span class="triad-card__btn-icon">&#128202;</span>
+      <span class="triad-card__btn-label">Reproduce Benchmarks</span>
+      <span class="triad-card__btn-sub">Proof</span>
+    </a>
+    {% endif %}
+  </div>
+</article>

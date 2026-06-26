@@ -30,7 +30,7 @@ layout: default
   content: '';
   position: absolute; top: 0; left: 0; right: 0;
   height: 3px;
-  background: var(--card-accent, var(--color-primary));
+  background: var(--card-accent, var(--color-text));
   border-radius: var(--radius-xl) var(--radius-xl) 0 0;
   transform: scaleX(0); transform-origin: left;
   transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
@@ -41,7 +41,7 @@ layout: default
   box-shadow: var(--shadow-lg);
 }
 .research-card:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-text);
   outline-offset: 2px;
 }
 .research-card.hidden {
@@ -58,14 +58,14 @@ layout: default
   font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em;
   text-transform: uppercase; padding: 0.2rem 0.55rem;
   border-radius: var(--radius-full);
-  background: color-mix(in oklch, var(--card-accent, var(--color-primary)) 15%, transparent);
-  color: var(--card-accent, var(--color-primary));
+  background: color-mix(in oklch, var(--card-accent, var(--color-text)) 15%, transparent);
+  color: var(--card-accent, var(--color-text));
 }
 .card-arrow {
   width: 20px; height: 20px; color: var(--color-text-faint);
   transition: transform var(--transition), color var(--transition);
 }
-.research-card:hover .card-arrow { transform: translate(3px,-3px); color: var(--card-accent, var(--color-primary)); }
+.research-card:hover .card-arrow { transform: translate(3px,-3px); color: var(--card-accent, var(--color-text)); }
 
 /* Card content */
 .card-title {
@@ -103,7 +103,7 @@ layout: default
   transform: translateY(24px) scale(0.97);
   transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
   position: relative;
-  border-top: 4px solid var(--panel-accent, var(--color-primary));
+  border-top: 4px solid var(--panel-accent, var(--color-text));
 }
 .detail-overlay.open .detail-panel { transform: translateY(0) scale(1); }
 .detail-close {
@@ -120,8 +120,8 @@ layout: default
   font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em;
   text-transform: uppercase; padding: 0.2rem 0.55rem;
   border-radius: var(--radius-full);
-  background: color-mix(in oklch, var(--panel-accent, var(--color-primary)) 15%, transparent);
-  color: var(--panel-accent, var(--color-primary));
+  background: color-mix(in oklch, var(--panel-accent, var(--color-text)) 15%, transparent);
+  color: var(--panel-accent, var(--color-text));
   margin-bottom: 0.75rem;
 }
 .detail-title {
@@ -131,8 +131,8 @@ layout: default
 .detail-desc { font-size: 0.93rem; color: var(--color-text-muted); line-height: 1.65; margin-bottom: 1.5rem; }
 .detail-link {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  background: var(--panel-accent, var(--color-primary));
-  color: #fff; text-decoration: none;
+  background: var(--color-text);
+  color: var(--color-bg); text-decoration: none;
   padding: 0.6rem 1.2rem; border-radius: var(--radius-full);
   font-size: 0.85rem; font-weight: 600;
   transition: opacity var(--transition), transform var(--transition);
@@ -155,6 +155,36 @@ layout: default
   min-height: 1.2em;
 }
 
+/* ── Featured works / Triad Cards section ──────── */
+.featured-works {
+  margin: 2.5rem auto 0;
+  max-width: 900px;
+}
+
+.featured-works-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.featured-works-header h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.featured-works-header p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0.4rem 0 0;
+}
+
+.featured-works-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
 /* ── Responsive ────────────────────────────────── */
 @media (max-width: 500px) {
   body { padding: 2rem 1rem; }
@@ -166,77 +196,6 @@ layout: default
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
-}
-
-.blog-container {
-  margin: 3em auto 0 auto;
-  max-width: 800px;
-}
-
-.blog-header {
-  margin-bottom: 2em;
-  color: #2c3e50;
-  text-align: center;
-}
-
-.blog-posts {
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-}
-
-.blog-post-card {
-  background: white;
-  padding: 2em;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-left: 4px solid #3498db;
-  margin-top: 0.5em;
-}
-
-.blog-post-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.blog-post-meta {
-  color: #7f8c8d;
-  font-size: 0.9em;
-  margin-bottom: 0.5em;
-}
-
-.blog-post-title {
-  margin: 0 0 0.8em 0;
-  font-size: 1.6em;
-  color: #2c3e50;
-}
-
-.blog-post-title a {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.2s ease;
-}
-
-.blog-post-title a:hover {
-  color: #3498db;
-}
-
-.blog-post-abstract {
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 1em;
-}
-
-.blog-read-more {
-  color: #3498db;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.blog-read-more:hover {
-  color: #2980b9;
 }
 
 .media-feature {
@@ -313,7 +272,7 @@ layout: default
 <section class="media-feature" aria-labelledby="podcast-feature-title">
   <div class="media-feature-card">
     <div class="media-feature-copy">
-      <span class="card-badge" style="--card-accent: #01696f;">Podcast</span>
+      <span class="card-badge" style="--card-accent: var(--color-text);">Podcast</span>
       <p class="section-subtitle">
         A podcast conversation on Graph Wiring, epiplexity, and the next generation
         of tools for machine learning and LLM operations.
@@ -331,7 +290,7 @@ layout: default
           href="https://www.youtube.com/watch?v=S5xbQXBiLs4"
           target="_blank"
           rel="noopener noreferrer"
-          class="blog-read-more"
+          class="artifact-link"
         >
           Watch on YouTube <span aria-hidden="true">→</span>
         </a>
@@ -366,9 +325,9 @@ layout: default
 
     <a href="/graph-wiring" class="research-card"
        data-tags="vector-search,graph"
-       data-accent="#27ae60"
+       data-accent="#0055FF"
        data-long="A library for vector analysis, retrieval and curation using graph-wiring techniques. Explores how topological structure in embedding spaces improves retrieval quality beyond naive cosine similarity."
-       style="--card-accent:#27ae60"
+       style="--card-accent:#0055FF"
        role="listitem" tabindex="0">
       <div class="card-top">
         <span class="card-badge">Graph</span>
@@ -384,9 +343,9 @@ layout: default
 
     <a href="/posts/012_topological_transformer_tauformer_domain_memory_in_attention" class="research-card"
        data-tags="transformer,vector-search"
-       data-accent="#db9834"
+       data-accent="#0055FF"
        data-long="Tauformer redefines attention using topological (spectral) signals from ArrowSpace's lambda-scoring, giving attention heads domain-aware memory that adapts to the geometry of the input distribution."
-       style="--card-accent:#db9834"
+       style="--card-accent:#0055FF"
        role="listitem" tabindex="0">
       <div class="card-top">
         <span class="card-badge">Transformer</span>
@@ -402,9 +361,9 @@ layout: default
 
     <a href="/arrowspace-paper" class="research-card"
        data-tags="vector-search,graph"
-       data-accent="#3498db"
+       data-accent="#0055FF"
        data-long="ArrowSpace is a spectral vector database that blends cosine similarity with graph-Laplacian roughness (λτ-indexing) to produce topology-aware similarity scores, improving long-tail RAG retrieval."
-       style="--card-accent:#3498db"
+       style="--card-accent:#0055FF"
        role="listitem" tabindex="0">
       <div class="card-top">
         <span class="card-badge">Vector Search</span>
@@ -420,9 +379,9 @@ layout: default
 
     <a href="/smartcorelib" class="research-card"
        data-tags="rust"
-       data-accent="#e74c3c"
+       data-accent="#0055FF"
        data-long="smartcore is a comprehensive Rust machine learning library covering statistics, linear algebra, clustering, classification, regression, and dimensionality reduction — all in safe, idiomatic Rust."
-       style="--card-accent:#e74c3c"
+       style="--card-accent:#0055FF"
        role="listitem" tabindex="0">
       <div class="card-top">
         <span class="card-badge">Rust · OSS</span>
@@ -438,9 +397,9 @@ layout: default
 
     <a href="/vibelang-rs" class="research-card"
        data-tags="agents,rust"
-       data-accent="#f39c12"
+       data-accent="#0055FF"
        data-long="vibelang-rs introduces Meaning Typed Prompting — a typed prompt language for AI agents. Prompts become typed, composable functions, enabling compile-time reasoning over agent behaviour in Rust."
-       style="--card-accent:#f39c12"
+       style="--card-accent:#0055FF"
        role="listitem" tabindex="0">
       <div class="card-top">
         <span class="card-badge">Agents · Rust</span>
@@ -456,9 +415,9 @@ layout: default
 
     <a href="/bmpp" class="research-card"
        data-tags="agents"
-       data-accent="#9b59b6"
+       data-accent="#0055FF"
        data-long="BMPP Agents defines a scalable protocol for multi-agent AI installations. It specifies how independent agents publish capabilities, form coalitions, and execute distributed tasks without a central orchestrator."
-       style="--card-accent:#9b59b6"
+       style="--card-accent:#0055FF"
        role="listitem" tabindex="0">
       <div class="card-top">
         <span class="card-badge">Agents</span>
@@ -474,9 +433,9 @@ layout: default
 
     <a href="/bmpp-paper" class="research-card"
        data-tags="agents"
-       data-accent="#27ae60"
+       data-accent="#0055FF"
        data-long="The BMPP paper provides a formal mathematical definition of AI agents, their interaction grammar, and composition rules. It establishes the theoretical foundation for the BMPP protocol and multi-agent reasoning."
-       style="--card-accent:#27ae60"
+       style="--card-accent:#0055FF"
        role="listitem" tabindex="0">
       <div class="card-top">
         <span class="card-badge">Paper</span>
@@ -515,182 +474,49 @@ layout: default
   </div>
 </div>
 
-<div class="blog-container">
-  <div class="blog-header">
-    <h2>📝 Selected Posts</h2>
+<section class="featured-works" aria-labelledby="featured-title">
+  <div class="featured-works-header">
+    <h2 id="featured-title">Featured Research</h2>
+    <p>The theoretical foundations, implementation, and empirical proof for each project.</p>
   </div>
 
-  <div class="blog-posts">
-<!-- Blog Post 20: ArrowSpace Comparative Semantic Probing — part 2 -->
-<article class="blog-post-card">
-    <div class="blog-post-meta">June 11, 2026</div>
-    <h2 class="blog-post-title">
-        <a href="/posts/020_arrowspace_semantic_basins_part2">
-            `arrowspace` for Latent Spaces — part 2
-        </a>
-    </h2>
-    <div class="blog-post-abstract">
-        <p>Comparative semantic probing: dual-space analysis on transformer weights and embeddings</p>
-        <ul>
-            <li>Probe A (token space <code>E_tok</code>) vs Probe B (weight space <code>model.encode</code>): two complementary circuit-level views</li>
-            <li>Principled primal/dual FFN split — <code>W_ffn1</code> as write operator, <code>W_ffn2<sup>⊤</sup></code> as readout — mirrors ArrowSpace's feature-space Laplacian</li>
-            <li>36 weight-role subspaces probed across 6 layers; dual readout axis is the most field-selective signal</li>
-            <li>Self-consistency bias in Probe B documented at 7–16% per field — epistemic limit, not a correction</li>
-        </ul>
-    </div>
-    <a href="/posts/020_arrowspace_semantic_basins_part2" class="blog-read-more">Read more →</a>
-</article>
+  <div class="featured-works-grid">
+    {% include triad-card.html
+      title="ArrowSpace: Spectral Search For Embeddings"
+      abstract="Spectral indexing for vector similarity search combining cosine similarity with graph-Laplacian roughness (λτ-indexing) to produce topology-aware similarity scores. Published in the Journal of Open Source Software."
+      paper_url="https://doi.org/10.21105/joss.09002"
+      source_url="https://github.com/Mec-iS/arrowspace-rs"
+      benchmark_url="/graph-wiring"
+      tags="vector-search"
+    %}
 
-<!-- Blog Post 19: ArrowSpace for Local Minima in Latent Space -->
-<article class="blog-post-card">
-    <div class="blog-post-meta">June 2, 2026</div>
-    <h2 class="blog-post-title">
-        <a href="/posts/019_arrowspace_local_minima_walkthrough">
-            `arrowspace` for Latent Spaces - part 1
-        </a>
-    </h2>
-    <div class="blog-post-abstract">
-        <p>Notebook walkthrough: using Rayleigh energy as a landscape signal for high-dimensional embedding spaces</p>
-        <ul>
-            <li>Feature-space Laplacian and per-item spectral smoothness</li>
-            <li>Augmenting KDE, Diffusion Maps and Basin-Hopping with arrowspace</li>
-            <li>BasinHop + ArrowSpace achieves 100% cluster purity at α = 0.35</li>
-            <li>Baseline for mechanistic interpretability of latent spaces</li>
-        </ul>
-    </div>
-    <a href="/posts/019_arrowspace_local_minima_walkthrough" class="blog-read-more">Read more →</a>
-</article>
+    {% include triad-card.html
+      title="Tauformer: The Topological Transformer"
+      abstract="Domain-aware attention heads that use topological (spectral) signals from ArrowSpace's lambda-scoring instead of raw dot-product geometry. Enables ~50% KV-cache savings and ~20% faster per-token inference."
+      paper_url="/posts/012_topological_transformer_tauformer_domain_memory_in_attention"
+      source_url="https://github.com/Mec-iS/nanogpt-rs"
+      benchmark_url="/posts/012_topological_transformer_tauformer_domain_memory_in_attention#benchmarks"
+      tags="transformer"
+    %}
 
-<!-- Blog Post 17: ArrowSpace hits the spot for semantic augmented retrieval -->
-<article class="blog-post-card">
-    <div class="blog-post-meta">March 8, 2026</div>
-    <h2 class="blog-post-title">
-        <a href="/posts/017_arrowspace_search_final_assessment">
-            `arrowspace` hits the spot for semantic augmented retrieval
-        </a>
-    </h2>
-    <div class="blog-post-abstract">
-        <p><strong>Testing</strong> all aspect of Graph Wiring on semantic data.</p>
-        <ul>
-            <li>Why geometry fails in retrieval</li>
-            <li>Measuring the win: MRR‑Top0</li>
-            <li>`arrowspace` can relevantly improve RAG systems</li>
-        </ul>
-    </div>
-    <a href="/posts/017_arrowspace_search_final_assessment" class="blog-read-more">Read more →</a>
-</article>  
-
-<!-- Blog Post 16: Capabilities, speed and accuracy -->
-<article class="blog-post-card">
-    <div class="blog-post-meta">February 17, 2026</div>
-    <h2 class="blog-post-title">
-        <a href="/posts/016_arrowspace_performance_results">
-            `arrowspace`: Capabilities, speed and accuracy
-        </a>
-    </h2>
-    <div class="blog-post-abstract">
-        <p><strong>Testing</strong> all aspect of Graph Wiring on semantic data.</p>
-        <ul>
-            <li>How fast is `arrowspace`</li>
-            <li>How accurate is `arrowspace`</li>
-            <li>`arrowspace` can relevantly improve RAG systems</li>
-        </ul>
-    </div>
-    <a href="/posts/016_arrowspace_performance_results" class="blog-read-more">Read more →</a>
-</article>
-
-<!-- Blog Post 12: Tauformer / Topological Transformer -->
-<article class="blog-post-card">
-    <div class="blog-post-meta">January 5, 2026</div>
-    <h2 class="blog-post-title">
-    <a href="/posts/012_topological_transformer_tauformer_domain_memory_in_attention">The Topological Transformer: Tauformer (domain-memory and faster attention)</a></h2>
-    <div class="blog-post-abstract">
-        <p><strong>Domain memory</strong> injected directly inside self-attention via a persistent Graph Laplacian (distilled knowledge graphs with <code>arrowspace</code>).</p>
-        <ul>
-            <li>Replaces the dot-product attention kernel with a topology-aware scalar signal (taumode / λ-distance), so attention is driven by distances in a domain manifold rather than raw geometry.</li>
-            <li>Targets scaling pain points: ~50% KV-cache savings (values + λ<sub>k</sub> instead of K+V) and ~20% faster time-per-token vs a nanoGPT baseline in the reported benchmarks.</li>
-        </ul>
-    </div>
-    <a href="/posts/012_topological_transformer_tauformer_domain_memory_in_attention" class="blog-read-more">Read more →</a>
-</article>
-
-<!-- Blog Post 11: Safer Is a More Open Search -->
-<article class="blog-post-card">
-    <div class="blog-post-meta">November 26, 2025</div>
-    <h2 class="blog-post-title">
-    <a href="/posts/011_safer_LLMs_require_more_open_search_building_AI_memory_layer">Safer LLMS require open search - Building the AI Memory Layer</a></h2>
-    <div class="blog-post-abstract">
-        <p><strong>AI safety</strong> through topology‑aware, energy‑informed retrieval that separates stable facts from risky intuitions.</p>
-        <ul>
-            <li>Shows how geometry‑only vector search and semantic caching accumulate retrieval errors, turning context drift into subtle hallucinations.</li>
-            <li>Introduces arrowspace as an “open search” layer where graph Laplacians, energy dispersion, and topology‑quality scores expose and constrain off‑manifold results instead of hiding them inside black‑box similarity.</li>
-        </ul>
-    </div>
-    <a href="/posts/011_safer_LLMs_require_more_open_search_building_AI_memory_layer" class="blog-read-more">Read more →</a>
-</article>
-  
-<!-- Blog Post 10: Why `arrowspace` is game-changing for data operations at scale -->
-<article class="blog-post-card">
-    <div class="blog-post-meta">November 12, 2025</div>
-    <h2 class="blog-post-title"> 
-    <a href="/posts/010_game_changer_unifying_vectors_and_features_graphs">Why <code>arrowspace</code> is game-changing for data operations at scale</a></h2>
-    <div class="blog-post-abstract"> <p><strong>Test‑bed milestone</strong> for a unified vector, graph, and key‑value engine built on spectral indexing and energy‑informed search. <ul> <li>Turns any dataset into a features graph, enabling manifold‑aware search, matching, ranking, and dataset characterization at any lifecycle stage.</li> <li>Designed for high dimensions by default: robust on biotech‑scale sequences, large vocabularies, and model‑sized embedding spaces.</li> </ul></p> </div>
-    <a href="/posts/010_game_changer_unifying_vectors_and_features_graphs" class="blog-read-more">Read more →</a>
-</article>
-
-  <!-- Blog Post 9: NanoGPT: A deep dive into the architecture of a Rust-powered GPT-2 -->
-  <article class="blog-post-card">
-      <div class="blog-post-meta">November 07, 2025</div>
-      <h2 class="blog-post-title">
-      <a href="/posts/009_llms_nanogpt_model_in_rust">Efficient GPT training: a dive into the architecture of a Rust-powered GPT-2</a></h2>
-      <div class="blog-post-abstract">
-          <p><strong>Deep Dive</strong> into a Rust implementation of a decoder-only transformer inspired by Karpathy's nanochat. <ul> <li>Breaks down the architecture of a modern LLM, explaining the role of key components for an experienced audience.</li><li>Covers modern techniques such as Rotary Position Embeddings (RoPE), Multi-Query Attention (MQA), RMSNorm, and the use of a Squared ReLU in the MLP.</li></ul></p>
-      </div>
-      <a href="/posts/009_llms_nanogpt_model_in_rust" class="blog-read-more">Read more →</a>
-  </article>
-
-  <article class="blog-post-card">
-      <div class="blog-post-meta">October 24, 2025</div> 
-      <h2 class="blog-post-title"> 
-      <a href="/posts/007_deepseek_optical_compression_rust">DeepSeek-OCR Optical Compression Meets Energy Search: Rust Implementation in ArrowSpace v0.18.0</a></h2>
-      <div class="blog-post-abstract">
-          <p>Rust implementation of DeepSeek-OCR compression achieves 10× token reduction, while ArrowSpace v0.18.0 introduces energy-informed retrieval that replaces cosine similarity with spectral graph properties.<ul> <li>DeepEncoder architecture (SAM + CLIP + projector) replicated in Rust using burn.dev with cross-platform GPU support and five resolution modes from 64 to 400 tokens.</li><li>Energy search with diffusion parameter sweep on CVE corpus achieves NDCG@10 ≈ 0.99 (η=0.05, steps=6) and MRR=1.0 (η=0.05, steps=4) without any cosine similarity.</li></ul></p>
-      </div>
-      <a href="/posts/007_deepseek_optical_compression_rust" class="blog-read-more">Read more →</a>
-  </article>
-
-  <!-- Blog Post 5: Fast Nearest Neighbours -->
-  <article class="blog-post-card">
-      <div class="blog-post-meta">October 17, 2025</div> 
-      <h2 class="blog-post-title"> 
-      <a href="/posts/005_fast_approximate_nearest_neighbours">Fast (not approximate?) Nearest Neighbours</a></h2>
-      <div class="blog-post-abstract">
-          <p>Version 0.16.0 is out with quite relevant news and encouraging results for `arrowspace` to be <strong>one of the fastest approximate nearest neighbours algorithm available in the open</strong>.</p>
-      </div>
-      <a href="/posts/005_fast_approximate_nearest_neighbours" class="blog-read-more">Read more →</a>
-  </article>
-
-  <!-- Blog Post 1: Energy-Informed Vector Search -->
-  <article class="blog-post-card">
-    <div class="blog-post-meta">October 1, 2025</div>
-    <h2 class="blog-post-title">
-      <a href="/posts/001_energy_informed_db">The Next Evolution in AI Memory: Energy-Informed Vector Search</a>
-    </h2>
-    <div class="blog-post-abstract">
-      <p>Vector databases have become the backbone of modern AI workflows, particularly in RAG systems. But traditional approaches are fundamentally limited—they miss the deeper structural patterns that define how information relates within domains. Discover how ArrowSpace introduces energy-informed indexing through taumode, enabling AI systems with memory that truly understands domain contexts through spectral signatures and graph Laplacian energy.</p>
-    </div>
-    <a href="/posts/001_energy_informed_db" class="blog-read-more">Read more →</a>
-  </article>
+    {% include triad-card.html
+      title="Graph Wiring: Vector Analysis & Retrieval"
+      abstract="A library for vector analysis, retrieval and curation using graph-wiring techniques. Explores how topological structure in embedding spaces improves retrieval quality beyond naive cosine similarity."
+      paper_url="/graph-wiring"
+      source_url="https://github.com/Mec-iS/arrowspace-rs"
+      benchmark_url="/graph-wiring"
+      tags="graph"
+    %}
   </div>
-</div>
+</section>
 
 <div class="intermission" style="min-height: 0.5em;"></div>
 
 <div style="margin: 2em auto 0 auto; max-width: 600px; text-align: center;">
-  <strong>Dig my previous research at <a href="https://pramantha.net">pramantha.net</a></strong>
+  <strong>Dig my previous research at <a href="https://pramantha.net" class="artifact-link">pramantha.net</a></strong>
 </div>
 
 <div style="margin: 1.6em auto 0 auto; max-width: 600px; text-align: center;">
-<strong>Curious?</strong> 
+<strong>Curious?</strong>
 Start exploring the pages above or reach out via the Contact page for questions, collaborations, or sponsorship info!
 </div>
