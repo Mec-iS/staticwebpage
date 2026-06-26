@@ -5,7 +5,6 @@ layout: default
 
 <style>
 
-/* ── Cards grid ────────────────────────────────── */
 .research-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
@@ -13,13 +12,12 @@ layout: default
   transition: all var(--transition);
 }
 
-/* ── Individual card ───────────────────────────── */
 .research-card {
   background: var(--color-surface-2);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  padding: 1.4rem 1.4rem 1.2rem;
-  display: flex; flex-direction: column; gap: 0.6rem;
+  padding: 1.25rem 1.25rem 1rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition), box-shadow var(--transition), opacity 0.25s ease;
@@ -50,13 +48,12 @@ layout: default
   display: none;
 }
 
-/* Card top row: badge + arrow */
 .card-top {
   display: flex; align-items: center; justify-content: space-between;
 }
 .card-badge {
   font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em;
-  text-transform: uppercase; padding: 0.2rem 0.55rem;
+  text-transform: uppercase; padding: 0.2rem 0.5rem;
   border-radius: var(--radius-full);
   background: color-mix(in oklch, var(--card-accent, var(--color-text)) 15%, transparent);
   color: var(--card-accent, var(--color-text));
@@ -67,7 +64,6 @@ layout: default
 }
 .research-card:hover .card-arrow { transform: translate(3px,-3px); color: var(--card-accent, var(--color-text)); }
 
-/* Card content */
 .card-title {
   font-size: 1.05rem; font-weight: 700;
   color: var(--color-text); line-height: 1.2;
@@ -84,7 +80,6 @@ layout: default
 }
 .card-meta svg { flex-shrink: 0; }
 
-/* ── Expanded detail panel (modal) ─────────────── */
 .detail-overlay {
   position: fixed; inset: 0; z-index: 200;
   background: rgba(0,0,0,0.55); backdrop-filter: blur(6px);
@@ -118,7 +113,7 @@ layout: default
 .detail-badge {
   display: inline-block;
   font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em;
-  text-transform: uppercase; padding: 0.2rem 0.55rem;
+  text-transform: uppercase; padding: 0.2rem 0.5rem;
   border-radius: var(--radius-full);
   background: color-mix(in oklch, var(--panel-accent, var(--color-text)) 15%, transparent);
   color: var(--panel-accent, var(--color-text));
@@ -133,13 +128,12 @@ layout: default
   display: inline-flex; align-items: center; gap: 0.5rem;
   background: var(--color-text);
   color: var(--color-bg); text-decoration: none;
-  padding: 0.6rem 1.2rem; border-radius: var(--radius-full);
+  padding: 0.6rem 1.25rem; border-radius: var(--radius-full);
   font-size: 0.85rem; font-weight: 600;
   transition: opacity var(--transition), transform var(--transition);
 }
 .detail-link:hover { opacity: 0.85; transform: translateX(2px); }
 
-/* ── Empty state ───────────────────────────────── */
 .empty-state {
   display: none; flex-direction: column; align-items: center;
   text-align: center; padding: 4rem 2rem; color: var(--color-text-muted);
@@ -148,14 +142,12 @@ layout: default
 .empty-state.visible { display: flex; }
 .empty-state p { max-width: 30ch; margin-top: 0.5rem; font-size: 0.9rem; }
 
-/* ── Count label ───────────────────────────────── */
 .count-label {
   text-align: center; font-size: 0.78rem;
   color: var(--color-text-faint); margin-bottom: 1rem;
   min-height: 1.2em;
 }
 
-/* ── Featured works / Triad Cards section ──────── */
 .featured-works {
   margin: 2.5rem auto 0;
   max-width: 900px;
@@ -167,7 +159,7 @@ layout: default
 }
 
 .featured-works-header h2 {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
@@ -185,11 +177,50 @@ layout: default
   gap: 1.25rem;
 }
 
-/* ── Responsive ────────────────────────────────── */
+.software-section {
+  margin: 2.5rem auto 0;
+  max-width: 1100px;
+}
+
+.software-section-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.software-section-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.software-section-header p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0.4rem 0 0;
+}
+
+.software-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
+  gap: 1rem;
+}
+
+.home-footer-links {
+  margin: 2rem auto 0;
+  max-width: 600px;
+  text-align: center;
+}
+
+.home-footer-links + .home-footer-links {
+  margin-top: 1.5rem;
+}
+
 @media (max-width: 500px) {
   body { padding: 2rem 1rem; }
-  .research-grid { gap: 0.9rem; }
-  .research-card { padding: 1.1rem; }
+  .research-grid { gap: 0.75rem; }
+  .research-card { padding: 1rem; }
+  .software-grid { gap: 0.75rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -219,13 +250,13 @@ layout: default
 .media-feature-copy {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 0.75rem;
   justify-content: center;
 }
 
 .media-feature-points {
   margin: 0;
-  padding-left: 1.15rem;
+  padding-left: 1.25rem;
   color: var(--color-text-muted);
   line-height: 1.6;
 }
@@ -272,7 +303,7 @@ layout: default
 <section class="media-feature" aria-labelledby="podcast-feature-title">
   <div class="media-feature-card">
     <div class="media-feature-copy">
-      <span class="card-badge" style="--card-accent: var(--color-text);">Podcast</span>
+      <span class="card-badge">Podcast</span>
       <p class="section-subtitle">
         A podcast conversation on Graph Wiring, epiplexity, and the next generation
         of tools for machine learning and LLM operations.
@@ -315,20 +346,18 @@ layout: default
 
 <div class="research-container">
   <h2 class="research-header">
-    🔬 Explore my <span>research</span>, protocols and open-source implementations
+    Explore my <span>research</span>, protocols and open-source implementations
   </h2>
 
   <p class="count-label" id="count-label"></p>
 
-  <!-- Cards grid -->
   <div class="research-grid" id="research-grid" role="list">
 
     <a href="/graph-wiring" class="research-card"
        data-tags="vector-search,graph"
        data-accent="#0055FF"
        data-long="A library for vector analysis, retrieval and curation using graph-wiring techniques. Explores how topological structure in embedding spaces improves retrieval quality beyond naive cosine similarity."
-       style="--card-accent:#0055FF"
-       role="listitem" tabindex="0">
+       role="listitem">
       <div class="card-top">
         <span class="card-badge">Graph</span>
         <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -345,8 +374,7 @@ layout: default
        data-tags="transformer,vector-search"
        data-accent="#0055FF"
        data-long="Tauformer redefines attention using topological (spectral) signals from ArrowSpace's lambda-scoring, giving attention heads domain-aware memory that adapts to the geometry of the input distribution."
-       style="--card-accent:#0055FF"
-       role="listitem" tabindex="0">
+       role="listitem">
       <div class="card-top">
         <span class="card-badge">Transformer</span>
         <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -363,8 +391,7 @@ layout: default
        data-tags="vector-search,graph"
        data-accent="#0055FF"
        data-long="ArrowSpace is a spectral vector database that blends cosine similarity with graph-Laplacian roughness (λτ-indexing) to produce topology-aware similarity scores, improving long-tail RAG retrieval."
-       style="--card-accent:#0055FF"
-       role="listitem" tabindex="0">
+       role="listitem">
       <div class="card-top">
         <span class="card-badge">Vector Search</span>
         <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -381,8 +408,7 @@ layout: default
        data-tags="rust"
        data-accent="#0055FF"
        data-long="smartcore is a comprehensive Rust machine learning library covering statistics, linear algebra, clustering, classification, regression, and dimensionality reduction — all in safe, idiomatic Rust."
-       style="--card-accent:#0055FF"
-       role="listitem" tabindex="0">
+       role="listitem">
       <div class="card-top">
         <span class="card-badge">Rust · OSS</span>
         <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -399,8 +425,7 @@ layout: default
        data-tags="agents,rust"
        data-accent="#0055FF"
        data-long="vibelang-rs introduces Meaning Typed Prompting — a typed prompt language for AI agents. Prompts become typed, composable functions, enabling compile-time reasoning over agent behaviour in Rust."
-       style="--card-accent:#0055FF"
-       role="listitem" tabindex="0">
+       role="listitem">
       <div class="card-top">
         <span class="card-badge">Agents · Rust</span>
         <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -417,8 +442,7 @@ layout: default
        data-tags="agents"
        data-accent="#0055FF"
        data-long="BMPP Agents defines a scalable protocol for multi-agent AI installations. It specifies how independent agents publish capabilities, form coalitions, and execute distributed tasks without a central orchestrator."
-       style="--card-accent:#0055FF"
-       role="listitem" tabindex="0">
+       role="listitem">
       <div class="card-top">
         <span class="card-badge">Agents</span>
         <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -435,8 +459,7 @@ layout: default
        data-tags="agents"
        data-accent="#0055FF"
        data-long="The BMPP paper provides a formal mathematical definition of AI agents, their interaction grammar, and composition rules. It establishes the theoretical foundation for the BMPP protocol and multi-agent reasoning."
-       style="--card-accent:#0055FF"
-       role="listitem" tabindex="0">
+       role="listitem">
       <div class="card-top">
         <span class="card-badge">Paper</span>
         <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -449,16 +472,14 @@ layout: default
       </div>
     </a>
 
-  </div><!-- /.research-grid -->
+  </div>
 
-  <!-- Empty state (hidden until needed) -->
   <div class="empty-state" id="empty-state" role="status" aria-live="polite">
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-text-faint)"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     <p>No projects match this filter yet.</p>
   </div>
 </div>
 
-<!-- Detail overlay / modal -->
 <div class="detail-overlay" id="detail-overlay" role="dialog" aria-modal="true" aria-labelledby="detail-title">
   <div class="detail-panel" id="detail-panel">
     <button class="detail-close" id="detail-close" aria-label="Close">
@@ -491,11 +512,10 @@ layout: default
     %}
 
     {% include triad-card.html
-      title="Tauformer: The Topological Transformer"
-      abstract="Domain-aware attention heads that use topological (spectral) signals from ArrowSpace's lambda-scoring instead of raw dot-product geometry. Enables ~50% KV-cache savings and ~20% faster per-token inference."
-      paper_url="/posts/012_topological_transformer_tauformer_domain_memory_in_attention"
-      source_url="https://github.com/Mec-iS/nanogpt-rs"
-      benchmark_url="/posts/012_topological_transformer_tauformer_domain_memory_in_attention#benchmarks"
+      title="Vibrational Deduction Transformer"
+      abstract="A transformer architecture that reasons through vibrational (oscillatory) modes in embedding spaces, using spectral decomposition to uncover latent structure beyond static attention patterns."
+      paper_url="https://github.com/tuned-org-uk/vibrational-deduction-transformer"
+      source_url="https://github.com/tuned-org-uk/vibrational-deduction-transformer"
       tags="transformer"
     %}
 
@@ -510,13 +530,82 @@ layout: default
   </div>
 </section>
 
-<div class="intermission" style="min-height: 0.5em;"></div>
+<section class="software-section" aria-labelledby="software-title">
+  <div class="software-section-header">
+    <h2 id="software-title">Software</h2>
+    <p>Open-source implementations, tools, and libraries.</p>
+  </div>
 
-<div style="margin: 2em auto 0 auto; max-width: 600px; text-align: center;">
+  <div class="software-grid" role="list">
+    {% include repo-card.html
+      url="https://github.com/smartcorelib/smartcore"
+      name="smartcore"
+      description="Comprehensive Rust ML library — statistics, clustering, regression, dimensionality reduction"
+    %}
+
+    {% include repo-card.html
+      url="https://github.com/tuned-org-uk/pyarrowspace"
+      name="pyarrowspace"
+      description="Python bindings for the ArrowSpace spectral vector search engine"
+    %}
+
+    {% include repo-card.html
+      url="https://github.com/tuned-org-uk/genegraph-storage"
+      name="genegraph-storage"
+      description="Graph-based storage engine for genomic data with spectral indexing"
+    %}
+
+    {% include repo-card.html
+      url="https://github.com/tuned-org-uk/constraint-decoding-trie-static"
+      name="constraint-decoding-trie-static"
+      description="Static trie for constrained decoding in LLM token generation"
+    %}
+
+    {% include repo-card.html
+      url="https://github.com/tuned-org-uk/deep-delta-rs"
+      name="deep-delta-rs"
+      description="Delta encoding and change detection for deep learning model weights"
+    %}
+
+    {% include repo-card.html
+      url="https://github.com/tuned-org-uk/nanogpt-rs"
+      name="nanogpt-rs"
+      description="Rust implementation of GPT-2 with RoPE, MQA, RMSNorm — nanoGPT inspired"
+    %}
+
+    {% include repo-card.html
+      url="https://github.com/tuned-org-uk/dspm-rs"
+      name="dspm-rs"
+      description="Dynamic Sequential Pattern Mining in Rust"
+    %}
+
+    {% include repo-card.html
+      url="https://github.com/tuned-org-uk/titans-pytorch"
+      name="titans-pytorch"
+      description="PyTorch implementation of the Titans architecture for long-term memory"
+    %}
+
+    {% include repo-card.html
+      url="https://github.com/tuned-org-uk/kalman_clustering"
+      name="kalman_clustering"
+      description="Clustering algorithm using Kalman filter dynamics for temporal data"
+    %}
+
+    {% include repo-card.html
+      url="https://github.com/tuned-org-uk/topological-transformer-pygpu"
+      name="topological-transformer-pygpu"
+      description="GPU-accelerated topological transformer with PyTorch CUDA kernels"
+    %}
+  </div>
+</section>
+
+<div class="intermission"></div>
+
+<div class="home-footer-links">
   <strong>Dig my previous research at <a href="https://pramantha.net" class="artifact-link">pramantha.net</a></strong>
 </div>
 
-<div style="margin: 1.6em auto 0 auto; max-width: 600px; text-align: center;">
+<div class="home-footer-links">
 <strong>Curious?</strong>
 Start exploring the pages above or reach out via the Contact page for questions, collaborations, or sponsorship info!
 </div>

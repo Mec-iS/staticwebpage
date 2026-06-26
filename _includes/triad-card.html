@@ -3,6 +3,7 @@
     <h3 class="triad-card__title">{{ include.title }}</h3>
     <p class="triad-card__abstract">{{ include.abstract }}</p>
   </div>
+  {% if include.paper_url or include.source_url or include.benchmark_url %}
   <div class="triad-card__actions">
     {% if include.paper_url %}
     <a href="{{ include.paper_url }}" class="triad-card__btn artifact-link" target="_blank" rel="noopener noreferrer">
@@ -26,4 +27,5 @@
     </a>
     {% endif %}
   </div>
+  {% endif %}
 </article>

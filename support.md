@@ -11,10 +11,10 @@ layout: default
   }
 
   .support-hero h1 {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--color-text);
-    margin: 0 0 0.6rem;
+    margin: 0 0 0.5rem;
   }
 
   .support-hero p {
@@ -71,7 +71,7 @@ layout: default
 
   .support-tier__items {
     margin: 0;
-    padding-left: 1.2rem;
+    padding-left: 1.25rem;
     font-size: 0.85rem;
     color: var(--color-text-muted);
     line-height: 1.7;
@@ -88,6 +88,22 @@ layout: default
     font-size: 1rem;
     font-weight: 600;
     border-radius: var(--radius-md);
+  }
+
+  .support-cta-footnote {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: 1rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .support-artifacts {
@@ -128,10 +144,12 @@ layout: default
   </p>
 </div>
 
-<div class="support-tiers">
+<section class="support-tiers" aria-labelledby="tiers-heading">
+  <h2 id="tiers-heading" class="sr-only">Sponsorship Tiers</h2>
+
   <div class="support-tier">
     <div class="support-tier__header">
-      <h2 class="support-tier__name">Sustainer</h2>
+      <h3 class="support-tier__name">Sustainer</h3>
       <span class="support-tier__amount">$10/mo</span>
     </div>
     <p class="support-tier__desc">
@@ -146,7 +164,7 @@ layout: default
 
   <div class="support-tier">
     <div class="support-tier__header">
-      <h2 class="support-tier__name">Patron</h2>
+      <h3 class="support-tier__name">Patron</h3>
       <span class="support-tier__amount">$50/mo</span>
     </div>
     <p class="support-tier__desc">
@@ -162,7 +180,7 @@ layout: default
 
   <div class="support-tier">
     <div class="support-tier__header">
-      <h2 class="support-tier__name">Foundry</h2>
+      <h3 class="support-tier__name">Foundry</h3>
       <span class="support-tier__amount">$500/mo</span>
     </div>
     <p class="support-tier__desc">
@@ -175,7 +193,7 @@ layout: default
       <li>Exclusive commercial licensing</li>
     </ul>
   </div>
-</div>
+</section>
 
 <div class="support-cta">
   <a href="https://github.com/sponsors/tuned-org-uk" target="_blank" rel="noopener noreferrer" class="sponsor-link">
@@ -213,7 +231,7 @@ layout: default
 </section>
 
 <div class="support-cta">
-  <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 1rem;">
+  <p class="support-cta-footnote">
     tuned.org.uk is funded by grants and sponsorships based purely on the objective value of its output.
     No advertising, no tracking, no VC funding.
   </p>

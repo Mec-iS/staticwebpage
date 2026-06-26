@@ -1,10 +1,9 @@
 <nav class="site-nav" aria-label="Main navigation">
-  <input type="checkbox" id="nav-toggle" class="nav-toggle-input" hidden>
-  <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu" tabindex="0">
+  <button class="nav-toggle-btn" id="nav-toggle-btn" aria-expanded="false" aria-controls="nav-list" aria-label="Toggle navigation menu">
     <span></span><span></span><span></span>
-  </label>
+  </button>
 
-  <ul class="nav-list">
+  <ul class="nav-list" id="nav-list">
     <li class="nav-item{% if page.url == '/' %} active{% endif %}">
       <a href="{{ '/' | relative_url }}">Home</a>
     </li>
