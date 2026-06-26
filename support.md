@@ -209,7 +209,7 @@ layout: default
       abstract="Spectral vector search engine. Published at JOSS. Used by researchers in bioinformatics and MLops for topology-aware retrieval."
       paper_url="https://doi.org/10.21105/joss.09002"
       source_url="https://github.com/Mec-iS/arrowspace-rs"
-      benchmark_url="/graph-wiring"
+      benchmark_url="/graph-wiring#panel-2"
     %}
 
     {% include triad-card.html
@@ -217,7 +217,7 @@ layout: default
       abstract="Topological Transformer — domain-memory in attention heads. Benchmarked against nanoGPT baseline."
       paper_url="/posts/012_topological_transformer_tauformer_domain_memory_in_attention"
       source_url="https://github.com/Mec-iS/nanogpt-rs"
-      benchmark_url="/posts/012_topological_transformer_tauformer_domain_memory_in_attention"
+      benchmark_url="/graph-wiring#panel-2"
     %}
 
     {% include triad-card.html
@@ -225,7 +225,7 @@ layout: default
       abstract="Formal protocol for multi-agent AI installations. W3C Web Agents Working Group contribution."
       paper_url="/bmpp-paper"
       source_url="https://github.com/Mec-iS/bmpp-agents-rs"
-      benchmark_url="/bmpp"
+      benchmark_url="/graph-wiring#panel-2"
     %}
   </div>
 </section>

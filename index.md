@@ -376,7 +376,7 @@ layout: default
       abstract="Spectral indexing for vector similarity search combining cosine similarity with graph-Laplacian roughness (λτ-indexing) to produce topology-aware similarity scores. Published in the Journal of Open Source Software."
       paper_url="https://doi.org/10.21105/joss.09002"
       source_url="https://github.com/Mec-iS/arrowspace-rs"
-      benchmark_url="/graph-wiring"
+      benchmark_url="/graph-wiring#panel-2"
       tags="vector-search"
     %}
 
@@ -393,7 +393,7 @@ layout: default
       abstract="A library for vector analysis, retrieval and curation using graph-wiring techniques. Explores how topological structure in embedding spaces improves retrieval quality beyond naive cosine similarity."
       paper_url="/graph-wiring"
       source_url="https://github.com/Mec-iS/arrowspace-rs"
-      benchmark_url="/graph-wiring"
+      benchmark_url="/graph-wiring#panel-2"
       tags="graph"
     %}
 
