@@ -5,13 +5,6 @@ layout: default
 
 <style>
 
-.research-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
-  gap: 1.25rem;
-  transition: all var(--transition);
-}
-
 .research-card {
   background: var(--color-surface-2);
   border: 1px solid var(--color-border);
@@ -42,12 +35,6 @@ layout: default
   outline: 2px solid var(--color-text);
   outline-offset: 2px;
 }
-.research-card.hidden {
-  opacity: 0; pointer-events: none;
-  transform: scale(0.97);
-  display: none;
-}
-
 .card-top {
   display: flex; align-items: center; justify-content: space-between;
 }
@@ -80,73 +67,7 @@ layout: default
 }
 .card-meta svg { flex-shrink: 0; }
 
-.detail-overlay {
-  position: fixed; inset: 0; z-index: 200;
-  background: rgba(0,0,0,0.55); backdrop-filter: blur(6px);
-  display: flex; align-items: center; justify-content: center; padding: 1rem;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-.detail-overlay.open { opacity: 1; pointer-events: auto; }
-.detail-panel {
-  background: var(--color-surface-2);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  max-width: 520px; width: 100%;
-  padding: 2rem;
-  box-shadow: var(--shadow-lg);
-  transform: translateY(24px) scale(0.97);
-  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
-  position: relative;
-  border-top: 4px solid var(--panel-accent, var(--color-text));
-}
-.detail-overlay.open .detail-panel { transform: translateY(0) scale(1); }
-.detail-close {
-  position: absolute; top: 1rem; right: 1rem;
-  background: var(--color-surface-offset); border: none;
-  border-radius: var(--radius-full); width: 32px; height: 32px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; color: var(--color-text-muted);
-  transition: all var(--transition);
-}
-.detail-close:hover { background: var(--color-border); color: var(--color-text); }
-.detail-badge {
-  display: inline-block;
-  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em;
-  text-transform: uppercase; padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-full);
-  background: color-mix(in oklch, var(--panel-accent, var(--color-text)) 15%, transparent);
-  color: var(--panel-accent, var(--color-text));
-  margin-bottom: 0.75rem;
-}
-.detail-title {
-  font-size: 1.5rem; font-weight: 700; color: var(--color-text);
-  letter-spacing: -0.02em; margin-bottom: 0.75rem;
-}
-.detail-desc { font-size: 0.93rem; color: var(--color-text-muted); line-height: 1.65; margin-bottom: 1.5rem; }
-.detail-link {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: var(--color-text);
-  color: var(--color-bg); text-decoration: none;
-  padding: 0.6rem 1.25rem; border-radius: var(--radius-full);
-  font-size: 0.85rem; font-weight: 600;
-  transition: opacity var(--transition), transform var(--transition);
-}
-.detail-link:hover { opacity: 0.85; transform: translateX(2px); }
 
-.empty-state {
-  display: none; flex-direction: column; align-items: center;
-  text-align: center; padding: 4rem 2rem; color: var(--color-text-muted);
-  grid-column: 1 / -1;
-}
-.empty-state.visible { display: flex; }
-.empty-state p { max-width: 30ch; margin-top: 0.5rem; font-size: 0.9rem; }
-
-.count-label {
-  text-align: center; font-size: 0.78rem;
-  color: var(--color-text-faint); margin-bottom: 1rem;
-  min-height: 1.2em;
-}
 
 .featured-works {
   margin: 2.5rem auto 0;
@@ -218,7 +139,6 @@ layout: default
 
 @media (max-width: 500px) {
   body { padding: 2rem 1rem; }
-  .research-grid { gap: 0.75rem; }
   .research-card { padding: 1rem; }
   .software-grid { gap: 0.75rem; }
 }
@@ -293,11 +213,44 @@ layout: default
     grid-template-columns: 1fr;
   }
 }
+
+.home-hero {
+  margin: 1rem auto 2.5rem;
+  max-width: 72ch;
+  text-align: center;
+}
+.home-hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.75rem;
+  color: var(--color-text);
+}
+.hero-lead {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
 </style>
 
-# 🌐🛰️🐍🦀 Welcome!
-<p><strong class="pure-menu-item">I am Lorenzo</strong> — AI Research Engineer — I produce novel research and code leveraging Large Language Models. I focus on <strong class="pure-menu-item">workflows automation with AI Agents and code generation</strong>.</p>
-<p>An example of my my research on <a href="{{ "/graph-wiring#panel-1" }}">a new generation of data engineering tools.</a>. More details on <a href="https://github.com/sponsors/tuned-org-uk">Github.</a></p>
+<div class="home-hero">
+  <h1>Lorenzo Moriondo</h1>
+  <p class="hero-lead">AI Research Engineer building graph-wiring methods, spectral vector search, and agentic code-generation workflows.</p>
+  <p class="hero-actions">
+    <a href="/graph-wiring" class="artifact-link">Explore the research</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/tuned-org-uk" class="artifact-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </p>
+</div>
 
 
 <section class="media-feature" aria-labelledby="podcast-feature-title">
@@ -343,18 +296,7 @@ layout: default
   </div>
 </section>
 
-  <div class="empty-state" id="empty-state" role="status" aria-live="polite">
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <p>No projects match this filter yet.</p>
-  </div>
-
-<div class="detail-overlay" id="detail-overlay" role="dialog" aria-modal="true" aria-labelledby="detail-title">
-  <div class="detail-panel" id="detail-panel">
-    <button class="detail-close" id="detail-close" aria-label="Close">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
-    </button>
-    <span class="detail-badge" id="detail-badge"></span>
-    <div class="detail-title" id="detail-title"></div>
+  
     <div class="detail-desc" id="detail-desc"></div>
     <a href="#" id="detail-link" class="detail-link" target="_blank" rel="noopener noreferrer">
       Read more

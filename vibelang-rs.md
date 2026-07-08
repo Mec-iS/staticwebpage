@@ -62,7 +62,35 @@ type GeographicInfo = Meaning&lt;String&gt;("geographic description");
 </code></pre>
 </div>
 <br>
-<button id="compileBtn" class="pure-button pure-button-primary">Compile</button>
+<button id="compileBtn" class="btn btn-primary">Compile</button>
+
+<style>
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+.btn:hover {
+  background: var(--color-surface-offset);
+}
+.btn-primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+}
+</style>
 
 <div id="outputWrapper" style="display:none; margin-top:1em;">
   <pre id="output" style="background:#111;color:#f8f8f2;border-radius:5px;padding:1em;overflow-x:auto;">// Rust output will appear here</pre>

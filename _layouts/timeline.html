@@ -35,8 +35,8 @@ layout: default
     margin-top: 0.35rem;
     background-image: repeating-linear-gradient(
       to bottom,
-      rgba(40,37,29,0.28) 0,
-      rgba(40,37,29,0.28) 5px,
+      color-mix(in srgb, var(--color-text-faint) 40%, transparent) 0,
+      color-mix(in srgb, var(--color-text-faint) 40%, transparent) 5px,
       transparent 5px,
       transparent 11px
     );
@@ -96,7 +96,7 @@ layout: default
     width: 14px;
     height: 24px;
     border-radius: 999px;
-    border: 1px solid rgba(40,37,29,0.3);
+    border: 1px solid color-mix(in srgb, var(--color-text-faint) 50%, transparent);
     position: relative;
   }
 
@@ -108,7 +108,7 @@ layout: default
     width: 2px;
     height: 8px;
     border-radius: 999px;
-    background: rgba(40,37,29,0.5);
+    background: color-mix(in srgb, var(--color-text-faint) 70%, transparent);
     transform: translateX(-50%);
     animation: sd-dot 1.2s ease-in-out infinite;
   }
@@ -128,9 +128,7 @@ layout: default
   }
 </style>
 
-<main class="main-content">
-  {{ content }}
-</main>
+{{ content }}
 
 <script>
   document.querySelectorAll('.image-box img').forEach((img) => {
