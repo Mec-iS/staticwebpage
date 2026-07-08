@@ -240,6 +240,80 @@ layout: default
   gap: 0.5rem;
   font-size: 0.95rem;
 }
+
+.book-promo {
+  margin: 2.5rem auto 0;
+  max-width: 1100px;
+}
+.book-promo-card {
+  display: grid;
+  grid-template-columns: 1.25fr 0.9fr;
+  gap: 1.5rem;
+  align-items: center;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+.book-promo-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.book-promo-copy h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.25;
+}
+.book-promo-copy p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.book-promo-cover {
+  aspect-ratio: 2 / 3;
+  max-width: 160px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+}
+.book-promo-cover__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+.book-promo-cover__subtitle {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+.book-promo-cover__author {
+  font-size: 0.7rem;
+  color: var(--color-text-faint);
+}
+@media (max-width: 640px) {
+  .book-promo-card {
+    grid-template-columns: 1fr;
+  }
+  .book-promo-cover {
+    order: -1;
+    max-width: 120px;
+  }
+}
 </style>
 
 <div class="home-hero">
@@ -296,14 +370,21 @@ layout: default
   </div>
 </section>
 
-  
-    <div class="detail-desc" id="detail-desc"></div>
-    <a href="#" id="detail-link" class="detail-link" target="_blank" rel="noopener noreferrer">
-      Read more
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-    </a>
+<section class="book-promo" aria-labelledby="book-promo-title">
+  <div class="book-promo-card">
+    <div class="book-promo-copy">
+      <span class="card-badge">New Book</span>
+      <h2 id="book-promo-title">Human-Machine Search: Synthetic Intelligence</h2>
+      <p>A philosophical and personal journey from information technology to AI, tracing the shift from Big Data through Machine Learning to Large Language Models.</p>
+      <a href="/book" class="artifact-link">Read more about the book <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="book-promo-cover" aria-hidden="true">
+      <div class="book-promo-cover__title">Human-Machine Search</div>
+      <div class="book-promo-cover__subtitle">Synthetic Intelligence</div>
+      <div class="book-promo-cover__author">Lorenzo Moriondo</div>
+    </div>
   </div>
-</div>
+</section>
 
 <section class="featured-works" aria-labelledby="featured-title">
   <div class="featured-works-header">
