@@ -1,5 +1,8 @@
+url: "https://www.tuned.org.uk"
+
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 defaults:
   -
