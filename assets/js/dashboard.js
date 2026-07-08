@@ -83,6 +83,8 @@
       var t = document.getElementById('section-4b');
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  } else {
+    activatePanel('1', false);
   }
 
   if (location.hash === '#panel-3' && typeof loadPanel3 === 'function') {
