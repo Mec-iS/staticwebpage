@@ -274,36 +274,13 @@ layout: default
   margin: 0;
 }
 .book-promo-cover {
-  aspect-ratio: 2 / 3;
+  width: 100%;
   max-width: 160px;
+  height: auto;
   margin: 0 auto;
   border-radius: var(--radius-lg);
-  background: var(--color-surface);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-md);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  text-align: center;
-}
-.book-promo-cover__title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--color-text);
-  margin-bottom: 0.25rem;
-}
-.book-promo-cover__subtitle {
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--color-text-muted);
-  margin-bottom: 0.5rem;
-}
-.book-promo-cover__author {
-  font-size: 0.7rem;
-  color: var(--color-text-faint);
 }
 @media (max-width: 640px) {
   .book-promo-card {
@@ -378,11 +355,7 @@ layout: default
       <p>A philosophical and personal journey from information technology to AI, tracing the shift from Big Data through Machine Learning to Large Language Models.</p>
       <a href="/book" class="artifact-link">Read more about the book <span aria-hidden="true">→</span></a>
     </div>
-    <div class="book-promo-cover" aria-hidden="true">
-      <div class="book-promo-cover__title">Human-Machine Search</div>
-      <div class="book-promo-cover__subtitle">Synthetic Intelligence</div>
-      <div class="book-promo-cover__author">Lorenzo Moriondo</div>
-    </div>
+    <img class="book-promo-cover" src="/assets/book_cover.png" alt="Book cover: Human-Machine Search: Synthetic Intelligence" width="200" height="300">
   </div>
 </section>
 

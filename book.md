@@ -13,28 +13,12 @@ layout: default
   max-width: 900px;
 }
 .book-cover {
-  aspect-ratio: 2 / 3;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
   border-radius: var(--radius-xl);
-  background: var(--color-surface-2);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-md);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  text-align: center;
-}
-.book-cover__title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--color-text);
-  margin: 0 0 0.5rem;
-}
-.book-cover__author {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
 }
 .book-details h1 {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -91,11 +75,7 @@ layout: default
 </style>
 
 <div class="book-hero">
-  <div class="book-cover" aria-hidden="true">
-    <div class="book-cover__title">Human-Machine Search</div>
-    <div class="book-cover__title" style="font-size: 1rem; font-weight: 500; color: var(--color-text-muted);">Synthetic Intelligence</div>
-    <div class="book-cover__author">Lorenzo Moriondo</div>
-  </div>
+  <img class="book-cover" src="/assets/book_cover.png" alt="Book cover: Human-Machine Search: Synthetic Intelligence by Lorenzo Moriondo" width="400" height="600">
 
   <div class="book-details">
     <h1>Human-Machine Search: Synthetic Intelligence</h1>
