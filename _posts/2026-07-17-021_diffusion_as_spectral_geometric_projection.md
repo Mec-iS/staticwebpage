@@ -9,7 +9,7 @@ excerpt: "A corrected derivation of diffusion under a metric that blends raw ite
 
 # Diffusion as spectral-geometric projection
 
-The constantly-improving [Jupyter notebooks are available on Github](https://github.com/tuned-org-uk/arrowspace-diffusion-from-scratch).
+The constantly-improving [Jupyter notebooks are available on Github](https://github.com/tuned-org-uk/arrowspace-diffusion-from-scratch). Please ⭐ the repo.
 
 Following in the spirit of the [post by Chenyang Yuan](https://chenyang.co/diffusion.html) about Diffusion From Scratch, diffusion models learn to transform noise into samples that lie near a data distribution. Let the training set be
 
