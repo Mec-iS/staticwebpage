@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">Metric-matched diffusion and denoising</title>
+  <desc id="desc">Comparison of isotropic Gaussian corruption and ArrowSpace metric-matched corruption, followed by soft projection toward nearby training items.</desc>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0v6l9-3z" fill="#276fbf"/></marker><style>.h{font:700 23px system-ui,sans-serif;fill:#17202a}.t{font:500 17px system-ui,sans-serif;fill:#344054}.s{font:500 14px system-ui,sans-serif;fill:#667085}.f{font:600 18px ui-monospace,monospace;fill:#17202a}.panel{fill:#fbfaf7;stroke:#d8d4ca;stroke-width:2}.data{fill:#17202a}.noise{fill:#276fbf;opacity:.38}.path{fill:none;stroke:#276fbf;stroke-width:4;marker-end:url(#a)}</style></defs>
+  <rect width="1200" height="650" fill="#f3f0e8"/><text x="55" y="55" class="h">The forward process must use the same metric as the projection field</text>
+  <rect x="45" y="90" width="525" height="470" rx="10" class="panel"/><text x="75" y="130" class="h">Isotropic corruption</text><text x="75" y="160" class="f">q = N(x0, sigma^2 I)</text>
+  <ellipse cx="305" cy="330" rx="145" ry="145" fill="#dceaf8" stroke="#276fbf" stroke-width="3" stroke-dasharray="8 8"/><circle cx="305" cy="330" r="10" class="data"/>
+  <g class="noise"><circle cx="210" cy="285" r="7"/><circle cx="275" cy="225" r="7"/><circle cx="385" cy="255" r="7"/><circle cx="410" cy="350" r="7"/><circle cx="260" cy="430" r="7"/><circle cx="180" cy="365" r="7"/></g>
+  <text x="75" y="510" class="s">Circular likelihood contours imply Euclidean</text><text x="75" y="532" class="s">soft assignments, regardless of a fixed loss weighting.</text>
+  <rect x="630" y="90" width="525" height="470" rx="10" class="panel"/><text x="660" y="130" class="h">Metric-matched corruption</text><text x="660" y="160" class="f">q_M = N(x0, sigma^2 M^-1)</text>
+  <ellipse cx="890" cy="330" rx="180" ry="100" transform="rotate(-24 890 330)" fill="#f2e3d9" stroke="#b4532a" stroke-width="3" stroke-dasharray="8 8"/><circle cx="890" cy="330" r="10" class="data"/>
+  <g class="noise"><circle cx="755" cy="385" r="7"/><circle cx="810" cy="320" r="7"/><circle cx="885" cy="290" r="7"/><circle cx="970" cy="270" r="7"/><circle cx="1015" cy="315" r="7"/><circle cx="930" cy="390" r="7"/></g>
+  <circle cx="760" cy="420" r="9" class="data"/><circle cx="930" cy="245" r="9" class="data"/><circle cx="1040" cy="365" r="9" class="data"/><path d="M820 390Q850 360 882 337" class="path"/>
+  <text x="660" y="510" class="s">Elliptical likelihood contours reproduce the hybrid</text><text x="660" y="532" class="s">distance and its spectral-geometric soft projection.</text>
+  <path d="M580 325h38" stroke="#667085" stroke-width="3" marker-end="url(#a)"/><text x="600" y="610" text-anchor="middle" class="s">Figure 2. Changing only the reconstruction norm is insufficient; the noising covariance must match the metric.</text>
+</svg>

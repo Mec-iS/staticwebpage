@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">The ArrowSpace spectral-geometric metric</title>
+  <desc id="desc">A feature graph defines a low-frequency projector. A vector difference splits into spectral and residual components, which receive different precision under the hybrid metric.</desc>
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0v6l9-3z" fill="#276fbf"/></marker>
+    <marker id="arrow-rust" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0v6l9-3z" fill="#b4532a"/></marker>
+    <style>.panel{fill:#fbfaf7;stroke:#d8d4ca;stroke-width:2}.heading{font:700 22px system-ui,sans-serif;fill:#17202a}.label{font:500 17px system-ui,sans-serif;fill:#344054}.small{font:500 14px system-ui,sans-serif;fill:#667085}.formula{font:600 19px ui-monospace,monospace;fill:#17202a}.blue{stroke:#276fbf;fill:none;stroke-width:5}.rust{stroke:#b4532a;fill:none;stroke-width:5}.graph{stroke:#8d99a6;stroke-width:3;fill:none}.node{fill:#fff;stroke:#276fbf;stroke-width:3}</style>
+  </defs>
+  <rect width="1200" height="680" fill="#f3f0e8"/><text x="60" y="58" class="heading">One item difference, two coupled views</text>
+  <rect x="45" y="90" width="330" height="510" rx="10" class="panel"/><text x="75" y="130" class="heading">1. Wire the features</text>
+  <path d="M125 230l95-50 90 70M125 230l35 105 115 15 35-100M220 180l55 170" class="graph"/>
+  <g class="node"><circle cx="125" cy="230" r="17"/><circle cx="220" cy="180" r="17"/><circle cx="310" cy="250" r="17"/><circle cx="160" cy="335" r="17"/><circle cx="275" cy="350" r="17"/></g>
+  <text x="210" y="405" text-anchor="middle" class="formula">L_F = U Lambda U^T</text><text x="210" y="445" text-anchor="middle" class="formula">Pi = U_r U_r^T</text>
+  <text x="75" y="500" class="small">Low-frequency eigenvectors encode</text><text x="75" y="523" class="small">coherent feature co-variation.</text>
+  <rect x="435" y="90" width="330" height="510" rx="10" class="panel"/><text x="465" y="130" class="heading">2. Split the difference</text>
+  <path d="M500 430L690 235" stroke="#a6adb5" stroke-width="3" stroke-dasharray="8 8"/><path d="M500 430L675 335" class="blue" marker-end="url(#arrow-blue)"/><path d="M675 335L690 235" class="rust" marker-end="url(#arrow-rust)"/>
+  <circle cx="500" cy="430" r="8" fill="#17202a"/><circle cx="690" cy="235" r="8" fill="#17202a"/><text x="485" y="462" class="label">0</text><text x="700" y="230" class="formula">delta = x - y</text><text x="550" y="345" class="label">Pi delta</text><text x="690" y="300" class="label">(I-Pi) delta</text>
+  <text x="465" y="505" class="small">Projected and residual components remain</text><text x="465" y="528" class="small">parts of the same item-vector difference.</text>
+  <rect x="825" y="90" width="330" height="510" rx="10" class="panel"/><text x="855" y="130" class="heading">3. Measure at tau = 0.5</text><text x="990" y="190" text-anchor="middle" class="formula">M = 1/2 (I + Pi)</text>
+  <rect x="880" y="245" width="220" height="62" rx="6" fill="#dceaf8" stroke="#276fbf" stroke-width="2"/><text x="990" y="270" text-anchor="middle" class="label">spectral subspace</text><text x="990" y="295" text-anchor="middle" class="formula">precision = 1</text>
+  <rect x="880" y="335" width="220" height="62" rx="6" fill="#f2e3d9" stroke="#b4532a" stroke-width="2"/><text x="990" y="360" text-anchor="middle" class="label">residual subspace</text><text x="990" y="385" text-anchor="middle" class="formula">precision = 1/2</text>
+  <path d="M880 445h220" stroke="#d8d4ca" stroke-width="2"/><text x="990" y="485" text-anchor="middle" class="formula">d^2 = delta^T M delta</text><text x="855" y="525" class="small">Raw geometry stays positive everywhere;</text><text x="855" y="548" class="small">smooth spectral modes get extra weight.</text>
+  <path d="M382 345h41M772 345h41" stroke="#667085" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <text x="600" y="645" text-anchor="middle" class="small">Figure 1. The feature graph changes the metric on item-vector differences; it does not replace them with a scalar score.</text>
+</svg>
