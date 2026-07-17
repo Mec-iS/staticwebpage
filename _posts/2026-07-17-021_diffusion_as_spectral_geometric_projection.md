@@ -240,6 +240,13 @@ So the denoiser performs an approximate projection in the hybrid geometry: it mo
 
 ---
 
+
+<div class="image-box">
+    <img src="/assets/blog/021/nb02_smoothed_distance_contours.png" alt="Figure 4 — Gradient of the smoothed distance function: Euclidean vs spectral-geometric ideal denoisers on a D=128 multi-cluster dataset." width="100%"/>
+</div>
+
+*Figure 4 — Gradient of the smoothed squared-distance function on a $$D=128$$ multi-cluster dataset (projected to PCA-2D for visualisation). Top row: Euclidean ideal denoiser produces radial fields pointing toward cluster centroids. Bottom row: spectral-geometric ideal denoiser produces elliptical fields aligned with the feature-manifold projector $$\Pi_F$$. At $$\sigma=0.5$$ both concentrate on nearest neighbours, but the spectral field is already anisotropic; at $$\sigma=5.0$$ the Euclidean field averages all clusters uniformly while the spectral field preserves directional structure from the feature graph.*
+
 ## The forward process must match the metric
 
 This is the critical correction. If noise is drawn isotropically — $$x_\sigma = x_0 + \sigma\epsilon$$ with $$\epsilon\sim\mathcal N(0,I)$$ — then the Bayes-optimal denoiser under *any* fixed positive-definite reconstruction metric $$M$$ is still the conditional mean $$\mathbb E[x_0\mid x_\sigma]$$, which is identical to the Euclidean score. Reweighting the loss by $$M$$ changes the *training emphasis* on different directions but does not change the *optimal denoiser*.
@@ -393,6 +400,13 @@ def training_loop(loader, model, schedule, spectral_geometry, epochs):
             optimizer.step()
 ```
 
+
+<div class="image-box">
+    <img src="/assets/blog/021/nb01_spectral_denoiser_field.png" alt="Figure 3 — Spectral-geometric learned denoiser field on the 2-D Swiss roll at three noise levels." width="100%"/>
+</div>
+
+*Figure 3 — The spectral-geometric denoiser field on the 2-D Swiss roll ($$\tau=0.5$$). Each arrow points from a noisy point $$x$$ to its predicted clean target $$\hat x_0 = x - \sigma \epsilon_\theta(x, \sigma)$$. At high $$\sigma$$ the denoiser projects toward the spiral centre; at low $$\sigma$$ it snaps to the nearest arc segment. The metric-matched corruption ensures the denoiser respects both raw geometry and the feature-manifold projection.*
+
 The feature projector must be computed once from the ArrowSpace feature Laplacian and then held fixed during a diffusion run. Recomputing it per noisy minibatch would change the geometry being optimised and destroy the fixed-manifold interpretation. ArrowSpace similarly retains projection metadata so query and indexed vectors are evaluated consistently in the same projected feature space. [^1]
 
 ---
@@ -434,6 +448,13 @@ def sample_spectral_geometric(model, sigmas, batch_size):
 
     return x
 ```
+
+
+<div class="image-box">
+    <img src="/assets/blog/021/nb03_spiral_noise_comparison.png" alt="Figure 5 — Stochastic sampling on the spiral manifold: varying the noise parameter mu for Euclidean vs spectral-geometric diffusion." width="100%"/>
+</div>
+
+*Figure 5 — Sampling with added noise ($$\gamma=1$$, varying $$\mu$$) on the spiral manifold in $$D=128$$ (PCA-2D projection). Top row: Euclidean diffusion. Bottom row: spectral-geometric diffusion. At $$\mu=0$$ (DDIM, deterministic) both produce tight spiral traces. At $$\mu=0.5$$ (DDPM) the spectral model preserves the spiral structure better because the metric-matched noise injection respects the feature-manifold directions. At $$\mu=0.7$$ both models degrade, but the spectral samples remain closer to the manifold.*
 
 No change to the sampler is required if the denoiser has learned the spectral-geometric projection field. The distinction lies in the metric encoded by training and in the fixed ArrowSpace projector supplied to the model or loss.
 
