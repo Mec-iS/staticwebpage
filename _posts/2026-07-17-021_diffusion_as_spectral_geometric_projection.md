@@ -335,7 +335,7 @@ class SpectralGeometry:
     def __init__(self, projector: torch.Tensor, tau: float = 0.5):
         self.Pi = projector
         self.tau = tau
-        self.M = (1.0 - tau) * torch.eye(projector.shape[0]) + tau * projector
+        self.M = tau * torch.eye(projector.shape[0]) + (1.0 - tau) * projector
         self.M_inv_sqrt = self._matrix_inv_sqrt(self.M)
 
     def project(self, x: torch.Tensor) -> torch.Tensor:
@@ -346,7 +346,7 @@ class SpectralGeometry:
     ) -> torch.Tensor:
         geometric = ((x - y) ** 2).sum(dim=-1)
         spectral = ((self.project(x) - self.project(y)) ** 2).sum(dim=-1)
-        return (1.0 - self.tau) * geometric + self.tau * spectral
+        return self.tau * geometric + (1.0 - self.tau) * spectral
 
     def corrupt(
         self, x0: torch.Tensor, sigma: torch.Tensor
@@ -363,7 +363,7 @@ class SpectralGeometry:
         spectral = (
             (self.project(x_hat) - self.project(x_true)) ** 2
         ).mean()
-        return (1.0 - self.tau) * geometric + self.tau * spectral
+        return self.tau * geometric + (1.0 - self.tau) * spectral
 
     @staticmethod
     def _matrix_inv_sqrt(M: torch.Tensor) -> torch.Tensor:
@@ -429,7 +429,7 @@ def sample_spectral_geometric(model, sigmas, batch_size):
     for i in range(len(sigmas) - 1):
         sigma = sigmas[i]
         sigma_prev = sigmas[i + 1]
-        eps = model(x, sigma.to(x))
+        eps = model(x, sigma.to(x).expand(x.shape[0]))
         x = x - (sigma - sigma_prev) * eps
 
     return x
