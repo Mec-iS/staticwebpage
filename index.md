@@ -370,7 +370,7 @@ layout: default
       title="Diffusion as spectral-geometric projection"
       abstract="A corrected derivation of diffusion under a metric that blends raw item geometry with an ArrowSpace feature-manifold projection. The forward corruption must use the metric's covariance to make the hybrid geometry actually govern the denoiser."
       paper_url="/posts/021_diffusion_as_spectral_geometric_projection/"
-      source_url="https://github.com/tuned-org-uk/pyarrowspace"
+      source_url="https://github.com/tuned-org-uk/arrowspace-diffusion-from-scratch"
       tags="arrowspace diffusion spectral-geometry"
     %}
 
