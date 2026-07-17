@@ -367,6 +367,14 @@ layout: default
 
   <div class="featured-works-grid">
     {% include triad-card.html
+      title="Diffusion as spectral-geometric projection"
+      abstract="A corrected derivation of diffusion under a metric that blends raw item geometry with an ArrowSpace feature-manifold projection. The forward corruption must use the metric's covariance to make the hybrid geometry actually govern the denoiser."
+      paper_url="/posts/021_diffusion_as_spectral_geometric_projection/"
+      source_url="https://github.com/tuned-org-uk/pyarrowspace"
+      tags="arrowspace diffusion spectral-geometry"
+    %}
+
+    {% include triad-card.html
       title="ArrowSpace: Spectral Search For Embeddings"
       abstract="Spectral indexing for vector similarity search combining cosine similarity with graph-Laplacian roughness (λτ-indexing) to produce topology-aware similarity scores. Published in the Journal of Open Source Software."
       paper_url="https://doi.org/10.21105/joss.09002"
