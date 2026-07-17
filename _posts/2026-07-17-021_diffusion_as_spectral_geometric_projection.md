@@ -9,27 +9,27 @@ excerpt: "A corrected derivation of diffusion under a metric that blends raw ite
 
 # Diffusion as spectral-geometric projection
 
-Diffusion models learn to transform noise into samples that lie near a data distribution. Let the training set be
+Following in the spirit of the [post by Chenyang Yuan](https://chenyang.co/diffusion.html) about Diffusion From Scratch, diffusion models learn to transform noise into samples that lie near a data distribution. Let the training set be
 
 $$
 \mathcal K \subset \mathbb R^F,
 $$
 
-where each $x\in\mathbb R^F$ is an item vector with $F$ features.
+where each $$x\in\mathbb R^F$$ is an item vector with $$F$$ features.
 
-Ordinary diffusion treats $\mathcal K$ only as a subset of Euclidean space: points are close when their raw vectors are close. ArrowSpace adds a second structure. It wires the features into a graph, constructs a feature-space Laplacian $L_F$, and uses that graph to identify spectral directions that represent coherent variation over the feature manifold. [^2]
+Ordinary diffusion treats $$\mathcal K$$ only as a subset of Euclidean space: points are close when their raw vectors are close. ArrowSpace adds a second structure. It wires the features into a graph, constructs a feature-space Laplacian $$L_F$$, and uses that graph to identify spectral directions that represent coherent variation over the feature manifold. [^2]
 
 The consequence is important:
 
 > A point should be near a data item not only when its coordinates are geometrically similar, but also when its feature variation lies in similar spectral directions of the learned feature manifold.
 
-This is still a distance in item-vector space. The feature graph does not replace the item vector with a detached score; it defines a linear operator that conditions how item-vector differences are measured.
+This is still a distance in item-vector space. The feature graph does not replace the item vector with a detached score; it defines a linear operator that conditions how item-vector differences are measured. Combining the geometric and the spectral signal improves search and ranking relevantly as demonstrated in [^3].
 
 <div class="image-box">
-    <img src="../assets/blog/021/spectral_geometric_metric.svg" alt="Figure 1 — The feature graph changes the metric on item-vector differences; it does not replace them with a scalar score." width="100%"/>
+    <img src="/assets/blog/021/spectral_geometric_metric.svg" alt="Figure 1 — The feature graph changes the metric on item-vector differences; it does not replace them with a scalar score." width="100%"/>
 </div>
 
-*Figure 1 — Three panels: wiring the feature graph and its low-frequency projector $\Pi_F$; splitting an item-vector difference into spectral and residual components; measuring both under the hybrid metric $M_{0.5}=\frac12(I+\Pi_F)$.*
+*Figure 1 — Wiring the feature graph and its low-frequency projector $$\Pi_F$$; splitting an item-vector difference into spectral and residual components; measuring both under the hybrid metric $$\lambda_{0.5}^\tau=\frac12(I+\Pi_F)$$.*
 
 ---
 
@@ -41,15 +41,15 @@ $$
 L_F = U \Lambda U^\top,
 $$
 
-where $U=[u_1,\ldots,u_F]$ contains feature-space eigenvectors ordered from low to high spectral frequency.
+where $$U=[u_1,\ldots,u_F]$$ contains feature-space eigenvectors ordered from low to high spectral frequency.
 
-Choose a spectral subspace $U_{\le r}$ containing the first $r$ meaningful modes, excluding any trivial constant mode where appropriate. Define the spectral projection
+Choose a spectral subspace $$U_{\le r}$$ containing the first $$r$$ meaningful modes, excluding any trivial constant mode where appropriate. Define the spectral projection
 
 $$
 \Pi_F := U_{\le r}U_{\le r}^\top.
 $$
 
-For an item vector $x\in\mathbb R^F$,
+For an item vector $$x\in\mathbb R^F$$,
 
 $$
 x_{\mathrm{spec}} := \Pi_F x
@@ -65,13 +65,13 @@ $$
 
 contains variation that the selected spectral manifold does not explain. Depending on the chosen modes, this residual can represent local novelty, high-frequency structure, noise, or off-manifold behaviour.
 
-ArrowSpace's feature-first wiring constructs the Laplacian over feature relationships, so applying $\Pi_F$ to an item vector is precisely an item-space operation conditioned by the feature manifold. [^2][^1]
+ArrowSpace's feature-first wiring constructs the Laplacian over feature relationships, so applying $$\Pi_F$$ to an item vector is precisely an item-space operation conditioned by the feature manifold. [^2][^1]
 
 ---
 
 ## A 50–50 hybrid distance
 
-For two item vectors $x,y\in\mathbb R^F$, define the geometric distance
+For two item vectors $$x,y\in\mathbb R^F$$, define the geometric distance
 
 $$
 d_{\mathrm{geo}}^2(x,y) := \|x-y\|_2^2
@@ -83,14 +83,14 @@ $$
 d_{\mathrm{spec}}^2(x,y) := \|\Pi_Fx-\Pi_Fy\|_2^2.
 $$
 
-With $\tau=0.5$, define the ArrowSpace spectral-geometric distance
+With $$\tau=0.5$$, define the ArrowSpace spectral-geometric distance
 
 $$
 d_{\tau}^2(x,y)
 :=
-(1-\tau)\,d_{\mathrm{geo}}^2(x,y)
+\tau\,d_{\mathrm{geo}}^2(x,y)
 +
-\tau\,d_{\mathrm{spec}}^2(x,y),
+(1-\tau)\,d_{\mathrm{spec}}^2(x,y),
 \qquad \tau=0.5.
 $$
 
@@ -105,34 +105,13 @@ d_{0.5}^2(x,y)
 \tag{1}
 $$
 
-This is not "Euclidean distance plus a scalar spectral score." Both terms are norms of differences between item vectors; the second norm is evaluated after a feature-manifold projection.
-
-A matrix form makes the geometry explicit. Let
-
-$$
-M_{0.5}
-=
-(1-\tau)\,I+\tau\,\Pi_F^\top\Pi_F
-=
-\tfrac12(I+\Pi_F),
-$$
-
-where the last equality uses the fact that $\Pi_F$ is an orthogonal projection ($\Pi_F^\top\Pi_F=\Pi_F$). The hybrid distance is the positive-definite quadratic form
-
-$$
-d_{0.5}^2(x,y)
-=
-(x-y)^\top M_{0.5}\,(x-y).
-\tag{2}
-$$
-
-The identity component preserves ordinary geometry; the $\Pi_F$ component gives equal additional importance to differences that survive projection onto the learned spectral manifold.
+Both terms are norms of differences between item vectors; the second norm is evaluated after a feature-manifold projection.
 
 ---
 
 ## Distance to the dataset
 
-The spectral-geometric distance from a point $x$ to the dataset is
+The spectral-geometric distance from a point $$x$$ to the dataset is
 
 $$
 \operatorname{dist}^{(0.5)}_{\mathcal K}(x)
@@ -149,12 +128,12 @@ $$
 d_{0.5}^2(x,x_0).
 $$
 
-In words, $\operatorname{proj}^{(0.5)}_{\mathcal K}(x)$ is the training item that is closest to $x$ after giving equal weight to:
+In words, $$\operatorname{proj}^{(0.5)}_{\mathcal K}(x)$$ is the training item that is closest to $$x$$ after giving equal weight to:
 
 - Raw displacement in the original item geometry.
 - Displacement along the projected feature-manifold geometry.
 
-This objective does not require an independent lambda-distance term. The spectral structure is already present in the transformed geometry through $\Pi_F(x-y)$.
+This objective does not require an independent lambda-distance term. The spectral structure is already present in the transformed geometry through $$\Pi_F(x-y)$$.
 
 ---
 
@@ -203,7 +182,7 @@ w_\sigma(x_0\mid x)\,x_0.
 \tag{4}
 $$
 
-At large $\sigma$, the weights average broad regions of the dataset. At small $\sigma$, they concentrate around nearby items under the hybrid metric.
+At large $$\sigma$$, the weights average broad regions of the dataset. At small $$\sigma$$, they concentrate around nearby items under the hybrid metric.
 
 ---
 
@@ -214,19 +193,19 @@ Differentiating the hybrid potential gives
 $$
 \nabla_x\,\widetilde d_{\mathcal K,0.5}^2(x,\sigma)
 =
-2\,M_{0.5}
+2\,\lambda_{0.5}^\tau
 \left(x-\bar x_{0.5}(x,\sigma)\right),
 \tag{5}
 $$
 
-so the gradient is preconditioned by $M_{0.5}$. This is expected: the potential measures displacement in a metric whose geometry depends on the feature-manifold projector.
+so the gradient is preconditioned by $$\lambda_{0.5}^\tau$$. This is expected: the potential measures displacement in a metric whose geometry depends on the feature-manifold projector.
 
 To recover the actual displacement from the current noisy point to its soft projection, apply the metric correction:
 
 $$
 g_{0.5}(x,\sigma)
 :=
-M_{0.5}^{-1}\,
+{\lambda_{0.5}^{\tau}}^{-1}\,
 \frac12\,\nabla_x\,\widetilde d_{\mathcal K,0.5}^2(x,\sigma)
 =
 x-\bar x_{0.5}(x,\sigma).
@@ -261,38 +240,38 @@ So the denoiser performs an approximate projection in the hybrid geometry: it mo
 
 ## The forward process must match the metric
 
-This is the critical correction. If noise is drawn isotropically — $x_\sigma = x_0 + \sigma\epsilon$ with $\epsilon\sim\mathcal N(0,I)$ — then the Bayes-optimal denoiser under *any* fixed positive-definite reconstruction metric $M$ is still the conditional mean $\mathbb E[x_0\mid x_\sigma]$, which is identical to the Euclidean score. Reweighting the loss by $M$ changes the *training emphasis* on different directions but does not change the *optimal denoiser*.
+This is the critical correction. If noise is drawn isotropically — $$x_\sigma = x_0 + \sigma\epsilon$$ with $$\epsilon\sim\mathcal N(0,I)$$ — then the Bayes-optimal denoiser under *any* fixed positive-definite reconstruction metric $$M$$ is still the conditional mean $$\mathbb E[x_0\mid x_\sigma]$$, which is identical to the Euclidean score. Reweighting the loss by $$M$$ changes the *training emphasis* on different directions but does not change the *optimal denoiser*.
 
 <div class="image-box">
-    <img src="../assets/blog/021/metric_matched_diffusion.svg" alt="Figure 2 — Changing only the reconstruction norm is insufficient; the noising covariance must match the metric." width="100%"/>
+    <img src="/assets/blog/021/metric_matched_diffusion.svg" alt="Figure 2 — Changing only the reconstruction norm is insufficient; the noising covariance must match the metric." width="100%"/>
 </div>
 
-*Figure 2 — Left: isotropic corruption produces circular likelihood contours, so soft assignments collapse to Euclidean nearest neighbours regardless of the loss weighting. Right: metric-matched corruption with covariance $\sigma^2 M_{0.5}^{-1}$ produces elliptical contours aligned with the hybrid geometry, and soft projection naturally follows the spectral-geometric metric.*
+*Figure 2 — Left: isotropic corruption produces circular likelihood contours, so soft assignments collapse to Euclidean nearest neighbours regardless of the loss weighting. Right: metric-matched corruption with covariance $$\sigma^2 {\lambda_{0.5}^\tau}^{-1}$$ produces elliptical contours aligned with the hybrid geometry, and soft projection naturally follows the spectral-geometric metric.*
 
 To make the hybrid distance *actually govern* the soft assignment, the forward corruption must use the metric's inverse covariance:
 
 $$
-x_\sigma = x_0 + \sigma\,M_{0.5}^{-1/2}\,\epsilon,
+x_\sigma = x_0 + \sigma\,{\lambda_{0.5}^\tau}^{-1/2}\,\epsilon,
 \qquad \epsilon\sim\mathcal N(0,I).
 \tag{9}
 $$
 
-Equivalently, $x_\sigma\mid x_0 \sim \mathcal N(x_0,\;\sigma^2 M_{0.5}^{-1})$. The likelihood term in the posterior is then
+Equivalently, $$x_\sigma\mid x_0 \sim \mathcal N(x_0,\;\sigma^2 {\lambda_{0.5}^\tau}^{-1})$$. The likelihood term in the posterior is then
 
 $$
 p(x_\sigma\mid x_0)
 \propto
 \exp\!\left(
--\frac{(x_\sigma-x_0)^\top M_{0.5}(x_\sigma-x_0)}{2\sigma^2}
+-\frac{(x_\sigma-x_0)^\top \lambda_{0.5}^\tau(x_\sigma-x_0)}{2\sigma^2}
 \right),
 $$
 
-so the soft assignment weights $w_\sigma$ in Equation (4) arise from the forward process itself, not from an externally imposed distance.
+so the soft assignment weights $$w_\sigma$$ in Equation (4) arise from the forward process itself, not from an externally imposed distance.
 
-At $\tau=0.5$, the precision matrix $M_{0.5}=\frac12(I+\Pi_F)$ assigns:
+At $$\tau=0.5$$, the precision matrix $$\lambda_{0.5}^\tau=\frac12(I+\Pi_F)$$ assigns:
 
-- **Precision 1** to spectral (low-frequency) directions, where $\Pi_F$ acts as identity.
-- **Precision $\tfrac12$** to residual (high-frequency) directions, where $\Pi_F$ acts as zero.
+- **Precision 1** to spectral (low-frequency) directions, where $$\Pi_F$$ acts as identity.
+- **Precision $$\tfrac12$$** to residual (high-frequency) directions, where $$\Pi_F$$ acts as zero.
 
 This means smooth, coherent feature-manifold variation is corrupted *less* than off-manifold residual variation. The denoiser learns to be more conservative along spectral directions and more aggressive along residual ones — precisely the asymmetry the hybrid metric encodes.
 
@@ -308,12 +287,12 @@ $$
 \mathbb E_{x_0,\sigma,\epsilon}
 \left[
 \left\|
-\epsilon_\theta(x_0+\sigma M_{0.5}^{-1/2}\epsilon,\,\sigma)-\epsilon
+\epsilon_\theta(x_0+\sigma {\lambda_{0.5}^\tau}^{-1/2}\epsilon,\,\sigma)-\epsilon
 \right\|_2^2
 \right]
 $$
 
-already targets the hybrid-geometry score, because the model sees inputs whose noise shape is elliptical in $M_{0.5}$.
+already targets the hybrid-geometry score, because the model sees inputs whose noise shape is elliptical in $$\lambda_{0.5}^\tau$$.
 
 A direct projected reconstruction objective that makes the 50–50 requirement explicit is
 
@@ -329,7 +308,7 @@ $$
 \tag{10}
 $$
 
-where $\hat x_0 = x_\sigma - \sigma\,\epsilon_\theta(x_\sigma,\sigma)$. Equivalently,
+where $$\hat x_0 = x_\sigma - \sigma\,\epsilon_\theta(x_\sigma,\sigma)$$. Equivalently,
 
 $$
 \mathcal L_{\mathrm{SG}}(\theta)
@@ -337,7 +316,7 @@ $$
 \mathbb E
 \left[
 (\hat x_0-x_0)^\top
-M_{0.5}
+\lambda_{0.5}^\tau
 (\hat x_0-x_0)
 \right].
 \tag{11}
@@ -474,24 +453,25 @@ $$
 
 The feature manifold is not an auxiliary retrieval score added after generation. It is a linear geometric operator acting on each item vector before distance is measured. This makes diffusion trajectories sensitive to the structured co-variation of features encoded by the ArrowSpace Laplacian, whose quadratic forms capture spectral smoothness over the wired feature graph. [^2]
 
-The key insight this post adds beyond the original adaptation: **the forward corruption must share the metric's covariance structure**. Without metric-matched noise ($\sigma^2 M_{0.5}^{-1}$), the Bayes-optimal denoiser under any fixed loss weighting collapses to the Euclidean conditional mean. The spectral-geometric structure enters the model only when the noise itself is shaped by the feature manifold.
+The key insight this post adds beyond the original adaptation: **the forward corruption must share the metric's covariance structure**. Without metric-matched noise ($$\sigma^2 {\lambda_{0.5}^\tau}^{-1}$$), the Bayes-optimal denoiser under any fixed loss weighting collapses to the Euclidean conditional mean. The spectral-geometric structure enters the model only when the noise itself is shaped by the feature manifold.
 
 ---
 
 ## Implementation notes
 
-- Construct $L_F$ from the training corpus, not from noisy samples generated during diffusion.
-- Use a fixed eigenspace cutoff $r$, selected by spectral gap, explained spectral mass, or validation performance.
-- Normalise item vectors and Laplacian conventions consistently before fitting $\Pi_F$; otherwise the geometric and projected terms will not have comparable scale.
-- Keep $\tau=0.5$ fixed for the stated equal blend. If later made tunable, $\tau$ should be validated as a geometric metric parameter, not treated merely as a ranking weight.
-- Compute $M_{0.5}^{-1/2}$ once and cache it; it is the Cholesky-like factor that maps isotropic Gaussian noise into metric-matched noise.
-- Store $\Pi_F$, $M_{0.5}^{-1/2}$, the eigenspace selection rule, Laplacian configuration, and preprocessing transforms with the diffusion checkpoint. ArrowSpace's build pipeline likewise preserves projection-related state to ensure consistent query-time computation. [^1]
+- This example use a 50-50 linear combination of geometric and spectral signals but it would be nice to explore potential improvements using different mixes of signals
+- Construct $$L_F$$ from the training corpus, not from noisy samples generated during diffusion.
+- Use a fixed eigenspace cutoff $$r$$, selected by spectral gap, explained spectral mass, or validation performance.
+- Normalise item vectors and Laplacian conventions consistently before fitting $$\Pi_F$$; otherwise the geometric and projected terms will not have comparable scale.
+- Keep $$\tau=0.5$$ fixed for the stated equal blend. If later made tunable, $$\tau$$ should be validated as a geometric metric parameter, not treated merely as a ranking weight.
+- Compute $${\lambda_{0.5}^\tau}^{-1/2}$$ once and cache it; it is the Cholesky-like factor that maps isotropic Gaussian noise into metric-matched noise.
+- Store $$\Pi_F$$, $${\lambda_{0.5}^\tau}^{-1/2}$$, the eigenspace selection rule, Laplacian configuration, and preprocessing transforms with the diffusion checkpoint. ArrowSpace's build pipeline likewise preserves projection-related state to ensure consistent query-time computation. [^1]
 
 ---
 
 [^1]: ArrowSpace build pipeline — [pyarrowspace](https://github.com/tuned-org-uk/pyarrowspace)
 [^2]: Graph Wiring: Eigenstructures for vector datasets and LLM operations — [graph_wiring.pdf](https://www.tuned.org.uk/assets/graph_wiring.pdf)
-
+[^3]: From Embedding Geometry to Spectral Search: Energy Dispersion Networks For Vector Retrieval, Lorenzo Moriondo, Ilias Azizi, [https://arxiv.org/abs/2606.21535](https://arxiv.org/abs/2606.21535)
 ---
 
 *ArrowSpace:* `pip install arrowspace`  
