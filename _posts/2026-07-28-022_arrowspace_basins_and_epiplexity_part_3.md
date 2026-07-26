@@ -1,19 +1,17 @@
 ---
-layout: post
 title: "arrowspace for Latent Spaces — part 3"
-subtitle: "Can epiplexity separate trivial basins from useful basins inside a subspace?"
+layout: blog_default
 date: 2026-07-26
-categories: [AI, Research, Mechanistic Analysis]
-tags: [arrowspace, epiplexity, mechanistic-interpretability, transformers, spectral-analysis, semantic-basins]
-description: "A protocol for combining ArrowSpace local basin analysis with epiplexity to distinguish trivial smooth regions from useful learnable structure inside transformer subspaces."
+permalink: /posts/2026-07-28-022_arrowspace_basins_and_epiplexity_part_3/
+categories: [arrowspace, epiplexity, mechanistic-interpretability, transformers, spectral-analysis, semantic-basins]
+excerpt: "A protocol for combining ArrowSpace local basin analysis with epiplexity to distinguish trivial smooth regions from useful learnable structure inside transformer subspaces."
 ---
 
-In [part 2](/posts/020_arrowspace_semantic_basins_part2/), I used ArrowSpace to study transformer
- representations as dual geometric and semantic objects: token neighborhoods in item space, and
- operator-induced structure in feature space. The result was not just a list of "important layers" but
- a map of layer-role subspaces where semantic structure sharpens, especially along the dual/readout
- side of the model. That analysis exposed something important and I am going to extend it here leveraging
- part of the theory defined in [Intelligence From Learnable Novelty](https://arxiv.org/pdf/2607.18433)
+# ArrowSpace for Latent Spaces — part 3
+
+A [companion notebook](https://github.com/tuned-org-uk/arrowspace-analysis/blob/main/notebooks/07_arrowspace_basins_epiplexity_typology.ipynb) is available.
+
+In [part 2](/posts/020_arrowspace_semantic_basins_part2/), I used ArrowSpace to study transformer representations as dual geometric and semantic objects: token neighborhoods in item space, and operator-induced structure in feature space. The result was not just a list of "important layers" but a map of layer-role subspaces where semantic structure sharpens, especially along the dual/readout side of the model. That analysis exposed something important and I am going to extend it here leveraging part of the theory defined in [Intelligence From Learnable Novelty](https://arxiv.org/pdf/2607.18433)
  pre-print paper.
 
 A low-energy basin is not automatically a useful basin. Some basins are smooth because they contain
