@@ -367,6 +367,14 @@ layout: default
 
   <div class="featured-works-grid">
     {% include triad-card.html
+      title="ALD-SC: A Spectral Latent Diffusion Model"
+      abstract="A spectral latent diffusion model where decoding runs on the feature-space manifold defined by a frozen ArrowSpace graph Laplacian. A graph-structured decoder replaces unconstrained convolutions with propagation along the Laplacian's smooth eigenvectors, gated by a Barontini entropic clock that terminates sampling intrinsically."
+      paper_url="https://doi.org/10.5281/zenodo.21456829"
+      source_url="https://github.com/tuned-org-uk/arrowspace-latent-diffusion"
+      tags="latent-diffusion arrowspace spectral"
+    %}
+
+    {% include triad-card.html
       title="Diffusion as spectral-geometric projection"
       abstract="A corrected derivation of diffusion under a metric that blends raw item geometry with an ArrowSpace feature-manifold projection. The forward corruption must use the metric's covariance to make the hybrid geometry actually govern the denoiser."
       paper_url="/posts/021_diffusion_as_spectral_geometric_projection/"
