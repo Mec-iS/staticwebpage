@@ -1,0 +1,305 @@
+/* ───────────────────────────────────────────────────────────────────────
+   blog.css — prose typography for the blog_default layout.
+   Scoped to .blog-prose / .highlight. Uses tokens from main.css only.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* ── Code blocks ─────────────────────────────────────────────────────── */
+
+/* Inline code */
+.blog-prose code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.875em;
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.15em 0.4em;
+  color: var(--color-primary);
+}
+
+/* Fenced code blocks: reset inline style inside pre */
+.blog-prose pre {
+  background: #1e1e2e;           /* dark canvas, works in any page theme */
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow-x: auto;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.blog-prose pre code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  color: #cdd6f4;                /* Catppuccin Mocha text */
+  font-size: inherit;
+}
+
+/* ── Rouge / Catppuccin Mocha token colours ───────────────────────────
+   Rouge outputs: .k .kd .kn .kp .kr .kt  (keywords)
+                  .nb .nc .nf .ni .nn      (names)
+                  .s .s1 .s2 .sb .sc .sd .se .si .ss  (strings)
+                  .m .mi .mf .mo .mh       (numbers)
+                  .c .c1 .cm .cs           (comments)
+                  .o .ow                   (operators)
+                  .p                       (punctuation)
+────────────────────────────────────────────────────────────────────────── */
+
+/* Keywords: def, class, import, return, for, if, with, as, in … */
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt  { color: #cba6f7; }   /* mauve */
+
+/* Built-ins and class names */
+.highlight .nb  { color: #89b4fa; }   /* blue */
+.highlight .nc  { color: #89dceb; }   /* sky */
+.highlight .nf  { color: #89b4fa; }   /* blue – function names */
+.highlight .nn  { color: #cdd6f4; }   /* text */
+
+/* Strings */
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .si,
+.highlight .ss  { color: #a6e3a1; }   /* green */
+
+/* Numbers */
+.highlight .m,
+.highlight .mi,
+.highlight .mf,
+.highlight .mo,
+.highlight .mh  { color: #fab387; }   /* peach */
+
+/* Comments */
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cs  { color: #6c7086; font-style: italic; }  /* overlay0 */
+
+/* Operators: =, +, -, @, *, /, ->, not, and … */
+.highlight .o,
+.highlight .ow  { color: #89dceb; }   /* sky */
+
+/* Decorators (@something) */
+.highlight .nd  { color: #f38ba8; }   /* red */
+
+/* Self / special identifiers */
+.highlight .bp  { color: #f5c2e7; }   /* pink */
+
+/* Punctuation: ( ) [ ] { } , : */
+.highlight .p   { color: #cdd6f4; }
+
+/* Variable names (generic) */
+.highlight .n,
+.highlight .na,
+.highlight .ni  { color: #cdd6f4; }
+
+/* Escape sequences inside strings */
+.highlight .se  { color: #f9e2af; }   /* yellow */
+
+/* ── Scrollbar styling for code blocks ───────────────────────────────── */
+.blog-prose pre::-webkit-scrollbar        { height: 6px; }
+.blog-prose pre::-webkit-scrollbar-track  { background: #181825; border-radius: 3px; }
+.blog-prose pre::-webkit-scrollbar-thumb  { background: #45475a; border-radius: 3px; }
+.blog-prose pre::-webkit-scrollbar-thumb:hover { background: #585b70; }
+
+/* ── Language badge (e.g. "python" label top-right) ──────────────────── */
+.blog-prose .highlight {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.blog-prose .highlight pre {
+  margin: 0;
+}
+
+/* ── Layout ──────────────────────────────────────────────────────────── */
+
+.head-on {
+  display: grid;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.blog-prose {
+  max-width: 72ch;
+  margin: 0 auto;
+}
+
+/* ── Heading hierarchy (type scale + weight) ────────────────────────── */
+/* Replaces the flat combined rule with a real hierarchy so sections
+   are scannable instead of blending into body copy. */
+
+.blog-prose h1,
+.blog-prose h2,
+.blog-prose h3,
+.blog-prose h4 {
+  line-height: 1.2;
+  margin-top: 1.4em;
+  margin-bottom: 0.55em;
+  color: var(--color-text);
+}
+
+.blog-prose h1 {
+  font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.25rem);
+  font-weight: 700;
+  margin-top: 0.2em;
+}
+
+.blog-prose h2 {
+  font-size: clamp(1.35rem, 1.15rem + 1vw, 1.6rem);
+  font-weight: 600;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.blog-prose h3 {
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
+  font-weight: 600;
+}
+
+.blog-prose h4 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* ── Links — make them actually visible ─────────────────────────────── */
+/* Site default (main.css) renders links the same colour as body text with
+   a near-invisible underline. Blog prose overrides to the design-system
+   primary (teal), keeping .sponsor-link / .artifact-link intact. */
+
+.blog-prose a:not(.sponsor-link):not(.artifact-link):not(.blog-tag) {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  font-weight: 500;
+  transition: color var(--transition), text-decoration-color var(--transition);
+}
+
+.blog-prose a:not(.sponsor-link):not(.artifact-link):not(.blog-tag):hover {
+  color: color-mix(in srgb, var(--color-primary) 80%, black);
+  text-decoration-color: var(--color-primary);
+}
+
+.blog-prose a:not(.sponsor-link):not(.artifact-link):not(.blog-tag):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Blockquotes — give them a voice ────────────────────────────────── */
+
+.blog-prose blockquote {
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 3px solid var(--color-primary);
+  background: var(--color-surface-2);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--color-text);
+}
+
+.blog-prose blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+.blog-prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Horizontal rules — replace the browser groove ──────────────────── */
+
+.blog-prose hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2.5rem 0;
+}
+
+/* ── List markers, emphasis — reinforce hierarchy ───────────────────── */
+
+.blog-prose ul li::marker,
+.blog-prose ol li::marker {
+  color: var(--color-text-muted);
+}
+
+.blog-prose strong {
+  font-weight: 700;
+}
+
+.blog-prose em {
+  font-style: italic;
+}
+
+/* ── Paragraphs / lists spacing ─────────────────────────────────────── */
+
+.blog-prose p,
+.blog-prose ul,
+.blog-prose ol {
+  margin-bottom: 1rem;
+}
+
+/* ── Images ─────────────────────────────────────────────────────────── */
+
+.blog-prose img {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin: 1rem auto;
+}
+
+.image-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem auto;
+  max-width: 100%;
+}
+
+.image-caption {
+  margin-top: 0.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ── Callout boxes ──────────────────────────────────────────────────── */
+
+.abstract-section,
+.citation-box,
+.key-contributions {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.abstract-section {
+  padding: clamp(1rem, 2vw, 1.5rem);
+  margin: 1.5rem 0;
+}
+
+.citation-box,
+.key-contributions {
+  padding: 1rem;
+  margin: 1.25rem 0;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .blog-prose { max-width: 100%; }
+  .abstract-section,
+  .citation-box,
+  .key-contributions { padding: 0.9rem; }
+}
