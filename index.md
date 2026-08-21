@@ -98,35 +98,6 @@ layout: default
   gap: 1.25rem;
 }
 
-.software-section {
-  margin: 2.5rem auto 0;
-  max-width: 1100px;
-}
-
-.software-section-header {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.software-section-header h2 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin: 0;
-}
-
-.software-section-header p {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  margin: 0.4rem 0 0;
-}
-
-.software-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
-  gap: 1rem;
-}
-
 .home-footer-links {
   margin: 2rem auto 0;
   max-width: 600px;
@@ -140,7 +111,6 @@ layout: default
 @media (max-width: 500px) {
   body { padding: 2rem 1rem; }
   .research-card { padding: 1rem; }
-  .software-grid { gap: 0.75rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -410,80 +380,6 @@ layout: default
   </div>
 </section>
 
-<section class="software-section" aria-labelledby="software-title">
-  <div class="software-section-header">
-    <h2 id="software-title">Software</h2>
-    <p>Open-source implementations, tools, and libraries.</p>
-  </div>
-
-  <div class="software-grid" role="list">
-    {% include repo-card.html
-      url="https://github.com/smartcorelib/smartcore"
-      name="smartcore"
-      description="Comprehensive Rust ML library — statistics, clustering, regression, dimensionality reduction"
-    %}
-
-    {% include repo-card.html
-      url="https://github.com/tuned-org-uk/pyarrowspace"
-      name="pyarrowspace"
-      description="Python bindings for the ArrowSpace spectral vector search engine"
-    %}
-
-    {% include repo-card.html
-      url="https://github.com/tuned-org-uk/genegraph-storage"
-      name="genegraph-storage"
-      description="Graph-based storage engine for genomic data with spectral indexing"
-    %}
-
-    {% include repo-card.html
-      url="https://github.com/tuned-org-uk/graph-wiring-epiplexity"
-      name="graph-wiring-epiplexity"
-      description="Epiplexity-based graph analysis for spectral feature interactions in vector embeddings"
-    %}
-
-    {% include repo-card.html
-      url="https://github.com/tuned-org-uk/constraint-decoding-trie-static"
-      name="constraint-decoding-trie-static"
-      description="Static trie for constrained decoding in LLM token generation"
-    %}
-
-    {% include repo-card.html
-      url="https://github.com/tuned-org-uk/deep-delta-rs"
-      name="deep-delta-rs"
-      description="Delta encoding and change detection for deep learning model weights"
-    %}
-
-    {% include repo-card.html
-      url="https://github.com/tuned-org-uk/nanogpt-rs"
-      name="nanogpt-rs"
-      description="Rust implementation of GPT-2 with RoPE, MQA, RMSNorm — nanoGPT inspired"
-    %}
-
-    {% include repo-card.html
-      url="https://github.com/tuned-org-uk/dspm-rs"
-      name="dspm-rs"
-      description="Dynamic Sequential Pattern Mining in Rust"
-    %}
-
-    {% include repo-card.html
-      url="https://github.com/tuned-org-uk/titans-pytorch"
-      name="titans-pytorch"
-      description="PyTorch implementation of the Titans architecture for long-term memory"
-    %}
-
-    {% include repo-card.html
-      url="https://github.com/tuned-org-uk/kalman_clustering"
-      name="kalman_clustering"
-      description="Clustering algorithm using Kalman filter dynamics for temporal data"
-    %}
-
-    {% include repo-card.html
-      url="https://github.com/tuned-org-uk/topological-transformer-pygpu"
-      name="topological-transformer-pygpu"
-      description="GPU-accelerated topological transformer with PyTorch CUDA kernels"
-    %}
-  </div>
-</section>
 
 <div class="intermission"></div>
 
