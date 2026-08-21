@@ -9,6 +9,7 @@
 --color-text-faint: #ADADAD;
 --color-accent-blue: #0055FF;
 --color-accent-orange: #E04B26;
+--color-accent-amber: #ffb454;
 --color-primary: #01696f;
 --shadow-sm: 0 1px 2px rgba(23,23,23,0.05);
 --shadow-md: 0 4px 12px rgba(23,23,23,0.07);
@@ -43,6 +44,7 @@
 --color-text-faint: #666666;
 --color-accent-blue: #4d94ff;
 --color-accent-orange: #ff7a59;
+--color-accent-amber: #ffb454;
 --color-primary: #4db6ac;
 --shadow-sm: 0 1px 2px rgba(0,0,0,0.30);
 --shadow-md: 0 4px 12px rgba(0,0,0,0.40);
@@ -268,6 +270,18 @@ font-weight: 600;
 .nav-item.active > .nav-dropdown-btn:hover {
 background: var(--color-surface-2);
 color: var(--color-text);
+}
+
+.nav-research a {
+background: var(--color-accent-amber);
+color: #17110a;
+font-weight: 600;
+}
+
+.nav-research a:hover,
+.nav-research a:focus-visible {
+background: #ffc477;
+color: #17110a;
 }
 
 .nav-arrow {
