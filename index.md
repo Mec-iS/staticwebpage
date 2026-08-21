@@ -329,7 +329,7 @@ a.btn-ghost:hover {
   <h1>Lorenzo Moriondo</h1>
   <p class="hero-lead">I build graph-wiring methods, spectral vector search, and agentic code-generation workflows &mdash; and ship them as open-source Rust and Python.</p>
   <div class="hero-actions">
-    <a href="/graph-wiring" class="btn-primary">Explore the research</a>
+    <a href="https://tuned-org-uk.github.io/" class="btn-primary" target="_blank" rel="noopener">Explore the research</a>
     <a href="https://github.com/tuned-org-uk" class="btn-ghost" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">&nearr;</span></a>
   </div>
 </div>
