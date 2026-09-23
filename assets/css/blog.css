@@ -250,6 +250,53 @@
   margin-bottom: 1rem;
 }
 
+/* ── Tables — editorial rules, tabular numerals ─────────────────────── */
+/* Blog tables previously rendered with border-collapse only (no cell
+   padding, no header treatment). Base style: horizontal rules, small-caps
+   header row, aligned digits, subtle row hover. */
+
+.blog-prose table {
+  width: 100%;
+  margin: 1.75rem 0;
+  border-collapse: collapse;
+  font-size: 0.925rem;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.blog-prose thead th {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-align: left;
+  color: var(--color-text-muted);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid var(--color-text);
+}
+
+.blog-prose tbody td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.blog-prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.blog-prose tbody tr:hover {
+  background: var(--color-surface-2);
+}
+
+/* ── Text-wrap progressive enhancement ──────────────────────────────── */
+
+.blog-prose h1,
+.blog-prose h2,
+.blog-prose h3 { text-wrap: balance; }
+
+.blog-prose p { text-wrap: pretty; }
+
 /* ── Images ─────────────────────────────────────────────────────────── */
 
 .blog-prose img {
@@ -295,6 +342,246 @@
   margin: 1.25rem 0;
 }
 
+/* ── Editorial components (opt-in, post-level) ──────────────────────── */
+
+/* Kicker line above the H1 */
+.blog-prose .post-eyebrow {
+  font-family: 'JetBrains Mono', var(--font-mono), monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-primary);
+  margin: 0 0 0.5rem;
+}
+
+.blog-prose .post-eyebrow .sep {
+  color: var(--color-text-faint);
+  margin: 0 0.55em;
+}
+
+/* Opening paragraph with drop cap */
+.blog-prose .lede {
+  font-size: clamp(1.05rem, 1rem + 0.4vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.blog-prose .lede::first-letter {
+  float: left;
+  font-size: 3.2em;
+  line-height: 0.82;
+  font-weight: 700;
+  padding: 0.05em 0.14em 0 0;
+  color: var(--color-primary);
+}
+
+/* Term definition callout */
+.blog-prose .def-box {
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary);
+  background: var(--color-surface-2);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.blog-prose .def-box .def-term {
+  font-family: 'JetBrains Mono', var(--font-mono), monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.blog-prose .def-box .def-term .def-expansion {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+.blog-prose .def-box p:last-child { margin-bottom: 0; }
+
+/* Three-line thesis block: strong top rule, hairline dividers */
+.blog-prose .manifesto {
+  margin: 2rem 0;
+  border-top: 2px solid var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.blog-prose .manifesto p {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
+  padding: 0.6rem 0;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.blog-prose .manifesto p + p { border-top: 1px solid var(--color-border); }
+
+.blog-prose .manifesto p::before {
+  content: '—';
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-right: 0.6rem;
+}
+
+/* Headline-numbers strip */
+.blog-prose .stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.blog-prose .stat {
+  background: var(--color-surface);
+  padding: 1.1rem 1.25rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.blog-prose .stat-value {
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.blog-prose .stat-label {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* Mono section index inside H2s (e.g. "01") */
+.blog-prose .sec-no {
+  font-family: 'JetBrains Mono', var(--font-mono), monospace;
+  font-size: 0.72em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  margin-right: 0.55em;
+}
+
+/* Centered pull quote framed by hairlines */
+.blog-prose .pull-quote {
+  max-width: 36ch;
+  margin: 2.5rem auto;
+  padding: 1.4rem 0.5rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.blog-prose .pull-quote p {
+  font-size: clamp(1.15rem, 1rem + 0.8vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.5;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.blog-prose .pull-quote p::before {
+  content: '\201C';
+  display: block;
+  font-size: 2.6rem;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+}
+
+/* Scope/measurement caveat box */
+.blog-prose .caveat {
+  border: 1px solid color-mix(in srgb, var(--color-text) 25%, transparent);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.blog-prose .caveat .caveat-label {
+  font-family: 'JetBrains Mono', var(--font-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.blog-prose .caveat p:last-child { margin-bottom: 0; }
+
+/* Figure caption (applied via IAL on the caption paragraph) */
+.blog-prose .figure-caption {
+  max-width: 52ch;
+  margin: -0.25rem auto 1.5rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+/* Closing call-to-action card */
+.blog-prose .cta-card {
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-2);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.blog-prose .cta-kicker {
+  font-family: 'JetBrains Mono', var(--font-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.blog-prose .cta-mail {
+  display: inline-block;
+  font-size: clamp(1.1rem, 1rem + 0.8vw, 1.45rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.blog-prose .cta-sub {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Hashtag chips */
+.blog-prose .tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.75rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.blog-prose .tag-row span {
+  font-family: 'JetBrains Mono', var(--font-mono), monospace;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+}
+
 /* ── Responsive ─────────────────────────────────────────────────────── */
 
 @media (max-width: 640px) {
@@ -302,4 +589,12 @@
   .abstract-section,
   .citation-box,
   .key-contributions { padding: 0.9rem; }
+  .blog-prose .stat-strip { grid-template-columns: 1fr; }
+  .blog-prose .manifesto p { font-size: 1rem; }
+  /* Wide tables scroll rather than squeeze the layout */
+  .blog-prose table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
