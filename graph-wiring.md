@@ -34,7 +34,7 @@ layout: timeline
 
 <div class="timeline timeline--vertical">
 
-  <!-- 2024-02 smartcore v0.5.0 (Rust) -->
+  <!-- 2024-02 smartcore (Rust) · latest v0.6.16 -->
   <div class="timeline-item" data-type="code">
     <div class="timeline-item__marker">
       <div class="timeline-dot"></div>
@@ -42,11 +42,12 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">2024 (earliest release in corpus)</div>
-      <h2 class="timeline-item__title"><a href="https://crates.io/crates/smartcore" target="_blank" rel="noopener"><code>smartcore</code> v0.5.0</a></h2>
+      <div class="timeline-item__date" data-date="2026-10-12">2024 (earliest release in corpus) &middot; latest v0.6.16, October 2026</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/smartcore" target="_blank" rel="noopener"><code>smartcore</code> v0.6.16</a></h2>
       <p class="timeline-item__meta">Machine Learning in Rust. Foundation library underpinning spectral clustering and manifold utilities across the stack.</p>
       <div class="tl-dl-stats">
-        <span class="tl-dl-chip total">📥 contributor</span>
+        <span class="tl-dl-chip total">📥 582K total</span>
+        <span class="tl-dl-chip recent">⚡ 143K recent</span>
       </div>
     </div>
   </div>
@@ -59,7 +60,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge paper">Paper</span>
-      <div class="timeline-item__date">September 10, 2025</div>
+      <div class="timeline-item__date" data-date="2025-09-10">September 10, 2025</div>
       <h2 class="timeline-item__title">ArrowSpace: Spectral Indexing of Embeddings using taumode (λτ)</h2>
       <p class="timeline-item__meta">
         <strong>DOI:</strong>
@@ -93,7 +94,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge blog">Blog</span>
-      <div class="timeline-item__date">October 1, 2025</div>
+      <div class="timeline-item__date" data-date="2025-10-01">October 1, 2025</div>
       <h2 class="timeline-item__title">The Next Evolution in AI Memory: Energy-Informed Vector Search
         <span class="tl-value-chip">founding post</span>
       </h2>
@@ -109,7 +110,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">October 2025</div>
+      <div class="timeline-item__date" data-date="2025-10">October 2025</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/optical-embeddings" target="_blank" rel="noopener"><code>optical-embeddings</code> v0.3.0</a></h2>
       <p class="timeline-item__meta">DeepSeek-OCR — compress text into images. Optical token-compression for dense-context pipelines.</p>
       <div class="tl-dl-stats">
@@ -128,7 +129,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge blog">Blog</span>
-      <div class="timeline-item__date">October 17, 2025</div>
+      <div class="timeline-item__date" data-date="2025-10-17">October 17, 2025</div>
       <h2 class="timeline-item__title">Fast (not approximate?) Nearest Neighbours
         <span class="tl-value-chip">v0.16.0 — fastest open ANN</span>
       </h2>
@@ -144,7 +145,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge blog">Blog</span>
-      <div class="timeline-item__date">October 24, 2025</div>
+      <div class="timeline-item__date" data-date="2025-10-24">October 24, 2025</div>
       <h2 class="timeline-item__title">DeepSeek-OCR + Energy Search in ArrowSpace v0.18.0
         <span class="tl-value-chip">NDCG@10 ≈ 0.99 · MRR=1.0</span>
       </h2>
@@ -160,7 +161,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge blog">Blog</span>
-      <div class="timeline-item__date">November 7, 2025</div>
+      <div class="timeline-item__date" data-date="2025-11-07">November 7, 2025</div>
       <h2 class="timeline-item__title">Efficient GPT training: a Rust-powered GPT-2 deep dive</h2>
       <p class="timeline-item__links"><a href="/posts/009_llms_nanogpt_model_in_rust">Read post →</a></p>
     </div>
@@ -174,7 +175,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">November 2025</div>
+      <div class="timeline-item__date" data-date="2025-11">November 2025</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/nanogpt" target="_blank" rel="noopener"><code>nanogpt</code> v0.1.0</a></h2>
       <p class="timeline-item__meta">Nanochat in Rust. Companion to the GPT-2 deep-dive post; full transformer impl with RoPE, MQA, RMSNorm.</p>
       <div class="tl-dl-stats">
@@ -193,7 +194,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">November 2025</div>
+      <div class="timeline-item__date" data-date="2025-11">November 2025</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/dspm-rs" target="_blank" rel="noopener"><code>dspm-rs</code> v0.1.0</a></h2>
       <p class="timeline-item__meta">Graph dimensionality reduction for vector similarities via subgraphs.</p>
       <div class="tl-dl-stats">
@@ -212,7 +213,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">November 2025</div>
+      <div class="timeline-item__date" data-date="2025-11">November 2025</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/javelin-tui" target="_blank" rel="noopener"><code>javelin-tui</code> v0.10.0</a></h2>
       <p class="timeline-item__meta">TUI for displaying and working with Lance matrices — developer tooling for the ArrowSpace ecosystem.</p>
       <div class="tl-dl-stats">
@@ -231,7 +232,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge blog">Blog</span>
-      <div class="timeline-item__date">November 12, 2025</div>
+      <div class="timeline-item__date" data-date="2025-11-12">November 12, 2025</div>
       <h2 class="timeline-item__title">Why <code>arrowspace</code> is game-changing for data operations at scale</h2>
       <p class="timeline-item__links"><a href="/posts/010_game_changer_unifying_vectors_and_features_graphs">Read post →</a></p>
     </div>
@@ -245,7 +246,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge blog">Blog</span>
-      <div class="timeline-item__date">November 26, 2025</div>
+      <div class="timeline-item__date" data-date="2025-11-26">November 26, 2025</div>
       <h2 class="timeline-item__title">Safer LLMs require open search — Building the AI Memory Layer
         <span class="tl-value-chip">AI safety</span>
       </h2>
@@ -261,7 +262,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">December 2025</div>
+      <div class="timeline-item__date" data-date="2025-12">December 2025</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/deep-delta-learn" target="_blank" rel="noopener"><code>deep-delta-learn</code> v0.1.0</a></h2>
       <p class="timeline-item__meta">Implementation of Deep Delta Learning (paper 2601.00417). Structured incremental learning for spectral models.</p>
       <div class="tl-dl-stats">
@@ -280,7 +281,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge blog">Blog</span>
-      <div class="timeline-item__date">January 5, 2026</div>
+      <div class="timeline-item__date" data-date="2026-01-05">January 5, 2026</div>
       <h2 class="timeline-item__title">The Topological Transformer: Tauformer
         <span class="tl-value-chip">~50% KV-cache · ~20% faster</span>
       </h2>
@@ -296,7 +297,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">February 2026</div>
+      <div class="timeline-item__date" data-date="2026-02">February 2026</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/kalman_clustering" target="_blank" rel="noopener"><code>kalman_clustering</code> v0.3.0</a></h2>
       <p class="timeline-item__meta">Clustering vectors using Kalman Filter. Powers the diffusion-split subcentroids and spectral partitioning approach.</p>
       <div class="tl-dl-stats">
@@ -315,7 +316,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge blog">Blog</span>
-      <div class="timeline-item__date">February 17, 2026</div>
+      <div class="timeline-item__date" data-date="2026-02-17">February 17, 2026</div>
       <h2 class="timeline-item__title"><code>arrowspace</code>: Capabilities, speed and accuracy</h2>
       <p class="timeline-item__links"><a href="/posts/016_arrowspace_performance_results">Read post →</a></p>
     </div>
@@ -329,7 +330,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge paper">Paper</span>
-      <div class="timeline-item__date">February 27, 2026</div>
+      <div class="timeline-item__date" data-date="2026-02-27">February 27, 2026</div>
       <h2 class="timeline-item__title">Graph Wiring: Eigenstructures for Vector Datasets and LLM Operations</h2>
       <p class="timeline-item__meta">
         <strong>DOI:</strong>
@@ -363,7 +364,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge paper">Paper</span>
-      <div class="timeline-item__date">March 6, 2026</div>
+      <div class="timeline-item__date" data-date="2026-03-06">March 6, 2026</div>
       <h2 class="timeline-item__title">MRR-Top0: A Topology-Aware Extension of Mean Reciprocal Rank</h2>
       <p class="timeline-item__meta">
         <strong>DOI:</strong>
@@ -396,7 +397,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge blog">Blog</span>
-      <div class="timeline-item__date">March 8, 2026</div>
+      <div class="timeline-item__date" data-date="2026-03-08">March 8, 2026</div>
       <h2 class="timeline-item__title"><code>arrowspace</code> hits the spot for semantic augmented retrieval
         <span class="tl-value-chip">geometry-only cosine fails at tail</span>
       </h2>
@@ -412,7 +413,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge paper">Paper</span>
-      <div class="timeline-item__date">March 15, 2026</div>
+      <div class="timeline-item__date" data-date="2026-03-15">March 15, 2026</div>
       <h2 class="timeline-item__title">Epiplexity And Graph Wiring: An Empirical Study for the Design of a Generic Algorithm</h2>
       <p class="timeline-item__meta">
         <strong>DOI:</strong>
@@ -445,7 +446,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Python Package</span>
-      <div class="timeline-item__date">March 2026</div>
+      <div class="timeline-item__date" data-date="2026-03">March 2026</div>
       <h2 class="timeline-item__title"><a href="https://pypi.org/project/epiplexity/" target="_blank" rel="noopener"><code>epiplexity</code></a> <code style="font-size:0.75rem; color:var(--color-text-faint)">pip install epiplexity</code></h2>
       <p class="timeline-item__meta">Python interface to the epiplexity + Graph Wiring algorithm. Companion to the empirical study paper.</p>
       <div class="tl-dl-stats">
@@ -463,7 +464,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge milestone">Milestone</span>
-      <div class="timeline-item__date">March 27, 2026</div>
+      <div class="timeline-item__date" data-date="2026-03-27">March 27, 2026</div>
       <h2 class="timeline-item__title">🎙️ arrowspace: Vector Spaces and Graph Wiring — MLOps Community Podcast</h2>
       <div class="media-feature-card">
         <div class="media-feature-copy">
@@ -490,7 +491,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">March 2026</div>
+      <div class="timeline-item__date" data-date="2026-03">March 2026</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/constraint-decoding-trie" target="_blank" rel="noopener"><code>constraint-decoding-trie</code> v0.1.0</a></h2>
       <p class="timeline-item__meta">Generative Retrieval: Transition Matrix Trie for Constraint Decoding (STATIC). Companion implementation to the Spectral IDs paper.</p>
       <div class="tl-dl-stats">
@@ -509,7 +510,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge paper">Paper</span>
-      <div class="timeline-item__date">April 10, 2026</div>
+      <div class="timeline-item__date" data-date="2026-04-10">April 10, 2026</div>
       <h2 class="timeline-item__title">Spectral-aware Unique Identifiers for Generative Retrieval and Vector Search</h2>
       <p class="timeline-item__meta">
         <strong>DOI:</strong>
@@ -538,32 +539,13 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Python Package</span>
-      <div class="timeline-item__date">April 2026</div>
+      <div class="timeline-item__date" data-date="2026-04">April 2026</div>
       <h2 class="timeline-item__title"><a href="https://pypi.org/project/arrowspace/" target="_blank" rel="noopener"><code>arrowspace</code></a> <code style="font-size:0.75rem; color:var(--color-text-faint)">pip install arrowspace</code></h2>
       <p class="timeline-item__meta">Python bindings to the ArrowSpace Rust engine. Full graph analysis, vector search, and energy-distribution stats from Python.</p>
       <div class="tl-dl-stats">
         <span class="tl-dl-chip total">🐍 PyPI</span>
       </div>
       <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/pyarrowspace" target="_blank" rel="noopener">Repository</a></p>
-    </div>
-  </div>
-
-  <!-- ~2026-04 arrowspace (Rust crate) v0.26.2 -->
-  <div class="timeline-item" data-type="code">
-    <div class="timeline-item__marker">
-      <div class="timeline-dot"></div>
-      <div class="timeline-line"></div>
-    </div>
-    <div class="timeline-item__content">
-      <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">April 2026</div>
-      <h2 class="timeline-item__title"><a href="https://crates.io/crates/arrowspace" target="_blank" rel="noopener"><code>arrowspace</code> v0.26.2</a></h2>
-      <p class="timeline-item__meta">Graph Wiring for embeddings using physical networks wiring. Graph analysis, vector search, and energy-distribution stats.</p>
-      <div class="tl-dl-stats">
-        <span class="tl-dl-chip total">📥 6,604 total</span>
-        <span class="tl-dl-chip recent">⚡ 736 recent</span>
-      </div>
-      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/surfface-rs" target="_blank" rel="noopener">Repository</a> · <a href="https://docs.rs/surfface-rs" target="_blank" rel="noopener">Docs</a></p>
     </div>
   </div>
 
@@ -575,7 +557,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge code">Rust Crate</span>
-      <div class="timeline-item__date">May 2026 (≈ 25 days ago)</div>
+      <div class="timeline-item__date" data-date="2026-05">May 2026</div>
       <h2 class="timeline-item__title"><a href="https://crates.io/crates/genegraph-storage" target="_blank" rel="noopener"><code>genegraph-storage</code> v0.12.0</a></h2>
       <p class="timeline-item__meta">Vector database: base Lance storage layer. Core persistence engine for the ArrowSpace graph wiring stack.</p>
       <div class="tl-dl-stats">
@@ -594,7 +576,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge milestone">Milestone</span>
-      <div class="timeline-item__date">May 11, 2026</div>
+      <div class="timeline-item__date" data-date="2026-05-11">May 11, 2026</div>
       <h2 class="timeline-item__title">🏆 Submitted to NeurIPS 2026</h2>
     </div>
   </div>
@@ -607,7 +589,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge blog">Blog</span>
-      <div class="timeline-item__date">June 2, 2026</div>
+      <div class="timeline-item__date" data-date="2026-06-02">June 2, 2026</div>
       <h2 class="timeline-item__title"><code>arrowspace</code> for Latent Spaces — part 1
         <span class="tl-value-chip">100% cluster purity at α=0.35</span>
       </h2>
@@ -623,7 +605,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge blog">Blog</span>
-      <div class="timeline-item__date">June 11, 2026</div>
+      <div class="timeline-item__date" data-date="2026-06-11">June 11, 2026</div>
       <h2 class="timeline-item__title"><code>arrowspace</code> for Latent Spaces — part 2
         <span class="tl-value-chip">36 weight-role subspaces probed</span>
       </h2>
@@ -639,7 +621,7 @@ layout: timeline
     </div>
     <div class="timeline-item__content">
       <span class="tl-badge paper">Paper</span>
-      <div class="timeline-item__date">June 19, 2026</div>
+      <div class="timeline-item__date" data-date="2026-06-19">June 19, 2026</div>
       <h2 class="timeline-item__title">From Embedding Geometry to Spectral Search: Energy Dispersion Networks For Vector Retrieval</h2>
       <p class="timeline-item__meta">
         <strong>arXiv:</strong>
@@ -654,6 +636,90 @@ layout: timeline
             <li>Couples geometric similarity with spectral information to improve head-tail coherence and semantic alignment relative to purely geometric retrieval.</li>
             <li>Supports adaptive search via tau-modulation for modern RAG pipelines; establishes theoretical foundation through epiplexity.</li>
             <li>Evaluated across benchmark and industrial settings using the open-source <code>arrowspace</code> library.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2026-10-12 Cosine Is Not Semantics paper -->
+  <div class="timeline-item" data-type="paper">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge paper">Paper</span>
+      <div class="timeline-item__date" data-date="2026-10-12">October 12, 2026</div>
+      <h2 class="timeline-item__title">Cosine Is Not Semantics: Learning a Spectral Metric from the Embedding Corpus</h2>
+      <p class="timeline-item__meta">
+        <strong>DOI:</strong>
+        <a href="https://doi.org/10.5281/zenodo.23311459" target="_blank" rel="noopener">
+          <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.23311459.svg" alt="DOI:10.5281/zenodo.23311459" loading="lazy">
+        </a>
+      </p>
+      <button class="tl-toggle" aria-expanded="false">Show details ↓</button>
+      <div class="tl-drawer" role="region">
+        <div class="tl-drawer-inner">
+          <ul>
+            <li>A graph over embedding features supplies a positive-semidefinite operator that changes the geometry in which angular agreement is measured.</li>
+            <li>The resulting normalized spectral kernel (the spectral blend) compares graph gradients of embedding signals, admits an explicit feature map, and recovers ordinary cosine under the identity operator.</li>
+            <li>Characterizes the information discarded by the Laplacian nullspace; describes a regularized extension and a non-negative spectral-filter family.</li>
+            <li>The operator is estimated from the corpus and then fixed — no end-to-end optimization; realized in <code>eugenio</code> through an explicit cut-invariant feature map.</li>
+          </ul>
+          <p class="timeline-item__links">
+            <strong>Code:</strong>
+            <a href="https://github.com/Genefold/eugenio" target="_blank" rel="noopener">eugenio (Rust)</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2026-10-15 arrowspace (Rust crate) v0.30.0 -->
+  <div class="timeline-item" data-type="code">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge code">Rust Crate</span>
+      <div class="timeline-item__date" data-date="2026-10-15">October 15, 2026</div>
+      <h2 class="timeline-item__title"><a href="https://crates.io/crates/arrowspace" target="_blank" rel="noopener"><code>arrowspace</code> v0.30.0</a></h2>
+      <p class="timeline-item__meta">Graph Wiring for embeddings using physical networks wiring. Graph analysis, vector search, and energy-distribution stats.</p>
+      <div class="tl-dl-stats">
+        <span class="tl-dl-chip total">📥 9,706 total</span>
+        <span class="tl-dl-chip recent">⚡ 2,668 recent</span>
+      </div>
+      <p class="timeline-item__links"><a href="https://github.com/tuned-org-uk/arrowspace" target="_blank" rel="noopener">Repository</a> · <a href="https://docs.rs/arrowspace" target="_blank" rel="noopener">Docs</a></p>
+    </div>
+  </div>
+
+  <!-- 2026-10-21 Graph Wiring constructive separation paper -->
+  <div class="timeline-item" data-type="paper">
+    <div class="timeline-item__marker">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+    </div>
+    <div class="timeline-item__content">
+      <span class="tl-badge paper">Paper</span>
+      <div class="timeline-item__date" data-date="2026-10-21">October 21, 2026</div>
+      <h2 class="timeline-item__title">Graph Wiring: Accessing More Information via Feature-Space — A Constructive Separation and Conditional Coding Analysis</h2>
+      <p class="timeline-item__meta">
+        <strong>DOI:</strong>
+        <a href="https://doi.org/10.5281/zenodo.23544271" target="_blank" rel="noopener">
+          <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.23544271.svg" alt="DOI:10.5281/zenodo.23544271" loading="lazy">
+        </a>
+      </p>
+      <button class="tl-toggle" aria-expanded="false">Show details ↓</button>
+      <div class="tl-drawer" role="region">
+        <div class="tl-drawer-inner">
+          <ul>
+            <li>Proves an explicit separation: two corpora with identical candidate&ndash;query row Gram matrices but different column graphs, and a convex blend of cosine and Rayleigh-energy proximity that exploits the difference.</li>
+            <li>Under a specified noisy relevance law, the blend achieves Top-1 accuracy 7/8 against 1/2 for every observer restricted to the complete row Gram; the optimal conditional log-loss reduction is 1&minus;h&#8322;(1/8) bits.</li>
+            <li>A charged finite-program comparison connects the gain to an Epiplexity-style structural/residual split.</li>
+            <li>Reproducible clustered experiment: 768 items, Gaussian contamination, 128&ndash;512 active features; at 384 features, development-selected cosine weight 0.60 attains expected Top-1 7/8 on sixteen untouched paired instances.</li>
+            <li>A fixed feature-graph control also succeeds at this weight: the results establish access beyond row geometry, not the necessity of adaptive graph learning.</li>
           </ul>
         </div>
       </div>

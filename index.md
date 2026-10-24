@@ -353,6 +353,22 @@ a.btn-ghost:hover {
     %}
 
     {% include triad-card.html
+      title="Graph Wiring: Accessing More Information via Feature-Space"
+      abstract="A constructive separation and conditional coding analysis: two corpora with identical candidate&ndash;query row Gram matrices but different column graphs, and a convex blend of cosine and Rayleigh-energy proximity that exploits the difference. The blend reaches Top-1 accuracy 7/8 against 1/2 for every observer restricted to the complete row Gram, with an optimal conditional log-loss reduction of 1&minus;h&#8322;(1/8) bits."
+      paper_url="https://doi.org/10.5281/zenodo.23544271"
+      benchmark_url="/graph-wiring#panel-2"
+      tags="graph spectral-graph"
+    %}
+
+    {% include triad-card.html
+      title="Cosine Is Not Semantics: Learning a Spectral Metric from the Embedding Corpus"
+      abstract="A corpus-conditioned alternative to cosine: a graph over embedding features supplies a positive-semidefinite operator that changes the geometry in which angular agreement is measured. The resulting normalized spectral kernel compares graph gradients of embedding signals, admits an explicit cut-invariant feature map, and recovers ordinary cosine under the identity operator."
+      paper_url="https://doi.org/10.5281/zenodo.23311459"
+      source_url="https://github.com/Genefold/eugenio"
+      tags="spectral-kernel embeddings"
+    %}
+
+    {% include triad-card.html
       title="ArrowSpace: Spectral Search For Embeddings"
       abstract="Spectral indexing for vector similarity search combining cosine similarity with graph-Laplacian roughness (&lambda;&tau;-indexing) to produce topology-aware similarity scores. Published in the Journal of Open Source Software."
       paper_url="https://doi.org/10.21105/joss.09002"
