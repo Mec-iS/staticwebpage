@@ -148,6 +148,61 @@ a.btn-ghost:hover {
   }
 }
 
+/* ── smaller-feats subhead ────────────────────────────── */
+
+.featured-subhead {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem 0 1.25rem;
+}
+.featured-subhead::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+.featured-subhead .featured-kicker {
+  margin: 0;
+}
+
+/* ── smaller feats grid ───────────────────────────────── */
+
+.featured-grid--compact {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.featured-grid--compact .triad-card {
+  padding: 1.25rem;
+  gap: 0.75rem;
+}
+.featured-grid--compact .triad-card__title {
+  font-size: 1.02rem;
+}
+.featured-grid--compact .triad-card__abstract {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.featured-grid--compact .triad-card__btn {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1000px) {
+  .featured-grid--compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 860px) {
+  .featured-grid--compact {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── shared badge ─────────────────────────────────────── */
 
 .card-badge {
@@ -345,11 +400,12 @@ a.btn-ghost:hover {
 
   <div class="featured-grid">
     {% include triad-card.html
-      title="ALD-SC: A Spectral Latent Diffusion Model"
-      abstract="A spectral latent diffusion model where decoding runs on the feature-space manifold defined by a frozen ArrowSpace graph Laplacian. A graph-structured decoder replaces unconstrained convolutions with propagation along the Laplacian's smooth eigenvectors, gated by a Barontini entropic clock that terminates sampling intrinsically."
-      paper_url="https://doi.org/10.5281/zenodo.21456829"
-      source_url="https://github.com/tuned-org-uk/arrowspace-latent-diffusion"
-      tags="latent-diffusion arrowspace spectral"
+      title="From Embedding Geometry to Spectral Search: Energy Dispersion Networks for Vector Retrieval"
+      abstract="The Graph Wiring framework: exploiting feature-space spectral structure in vector search, with Spectral Indexing as its task-specific instantiation. Couples geometric similarity with spectral information to improve head&ndash;tail coherence and semantic alignment beyond purely geometric retrieval, supports adaptive search via tau-modulation, and grounds its theory in epiplexity. Evaluated across benchmark and industrial settings with the open-source arrowspace library. With Ilias Azizi."
+      paper_url="https://arxiv.org/abs/2606.21535"
+      source_url="https://github.com/tuned-org-uk/arrowspace"
+      benchmark_url="/graph-wiring#panel-3"
+      tags="vector-search spectral-graph"
     %}
 
     {% include triad-card.html
@@ -366,6 +422,20 @@ a.btn-ghost:hover {
       paper_url="https://doi.org/10.5281/zenodo.23311459"
       source_url="https://github.com/Genefold/eugenio"
       tags="spectral-kernel embeddings"
+    %}
+  </div>
+
+  <div class="featured-subhead">
+    <p class="featured-kicker">Smaller feats</p>
+  </div>
+
+  <div class="featured-grid featured-grid--compact">
+    {% include triad-card.html
+      title="ALD-SC: A Spectral Latent Diffusion Model"
+      abstract="A spectral latent diffusion model where decoding runs on the feature-space manifold defined by a frozen ArrowSpace graph Laplacian. A graph-structured decoder replaces unconstrained convolutions with propagation along the Laplacian's smooth eigenvectors, gated by a Barontini entropic clock that terminates sampling intrinsically."
+      paper_url="https://doi.org/10.5281/zenodo.21456829"
+      source_url="https://github.com/tuned-org-uk/arrowspace-latent-diffusion"
+      tags="latent-diffusion arrowspace spectral"
     %}
 
     {% include triad-card.html
